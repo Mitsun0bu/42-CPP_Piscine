@@ -6,9 +6,20 @@
 #    By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/29 11:45:34 by llethuil          #+#    #+#              #
-#    Updated: 2022/06/29 12:04:46 by llethuil         ###   ########lyon.fr    #
+#    Updated: 2022/06/29 16:27:28 by llethuil         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
+
+# **************************************************************************** #
+#                                                                              #
+#                              ~~~ COLOR CODES ~~~                             #
+#                                                                              #
+# **************************************************************************** #
+
+GREEN	:=	\033[32m
+BLUE	:=	\033[34m
+PINK	:=	\033[35m
+END		:=	\033[0m
 
 # **************************************************************************** #
 #                                                                              #
@@ -16,7 +27,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:=	magaphone
+NAME		:=	megaphone
 
 CC			:=	c++
 
@@ -38,24 +49,28 @@ OBJS		:=	$(addprefix $(OBJS_DIR)/, $(OBJS_LST))
 #                                                                            #
 # ************************************************************************** #
 
-# .SILENT:
+.SILENT:
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	test -z '$(filter %.o,$?)' || printf "$(GREEN)> All the .c files from $(NAME) have been compiled successfully !$(END)\n"
+	test -z '$(filter %.o,$?)' || printf "$(GREEN)> All the .cpp files from $(NAME) have been compiled successfully !$(END)\n"
 	printf "$(BLUE)> Creating the executable file :$(END) $@\n"
-	$(CC) $(CXXFLAGS) $(OBJS_LST) -o $(NAME)
+	$(CC) $(CXXFLAGS) $(OBJS) -o $(NAME)
 	printf "$(GREEN)> Executable file has been created successfully !$(END)\n"
 
 $(OBJS_DIR):
-	mkdir -p $(addprefix $(OBJS_DIR)/, $(SUBDIRS_LST))
+	mkdir -p $(OBJS_DIR)
+
+$(OBJS_DIR)/%.o: %.cpp Makefile | $(OBJS_DIR)
+	printf "$(BLUE)> Compiling :$(END) $<\n"
+	$(CC) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	printf "$(PINK)> Removing $(NAME) .o files ...$(END)\n"
 	$(RM) $(OBJS)
 	printf "$(PINK)> Removing .objs directory ...$(END)\n"
-	$(RM) $(OBJS_DIR)
+	rm -rf $(OBJS_DIR)
 	printf "$(GREEN)> All the .o files have been removed successfully !$(END)\n"
 
 fclean: clean
