@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 18:28:33 by llethuil          #+#    #+#             */
-/*   Updated: 2022/06/30 13:26:31 by llethuil         ###   ########lyon.fr   */
+/*   Created: 2022/06/30 11:50:04 by llethuil          #+#    #+#             */
+/*   Updated: 2022/06/30 13:24:00 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# include <iostream>
+# include "Contact.hpp"
+# include "PhoneBook.hpp"
 
-class Contact
+int	main(void)
 {
-	public:
-		Contact(void);
-		~Contact(void);
+	std::cout << "hello world" << std::endl;
 
-	// private:
-	// 	int			_i;
-	// 	std::string	_first_name;
-	// 	std::string	_last_name;
-	// 	std::string	_nickname;
-	// 	int			_phone_number;
-	// 	std::string	_secret;
-};
+	return (0);
+}
