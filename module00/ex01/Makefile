@@ -6,7 +6,7 @@
 #    By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/29 11:45:34 by llethuil          #+#    #+#              #
-#    Updated: 2022/06/30 13:23:47 by llethuil         ###   ########lyon.fr    #
+#    Updated: 2022/06/30 15:48:01 by llethuil         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,6 @@ OBJS		:=	$(addprefix $(OBJS_DIR)/, $(OBJS_LST))
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	test -z '$(filter %.o,$?)' || printf "$(GREEN)> All the .cpp files from $(NAME) have been compiled successfully !$(END)\n"
 	printf "$(BLUE)> Creating the executable file :$(END) $@\n"
 	$(CC) $(CXXFLAGS) $(OBJS) -o $(NAME)
 	printf "$(GREEN)> Executable file has been created successfully !$(END)\n"
@@ -69,7 +68,7 @@ $(OBJS_DIR):
 
 $(OBJS_DIR)/%.o: %.cpp $(INCS_LST) Makefile | $(OBJS_DIR)
 	printf "$(BLUE)> Compiling :$(END) $<\n"
-	$(CC) $(CXXFLAGS) -I -c $< -o $@
+	$(CC) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	printf "$(PINK)> Removing $(NAME) .o files ...$(END)\n"

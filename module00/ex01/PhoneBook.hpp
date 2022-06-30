@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:28:37 by llethuil          #+#    #+#             */
-/*   Updated: 2022/06/30 12:18:49 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/06/30 17:07:15 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ class PhoneBook
 	public:
 		PhoneBook(void);
 		~PhoneBook(void);
-	// private:
-	// 	Contact *contact;
+
+		Contact contact[8];
+		void	add_contact(int *i);
+		void	search_contact(void);
+		void	display_contacts(void);
+	private:
+		int		_n_contact;
 };
