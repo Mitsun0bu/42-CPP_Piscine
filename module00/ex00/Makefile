@@ -6,7 +6,7 @@
 #    By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/29 11:45:34 by llethuil          #+#    #+#              #
-#    Updated: 2022/06/29 16:27:28 by llethuil         ###   ########lyon.fr    #
+#    Updated: 2022/06/30 13:41:06 by llethuil         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,6 @@ OBJS		:=	$(addprefix $(OBJS_DIR)/, $(OBJS_LST))
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	test -z '$(filter %.o,$?)' || printf "$(GREEN)> All the .cpp files from $(NAME) have been compiled successfully !$(END)\n"
 	printf "$(BLUE)> Creating the executable file :$(END) $@\n"
 	$(CC) $(CXXFLAGS) $(OBJS) -o $(NAME)
 	printf "$(GREEN)> Executable file has been created successfully !$(END)\n"
