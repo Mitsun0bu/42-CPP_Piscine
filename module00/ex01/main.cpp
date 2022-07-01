@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 11:50:04 by llethuil          #+#    #+#             */
-/*   Updated: 2022/06/30 18:57:28 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/01 09:31:55 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@ int	main(void)
 	int			i_input = 0;
 
 	/*
-		Ask the user for an input :
-		ADD, SEARCH and EXIT are accepted
-		Other input is discarded
+		This is the main loop of the programm :
+		1) It prints the phonebook menu
+		2) It ask the user for an input :
+			ADD, SEARCH and EXIT are accepted
+			Other input is discarded
+		3) It leaves the phonebook if EXIT is entered
 	*/
 	while(input != "EXIT")
 	{
@@ -44,6 +47,7 @@ int	main(void)
 	return (0);
 }
 
+/* This function print the phonebook menu */
 void	print_menu(void)
 {
 	std::cout << "~~~ Welcome to your PhoneBook ~~~" << std::endl;

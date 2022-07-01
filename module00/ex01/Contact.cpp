@@ -6,41 +6,45 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 17:21:57 by llethuil          #+#    #+#             */
-/*   Updated: 2022/06/30 18:59:38 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/01 09:33:03 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Contact.hpp"
 
+/* Constructor of Contact class */
 Contact::Contact(void)
 {
 	return ;
 }
 
+/* Destructor of Contact class */
 Contact::~Contact(void)
 {
 	return ;
 }
 
+/* This method allows the user to set contact informations */
 void	Contact::set_contact_info(int i)
 {
 	this->_i = i;
 	std::cout << std::endl;
-	std::cout << "Please type the first name of the contact : ";
+	std::cout << "Enter the first name : ";
 	std::cin >> this->_first_name;
-	std::cout << "Please type the last name of the contact : ";
+	std::cout << "Enter the last name : ";
 	std::cin >> this->_last_name;
-	std::cout << "Please type the nickname of the contact : ";
+	std::cout << "Enter the nickname : ";
 	std::cin >> this->_nickname;
-	std::cout << "Please type the phone number of the contact : ";
+	std::cout << "Enter the phone number : ";
 	std::cin >> this->_phone_number;
-	std::cout << "Please type the darkest secret of the contact : ";
+	std::cout << "Enter the darkest secret : ";
 	std::cin >> this->_secret;
 	std::cout << std::endl;
-	std::cout << "The contact #" << i << " has been added successfully !" << std::endl;
+	std::cout << "Contact #" << i << " added successfully !" << std::endl;
 	std::cout << std::endl;
 }
 
+/* This method allows the user to get contact informations */
 void	Contact::get_contact_info()
 {
 	std::cout << std::endl;
@@ -53,16 +57,16 @@ void	Contact::get_contact_info()
 	std::cout << std::endl;
 }
 
+/*
+	This method show some contact informations
+	in the format indicated in the subject
+*/
 std::string	Contact::get_contact_summary()
 {
 	std::string			index;
 	std::ostringstream	convert;
 	std::string			str = "";
 
-	/*
-		Append each attribute, once formatted
-		as specified in the subject, in str
-	*/
 	std::cout << std::endl;
 	str.append("|");
 	convert << this->_i;
@@ -78,6 +82,7 @@ std::string	Contact::get_contact_summary()
 	return str;
 }
 
+/* This method format a string as asked in the subject */
 std::string	Contact::format_str(std::string str)
 {
 	std::string	result = "";
