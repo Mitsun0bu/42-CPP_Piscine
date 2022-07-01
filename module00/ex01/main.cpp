@@ -6,21 +6,17 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 11:50:04 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/01 09:31:55 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/01 15:43:23 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <iostream>
-# include "Contact.hpp"
-# include "PhoneBook.hpp"
-
-void	print_menu(void);
+# include "main.hpp"
 
 int	main(void)
 {
-	PhoneBook	phonebook;
-	std::string	input = "";
-	int			i_input = 0;
+	PhoneBook		phonebook;
+	std::string		input = "";
+	int				i_input = 0;
 
 	/*
 		This is the main loop of the programm :
@@ -34,13 +30,19 @@ int	main(void)
 	{
 		print_menu();
 		std::cin >> input;
+		if (std::cin.eof() == TRUE)
+			return (0);
 		if (input == "ADD")
 		{
-			phonebook.add_contact(&i_input);
+			if (phonebook.add_contact(&i_input) == FAIL)
+				return (0);
 			i_input ++;
 		}
 		else if (input == "SEARCH")
-			phonebook.search_contact();
+		{
+			if (phonebook.search_contact() == FAIL)
+				return (0);
+		}
 		else
 			continue ;
 	}

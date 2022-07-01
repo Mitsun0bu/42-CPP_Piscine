@@ -6,7 +6,7 @@
 #    By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/29 11:45:34 by llethuil          #+#    #+#              #
-#    Updated: 2022/06/30 15:48:01 by llethuil         ###   ########lyon.fr    #
+#    Updated: 2022/07/01 15:45:56 by llethuil         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ SRCS_LST	:=	main.cpp		\
 				Contact.cpp		\
 				PhoneBook.cpp	\
 
-INCS_LST	:=	Contact.hpp		\
+INCS_LST	:=	main.hpp		\
+				Contact.hpp		\
 				PhoneBook.hpp	\
 
 OBJS_LST	:=	$(SRCS_LST:.cpp=.o)

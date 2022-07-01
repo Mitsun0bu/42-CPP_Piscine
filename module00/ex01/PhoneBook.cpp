@@ -6,13 +6,11 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 17:18:27 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/01 09:29:44 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/01 15:42:01 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <iostream>
-# include <sstream>
-# include "PhoneBook.hpp"
+# include "main.hpp"
 
 /* Constructor of PhoneBook class */
 PhoneBook::PhoneBook(void)
@@ -28,24 +26,28 @@ PhoneBook::~PhoneBook(void)
 }
 
 /* This method allows the user to add a contact to the phonebook */
-void	PhoneBook::add_contact(int *i)
+int	PhoneBook::add_contact(int *i)
 {
 	if (*i >= 8)
 		*i = 0;
-	this->contact[*i].set_contact_info(*i);
+	if (this->contact[*i].set_contact_info(*i) == FAIL)
+		return (FAIL);
 	if (this->_n_contact < 8)
 		this->_n_contact++;
+	return (SUCCESS);
 }
 
 /* This method allows the user to search for a contact in the phonebook */
-void	PhoneBook::search_contact(void)
+int	PhoneBook::search_contact(void)
 {
 	if (_check_if_empty() == TRUE)
-		return ;
+		return (SUCCESS);
 
 	this->_display_contacts();
 
-	_select_contact();
+	if (_select_contact() == FAIL)
+		return (FAIL);
+	return (SUCCESS);
 }
 
 /* This method check if the phonebook is empty */
@@ -74,7 +76,7 @@ void	PhoneBook::_display_contacts(void)
 }
 
 /* This method ask the user to select a contact to display its details */
-void	PhoneBook::_select_contact(void)
+int	PhoneBook::_select_contact(void)
 {
 	std::string	buff = "";
 	int			i_contact = -1;
@@ -85,6 +87,8 @@ void	PhoneBook::_select_contact(void)
 		std::cout << "Please enter the index of the contact"
 					 " whose details you want to see : ";
 		std::cin >> buff;
+		if (std::cin.eof() == TRUE)
+			return (FAIL);
 		std::istringstream(buff) >> i_contact;
 		if (i_contact > this->_n_contact)
 		{
@@ -98,4 +102,5 @@ void	PhoneBook::_select_contact(void)
 			break ;
 		}
 	}
+	return (SUCCESS);
 }

@@ -6,11 +6,11 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 17:21:57 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/01 09:33:03 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/01 15:41:47 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Contact.hpp"
+# include "main.hpp"
 
 /* Constructor of Contact class */
 Contact::Contact(void)
@@ -25,23 +25,34 @@ Contact::~Contact(void)
 }
 
 /* This method allows the user to set contact informations */
-void	Contact::set_contact_info(int i)
+int	Contact::set_contact_info(int i)
 {
 	this->_i = i;
 	std::cout << std::endl;
 	std::cout << "Enter the first name : ";
 	std::cin >> this->_first_name;
+	if (std::cin.eof() == TRUE)
+		return (FAIL);
 	std::cout << "Enter the last name : ";
 	std::cin >> this->_last_name;
+	if (std::cin.eof() == TRUE)
+		return (FAIL);
 	std::cout << "Enter the nickname : ";
 	std::cin >> this->_nickname;
+	if (std::cin.eof() == TRUE)
+		return (FAIL);
 	std::cout << "Enter the phone number : ";
 	std::cin >> this->_phone_number;
+	if (std::cin.eof() == TRUE)
+		return (FAIL);
 	std::cout << "Enter the darkest secret : ";
 	std::cin >> this->_secret;
+	if (std::cin.eof() == TRUE)
+		return (FAIL);
 	std::cout << std::endl;
 	std::cout << "Contact #" << i << " added successfully !" << std::endl;
 	std::cout << std::endl;
+	return (SUCCESS);
 }
 
 /* This method allows the user to get contact informations */
