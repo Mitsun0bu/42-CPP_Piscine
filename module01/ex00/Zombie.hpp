@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 18:28:37 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/04 12:43:35 by llethuil         ###   ########.fr       */
+/*   Created: 2022/07/04 09:26:41 by llethuil          #+#    #+#             */
+/*   Updated: 2022/07/04 12:42:12 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+#pragma once
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -18,7 +18,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "main.hpp"
+# include <iostream>
+# include <string>
+# include <time.h>
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -26,19 +28,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-class PhoneBook
+class Zombie
 {
-	public:
-		PhoneBook(void);
-		~PhoneBook(void);
+     public:
 
-		Contact contact[8];
-		int		add_contact(int *i);
-		int		search_contact(void);
+        Zombie(std::string name);
+        ~Zombie(void);
+        void        announce(void) const;
+      
+    private:
 
-	private:
-		int		_n_contact;
-		int		_check_if_empty(void);
-		void	_display_contacts(void);
-		int		_select_contact(void);
+        std::string _name;
 };
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                              ~~~ PROTOTYPES ~~~                            */
+/*                                                                            */
+/* ************************************************************************** */
+
+Zombie      *newZombie(std::string name);
+void        randomChump(std::string name);
