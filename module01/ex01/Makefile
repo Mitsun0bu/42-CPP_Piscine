@@ -6,7 +6,7 @@
 #    By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 09:26:22 by llethuil          #+#    #+#              #
-#    Updated: 2022/07/04 16:34:21 by llethuil         ###   ########.fr        #
+#    Updated: 2022/07/04 16:34:38 by llethuil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,20 +27,19 @@ END		:=	\033[0m
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:=	brainz
+NAME		:=	moar_brainz
 
 CC			:=	c++
 
-CXXFLAGS	:=	-std=c++98 -Wall -Wextra -Werror
+CXXFLAGS	:=	-std=c++98 -Wall -Wextra -Werror -g3
 
 RM			:=	rm -f
 
 OBJS_DIR	:=	.objs
 
 SRCS_LST	:=	main.cpp		\
-				newZombie.cpp	\
-				randomChump.cpp	\
 				Zombie.cpp		\
+				zombieHorde.cpp	\
 
 INCS_LST	:=	Zombie.hpp		\
 
