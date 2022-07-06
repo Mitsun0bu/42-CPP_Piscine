@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/04 16:09:06 by llethuil          #+#    #+#              #
-#    Updated: 2022/07/06 11:56:22 by llethuil         ###   ########.fr        #
+#    Created: 2022/07/04 09:26:22 by llethuil          #+#    #+#              #
+#    Updated: 2022/07/06 11:56:11 by llethuil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ END		:=	\033[0m
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:=	memory
+NAME		:=	replacer
 
 CC			:=	c++
 
@@ -37,7 +37,14 @@ RM			:=	rm -f
 
 OBJS_DIR	:=	.objs
 
-SRCS_LST	:=	main.cpp
+SRCS_LST	:=	main.cpp	\
+				HumanA.cpp	\
+				HumanB.cpp	\
+				Weapon.cpp	\
+
+INCS_LST	:=	HumanA.hpp	\
+				HumanB.hpp	\
+				Weapon.hpp	\
 
 OBJS_LST	:=	$(SRCS_LST:.cpp=.o)
 
@@ -61,7 +68,7 @@ $(NAME): $(OBJS)
 $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)
 
-$(OBJS_DIR)/%.o: %.cpp Makefile | $(OBJS_DIR)
+$(OBJS_DIR)/%.o: %.cpp $(INCS_LST) Makefile | $(OBJS_DIR)
 	printf "$(BLUE)> Compiling :$(END) $<\n"
 	$(CC) $(CXXFLAGS) -c $< -o $@
 
