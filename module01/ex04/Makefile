@@ -6,7 +6,7 @@
 #    By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 09:26:22 by llethuil          #+#    #+#              #
-#    Updated: 2022/07/06 11:56:11 by llethuil         ###   ########.fr        #
+#    Updated: 2022/07/06 19:14:20 by llethuil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,18 +35,23 @@ CXXFLAGS	:=	-std=c++98 -Wall -Wextra -Werror
 
 RM			:=	rm -f
 
+SRCS_DIR	:=	srcs
+
+INCS_LST	:=	incs
+
 OBJS_DIR	:=	.objs
 
-SRCS_LST	:=	main.cpp	\
-				HumanA.cpp	\
-				HumanB.cpp	\
-				Weapon.cpp	\
+SRCS_LST	:=	main.cpp		\
+				print_error.cpp	\
+				replace.cpp		\
 
-INCS_LST	:=	HumanA.hpp	\
-				HumanB.hpp	\
-				Weapon.hpp	\
+INCS_LST	:=	main.hpp		\
 
 OBJS_LST	:=	$(SRCS_LST:.cpp=.o)
+
+SRCS		:=	$(addprefix $(SRCS_DIR)/, $(SRCS_LST))
+
+INCS		:=	$(addprefix $(INCS_DIR)/, $(INCS_LST))
 
 OBJS		:=	$(addprefix $(OBJS_DIR)/, $(OBJS_LST))
 
@@ -68,7 +73,7 @@ $(NAME): $(OBJS)
 $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)
 
-$(OBJS_DIR)/%.o: %.cpp $(INCS_LST) Makefile | $(OBJS_DIR)
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.cpp Makefile | $(OBJS_DIR)
 	printf "$(BLUE)> Compiling :$(END) $<\n"
 	$(CC) $(CXXFLAGS) -c $< -o $@
 
