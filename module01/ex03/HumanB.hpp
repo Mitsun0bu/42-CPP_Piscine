@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 19:05:40 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/06 11:08:20 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/07/07 11:03:16 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ class   HumanB
     public:
 
         HumanB(std::string name);
-        ~HumanB(void);
         void    setWeapon(Weapon &weapon);
         void    attack(void) const;
+        ~HumanB(void);
 
     private:
 

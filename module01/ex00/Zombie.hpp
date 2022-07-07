@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 09:26:41 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/04 12:42:12 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/07/07 11:02:19 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ class Zombie
      public:
 
         Zombie(std::string name);
-        ~Zombie(void);
         void        announce(void) const;
+        ~Zombie(void);
       
     private:
 

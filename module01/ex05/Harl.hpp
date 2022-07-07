@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 19:04:32 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/07 11:03:10 by llethuil         ###   ########.fr       */
+/*   Created: 2022/07/07 09:35:40 by llethuil          #+#    #+#             */
+/*   Updated: 2022/07/07 11:15:40 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 # include <iostream>
 # include <string>
-# include "Weapon.hpp"
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -28,16 +27,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-class   HumanA
+class   Harl
 {
     public:
 
-        HumanA(std::string name, Weapon &weapon);
-        void    attack(void);
-        ~HumanA(void);
+        Harl(void);
+        void    complain(std::string level);
+        ~Harl(void);
 
     private:
 
-        std::string     _name;
-        Weapon          *_weapon;
+        void        _debug(void);
+        void        _info(void);
+        void        _warning(void);
+        void        _error(void);
+        std::string _lvl_tab[4];
+		void (Harl::*_func_ptr_tab[4])(void);
 };

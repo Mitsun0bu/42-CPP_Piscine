@@ -6,7 +6,7 @@
 #    By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/04 09:26:22 by llethuil          #+#    #+#              #
-#    Updated: 2022/07/07 11:26:21 by llethuil         ###   ########.fr        #
+#    Updated: 2022/07/07 11:27:10 by llethuil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ END		:=	\033[0m
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:=	moar_brainz
+NAME		:=	harl
 
 CC			:=	c++
 
@@ -38,10 +38,9 @@ RM			:=	rm -f
 OBJS_DIR	:=	.objs
 
 SRCS_LST	:=	main.cpp		\
-				Zombie.cpp		\
-				zombieHorde.cpp	\
+				Harl.cpp		\
 
-INCS_LST	:=	Zombie.hpp		\
+INCS_LST	:=	Harl.hpp		\
 
 OBJS_LST	:=	$(SRCS_LST:.cpp=.o)
 
