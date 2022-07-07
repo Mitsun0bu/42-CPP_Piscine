@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 15:16:55 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/01 15:45:10 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/06 11:49:13 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

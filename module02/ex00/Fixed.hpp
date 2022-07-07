@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/29 18:28:37 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/07 11:02:45 by llethuil         ###   ########.fr       */
+/*   Created: 2022/07/07 15:54:44 by llethuil          #+#    #+#             */
+/*   Updated: 2022/07/07 18:15:53 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "main.hpp"
+# include <iostream>
+# include <string>
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -26,20 +27,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-class PhoneBook
+class Fixed
 {
-	public:
-
-		PhoneBook(void);
-		Contact contact[8];
-		int		add_contact(int *i);
-		int		search_contact(void);
-		~PhoneBook(void);
-
-	private:
-
-		int		_n_contact;
-		int		_check_if_empty(void);
-		void	_display_contacts(void);
-		int		_select_contact(void);
+    public:
+    
+        Fixed(void);
+        Fixed(Fixed const &src);
+        Fixed   &operator=(Fixed const & src);
+        int     getRawBits( void ) const;
+        void    setRawBits( int const raw );
+        ~Fixed();
+    
+    private:
+        int _value;
+        static int const _decimal_bits;
 };
