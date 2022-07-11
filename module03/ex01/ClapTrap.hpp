@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:55:16 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/11 15:57:35 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/11 17:38:44 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ class ClapTrap
 		void		beRepaired(unsigned int amount);
 		~ClapTrap();
 
-	private :
+	protected:
 
 		std::string	_name;
 		int			_hit_points;

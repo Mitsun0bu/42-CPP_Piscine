@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 13:21:54 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/11 16:27:04 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/11 18:38:50 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,16 @@
 
 ClapTrap::ClapTrap(void)
 {
-	std::cout << "A default ClapTrap has spawned !" << std::endl;
+	std::cout << "A default ClapTrap\thas spawned !" << std::endl;
 	this->_hit_points = 10;
 	this->_energy_points = 10;
 	this->_attack_damage = 0;
+	return ;
 }
 
 ClapTrap::ClapTrap(std::string name) : _name(name)
 {
-	std::cout << "ClapTrap " << this->_name << " has spawned !" << std::endl;
+	std::cout << "ClapTrap " << this->_name << "\thas spawned !" << std::endl;
 	this->_hit_points = 10;
 	this->_energy_points = 10;
 	this->_attack_damage = 0;
@@ -90,9 +91,18 @@ int	ClapTrap::get_ad(void) const
 
 void	ClapTrap::set_name(std::string name)
 {
-	this->_name = name;
-	std::cout << "ClapTrap Ditto uses Transform to become a "
+	if (this->_name.empty())
+	{
+		this->_name = name;
+		std::cout << "ClapTrap Ditto uses Transform to become a "
 			  << name << std::endl;
+	}
+	else
+	{
+		this->_name = name;
+		std::cout << "ClapTrap is now named "
+			  << name << std::endl;
+	}
 	return ;
 }
 
