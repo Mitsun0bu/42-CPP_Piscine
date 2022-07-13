@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 13:21:54 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/13 16:40:17 by llethuil         ###   ########lyon.fr   */
+/*   Created: 2022/07/13 10:43:01 by llethuil          #+#    #+#             */
+/*   Updated: 2022/07/13 16:57:13 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ClapTrap.hpp"
+# include "FragTrap.hpp"
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -18,30 +18,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-ClapTrap::ClapTrap(void)
+FragTrap::FragTrap(void)
 {
-	std::cout << "A default ClapTrap\thas spawned !" << std::endl;
-	this->_hit_points = 10;
-	this->_energy_points = 10;
-	this->_attack_damage = 0;
+	std::cout << "A default FragTrap\thas spawned !" << std::endl;
+	this->_hit_points = 100;
+	this->_energy_points = 100;
+	this->_attack_damage = 30;
 	return ;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << "ClapTrap " << this->_name << "\thas spawned !" << std::endl;
-	this->_hit_points = 10;
-	this->_energy_points = 10;
-	this->_attack_damage = 0;
+	std::cout << "FragTrap " << this->_name << " : Lugia!" << std::endl;
+	this->_hit_points = 100;
+	this->_energy_points = 100;
+	this->_attack_damage = 30;
 	return;
 }
 
-ClapTrap::ClapTrap(ClapTrap const &src)
+FragTrap::FragTrap(FragTrap const &src)
 {
 	if (src._name.empty())
-		std::cout << "A default ClapTrap has been duplicated !" << std::endl;
+		std::cout << "A default FragTrap has been duplicated !" << std::endl;
 	else
-		std::cout << "ClapTrap " << this->_name << " has been duplicated !" << std::endl;
+		std::cout << "FragTrap " << this->_name << " has been duplicated !" << std::endl;
 	*this = src;
 	return ;
 }
@@ -52,7 +52,7 @@ ClapTrap::ClapTrap(ClapTrap const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-ClapTrap	&ClapTrap::operator=(ClapTrap const &src)
+FragTrap	&FragTrap::operator=(FragTrap const &src)
 {
 	this->_name = src._name;
 	this->_hit_points = src._hit_points;
@@ -67,81 +67,39 @@ ClapTrap	&ClapTrap::operator=(ClapTrap const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-std::string	ClapTrap::get_name(void) const
+std::string	FragTrap::get_name(void) const
 {
 	if (this->_name.empty())
-		return ("Ditto");
+		return ("Oh-Oh");
 	return (this->_name);
 }
 
-int	ClapTrap::get_hp(void) const
+void	FragTrap::set_name(std::string name)
 {
-	return (this->_hit_points);
-}
-
-int	ClapTrap::get_ep(void) const
-{
-	return (this->_energy_points);
-}
-
-int	ClapTrap::get_ad(void) const
-{
-	return (this->_attack_damage);
-}
-
-void	ClapTrap::set_name(std::string name)
-{
-	if (this->_name.empty())
-	{
-		this->_name = name;
-		std::cout << "ClapTrap Ditto uses Transform to become a "
+	this->_name = name;
+	std::cout << "FragTrap is now named "
 			  << name << std::endl;
-	}
-	else
-	{
-		this->_name = name;
-		std::cout << "ClapTrap is now named "
-			  << name << std::endl;
-	}
 	return ;
 }
 
-void	ClapTrap::set_hp(int hp)
-{
-	this->_hit_points = hp;
-	return ;
-}
-
-void	ClapTrap::set_ep(int ep)
-{
-	this->_energy_points = ep;
-	return ;
-}
-
-void	ClapTrap::set_ad(int ad)
-{
-	this->_attack_damage = ad;
-	return ;
-}
-
-void	ClapTrap::attack(std::string const &target)
+void	FragTrap::attack(std::string const &target)
 {
 	if (this->_hit_points <= 0)
 	{
-		std::cout << "ClapTrap " << this->_name
+		std::cout << "FragTrap " << this->_name
 				  << " is dead... Nothing happened..."
 				  << std::endl;
 	}
 	else if (this->_energy_points <= 0)
 	{
-		std::cout << "ClapTrap " << this->_name
+		std::cout << "FragTrap " << this->_name
 				  << " tries to attack " << target << " ! "
 				  << "But nothing happened..." << std::endl;
 	}
 	else
 	{
 		this->_energy_points--;
-		std::cout << "ClapTrap " << this->_name
+		std::cout << "FragTrap " << this->_name
 				  << " attacks " << target
 				  << " causing " << this->_attack_damage
 				  << " points of damage!" << std::endl;
@@ -149,47 +107,12 @@ void	ClapTrap::attack(std::string const &target)
 	return ;
 }
 
-void	ClapTrap::takeDamage(unsigned int amount)
+void		FragTrap::highFivesGuys(void) const
 {
-	if (this->_hit_points <= 0)
-	{
-		std::cout << "ClapTrap " << this->_name
-				  << " is already dead..." << std::endl;
-	}
-	else
-	{
-		this->_hit_points-= amount;
-		std::cout << "ClapTrap " << this->_name
-				  << " takes " << amount
-				  << " points of damage!"
-				  << std::endl;
-	}
-	return ;
-}
-
-void	ClapTrap::beRepaired(unsigned int amount)
-{
-	if (this->_hit_points <= 0)
-	{
-		std::cout << "ClapTrap " << this->_name
-				  << " is dead... Nothing happened..."
-				  << std::endl;
-	}
-	else if (this->_energy_points <= 0)
-	{
-		std::cout << "ClapTrap " << this->_name
-				  << " does not have enough energy points... Nothing happened..."
-				  << std::endl;
-	}
-	else
-	{
-		this->_energy_points --;
-		this->_hit_points += amount;
-		std::cout << "ClapTrap " << this->_name
-				  << " drinks a life potion and has now "
-				  << this->_hit_points << " energy points."
-				  << std::endl;
-	}
+	std::cout << "FragTrap " << this->_name
+			<< " has been captured!"
+			<< " This deserve a high five, give me a high five !"
+			<< std::endl;
 	return ;
 }
 
@@ -199,13 +122,14 @@ void	ClapTrap::beRepaired(unsigned int amount)
 /*                                                                            */
 /* ************************************************************************** */
 
-ClapTrap::~ClapTrap()
+FragTrap::~FragTrap()
 {
 	if (this->_name.empty())
-		std::cout << "A default ClapTrap has been destroyed !" << std::endl;
+		std::cout << "A default FragTrap has disappeared !" << std::endl;
 	else
-		std::cout << "ClapTrap " << this->_name << " has been destroyed !" << std::endl;
+		std::cout << "FragTrap " << this->_name << " has disappeared !" << std::endl;
 	return ;
+
 }
 
 /* ************************************************************************** */
@@ -214,11 +138,11 @@ ClapTrap::~ClapTrap()
 /*                                                                            */
 /* ************************************************************************** */
 
-std::ostream	&operator<<(std::ostream &stream, ClapTrap const &ClapTrap)
+std::ostream	&operator<<(std::ostream &stream, FragTrap const &FragTrap)
 {
-	stream << "ClapTrap " << ClapTrap.get_name() << "\thas "
-		   << ClapTrap.get_hp() << " hit points, "
-		   << ClapTrap.get_ep() << " energy points, and can cause "
-		   << ClapTrap.get_ad() << " attack damage." << std::endl;
+	stream << "FragTrap " << FragTrap.get_name() << "\thas "
+		   << FragTrap.get_hp() << " hit points, "
+		   << FragTrap.get_ep() << " energy points, and can cause "
+		   << FragTrap.get_ad() << " attack damage." << std::endl;
 	return stream;
 }
