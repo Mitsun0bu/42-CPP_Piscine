@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 15:28:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/13 18:52:29 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/13 19:00:55 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	main(void)
 	// std::cout << frag_trap_2;
 	std::cout << diamond_trap_1;
 	std::cout << diamond_trap_2;
-	std::cout << diamond_trap_1.whoAmI();
-	std::cout << diamond_trap_2.whoAmI();
+	// std::cout << diamond_trap_1.whoAmI();
+	// std::cout << diamond_trap_2.whoAmI();
 
 
 	std::cout << std::endl;

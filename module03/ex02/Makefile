@@ -6,7 +6,7 @@
 #    By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 18:18:50 by llethuil          #+#    #+#              #
-#    Updated: 2022/07/13 15:53:54 by llethuil         ###   ########lyon.fr    #
+#    Updated: 2022/07/13 19:18:28 by llethuil         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ INCS_LST	:=	ClapTrap.hpp	\
 
 OBJS_LST	:=	$(SRCS_LST:.cpp=.o)
 
-DEPS_LST		:=	$(SRCS_LST:.o=.d)
+DEPS_LST	:=	$(OBJS_LST:.o=.d)
 
 OBJS		:=	$(addprefix $(OBJS_DIR)/, $(OBJS_LST))
 
@@ -68,10 +68,17 @@ DEPS		:=	$(addprefix $(DEPS_DIR)/, $(DEPS_LST))
 
 all: $(NAME)
 
-$(NAME): $(OBJS) | move
+$(NAME): $(OBJS)
 	printf "$(BLUE)> Creating the executable file :$(END) $@\n"
 	$(CC) $(CXXFLAGS) $(OBJS) -o $(NAME)
 	printf "$(GREEN)> Executable file has been created successfully !$(END)\n"
+
+${DEPS_DIR}/%.d: ${SRCS_DIR}/%.cpp Makefile | ${DEPS_DIR}
+	${CC} ${FLAGS} -MM -MF $@ -MT "${OBJS_DIR}/$*.o $@" $<
+
+$(OBJS_DIR)/%.o: %.cpp $(INCS_LST) Makefile | $(OBJS_DIR)
+	printf "$(BLUE)> Compiling :$(END) $<\n"
+	$(CC) $(CXXFLAGS) -c $< -o $@
 
 $(DEPS_DIR):
 	mkdir -p $(DEPS_DIR)
@@ -79,17 +86,15 @@ $(DEPS_DIR):
 $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)
 
-$(OBJS_DIR)/%.o: %.cpp $(INCS_LST) Makefile | $(OBJS_DIR)
-	printf "$(BLUE)> Compiling :$(END) $<\n"
-	$(CC) $(CXXFLAGS) -MMD -MP -c $< -o $@
 
-move:
-ifneq ($(wildcard $(DEPS_DIR)),)
-	echo "Found"
-else
-	echo "Not found"
-	mkdir -p $(DEPS_DIR) && mv $(OBJS_DIR)/*.d $(DEPS_DIR)/
-endif
+
+# move:
+# ifneq ($(wildcard $(DEPS_DIR)),)
+# 	echo "Found"
+# else
+# 	echo "Not found"
+# 	mkdir -p $(DEPS_DIR) && mv $(OBJS_DIR)/*.d $(DEPS_DIR)/
+# endif
 
 clean:
 	printf "$(PINK)> Removing $(NAME) .o files ...$(END)\n"
