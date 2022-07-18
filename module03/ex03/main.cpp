@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 15:28:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/13 19:00:55 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/18 11:37:00 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@
 
 int	main(void)
 {
-	// ClapTrap	clap_trap_1("Charizard");
-	// FragTrap	frag_trap_1("Lugia");
-	// FragTrap	frag_trap_2;
-	DiamondTrap	diamond_trap_1("Snorlax");
-	DiamondTrap	diamond_trap_2;
+	ClapTrap	clap_trap_1("CT1");
+	ScavTrap	scav_trap_1("ST1");
+	FragTrap	frag_trap_1("FT1");
+	DiamondTrap	diamond_trap_1("DT1");
+	// DiamondTrap	diamond_trap_2;
 
 	std::cout << std::endl;
 
 	std::cout << "TEST - INITILIZATION" << std::endl;
-	// std::cout << clap_trap_1;
-	// std::cout << frag_trap_1;
-	// std::cout << frag_trap_2;
+	std::cout << clap_trap_1;
+	std::cout << scav_trap_1;
+	std::cout << frag_trap_1;
 	std::cout << diamond_trap_1;
-	std::cout << diamond_trap_2;
-	// std::cout << diamond_trap_1.whoAmI();
+	// std::cout << diamond_trap_2;
+	diamond_trap_1.whoAmI();
 	// std::cout << diamond_trap_2.whoAmI();
 
 

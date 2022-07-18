@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 13:21:54 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/13 16:37:43 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/18 11:02:03 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 ClapTrap::ClapTrap(void)
 {
-	std::cout << "A default ClapTrap\thas spawned !" << std::endl;
+	std::cout << "A ClapTrap with no name has spawned !" << std::endl;
 	this->_hit_points = 10;
 	this->_energy_points = 10;
 	this->_attack_damage = 0;
@@ -29,7 +29,10 @@ ClapTrap::ClapTrap(void)
 
 ClapTrap::ClapTrap(std::string name) : _name(name)
 {
-	std::cout << "ClapTrap " << this->_name << "\thas spawned !" << std::endl;
+	if (this->_name.empty())
+		std::cout << "A ClapTrap with no name has spawned !" << std::endl;
+	else
+		std::cout << "A ClapTrap named " << this->_name << " has spawned !" << std::endl;
 	this->_hit_points = 10;
 	this->_energy_points = 10;
 	this->_attack_damage = 0;
@@ -39,9 +42,9 @@ ClapTrap::ClapTrap(std::string name) : _name(name)
 ClapTrap::ClapTrap(ClapTrap const &src)
 {
 	if (src._name.empty())
-		std::cout << "A default ClapTrap has been duplicated !" << std::endl;
+		std::cout << "A ClapTrap with no name has been duplicated !" << std::endl;
 	else
-		std::cout << "ClapTrap " << this->_name << " has been duplicated !" << std::endl;
+		std::cout << "A ClapTrap named " << this->_name << " has been duplicated !" << std::endl;
 	*this = src;
 	return ;
 }
@@ -70,7 +73,7 @@ ClapTrap	&ClapTrap::operator=(ClapTrap const &src)
 std::string	ClapTrap::get_name(void) const
 {
 	if (this->_name.empty())
-		return ("Ditto");
+		return ("---");
 	return (this->_name);
 }
 
@@ -94,14 +97,13 @@ void	ClapTrap::set_name(std::string name)
 	if (this->_name.empty())
 	{
 		this->_name = name;
-		std::cout << "ClapTrap Ditto uses Transform to become a "
-			  << name << std::endl;
+		std::cout << "A ClapTrap with no name has been named : " << name << std::endl;
 	}
 	else
 	{
+		std::cout << "ClapTrap " << name;
 		this->_name = name;
-		std::cout << "ClapTrap is now named "
-			  << name << std::endl;
+		std::cout << " is now named " << name << std::endl;
 	}
 	return ;
 }
@@ -202,9 +204,9 @@ void	ClapTrap::beRepaired(unsigned int amount)
 ClapTrap::~ClapTrap()
 {
 	if (this->_name.empty())
-		std::cout << "A default ClapTrap has been destroyed !" << std::endl;
+		std::cout << "A ClapTrap with no name has been destroyed !" << std::endl;
 	else
-		std::cout << "ClapTrap " << this->_name << " has been destroyed !" << std::endl;
+		std::cout << "A ClapTrap named " << this->_name << " has been destroyed !" << std::endl;
 	return ;
 }
 
@@ -216,7 +218,7 @@ ClapTrap::~ClapTrap()
 
 std::ostream	&operator<<(std::ostream &stream, ClapTrap const &ClapTrap)
 {
-	stream << "ClapTrap " << ClapTrap.get_name() << "\thas "
+	stream << "The ClapTrap " << ClapTrap.get_name() << " has "
 		   << ClapTrap.get_hp() << " hit points, "
 		   << ClapTrap.get_ep() << " energy points, and can cause "
 		   << ClapTrap.get_ad() << " attack damage." << std::endl;
