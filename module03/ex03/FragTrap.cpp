@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:43:01 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 11:15:54 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/18 16:08:08 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-FragTrap::FragTrap(void)
+FragTrap::FragTrap(void) : ClapTrap()
 {
 	std::cout << "A FragTrap with no name has spawned !" << std::endl;
 	this->_hit_points = 100;
@@ -34,12 +34,12 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	else
 		std::cout << "A FragTrap named " << this->_name << " has spawned !" << std::endl;
 	this->_hit_points = 100;
-	this->_energy_points = 100;
+	this->_energy_points = 500;
 	this->_attack_damage = 30;
 	return;
 }
 
-FragTrap::FragTrap(FragTrap const &src)
+FragTrap::FragTrap(FragTrap const &src) : ClapTrap(src)
 {
 	if (src._name.empty())
 		std::cout << "A FragTrap with no name has been duplicated !" << std::endl;

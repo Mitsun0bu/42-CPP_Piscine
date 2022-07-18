@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:43:01 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/13 16:38:17 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/18 14:45:32 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-FragTrap::FragTrap(void)
+FragTrap::FragTrap(void) : ClapTrap()
 {
-	std::cout << "A default FragTrap\thas spawned !" << std::endl;
+	std::cout << "A FragTrap with no name has spawned !" << std::endl;
 	this->_hit_points = 100;
 	this->_energy_points = 100;
 	this->_attack_damage = 30;
@@ -29,7 +29,10 @@ FragTrap::FragTrap(void)
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-	std::cout << "FragTrap " << this->_name << " : Lugia!" << std::endl;
+	if (this->_name.empty())
+		std::cout << "A FragTrap with no name has spawned !" << std::endl;
+	else
+		std::cout << "A FragTrap named " << this->_name << " has spawned !" << std::endl;
 	this->_hit_points = 100;
 	this->_energy_points = 100;
 	this->_attack_damage = 30;
@@ -39,9 +42,9 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 FragTrap::FragTrap(FragTrap const &src)
 {
 	if (src._name.empty())
-		std::cout << "A default FragTrap has been duplicated !" << std::endl;
+		std::cout << "A FragTrap with no name has been duplicated !" << std::endl;
 	else
-		std::cout << "FragTrap " << this->_name << " has been duplicated !" << std::endl;
+		std::cout << "A FragTrap named " << this->_name << " has been duplicated !" << std::endl;
 	*this = src;
 	return ;
 }
@@ -70,15 +73,23 @@ FragTrap	&FragTrap::operator=(FragTrap const &src)
 std::string	FragTrap::get_name(void) const
 {
 	if (this->_name.empty())
-		return ("Oh-Oh");
+		return ("---");
 	return (this->_name);
 }
 
 void	FragTrap::set_name(std::string name)
 {
-	this->_name = name;
-	std::cout << "FragTrap is now named "
-			  << name << std::endl;
+	if (this->_name.empty())
+	{
+		this->_name = name;
+		std::cout << "A FragTrap with no name has been named : " << name << std::endl;
+	}
+	else
+	{
+		std::cout << "FragTrap " << name;
+		this->_name = name;
+		std::cout << " is now named " << name << std::endl;
+	}
 	return ;
 }
 
@@ -110,8 +121,7 @@ void	FragTrap::attack(std::string const &target)
 void		FragTrap::highFivesGuys(void)
 {
 	std::cout << "FragTrap " << this->_name
-			<< " has been captured !"
-			<< " This deserve a high five, give me a high five !"
+			<< " is flexing and asking for a high five !"
 			<< std::endl;
 	return ;
 }
@@ -125,9 +135,9 @@ void		FragTrap::highFivesGuys(void)
 FragTrap::~FragTrap()
 {
 	if (this->_name.empty())
-		std::cout << "A default FragTrap has disappeared !" << std::endl;
+		std::cout << "A FragTrap with no name has been destroyed !" << std::endl;
 	else
-		std::cout << "FragTrap " << this->_name << " has disappeared !" << std::endl;
+		std::cout << "A FragTrap named " << this->_name << " has been destroyed !" << std::endl;
 	return ;
 
 }
@@ -140,7 +150,7 @@ FragTrap::~FragTrap()
 
 std::ostream	&operator<<(std::ostream &stream, FragTrap const &FragTrap)
 {
-	stream << "FragTrap " << FragTrap.get_name() << "\thas "
+	stream << "The FragTrap " << FragTrap.get_name() << " has "
 		   << FragTrap.get_hp() << " hit points, "
 		   << FragTrap.get_ep() << " energy points, and can cause "
 		   << FragTrap.get_ad() << " attack damage." << std::endl;

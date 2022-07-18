@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 17:17:38 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 17:20:30 by llethuil         ###   ########lyon.fr   */
+/*   Created: 2022/07/18 18:53:40 by llethuil          #+#    #+#             */
+/*   Updated: 2022/07/18 19:05:56 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,25 @@
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                               ~~~ INCLUDES ~~~                             */
+/*                            ~~~ INCLUDES ~~~                                */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ClapTrap.hpp"
+# include "main.hpp"
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                              ~~~ CLASSES ~~~                               */
+/*                             ~~~ CLASSES ~~~                                */
 /*                                                                            */
 /* ************************************************************************** */
 
-class ScavTrap : virtual public ClapTrap
+class Cat : public Animal
 {
-	public:
+	public :
 
-		ScavTrap(void);
-		ScavTrap(std::string name);
-		ScavTrap(ScavTrap const &src);
-		ScavTrap	&operator=(ScavTrap const &src);
-		std::string	get_name(void) const;
-		void		set_name(std::string name);
-		void		attack(std::string const &target);
-		void		guardGate(void);
-		~ScavTrap();
+		Cat(void);
+		Cat(Cat const &src);
+		Cat		&operator=(Cat const &src);
+		void	makeSound(void) const;
+		~Cat(void);
 };
-
-std::ostream	&operator<<(std::ostream &stream, ScavTrap const &ScavTrap);

@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:03:32 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 11:48:27 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/18 18:11:23 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-DiamondTrap::DiamondTrap(void) : _inherited_name("_clap_trap")
+DiamondTrap::DiamondTrap(void) : ClapTrap()
 {
 	std::cout << "A DiamondTrap with no name has spawned !" << std::endl;
 	this->_hit_points = FragTrap::get_hp();
 	this->_energy_points = ScavTrap::get_ep();
+	std::cout << "ENERGY POINTS " << ScavTrap::get_ep() << std::endl;
 	this->_attack_damage = FragTrap::get_ad();
 	return ;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), ScavTrap(name), FragTrap(name), _inherited_name(name + "_clap_trap")
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_trap") //, ScavTrap(), FragTrap()
 {
-	this->_name = ClapTrap::get_name();
+	this->_name = name;
 	if (this->_name.empty())
 		std::cout << "A DiamondTrap with no name has spawned !" << std::endl;
 	else
-		std::cout << "A DiamondTrap named " << ClapTrap::get_name() << " has spawned !" << std::endl;
-	this->_hit_points = FragTrap::get_hp();
-	this->_energy_points = ScavTrap::get_ep();
-	this->_attack_damage = FragTrap::get_ad();
+		std::cout << "A DiamondTrap named " << this->_name << " has spawned !" << std::endl;
+	this->_energy_points = ScavTrap::_energy_points;
+	// this->_energy_points = 50;
+	std::cout << "ENERGY POINTS " << this->_energy_points << std::endl;
+	// this->_hit_points = FragTrap::get_hp();
+	// this->_attack_damage = FragTrap::get_ad();
 	return;
 }
 
-DiamondTrap::DiamondTrap(DiamondTrap const &src)
+DiamondTrap::DiamondTrap(DiamondTrap const &src): ClapTrap(src), ScavTrap(src), FragTrap(src)
 {
 	if (src._name.empty())
 		std::cout << "A DiamondTrap with no name has been duplicated !" << std::endl;
@@ -73,7 +76,7 @@ DiamondTrap	&DiamondTrap::operator=(DiamondTrap const &src)
 
 std::string	DiamondTrap::get_name(void) const
 {
-	return (ClapTrap::get_name());
+	return (this->_name);
 }
 
 void	DiamondTrap::set_name(std::string name)
@@ -101,7 +104,7 @@ void	DiamondTrap::attack(std::string const &target)
 void		DiamondTrap::whoAmI(void) const
 {
 	std::cout << "DiamondTrap is named " << this->get_name()
-			<< " but did you know it's a " << this->_inherited_name
+			<< " but did you know it's a " << this->ClapTrap::_name
 			<< " ?????";
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:55:37 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/11 11:27:28 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/13 10:10:58 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,75 +129,57 @@ Fixed   Fixed::operator/(Fixed const &to_divide) const
     return (Fixed(division));
 }
 
-bool    Fixed::operator>(Fixed const &to_compare)
+bool    Fixed::operator>(Fixed const &to_compare) const
 {
-    bool result;
-
     if (this->_value > to_compare.getRawBits())
-        result = TRUE;
+        return true;
     else
-        result = FALSE;
-    return (result);
+        return false;
 }
 
-bool    Fixed::operator<(Fixed const &to_compare)
+bool    Fixed::operator<(Fixed const &to_compare) const
 {
-    bool result;
-
     if (this->_value < to_compare.getRawBits())
-        result = TRUE;
+        return true;
     else
-        result = FALSE;
-    return (result);
+        return false;
 }
 
-bool    Fixed::operator>=(Fixed const &to_compare)
+bool    Fixed::operator>=(Fixed const &to_compare) const
 {
-    bool result;
-
     if (this->_value >= to_compare.getRawBits())
-        result = TRUE;
+        return true;
     else
-        result = FALSE;
-    return (result);
+        return false;
 }
 
-bool    Fixed::operator<=(Fixed const &to_compare)
+bool    Fixed::operator<=(Fixed const &to_compare) const
 {
-    bool result;
-
     if (this->_value <= to_compare.getRawBits())
-        result = TRUE;
+        return true;
     else
-        result = FALSE;
-    return (result);
+        return false;
 }
 
-bool    Fixed::operator==(Fixed const &to_compare)
+bool    Fixed::operator==(Fixed const &to_compare) const
 {
-    bool result;
-
     if (this->_value == to_compare.getRawBits())
-        result = TRUE;
+        return true;
     else
-        result = FALSE;
-    return (result);
+        return false;
 }
 
-bool    Fixed::operator!=(Fixed const &to_compare)
+bool    Fixed::operator!=(Fixed const &to_compare) const
 {
-    bool result;
-
     if (this->_value != to_compare.getRawBits())
-        result = TRUE;
+        return true;
     else
-        result = FALSE;
-    return (result);
+        return false;
 }
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                          ~~~ OTHER FUNCTIONS ~~~                           */
+/*                      ~~~ OTHER MEMBER FUNCTIONS ~~~                        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,49 +210,36 @@ int     Fixed::toInt(void) const
     return (result);
 }
 
-Fixed   Fixed::min(Fixed &n_1, Fixed &n_2)
+Fixed   &Fixed::min(Fixed &n_1, Fixed &n_2)
 {
-    float   min = 0;
-
-    if (n_1.getRawBits() < n_2.getRawBits())
-        min = n_1.toFloat();
-    else if (n_1.getRawBits() > n_2.getRawBits())
-        min = n_2.toFloat();
-    return (Fixed(min));
+    if (n_1 < n_2)
+        return (n_1);
+    else
+        return (n_2);
 }
 
-Fixed   Fixed::min(Fixed const &n_1, Fixed const &n_2)
+Fixed const &Fixed::min(Fixed const &n_1, Fixed const &n_2)
 {
-    float   min = 0;
-
-    if (n_1.toFloat() < n_2.toFloat())
-        min = n_1.toFloat();
-    else if (n_1.toFloat() > n_2.toFloat())
-        min = n_2.toFloat();
-    return (Fixed(min));
+    if (n_1 < n_2)
+        return (n_1);
+    else
+        return (n_2);
 }
 
-Fixed   Fixed::max(Fixed &n_1, Fixed &n_2)
+Fixed   &Fixed::max(Fixed &n_1, Fixed &n_2)
 {
-    float   max = 0;
-
     if (n_1 > n_2)
-        max = n_1.toFloat();
-    else if (n_1 < n_2)
-        max = n_2.toFloat();
-
-    return (Fixed(max));
+        return (n_1);
+    else
+        return (n_2);
 }
 
-Fixed   Fixed::max(Fixed const &n_1, Fixed const &n_2)
+Fixed const &Fixed::max(Fixed const &n_1, Fixed const &n_2)
 {
-    float   max = 0;
-
-    if (n_1.toFloat() > n_2.toFloat())
-        max = n_1.toFloat();
-    else if (n_1.toFloat() < n_2.toFloat())
-        max = n_2.toFloat();
-    return (Fixed(max));
+    if (n_1 > n_2)
+        return (n_1);
+    else
+        return (n_2);
 }
 
 /* ************************************************************************** */

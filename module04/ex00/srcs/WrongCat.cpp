@@ -1,44 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 17:17:38 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 17:20:30 by llethuil         ###   ########lyon.fr   */
+/*   Created: 2022/07/18 19:01:10 by llethuil          #+#    #+#             */
+/*   Updated: 2022/07/18 19:20:54 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# include "../incs/main.hpp"
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                               ~~~ INCLUDES ~~~                             */
+/*                           ~~~ CONSTRUCTORS ~~~                             */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ClapTrap.hpp"
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                              ~~~ CLASSES ~~~                               */
-/*                                                                            */
-/* ************************************************************************** */
-
-class ScavTrap : virtual public ClapTrap
+WrongCat::WrongCat(void)
 {
-	public:
+	std::cout << "The newborn wrong animal is so wrong !" << std::endl;
+	return ;
+}
 
-		ScavTrap(void);
-		ScavTrap(std::string name);
-		ScavTrap(ScavTrap const &src);
-		ScavTrap	&operator=(ScavTrap const &src);
-		std::string	get_name(void) const;
-		void		set_name(std::string name);
-		void		attack(std::string const &target);
-		void		guardGate(void);
-		~ScavTrap();
-};
+WrongCat::WrongCat(WrongCat const &src)
+{
+	*this = src;
+	return ;
+}
 
-std::ostream	&operator<<(std::ostream &stream, ScavTrap const &ScavTrap);
+/* ************************************************************************** */
+/*                                                                            */
+/*                          ~~~ OPERATOR OVERLOAD ~~~                         */
+/*                                                                            */
+/* ************************************************************************** */
+
+WrongCat	&WrongCat::operator=(WrongCat const &src)
+{
+	this->_type = src.getType();
+	return *this;
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                           ~~~ DESTRUCTOR ~~~                               */
+/*                                                                            */
+/* ************************************************************************** */
+
+WrongCat::~WrongCat(void)
+{
+		std::cout << "The animal that just died was just so wrong !" << std::endl;
+	return ;
+}

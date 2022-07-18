@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:05:42 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 11:35:20 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/18 16:19:50 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ class DiamondTrap : public ScavTrap, public FragTrap
 	private :
 
 		std::string	_name;
-		std::string	_inherited_name;
 };
 
 std::ostream	&operator<<(std::ostream &stream, DiamondTrap const &DiamondTrap);

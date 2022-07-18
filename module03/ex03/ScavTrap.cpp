@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 17:20:31 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 11:47:49 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/18 15:30:24 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-ScavTrap::ScavTrap(void)
+ScavTrap::ScavTrap(void) : ClapTrap()
 {
 	std::cout << "A ScavTrap with no name has spawned !" << std::endl;
 	this->_hit_points = 100;
 	this->_energy_points = 50;
+	std::cout << "SCAV TRAP ENERGY POINT " << this->get_ep() << std::endl;
 	this->_attack_damage = 20;
 	return ;
 }
@@ -35,11 +36,12 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 		std::cout << "A ScavTrap named " << this->_name << " has spawned !" << std::endl;
 	this->_hit_points = 100;
 	this->_energy_points = 50;
+	std::cout << "SCAV TRAP ENERGY POINT " << this->get_ep() << std::endl;
 	this->_attack_damage = 20;
 	return;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &src)
+ScavTrap::ScavTrap(ScavTrap const &src) : ClapTrap(src)
 {
 	if (src._name.empty())
 		std::cout << "A ScavTrap with no name has been duplicated !" << std::endl;

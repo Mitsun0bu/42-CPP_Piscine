@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:54:44 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/11 11:23:12 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/13 10:08:13 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ class Fixed
         void           setRawBits(int const raw);
         float          toFloat(void) const;
         int            toInt(void) const;
-        static Fixed   min(Fixed &n_1, Fixed &n_2);
-        static Fixed   min(Fixed const &n_1, Fixed const &n_2);
-        static Fixed   max(Fixed &n_1, Fixed &n_2);
-        static Fixed   max(Fixed const &n_1, Fixed const &n_2);
+        static Fixed   &min(Fixed &n_1, Fixed &n_2);
+        static const Fixed   &min(Fixed const &n_1, Fixed const &n_2);
+        static Fixed   &max(Fixed &n_1, Fixed &n_2);
+        static const Fixed   &max(Fixed const &n_1, Fixed const &n_2);
         Fixed          &operator=(Fixed const &src);
         Fixed          &operator++(void);      // Prefix increment operator
         Fixed          operator++(int inc);    // Postfix increment operator
@@ -62,12 +62,12 @@ class Fixed
         Fixed          operator-(Fixed const &to_subtract) const;
         Fixed          operator*(Fixed const &to_multiply) const;
         Fixed          operator/(Fixed const &to_divide) const;
-        bool           operator>(Fixed const &to_compare);
-        bool           operator<(Fixed const &to_compare);
-        bool           operator>=(Fixed const &to_compare);
-        bool           operator<=(Fixed const &to_compare);
-        bool           operator==(Fixed const &to_compare);
-        bool           operator!=(Fixed const &to_compare);
+        bool           operator>(Fixed const &to_compare) const;
+        bool           operator<(Fixed const &to_compare) const;
+        bool           operator>=(Fixed const &to_compare) const;
+        bool           operator<=(Fixed const &to_compare) const;
+        bool           operator==(Fixed const &to_compare) const;
+        bool           operator!=(Fixed const &to_compare) const;
         ~Fixed();
 
     private:

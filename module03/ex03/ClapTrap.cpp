@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 13:21:54 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 11:02:03 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/18 14:27:23 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-ClapTrap::ClapTrap(void)
+ClapTrap::ClapTrap(void) : _hit_points(10), _energy_points(10), _attack_damage(0)
 {
 	std::cout << "A ClapTrap with no name has spawned !" << std::endl;
-	this->_hit_points = 10;
-	this->_energy_points = 10;
-	this->_attack_damage = 0;
 	return ;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name)
+ClapTrap::ClapTrap(std::string name) : _name(name), _hit_points(10), _energy_points(10), _attack_damage(0)
 {
 	if (this->_name.empty())
 		std::cout << "A ClapTrap with no name has spawned !" << std::endl;
 	else
 		std::cout << "A ClapTrap named " << this->_name << " has spawned !" << std::endl;
-	this->_hit_points = 10;
-	this->_energy_points = 10;
-	this->_attack_damage = 0;
 	return;
 }
 
