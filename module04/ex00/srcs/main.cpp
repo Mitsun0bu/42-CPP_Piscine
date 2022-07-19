@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:06 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 09:37:06 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/19 15:12:49 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,44 @@
 
 int	main(void)
 {
+	/* SUBJECT TEST */
+	subject_test();
+	/* MY TEST */
+	my_test();
+
+	return (0);
+}
+
+void	subject_test(void)
+{
+	std::cout << "===== SUBJECT TEST =====" << std::endl;
+
+	const Animal* meta = new Animal();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+
+	std::cout << std::endl;
+
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	std::cout << std::endl;
+
+	i->makeSound(); // Will output the cat sound!
+	j->makeSound();
+	meta->makeSound();
+	std::cout << std::endl;
+
+	delete meta;
+	delete j;
+	delete i;
+
+	return ;
+}
+
+void	my_test(void)
+{
+	std::cout << "===== MY TEST =====" << std::endl;
+
 	Animal		God;
 	Dog			Lassie;
 	Cat			Garfield;
@@ -37,5 +75,5 @@ int	main(void)
 	Miaouss.makeSound();
 	std::cout << std::endl;
 
-	return (0);
+	return ;
 }

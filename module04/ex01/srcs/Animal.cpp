@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 19:01:04 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 15:08:01 by llethuil         ###   ########lyon.fr   */
+/*   Created: 2022/07/18 18:24:19 by llethuil          #+#    #+#             */
+/*   Updated: 2022/07/19 11:02:53 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-Dog::Dog(void)
+Animal::Animal(void) : _type("mammal")
 {
-	std::cout << "The newborn animal is a dog !" << std::endl;
-	this->_type = "dog";
+	std::cout << "An animal is born !" << std::endl;
 	return ;
 }
 
-Dog::Dog(Dog const &src)
+Animal::Animal(Animal const &src)
 {
 	*this = src;
 	return ;
@@ -37,7 +36,7 @@ Dog::Dog(Dog const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-Dog&	Dog::operator=(Dog const &src)
+Animal&	Animal::operator=(Animal const &src)
 {
 	this->_type = src.getType();
 	return *this;
@@ -49,9 +48,14 @@ Dog&	Dog::operator=(Dog const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-void	Dog::makeSound() const
+std::string	Animal::getType(void) const
 {
-	std::cout << "Dog : \"Woof.\"" << std::endl;
+	return ("Type : " + this->_type);
+}
+
+void	Animal::makeSound() const
+{
+	std::cout << "Animal : \"Bruh.\"" << std::endl;
 	return ;
 }
 
@@ -61,8 +65,8 @@ void	Dog::makeSound() const
 /*                                                                            */
 /* ************************************************************************** */
 
-Dog::~Dog(void)
+Animal::~Animal(void)
 {
-	std::cout << "A dog just died ..." << std::endl;
+	std::cout << "R.I.P. dear animal !" << std::endl;
 	return ;
 }

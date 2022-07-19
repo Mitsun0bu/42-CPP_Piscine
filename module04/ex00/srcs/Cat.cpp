@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:02 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 09:32:23 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/19 15:07:54 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Cat::Cat(Cat const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-Cat	&Cat::operator=(Cat const &src)
+Cat&	Cat::operator=(Cat const &src)
 {
 	this->_type = src.getType();
 	return *this;

@@ -72,7 +72,7 @@ class D : public B, public C
 	D(){
 		return ;
 	};
-	D(std::string name) : A(name + "_comes_from_a"){
+	D(std::string name) : A(name + "_comes_from_a"), B(name), C(name){
 		this->_name = name;
 		std::cout << "D object created !" << std::endl;
 		this->_hp = C::_hp;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.hpp                                           :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 18:23:35 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 15:10:34 by llethuil         ###   ########lyon.fr   */
+/*   Created: 2022/07/18 18:23:13 by llethuil          #+#    #+#             */
+/*   Updated: 2022/07/19 15:05:27 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,30 @@
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                               ~~~ INCLUDES ~~~                             */
+/*                            ~~~ INCLUDES ~~~                                */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <iostream>
-# include <string>
-# include "Animal.hpp"
-# include "Cat.hpp"
-# include "Dog.hpp"
-# include "WrongAnimal.hpp"
-# include "WrongCat.hpp"
+# include "main.hpp"
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                             ~~~ PROTOTYPES ~~~                             */
+/*                             ~~~ CLASSES ~~~                                */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	subject_test(void);
-void	my_test(void);
+class Animal
+{
+	public :
+
+						Animal(void);
+						Animal(Animal const &src);
+		Animal			&operator=(Animal const &src);
+		std::string		getType(void) const;
+		virtual void	makeSound(void) const;
+		virtual 		~Animal(void);
+
+	protected:
+
+		std::string	_type;
+};

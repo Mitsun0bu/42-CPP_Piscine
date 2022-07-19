@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 18:53:40 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 19:05:56 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/19 15:07:05 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ class Cat : public Animal
 {
 	public :
 
-		Cat(void);
-		Cat(Cat const &src);
-		Cat		&operator=(Cat const &src);
-		void	makeSound(void) const;
-		~Cat(void);
+						Cat(void);
+						Cat(Cat const &src);
+		Cat				&operator=(Cat const &src);
+		virtual void	makeSound(void) const;
+		virtual 		~Cat(void);
 };

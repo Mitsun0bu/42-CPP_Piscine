@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:10 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 09:38:42 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/19 15:08:16 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ WrongCat::WrongCat(WrongCat const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-WrongCat	&WrongCat::operator=(WrongCat const &src)
+WrongCat&	WrongCat::operator=(WrongCat const &src)
 {
 	this->_type = src.getType();
 	return *this;
