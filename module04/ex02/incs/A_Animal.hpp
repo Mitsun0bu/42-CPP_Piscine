@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   A_Animal.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 18:56:06 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 16:25:22 by llethuil         ###   ########lyon.fr   */
+/*   Created: 2022/07/19 16:05:13 by llethuil          #+#    #+#             */
+/*   Updated: 2022/07/19 16:23:20 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-class Dog : public Animal
+class A_Animal
 {
 	public :
 
-						Dog(void);
-						Dog(Dog const &src);
-		Dog				&operator=(Dog const &src);
-		virtual void	makeSound(void) const;
-		void			printIdea(int i_idea) const;
-		void			setDogIdea(int i_idea, std::string text);
-		virtual 		~Dog(void);
+								A_Animal(void);
+								A_Animal(A_Animal const &src);
+		A_Animal				&operator=(A_Animal const &src);
+		virtual std::string		getType(void) const = 0;
+		virtual void			makeSound(void) const = 0;
+		virtual 				~A_Animal(void);
 
-	private :
+	protected:
 
-		Brain	*_brain;
+		std::string	_type;
 };

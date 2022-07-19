@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   A_Animal.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 19:01:04 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 16:25:05 by llethuil         ###   ########lyon.fr   */
+/*   Created: 2022/07/19 16:05:42 by llethuil          #+#    #+#             */
+/*   Updated: 2022/07/19 16:23:13 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-Dog::Dog(void)
+A_Animal::A_Animal(void) : _type("mammal")
 {
-	std::cout << "The newborn animal is a dog !" << std::endl;
-	this->_type = "dog";
-	this->_brain = new Brain();
+	std::cout << "An animal is born !" << std::endl;
 	return ;
 }
 
-Dog::Dog(Dog const &src)
+A_Animal::A_Animal(A_Animal const &src)
 {
 	*this = src;
 	return ;
@@ -38,35 +36,10 @@ Dog::Dog(Dog const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-Dog&	Dog::operator=(Dog const &src)
+A_Animal&	A_Animal::operator=(A_Animal const &src)
 {
 	this->_type = src.getType();
-	*(this->_brain) = *(src._brain);
 	return *this;
-}
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                        ~~~ OTHER MEMBER FUNCTIONS ~~~                      */
-/*                                                                            */
-/* ************************************************************************** */
-
-void	Dog::makeSound() const
-{
-	std::cout << "Dog : \"Woof.\"" << std::endl;
-	return ;
-}
-
-void	Dog::printIdea(int i_idea) const
-{
-	std::cout << this->_brain->getIdea(i_idea) << std::endl;
-	return ;
-}
-
-void	Dog::setDogIdea(int i_idea, std::string text)
-{
-	this->_brain->setIdea(i_idea, text);
-	return ;
 }
 
 /* ************************************************************************** */
@@ -75,9 +48,8 @@ void	Dog::setDogIdea(int i_idea, std::string text)
 /*                                                                            */
 /* ************************************************************************** */
 
-Dog::~Dog(void)
+A_Animal::~A_Animal(void)
 {
-	std::cout << "A dog just died ..." << std::endl;
-	delete this->_brain;
+	std::cout << "R.I.P. dear animal !" << std::endl;
 	return ;
 }

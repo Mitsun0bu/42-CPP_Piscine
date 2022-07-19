@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:04 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 16:25:05 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/19 16:28:57 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@ Dog&	Dog::operator=(Dog const &src)
 /*                        ~~~ OTHER MEMBER FUNCTIONS ~~~                      */
 /*                                                                            */
 /* ************************************************************************** */
+
+std::string	Dog::getType(void) const
+{
+	return ("Type : " + this->_type);
+}
 
 void	Dog::makeSound() const
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 18:56:06 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 16:25:22 by llethuil         ###   ########lyon.fr   */
+/*   Created: 2022/07/18 18:23:35 by llethuil          #+#    #+#             */
+/*   Updated: 2022/07/19 16:22:52 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,26 @@
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                            ~~~ INCLUDES ~~~                                */
+/*                               ~~~ INCLUDES ~~~                             */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "main.hpp"
+# include <iostream>
+# include <string>
+# include <ctime>
+# include <cstdlib>
+# include "A_Animal.hpp"
+# include "Brain.hpp"
+# include "Cat.hpp"
+# include "Dog.hpp"
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                             ~~~ CLASSES ~~~                                */
+/*                             ~~~ PROTOTYPES ~~~                             */
 /*                                                                            */
 /* ************************************************************************** */
 
-class Dog : public Animal
-{
-	public :
-
-						Dog(void);
-						Dog(Dog const &src);
-		Dog				&operator=(Dog const &src);
-		virtual void	makeSound(void) const;
-		void			printIdea(int i_idea) const;
-		void			setDogIdea(int i_idea, std::string text);
-		virtual 		~Dog(void);
-
-	private :
-
-		Brain	*_brain;
-};
+void	test_subject_array();
+void	test_subject_copy(void);
+void	test_subject_leaks(void);
+void	my_test(void);

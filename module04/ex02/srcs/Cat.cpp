@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 19:01:04 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 16:25:05 by llethuil         ###   ########lyon.fr   */
+/*   Created: 2022/07/18 19:01:02 by llethuil          #+#    #+#             */
+/*   Updated: 2022/07/19 16:28:47 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-Dog::Dog(void)
+Cat::Cat(void) : _brain(new Brain())
 {
-	std::cout << "The newborn animal is a dog !" << std::endl;
-	this->_type = "dog";
-	this->_brain = new Brain();
+	std::cout << "The newborn animal is a cat !" << std::endl;
+	this->_type = "cat";
 	return ;
 }
 
-Dog::Dog(Dog const &src)
+Cat::Cat(Cat const &src)
 {
 	*this = src;
 	return ;
@@ -38,7 +37,7 @@ Dog::Dog(Dog const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-Dog&	Dog::operator=(Dog const &src)
+Cat&	Cat::operator=(Cat const &src)
 {
 	this->_type = src.getType();
 	*(this->_brain) = *(src._brain);
@@ -51,19 +50,24 @@ Dog&	Dog::operator=(Dog const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-void	Dog::makeSound() const
+std::string	Cat::getType(void) const
 {
-	std::cout << "Dog : \"Woof.\"" << std::endl;
+	return ("Type : " + this->_type);
+}
+
+void	Cat::makeSound() const
+{
+	std::cout << "Cat : \"Meow.\"" << std::endl;
 	return ;
 }
 
-void	Dog::printIdea(int i_idea) const
+void	Cat::printIdea(int i_idea) const
 {
 	std::cout << this->_brain->getIdea(i_idea) << std::endl;
 	return ;
 }
 
-void	Dog::setDogIdea(int i_idea, std::string text)
+void	Cat::setCatIdea(int i_idea, std::string text)
 {
 	this->_brain->setIdea(i_idea, text);
 	return ;
@@ -75,9 +79,9 @@ void	Dog::setDogIdea(int i_idea, std::string text)
 /*                                                                            */
 /* ************************************************************************** */
 
-Dog::~Dog(void)
+Cat::~Cat(void)
 {
-	std::cout << "A dog just died ..." << std::endl;
+	std::cout << "A cat just died ..." << std::endl;
 	delete this->_brain;
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 18:53:40 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 15:05:21 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/19 16:25:19 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ class Cat : public Animal
 						Cat(Cat const &src);
 		Cat				&operator=(Cat const &src);
 		virtual void	makeSound(void) const;
-		Brain			*getBrain(void) const;
 		void			printIdea(int i_idea) const;
 		void			setCatIdea(int i_idea, std::string text);
 		virtual			~Cat(void);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 18:56:06 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 16:25:22 by llethuil         ###   ########lyon.fr   */
+/*   Created: 2022/07/19 10:40:27 by llethuil          #+#    #+#             */
+/*   Updated: 2022/07/19 15:05:24 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-class Dog : public Animal
+class Brain
 {
 	public :
 
-						Dog(void);
-						Dog(Dog const &src);
-		Dog				&operator=(Dog const &src);
-		virtual void	makeSound(void) const;
-		void			printIdea(int i_idea) const;
-		void			setDogIdea(int i_idea, std::string text);
-		virtual 		~Dog(void);
+						Brain(void);
+						Brain(Brain const &src);
+		Brain			&operator=(Brain const &src);
+		std::string		getIdea(int i_idea) const;
+		void			setIdea(int i_idea, std::string text);
+		virtual 		~Brain(void);
 
-	private :
+	protected :
 
-		Brain	*_brain;
+		std::string		_ideas[100];
+
 };
