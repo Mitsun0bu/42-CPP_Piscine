@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 18:24:19 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 19:10:02 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/19 09:33:31 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ Animal	&Animal::operator=(Animal const &src)
 
 std::string	Animal::getType(void) const
 {
-	return (this->_type);
+	return ("Type : " + this->_type);
 }
 
 void	Animal::makeSound() const
@@ -67,6 +67,6 @@ void	Animal::makeSound() const
 
 Animal::~Animal(void)
 {
-	std::cout << "An animal just died !" << std::endl;
+	std::cout << "R.I.P. dear animal !" << std::endl;
 	return ;
 }

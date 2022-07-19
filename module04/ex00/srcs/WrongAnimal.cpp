@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:19:02 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 19:19:05 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/19 09:39:16 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ WrongAnimal	&WrongAnimal::operator=(WrongAnimal const &src)
 
 std::string	WrongAnimal::getType(void) const
 {
-	return (this->_type);
+	return ("Type : " + this->_type);
 }
 
 void	WrongAnimal::makeSound() const
@@ -67,6 +67,6 @@ void	WrongAnimal::makeSound() const
 
 WrongAnimal::~WrongAnimal(void)
 {
-	std::cout << "A wrong animal just died !" << std::endl;
+	std::cout << "The animal that died was just so wrong !" << std::endl;
 	return ;
 }

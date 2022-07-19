@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:10 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 19:20:54 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/19 09:38:42 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 WrongCat::WrongCat(void)
 {
-	std::cout << "The newborn wrong animal is so wrong !" << std::endl;
+	std::cout << "The newborn wrong animal is a wrong cat !" << std::endl;
 	return ;
 }
 
@@ -50,6 +50,6 @@ WrongCat	&WrongCat::operator=(WrongCat const &src)
 
 WrongCat::~WrongCat(void)
 {
-		std::cout << "The animal that just died was just so wrong !" << std::endl;
+		std::cout << "A wrong cat just died !" << std::endl;
 	return ;
 }

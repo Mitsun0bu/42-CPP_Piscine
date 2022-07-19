@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:04 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 19:16:34 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/19 09:32:37 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ void	Dog::makeSound() const
 
 Dog::~Dog(void)
 {
-	std::cout << "The animal that just died was a dog ..." << std::endl;
+	std::cout << "A dog just died ..." << std::endl;
 	return ;
 }
