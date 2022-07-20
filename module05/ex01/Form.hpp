@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:35:31 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 14:43:18 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 17:37:54 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ class Form
 		bool				getSignState(void) const;
 		int					getSignGrade(void) const;
 		int					getExecGrade(void) const;
-		void				beSigned(Bureaucrat bureaucrat);
+		void				beSigned(const Bureaucrat &bureaucrat);
 		/* exceptions 			*/
 		class GradeTooHighException : public std::exception
 		{

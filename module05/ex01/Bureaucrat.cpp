@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:57:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 14:36:59 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 17:51:28 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 
 Bureaucrat::Bureaucrat(void) : _name("Miss Kine"), _grade(150)
 {
-	std::cout << "A Bureaucrat has entered the office." << std::endl;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "A Bureaucrat has entered the office." << std::endl;
 	return ;
 }
 
@@ -33,13 +34,17 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(
 	else
 	{
 		this->_grade = grade;
-		std::cout << "A Bureaucrat has entered the office." << std::endl;
+		std::cout << BLUE << "[CONSTRUCTOR] : " << END
+				  << "A Bureaucrat has entered the office." << std::endl;
 	}
 	return ;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &src)
 {
+	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
+		<< "A Bureaucrat named " << src.getName()
+		<< " has been duplicated !" << std::endl;
 	*this = src;
 	return ;
 }
@@ -116,7 +121,8 @@ void				Bureaucrat::signForm(Form& form) const
 	}
 	catch (std::exception& e)
 	{
-		std::cout << this->_name << " couldn't signed the "
+		std::cout << RED << "[EXCEPTION] : " << END
+				  << this->_name << " couldn't signed the "
 				  << form.getName() << " form because "
 				  << e.what() << std::endl;
 		return ;
@@ -131,11 +137,13 @@ void				Bureaucrat::signForm(Form& form) const
 
 const char*			Bureaucrat::GradeTooLowException::what() const throw()
 {
+	std::cout << RED << "[EXCEPTION] : " << END;
 	return ("Bureaucrat grade is too low");
 }
 
 const char*			Bureaucrat::GradeTooHighException::what() const throw()
 {
+	std::cout << RED << "[EXCEPTION] : " << END;
 	return ("Bureaucrat grade is too high");
 }
 
@@ -147,6 +155,8 @@ const char*			Bureaucrat::GradeTooHighException::what() const throw()
 
 Bureaucrat::~Bureaucrat(void)
 {
-	std::cout << "A Bureaucrat has left the office." << std::endl;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+		<< "A Bureaucrat named " << this->_name
+		<< " has left the office." << std::endl;
 	return ;
 }

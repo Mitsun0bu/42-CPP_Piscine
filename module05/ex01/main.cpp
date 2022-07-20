@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:08:40 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 14:04:38 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 17:55:08 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,18 @@
 int	main(void)
 {
 	Bureaucrat	Mitsunobu("Mitsunobu", 42);
-	Form		Contract_1("Contract", 10, 50);
-	Form		Contract_2("Contract", 67, 50);
+	Form		Contract_1("Contract_1", 10, 50);
+	Form		Contract_2("Contract_2", 67, 50);
 
-	/* TEST INITILIZATION AND << OVERLOAD */
 	std::cout << std::endl;
+	std::cout << GREEN << "[TEST - INITILIZATION]" << END << std::endl;
 	std::cout << Mitsunobu;
 
-	/* TEST SIGNFORM METHOD */
 	std::cout << std::endl;
+	std::cout << GREEN << "[TEST - SIGNFORM METHOD]" << END << std::endl;
 	Mitsunobu.signForm(Contract_1);
+	Mitsunobu.signForm(Contract_2);
 
-	// /* FINAL BUREAUCRAT STATE */
-	// std::cout << std::endl;
-	// std::cout << Mitsunobu;
 
 	std::cout << std::endl;
 	return (0);

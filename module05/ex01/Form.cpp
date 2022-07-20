@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:35:29 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 14:43:22 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 17:52:38 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 
 Form::Form(void) : _name("Secret File"), _sign_state(false), _sign_grade(1), _exec_grade(1)
 {
-	std::cout << "A Form has been created by the secretary." << std::endl;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "A Form has been created by the secretary." << std::endl;
 	return ;
 }
 
@@ -31,12 +32,18 @@ Form::Form(const std::string name, const int sign_grade, const int exec_grade) :
 	else if (sign_grade > 150 || exec_grade > 150)
 		throw GradeTooLowException();
 	else
-		std::cout << "A Form has been created by the secretary." << std::endl;
+	{
+		std::cout << BLUE << "[CONSTRUCTOR] : " << END
+				  << "A Form has been created by the secretary." << std::endl;
+	}
 	return ;
 }
 
 Form::Form(Form const &src) : _sign_grade(src.getSignGrade()), _exec_grade(src.getExecGrade())
 {
+	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
+			<< "A Form named " << src.getName()
+			<< " has been duplicated !" << std::endl;
 	*this = src;
 	return ;
 }
@@ -89,7 +96,7 @@ int					Form::getExecGrade(void) const
 	return (this->_exec_grade);
 }
 
-void				Form::beSigned(Bureaucrat bureaucrat)
+void				Form::beSigned(const Bureaucrat& bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->_sign_grade)
 		throw GradeTooLowException();
@@ -122,17 +129,8 @@ const char*			Form::GradeTooHighException::what() const throw()
 
 Form::~Form(void)
 {
-	std::cout << "A Form has been archived by the secretary." << std::endl;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << "A Form named " << this->_name
+			  << " has been archived by the secretary." << std::endl;
 	return ;
 }
-
-// Form::GradeTooLowException::~GradeTooLowException(void)
-// {
-// 	return ;
-// }
-
-// Form::GradeTooHighException::~GradeTooHighException(void)
-// {
-// 	return ;
-// }
-

@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:57:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 14:30:40 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 17:30:41 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 
 Bureaucrat::Bureaucrat(void) : _name("Miss Kine"), _grade(150)
 {
-	std::cout << "A Bureaucrat has entered the office." << std::endl;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "A Bureaucrat has entered the office." << std::endl;
 	return ;
 }
 
@@ -33,13 +34,17 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(
 	else
 	{
 		this->_grade = grade;
-		std::cout << "A Bureaucrat has entered the office." << std::endl;
+		std::cout << BLUE << "[CONSTRUCTOR] : " << END
+				  << "A Bureaucrat has entered the office." << std::endl;
 	}
 	return ;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &src)
 {
+	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
+			<< "A Bureaucrat named " << src.getName()
+			<< " has been duplicated !" << std::endl;
 	*this = src;
 	return ;
 }
@@ -113,11 +118,13 @@ void				Bureaucrat::downGrade(void)
 
 const char*			Bureaucrat::GradeTooLowException::what() const throw()
 {
+	std::cout << RED << "[EXCEPTION] : " << END;
 	return ("Bureaucrat grade is too low");
 }
 
 const char*			Bureaucrat::GradeTooHighException::what() const throw()
 {
+	std::cout << RED << "[EXCEPTION] : " << END;
 	return ("Bureaucrat grade is too high");
 }
 
@@ -129,6 +136,8 @@ const char*			Bureaucrat::GradeTooHighException::what() const throw()
 
 Bureaucrat::~Bureaucrat(void)
 {
-	std::cout << "A Bureaucrat has left the office." << std::endl;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			<< "A Bureaucrat named " << this->_name
+			<< " has left the office." << std::endl;
 	return ;
 }

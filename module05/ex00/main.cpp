@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:08:40 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 18:33:28 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 17:28:30 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,16 @@ int	main(void)
 	Bureaucrat	Thomas("Thomas", 42);
 	Bureaucrat	Lucas("Lucas", 1);
 	Bureaucrat	Manu("Manu", 150);
+	Bureaucrat	Mitsu(Lucas);
 
-	/* TEST INITILIZATION AND << OVERLOAD */
 	std::cout << std::endl;
+	std::cout << GREEN << "[TEST - INITILIZATION]" << END << std::endl;
 	std::cout << Thomas;
 	std::cout << Lucas;
-	std::cout << Manu << std::endl;
+	std::cout << Manu;
+	std::cout << Mitsu << std::endl;
 
-	/* TEST ALLOWED GRADE MODIFICATIONS */
+	std::cout << GREEN << "[TEST - ALLOWED GRADE MODIFICATIONS]" << END << std::endl;
 	try
 	{
 		Thomas.upGrade();
@@ -36,7 +38,10 @@ int	main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	/* TEST FORBIDDEN GRADE MODIFICATIONS */
+
+	std::cout << std::endl;
+
+	std::cout << GREEN << "[TEST - FORBIDDEN GRADE MODIFICATIONS]" << END << std::endl;
 	try
 	{
 		Lucas.upGrade();
@@ -54,8 +59,9 @@ int	main(void)
 		std::cerr << e.what() << std::endl;
 	}
 
-	/* FINAL BUREAUCRAT STATE */
 	std::cout << std::endl;
+
+	std::cout << GREEN << "[TEST - FINAL BUREAUCRAT STATE]" << END << std::endl;
 	std::cout << Thomas;
 	std::cout << Lucas;
 	std::cout << Manu << std::endl;
