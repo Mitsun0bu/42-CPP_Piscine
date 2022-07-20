@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:55:16 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/11 17:38:44 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 16:15:18 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,20 @@
 
 /* ************************************************************************** */
 /*                                                                            */
+/*                            ~~~ COLOR DEFINES ~~~                           */
+/*                                                                            */
+/* ************************************************************************** */
+
+# define RED "\x1B[31m"
+# define GREEN "\x1B[32m"
+# define YELLOW "\x1B[33m"
+# define ORANGE "\x1B[34m"
+# define PURPLE "\x1B[35m"
+# define BLUE "\x1B[36m"
+# define END "\033[0m"
+
+/* ************************************************************************** */
+/*                                                                            */
 /*                              ~~~ CLASSES ~~~                               */
 /*                                                                            */
 /* ************************************************************************** */
@@ -34,7 +48,7 @@ class ClapTrap
 		ClapTrap(void);
 		ClapTrap(std::string name);
 		ClapTrap(ClapTrap const &src);
-		ClapTrap	&operator=(ClapTrap const &src);
+		ClapTrap	&operator=(ClapTrap const	&src);
 		std::string	get_name(void) const;
 		int			get_hp(void) const;
 		int			get_ep(void) const;

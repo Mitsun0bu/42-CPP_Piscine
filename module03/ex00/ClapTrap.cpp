@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 13:21:54 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 14:41:12 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 15:45:37 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-ClapTrap::ClapTrap(void) : _hit_points(10), _energy_points(10), _attack_damage(0)
+ClapTrap::ClapTrap(void) : _name("---"), _hit_points(10), _energy_points(10), _attack_damage(0)
 {
-	std::cout << "A ClapTrap with no name has spawned !" << std::endl;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "A ClapTrap named " << this->_name
+			  << " has spawned !" << std::endl;
 	return ;
 }
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hit_points(10), _energy_points(10), _attack_damage(0)
 {
-	if (this->_name.empty())
-		std::cout << "A ClapTrap with no name has spawned !" << std::endl;
-	else
-		std::cout << "A ClapTrap named " << this->_name << " has spawned !" << std::endl;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "A ClapTrap named " << this->_name
+			  << " has spawned !" << std::endl;
 	return;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &src)
 {
-	if (src._name.empty())
-		std::cout << "A ClapTrap with no name has been duplicated !" << std::endl;
-	else
-		std::cout << "A ClapTrap named " << this->_name << " has been duplicated !" << std::endl;
+	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
+			  << "A ClapTrap named " << this->_name
+			  << " has been duplicated !" << std::endl;
 	*this = src;
 	return ;
 }
@@ -66,39 +66,28 @@ ClapTrap	&ClapTrap::operator=(ClapTrap const &src)
 
 std::string	ClapTrap::get_name(void) const
 {
-	if (this->_name.empty())
-		return ("---");
 	return (this->_name);
 }
 
-int	ClapTrap::get_hp(void) const
+int		ClapTrap::get_hp(void) const
 {
 	return (this->_hit_points);
 }
 
-int	ClapTrap::get_ep(void) const
+int		ClapTrap::get_ep(void) const
 {
 	return (this->_energy_points);
 }
 
-int	ClapTrap::get_ad(void) const
+int		ClapTrap::get_ad(void) const
 {
 	return (this->_attack_damage);
 }
 
 void	ClapTrap::set_name(std::string name)
 {
-	if (this->_name.empty())
-	{
-		this->_name = name;
-		std::cout << "A ClapTrap with no name has been named : " << name << std::endl;
-	}
-	else
-	{
-		std::cout << "ClapTrap " << name;
-		this->_name = name;
-		std::cout << " is now named " << name << std::endl;
-	}
+	this->_name = name;
+	std::cout << "ClapTrap is now named " << name << std::endl;
 	return ;
 }
 
@@ -197,10 +186,9 @@ void	ClapTrap::beRepaired(unsigned int amount)
 
 ClapTrap::~ClapTrap()
 {
-	if (this->_name.empty())
-		std::cout << "A ClapTrap with no name has been destroyed !" << std::endl;
-	else
-		std::cout << "A ClapTrap named " << this->_name << " has been destroyed !" << std::endl;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << "A ClapTrap named " << this->_name
+			  << " has been destroyed !" << std::endl;
 	return ;
 }
 

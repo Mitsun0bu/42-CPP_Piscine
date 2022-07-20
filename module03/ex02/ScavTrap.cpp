@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 17:20:31 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 10:52:04 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 15:54:52 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@
 
 ScavTrap::ScavTrap(void)
 {
-	std::cout << "A ScavTrap with no name has spawned !" << std::endl;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			<< "A ScavTrap named " << this->_name
+			<< " has spawned !" << std::endl;
 	this->_hit_points = 100;
 	this->_energy_points = 50;
 	this->_attack_damage = 20;
@@ -29,10 +31,9 @@ ScavTrap::ScavTrap(void)
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
-	if (this->_name.empty())
-		std::cout << "A ScavTrap with no name has spawned !" << std::endl;
-	else
-		std::cout << "A ScavTrap named " << this->_name << " has spawned !" << std::endl;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "A ScavTrap named " << this->_name
+			  << " has spawned !" << std::endl;
 	this->_hit_points = 100;
 	this->_energy_points = 50;
 	this->_attack_damage = 20;
@@ -41,10 +42,9 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 
 ScavTrap::ScavTrap(ScavTrap const &src)
 {
-	if (src._name.empty())
-		std::cout << "A ScavTrap with no name has been duplicated !" << std::endl;
-	else
-		std::cout << "A ScavTrap named " << this->_name << " has been duplicated !" << std::endl;
+	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
+			  << "A ClapTrap named " << this->_name
+			  << " has been duplicated !" << std::endl;
 	*this = src;
 	return ;
 }
@@ -72,24 +72,13 @@ ScavTrap	&ScavTrap::operator=(ScavTrap const &src)
 
 std::string	ScavTrap::get_name(void) const
 {
-	if (this->_name.empty())
-		return ("---");
 	return (this->_name);
 }
 
 void	ScavTrap::set_name(std::string name)
 {
-	if (this->_name.empty())
-	{
-		this->_name = name;
-		std::cout << "A ScavTrap with no name has been named : " << name << std::endl;
-	}
-	else
-	{
-		std::cout << "ScavTrap " << name;
-		this->_name = name;
-		std::cout << " is now named " << name << std::endl;
-	}
+	this->_name = name;
+	std::cout << "ScavTrap is now named " << name << std::endl;
 	return ;
 }
 
@@ -129,10 +118,9 @@ void		ScavTrap::guardGate(void)
 
 ScavTrap::~ScavTrap()
 {
-	if (this->_name.empty())
-		std::cout << "A ScavTrap with no name has been destroyed !" << std::endl;
-	else
-		std::cout << "A ScavTrap named " << this->_name << " has been destroyed !" << std::endl;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << "A ScavTrap named " << this->_name
+			  << " has been destroyed !" << std::endl;
 	return ;
 
 }

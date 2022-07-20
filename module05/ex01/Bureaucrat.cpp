@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:57:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 12:04:14 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 14:36:59 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,16 +110,33 @@ void				Bureaucrat::signForm(Form& form) const
 	try
 	{
 		form.beSigned(*this);
-		std::cout << this->_name << "signed the "
+		std::cout << this->_name << " signed the "
 				  << form.getName() << " form."
 				  << std::endl;
 	}
 	catch (std::exception& e)
 	{
-		std::cout << this->_name << "couldn't signed the "
+		std::cout << this->_name << " couldn't signed the "
 				  << form.getName() << " form because "
 				  << e.what() << std::endl;
+		return ;
 	}
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                              ~~~ EXCEPTIONS ~~~                            */
+/*                                                                            */
+/* ************************************************************************** */
+
+const char*			Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Bureaucrat grade is too low");
+}
+
+const char*			Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Bureaucrat grade is too high");
 }
 
 /* ************************************************************************** */

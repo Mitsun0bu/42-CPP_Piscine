@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:35:29 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 11:55:49 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 14:43:22 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,39 @@ void				Form::beSigned(Bureaucrat bureaucrat)
 
 /* ************************************************************************** */
 /*                                                                            */
+/*                              ~~~ EXCEPTIONS ~~~                            */
+/*                                                                            */
+/* ************************************************************************** */
+
+const char*			Form::GradeTooLowException::what() const throw()
+{
+	return ("Form grade is too low");
+}
+
+const char*			Form::GradeTooHighException::what() const throw()
+{
+	return ("Form grade is too high");
+}
+
+/* ************************************************************************** */
+/*                                                                            */
 /*                           ~~~ DESTRUCTOR ~~~                               */
 /*                                                                            */
 /* ************************************************************************** */
 
 Form::~Form(void)
 {
-	std::cout << "A Form has left the office." << std::endl;
+	std::cout << "A Form has been archived by the secretary." << std::endl;
 	return ;
 }
+
+// Form::GradeTooLowException::~GradeTooLowException(void)
+// {
+// 	return ;
+// }
+
+// Form::GradeTooHighException::~GradeTooHighException(void)
+// {
+// 	return ;
+// }
+

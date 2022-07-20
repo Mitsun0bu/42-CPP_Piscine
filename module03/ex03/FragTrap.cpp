@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:43:01 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 16:08:08 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 16:08:31 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@
 
 FragTrap::FragTrap(void) : ClapTrap()
 {
-	std::cout << "A FragTrap with no name has spawned !" << std::endl;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+		<< "A FragTrap named " << this->_name
+		<< " has spawned !" << std::endl;
 	this->_hit_points = 100;
 	this->_energy_points = 100;
 	this->_attack_damage = 30;
@@ -29,10 +31,9 @@ FragTrap::FragTrap(void) : ClapTrap()
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
-	if (this->_name.empty())
-		std::cout << "A FragTrap with no name has spawned !" << std::endl;
-	else
-		std::cout << "A FragTrap named " << this->_name << " has spawned !" << std::endl;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "A FragTrap named " << this->_name
+			  << " has spawned !" << std::endl;
 	this->_hit_points = 100;
 	this->_energy_points = 500;
 	this->_attack_damage = 30;
@@ -41,10 +42,9 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 
 FragTrap::FragTrap(FragTrap const &src) : ClapTrap(src)
 {
-	if (src._name.empty())
-		std::cout << "A FragTrap with no name has been duplicated !" << std::endl;
-	else
-		std::cout << "A FragTrap named " << this->_name << " has been duplicated !" << std::endl;
+	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
+			<< "A FragTrap named " << this->_name
+			<< " has been duplicated !" << std::endl;
 	*this = src;
 	return ;
 }
@@ -72,24 +72,13 @@ FragTrap	&FragTrap::operator=(FragTrap const &src)
 
 std::string	FragTrap::get_name(void) const
 {
-	if (this->_name.empty())
-		return ("---");
 	return (this->_name);
 }
 
 void	FragTrap::set_name(std::string name)
 {
-	if (this->_name.empty())
-	{
-		this->_name = name;
-		std::cout << "A FragTrap with no name has been named : " << name << std::endl;
-	}
-	else
-	{
-		std::cout << "FragTrap " << name;
-		this->_name = name;
-		std::cout << " is now named " << name << std::endl;
-	}
+	this->_name = name;
+	std::cout << "FragTrap is now named " << name << std::endl;
 	return ;
 }
 
@@ -134,10 +123,9 @@ void		FragTrap::highFivesGuys(void) const
 
 FragTrap::~FragTrap()
 {
-	if (this->_name.empty())
-		std::cout << "A FragTrap with no name has been destroyed !" << std::endl;
-	else
-		std::cout << "A FragTrap named " << this->_name << " has been destroyed !" << std::endl;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << "A FragTrap named " << this->_name
+			  << " has been destroyed !" << std::endl;
 	return ;
 
 }

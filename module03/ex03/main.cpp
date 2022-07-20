@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 15:28:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 16:14:15 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 16:29:59 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,45 +17,25 @@
 
 int	main(void)
 {
-	// ClapTrap	clap_trap_1("CT1");
-	// ScavTrap	scav_trap_1("ST1");
-	// FragTrap	frag_trap_1("FT1");
 	DiamondTrap	diamond_trap_1("DT1");
 	DiamondTrap	diamond_trap_2;
 
 	std::cout << std::endl;
 
-	std::cout << "TEST - INITILIZATION" << std::endl;
-	// std::cout << clap_trap_1;
-	// std::cout << scav_trap_1;
-	// std::cout << frag_trap_1;
-	// std::cout << diamond_trap_1;
+	std::cout << GREEN << "[TEST - INITILIZATION]" << END << std::endl;
+	std::cout << diamond_trap_1;
 	std::cout << diamond_trap_2;
-	// diamond_trap_1.whoAmI();
-	// std::cout << diamond_trap_2.whoAmI();
-
-
 	std::cout << std::endl;
 
-	// std::cout << "TEST - SET VALUES" << std::endl;
-	// clap_trap_1.set_ad(10);
-	// frag_trap_1.set_ad(2);
-	// frag_trap_2.set_name("Suicune");
-	// std::cout << std::endl;
-	// std::cout << clap_trap_1;
-	// std::cout << frag_trap_1;
-	// std::cout << frag_trap_2;
 
-	// std::cout << std::endl;
+	std::cout << GREEN << "[TEST - WHOAMI FUNCTION]" << END << std::endl;
+	diamond_trap_1.whoAmI();
 
-	std::cout << "TEST - BATTLE [ROUND 1]" << std::endl;
-	diamond_trap_1.attack("tamere");
-	// clap_trap_1.takeDamage(2);
-	// frag_trap_2.highFivesGuys();
-	// std::cout << std::endl;
-	// std::cout << clap_trap_1;
-	// std::cout << frag_trap_1;
-	// std::cout << frag_trap_2;
+	std::cout << std::endl;
+	std::cout << std::endl;
+
+	std::cout << GREEN << "[TEST - ATTACK FUNCTION INHERITED FROM SCAVTRAP]" << END << std::endl;
+	diamond_trap_1.attack("Laure Dure");
 
 	std::cout << std::endl;
 

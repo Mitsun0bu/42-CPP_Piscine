@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:08:40 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 12:09:28 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 14:04:38 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,13 @@ int	main(void)
 	std::cout << std::endl;
 	std::cout << Mitsunobu;
 
+	/* TEST SIGNFORM METHOD */
+	std::cout << std::endl;
 	Mitsunobu.signForm(Contract_1);
 
-	/* FINAL BUREAUCRAT STATE */
-	std::cout << std::endl;
-	std::cout << Mitsunobu;
+	// /* FINAL BUREAUCRAT STATE */
+	// std::cout << std::endl;
+	// std::cout << Mitsunobu;
 
 	std::cout << std::endl;
 	return (0);

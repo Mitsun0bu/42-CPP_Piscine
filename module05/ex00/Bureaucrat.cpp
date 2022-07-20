@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:57:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 18:30:28 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 14:30:40 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,22 @@ void				Bureaucrat::downGrade(void)
 		std::cout << this->_name << " has been demoted !" << std::endl;
 	}
 	return ;
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                              ~~~ EXCEPTIONS ~~~                            */
+/*                                                                            */
+/* ************************************************************************** */
+
+const char*			Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Bureaucrat grade is too low");
+}
+
+const char*			Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Bureaucrat grade is too high");
 }
 
 /* ************************************************************************** */

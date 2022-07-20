@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:03:32 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 18:11:23 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 16:25:16 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,37 +18,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-DiamondTrap::DiamondTrap(void) : ClapTrap()
+DiamondTrap::DiamondTrap(void) : ClapTrap("---_clap_trap"), _name("---")
 {
-	std::cout << "A DiamondTrap with no name has spawned !" << std::endl;
-	this->_hit_points = FragTrap::get_hp();
-	this->_energy_points = ScavTrap::get_ep();
-	std::cout << "ENERGY POINTS " << ScavTrap::get_ep() << std::endl;
-	this->_attack_damage = FragTrap::get_ad();
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			<< "A DiamondTrap named " << this->_name
+			<< " has spawned !" << std::endl;
+	this->_hit_points = FragTrap::HP;
+	this->_energy_points = ScavTrap::EP;
+	this->_attack_damage = FragTrap::AD;
 	return ;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_trap") //, ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_trap"), _name(name)
 {
-	this->_name = name;
-	if (this->_name.empty())
-		std::cout << "A DiamondTrap with no name has spawned !" << std::endl;
-	else
-		std::cout << "A DiamondTrap named " << this->_name << " has spawned !" << std::endl;
-	this->_energy_points = ScavTrap::_energy_points;
-	// this->_energy_points = 50;
-	std::cout << "ENERGY POINTS " << this->_energy_points << std::endl;
-	// this->_hit_points = FragTrap::get_hp();
-	// this->_attack_damage = FragTrap::get_ad();
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			<< "A DiamondTrap named " << this->_name
+			<< " has spawned !" << std::endl;
+	this->_hit_points = FragTrap::HP;
+	this->_energy_points = ScavTrap::EP;
+	this->_attack_damage = FragTrap::AD;
 	return;
 }
 
 DiamondTrap::DiamondTrap(DiamondTrap const &src): ClapTrap(src), ScavTrap(src), FragTrap(src)
 {
-	if (src._name.empty())
-		std::cout << "A DiamondTrap with no name has been duplicated !" << std::endl;
-	else
-		std::cout << "A DiamondTrap named " << this->_name << " has been duplicated !" << std::endl;
+	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
+		<< "A DiamondTrap named " << this->_name
+		<< " has been duplicated !" << std::endl;
 	*this = src;
 	return ;
 }
@@ -81,17 +77,8 @@ std::string	DiamondTrap::get_name(void) const
 
 void	DiamondTrap::set_name(std::string name)
 {
-	if (this->_name.empty())
-	{
-		this->_name = name;
-		std::cout << "A DiamondTrap with no name has been named : " << name << std::endl;
-	}
-	else
-	{
-		std::cout << "DiamondTrap " << name;
-		this->_name = name;
-		std::cout << " is now named " << name << std::endl;
-	}
+	this->_name = name;
+	std::cout << "DiamondTrap is now named " << name << std::endl;
 	return ;
 }
 
@@ -117,10 +104,9 @@ void		DiamondTrap::whoAmI(void) const
 
 DiamondTrap::~DiamondTrap()
 {
-	if (this->_name.empty())
-		std::cout << "A DiamondTrap with no name has been destroyed !" << std::endl;
-	else
-		std::cout << "A DiamondTrap named " << this->_name << " has been destroyed !" << std::endl;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			<< "A DiamondTrap named " << this->_name
+			<< " has been destroyed !" << std::endl;
 	return ;
 
 }

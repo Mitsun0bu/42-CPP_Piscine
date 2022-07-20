@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 15:28:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 10:55:11 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/20 16:03:33 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,20 @@ int	main(void)
 	ClapTrap	clap_trap_1("CP1");
 	FragTrap	frag_trap_1("FT1");
 	FragTrap	frag_trap_2;
+	FragTrap	frag_trap_3(frag_trap_2);
 
 	std::cout << std::endl;
 
-	std::cout << "TEST - INITILIZATION" << std::endl;
+	std::cout << GREEN << "[TEST - INITILIZATION]" << END << std::endl;
 	std::cout << clap_trap_1;
 	std::cout << frag_trap_1;
 	std::cout << frag_trap_2;
+	std::cout << frag_trap_3;
+
 
 	std::cout << std::endl;
 
-	std::cout << "TEST - SET VALUES" << std::endl;
+	std::cout << GREEN << "[TEST - SET VALUES]" << END << std::endl;
 	clap_trap_1.set_ad(10);
 	frag_trap_1.set_ad(2);
 	frag_trap_2.set_name("FT2");
@@ -40,7 +43,7 @@ int	main(void)
 
 	std::cout << std::endl;
 
-	std::cout << "TEST - BATTLE [ROUND 1]" << std::endl;
+		std::cout << GREEN << "[TEST - BATTLE (ROUND 1)]" << END << std::endl;
 	frag_trap_1.attack("CP1");
 	clap_trap_1.takeDamage(2);
 	frag_trap_2.highFivesGuys();
