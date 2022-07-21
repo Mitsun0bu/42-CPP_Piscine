@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:57:29 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 11:21:06 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/21 16:14:00 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 /* ************************************************************************** */
 
 # include <iostream>
-# include "Form.hpp"
+# include "A_Form.hpp"
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -41,7 +41,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-class Form;
+class A_Form;
 
 class Bureaucrat
 {
@@ -54,7 +54,8 @@ class Bureaucrat
 		const std::string	getName(void) const;
 		void				upGrade(void);
 		void				downGrade(void);
-		void				signForm(Form& form) const;
+		void				signForm(A_Form &form) const;
+		void				executeForm(A_Form const &form);
 		/* exceptions 			*/
 		class GradeTooHighException : public std::exception
 		{
@@ -71,10 +72,10 @@ class Bureaucrat
 
 	private :
 
-		/* copy constructor 	*/
-							Bureaucrat(const Bureaucrat& src); // private because const member attributes are not accessible
-		/* operator overload	*/
-		Bureaucrat			&operator=(const Bureaucrat& src); // private because const member attributes are not accessible
+		/* copy constructor : private because const member attributes are not accessible */
+							Bureaucrat(const Bureaucrat& src);
+		/* operator overload : private because const member attributes are not accessible */
+		Bureaucrat			&operator=(const Bureaucrat& src);
 		/* attributes */
 		const std::string	_name;
 		int					_grade;

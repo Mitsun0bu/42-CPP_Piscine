@@ -6,7 +6,7 @@
 #    By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/19 18:13:55 by llethuil          #+#    #+#              #
-#    Updated: 2022/07/20 14:35:01 by llethuil         ###   ########lyon.fr    #
+#    Updated: 2022/07/21 16:34:13 by llethuil         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ END		:=	\033[0m
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:=	form
+NAME		:=	multi_form
 
 CC			:=	c++
 
@@ -37,12 +37,16 @@ RM			:=	rm -f
 
 OBJS_DIR	:=	.objs
 
-SRCS_LST	:=	main.cpp		\
-				Bureaucrat.cpp	\
-				Form.cpp		\
+SRCS_LST	:=	main.cpp					\
+				Bureaucrat.cpp				\
+				A_Form.cpp					\
+				ShrubberyCreationForm.cpp	\
+				RobotomyRequestForm.cpp		\
 
-INCS_LST	:=	Bureaucrat.hpp	\
-				Form.hpp		\
+INCS_LST	:=	Bureaucrat.hpp				\
+				A_Form.hpp					\
+				ShrubberyCreationForm.hpp	\
+				RobotomyRequestForm.hpp		\
 
 OBJS_LST	:=	$(SRCS_LST:.cpp=.o)
 

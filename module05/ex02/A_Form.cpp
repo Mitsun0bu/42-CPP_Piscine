@@ -6,7 +6,13 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:08:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 11:41:51 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/21 15:34:01 by llethuil         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                            ~~~ INCLUDES ~~~                                */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +24,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-A_Form::A_Form(void) : _name("Secret File"), _sign_state(false), _sign_grade(1), _exec_grade(1)
+A_Form::A_Form(void) :
+	_name("Secret File"), _sign_state(false), _sign_grade(1), _exec_grade(1)
 {
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
 			  << "A Form has been created by the secretary." << std::endl;
 	return ;
 }
 
-A_Form::A_Form(const std::string name, const int sign_grade, const int exec_grade) : _name(name), _sign_state(false), _sign_grade(sign_grade), _exec_grade(exec_grade)
+A_Form::A_Form(const std::string name, const int sign_grade, const int exec_grade) :
+	_name(name), _sign_state(false), _sign_grade(sign_grade), _exec_grade(exec_grade)
 {
 	if (sign_grade < 1 || exec_grade < 1)
 		throw GradeTooHighException();
@@ -39,7 +47,8 @@ A_Form::A_Form(const std::string name, const int sign_grade, const int exec_grad
 	return ;
 }
 
-A_Form::A_Form(A_Form const &src) : _sign_grade(src.getSignGrade()), _exec_grade(src.getExecGrade())
+A_Form::A_Form(A_Form const &src) :
+	_sign_grade(src.getSignGrade()), _exec_grade(src.getExecGrade())
 {
 	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
 			<< "A Form named " << src.getName()
@@ -99,18 +108,20 @@ int					A_Form::getExecGrade(void) const
 void				A_Form::beSigned(const Bureaucrat& bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->_sign_grade)
-		throw GradeTooLowException();
+		throw GradeTooHighException();
 	else
 		this->_sign_state = true;
 	return ;
 }
 
-void				A_Form::beExecuted(const Bureaucrat& bureaucrat)
+void				A_Form::execute(const Bureaucrat& bureaucrat) const
 {
-	if (bureaucrat.getGrade() > this->_sign_grade)
-		throw GradeTooLowException();
+	if (bureaucrat.getGrade() > this->_exec_grade)
+		throw BureaucratGradeTooLowException();
+	if (this->_sign_state == false)
+		throw FormNotSignedException();
 	else
-		this->_exec_state = true;
+		doFormJob();
 	return ;
 }
 
@@ -122,12 +133,22 @@ void				A_Form::beExecuted(const Bureaucrat& bureaucrat)
 
 const char*			A_Form::GradeTooLowException::what() const throw()
 {
-	return ("Form grade is too low");
+	return ("Form grade is too low !");
 }
 
 const char*			A_Form::GradeTooHighException::what() const throw()
 {
-	return ("Form grade is too high");
+	return ("Form grade is too high !");
+}
+
+const char*			A_Form::BureaucratGradeTooLowException::what() const throw()
+{
+	return ("Bureaucrat grade is too low !");
+}
+
+const char*			A_Form::FormNotSignedException::what() const throw()
+{
+	return ("Form has to be signed before execution !");
 }
 
 /* ************************************************************************** */

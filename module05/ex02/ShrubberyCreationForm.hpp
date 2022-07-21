@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:19:01 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 11:51:22 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/21 16:14:56 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 /* ************************************************************************** */
 
 # include "A_Form.hpp"
+# include <fstream>
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -33,20 +34,21 @@ class ShrubberyCreationForm : public A_Form
 {
 	public :
 		/* constructors 		*/
-									ShrubberyCreationForm(void);
-									ShrubberyCreationForm(const std::string target);
+								ShrubberyCreationForm(void);
+								ShrubberyCreationForm(const std::string target);
 		/* member functions */
-		virtual void				getSignState(void) const;
-		virtual void				getExecState(void) const;
+		virtual void			doFormJob(void) const;
 		/* destructor 			*/
-		virtual 					~ShrubberyCreationForm(void);
+		virtual 				~ShrubberyCreationForm(void);
 
 	private :
 
-		/* copy constructor 	*/
-								ShrubberyCreationForm(const ShrubberyCreationForm& src); // private because const member attributes are not accessible
-		/* operator overload	*/
-		ShrubberyCreationForm	&operator=(const ShrubberyCreationForm& src); // private because const member attributes are not accessible
+		/* copy constructor : private because const member attributes are not accessible */
+								ShrubberyCreationForm(const ShrubberyCreationForm& src);
+		/* operator overload : private because const member attributes are not accessible */
+		ShrubberyCreationForm	&operator=(const ShrubberyCreationForm& src);
+		/* attributes */
+		std::string				_target;
 };
 
-std::ostream	&operator<<(std::ostream& stream, const ShrubberyCreationForm& ShrubberyCreationForm);
+std::ostream					&operator<<(std::ostream& stream, const ShrubberyCreationForm& ShrubberyCreationForm);

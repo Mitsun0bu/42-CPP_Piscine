@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:57:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 17:51:28 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/21 15:32:45 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ Bureaucrat&		Bureaucrat::operator=(Bureaucrat const &src)
 
 std::ostream&	operator<<(std::ostream &stream, Bureaucrat const &Bureaucrat)
 {
-	stream << Bureaucrat.getName() << ": Good morning sir !"
+	stream << "===== BUREAUCRAT INFOS =====" << std::endl
+		   << Bureaucrat.getName() << ": Good morning sir !"
 		   << " My name is " << Bureaucrat.getName()
 		   << " and my bureaucrat grade is " << Bureaucrat.getGrade()
 		   << std::endl;
@@ -110,7 +111,7 @@ void				Bureaucrat::downGrade(void)
 	return ;
 }
 
-void				Bureaucrat::signForm(Form& form) const
+void				Bureaucrat::signForm(A_Form& form) const
 {
 	try
 	{
@@ -123,6 +124,25 @@ void				Bureaucrat::signForm(Form& form) const
 	{
 		std::cout << RED << "[EXCEPTION] : " << END
 				  << this->_name << " couldn't signed the "
+				  << form.getName() << " form because "
+				  << e.what() << std::endl;
+		return ;
+	}
+}
+
+void				Bureaucrat::executeForm(A_Form const &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->_name << " executed the "
+				  << form.getName() << " form."
+				  << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << RED << "[EXCEPTION] : " << END
+				  << this->_name << " couldn't execute the "
 				  << form.getName() << " form because "
 				  << e.what() << std::endl;
 		return ;

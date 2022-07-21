@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:08:45 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 11:51:13 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/21 16:13:40 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ class A_Form
 		virtual int					getSignGrade(void) const;
 		virtual int					getExecGrade(void) const;
 		virtual void				beSigned(const Bureaucrat &bureaucrat);
-		virtual void				beExecuted(const Bureaucrat &bureaucrat);
+		virtual void				execute(const Bureaucrat &bureaucrat) const;
+		virtual void				doFormJob(void) const = 0;
 		/* exceptions 			*/
 		class GradeTooHighException : public std::exception
 		{
@@ -52,19 +53,28 @@ class A_Form
 			public:
 				virtual const char*	what() const throw();
 		};
+		class BureaucratGradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char*	what() const throw();
+		};
+		class FormNotSignedException : public std::exception
+		{
+			public:
+				virtual const char*	what() const throw();
+		};
 		/* destructor 			*/
 		virtual 					~A_Form(void);
 
 	private :
 
-		/* copy constructor 	*/
-							A_Form(const A_Form& src); // private because const member attributes are not accessible
-		/* operator overload	*/
-		A_Form				&operator=(const A_Form& src); // private because const member attributes are not accessible
+		/* copy constructor : private because const member attributes are not accessible */
+							A_Form(const A_Form& src);
+		/* operator overload : private because const member attributes are not accessible */
+		A_Form				&operator=(const A_Form& src);
 		/* attributes */
 		const std::string	_name;
 		bool				_sign_state;
-		bool				_exec_state;
 		const int			_sign_grade;
 		const int			_exec_grade;
 };
