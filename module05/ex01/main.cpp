@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:08:40 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 17:55:08 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/21 13:55:29 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	main(void)
 	std::cout << GREEN << "[TEST - SIGNFORM METHOD]" << END << std::endl;
 	Mitsunobu.signForm(Contract_1);
 	Mitsunobu.signForm(Contract_2);
-
 
 	std::cout << std::endl;
 	return (0);

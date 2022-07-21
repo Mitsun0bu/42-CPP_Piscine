@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:35:31 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 17:37:54 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/21 11:24:37 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@ class Form
 		/* constructors 		*/
 							Form(void);
 							Form(const std::string name, const int sign_grade, const int exec_grade);
-							Form(const Form& src);
-		/* operator overload	*/
-		Form			&operator=(const Form& src);
 		/* member functions */
 		const std::string	getName(void) const;
 		bool				getSignState(void) const;
@@ -48,19 +45,22 @@ class Form
 		{
 			public:
 				virtual const char*	what() const throw();
-									// ~GradeTooHighException(void);
 		};
 		class GradeTooLowException : public std::exception
 		{
 			public:
 				virtual const char*	what() const throw();
-									// ~GradeTooLowException(void);
 		};
 		/* destructor 			*/
 		virtual 			~Form(void);
 
 	private :
 
+		/* copy constructor 	*/
+							Form(const Form& src); // private because const member attributes are not accessible
+		/* operator overload	*/
+		Form				&operator=(const Form& src); // private because const member attributes are not accessible
+		/* attributes */
 		const std::string	_name;
 		bool				_sign_state;
 		const int			_sign_grade;

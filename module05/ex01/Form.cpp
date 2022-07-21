@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:35:29 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 17:52:38 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/21 18:27:41 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int					Form::getExecGrade(void) const
 void				Form::beSigned(const Bureaucrat& bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->_sign_grade)
-		throw GradeTooLowException();
+		throw GradeTooHighException();
 	else
 		this->_sign_state = true;
 	return ;
