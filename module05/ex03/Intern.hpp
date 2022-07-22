@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:35:12 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 13:49:35 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 17:28:54 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ class Intern
 	private:
 
 		std::string				_formNameTab[3];
-		void					_makeSF();
-		void					_makeRR();
-		void					_makePP();
-		void					(Intern::*_funcTab[3])(void);
+		A_Form*					_makeShruberryCreationForm(std::string name);
+		A_Form*					_makeRobotomyRequestForm(std::string name);
+		A_Form*					_makePresidentialPardonForm(std::string name);
+		A_Form*					(Intern::*_funcTab[3])(std::string target);
 };

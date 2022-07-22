@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:57:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 13:33:57 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 16:05:31 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void				Bureaucrat::signForm(A_Form& form) const
 	}
 	catch (std::exception& e)
 	{
-		std::cout << RED << "[EXCEPTION] : " << END
+		std::cerr << RED << "[EXCEPTION] : " << END
 				  << this->_name << " couldn't signed the "
 				  << form.getName() << " form because "
 				  << e.what() << std::endl;
@@ -140,7 +140,7 @@ void				Bureaucrat::executeForm(A_Form const &form)
 	}
 	catch (std::exception& e)
 	{
-		std::cout << RED << "[EXCEPTION] : " << END
+		std::cerr << RED << "[EXCEPTION] : " << END
 				  << this->_name << " couldn't execute the "
 				  << form.getName() << " form because "
 				  << e.what() << std::endl;
@@ -155,13 +155,13 @@ void				Bureaucrat::executeForm(A_Form const &form)
 
 const char*			Bureaucrat::GradeTooLowException::what() const throw()
 {
-	std::cout << RED << "[EXCEPTION] : " << END;
+	std::cerr << RED << "[EXCEPTION] : " << END;
 	return ("Bureaucrat grade is too low");
 }
 
 const char*			Bureaucrat::GradeTooHighException::what() const throw()
 {
-	std::cout << RED << "[EXCEPTION] : " << END;
+	std::cerr << RED << "[EXCEPTION] : " << END;
 	return ("Bureaucrat grade is too high");
 }
 

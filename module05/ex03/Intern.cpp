@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:35:08 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 13:49:00 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 17:30:18 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,19 @@ Intern::Intern(void)
 	this->_formNameTab[1] = "Robotomy Request";
 	this->_formNameTab[2] = "Presidential Pardon";
 
-	this->_funcTab[0] = &Intern::_makeSF;
-	this->_funcTab[1] = &Intern::_makeRR;
-	this->_funcTab[2] = &Intern::_makePP;
+	this->_funcTab[0] = &Intern::_makeShruberryCreationForm;
+	this->_funcTab[1] = &Intern::_makeRobotomyRequestForm;
+	this->_funcTab[2] = &Intern::_makePresidentialPardonForm;
 
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
-			  << "A Intern has entered the office." << std::endl;
+			  << "An Intern has entered the office." << std::endl;
 	return ;
 }
 
 Intern::Intern(Intern const &src)
 {
 	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
-			  << "A Intern has been duplicated !" << std::endl;
+			  << "An Intern has been duplicated !" << std::endl;
 	*this = src;
 	return ;
 }
@@ -52,6 +52,8 @@ Intern::Intern(Intern const &src)
 
 Intern&		Intern::operator=(Intern const &src)
 {
+	for (int i = 0; i < 3; i++)
+		this->_formNameTab[i] = src._formNameTab[i];
 	return (*this);
 }
 
@@ -69,21 +71,38 @@ int	Intern::nameIsValid(const std::string &name)
 	throw InvalidNameException();
 }
 
+A_Form	*Intern::_makeShruberryCreationForm(std::string target)
+{
+	ShrubberyCreationForm	*sCF_ptr = new ShrubberyCreationForm(target);
+	return (sCF_ptr);
+}
+
+A_Form	*Intern::_makeRobotomyRequestForm(std::string target)
+{
+	RobotomyRequestForm	*rRF_ptr = new RobotomyRequestForm(target);
+	return (rRF_ptr);
+}
+
+A_Form	*Intern::_makePresidentialPardonForm(std::string target)
+{
+	PresidentialPardonForm	*pPF_ptr = new PresidentialPardonForm(target);
+	return (pPF_ptr);
+}
+
 A_Form*	Intern::makeForm(std::string name, std::string target)
 {
 	try
 	{
-		int	i;
-
+		int	i = 0;
 		i = this->nameIsValid(name);
-		return ((void)(this->*_funcTab[i])());
+		return ((A_Form*)(this->*_funcTab[i])(target));
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << RED << "[EXCEPTION] : " << END
+				  << e.what() << '\n';
+		return (NULL);
 	}
-
-
 }
 
 /* ************************************************************************** */
