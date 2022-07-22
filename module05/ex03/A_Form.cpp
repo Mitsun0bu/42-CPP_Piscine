@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:08:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 19:06:42 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ std::ostream&	operator<<(std::ostream &stream, A_Form const &A_Form)
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                        ~~~ OTHER MEMBER FUNCTIONS ~~~                      */
+/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,14 +125,6 @@ void				A_Form::execute(const Bureaucrat& bureaucrat) const
 	return ;
 }
 
-bool				A_Form::isValid(const std::string &name)
-{
-	if (name == "Shrubbery Creation" || name == "Robotomy Request" || name == "Presidential Pardon")
-		return (true);
-	else
-		throw InvalidNameException();
-}
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                              ~~~ EXCEPTIONS ~~~                            */
@@ -157,11 +149,6 @@ const char*			A_Form::BureaucratGradeTooLowException::what() const throw()
 const char*			A_Form::FormNotSignedException::what() const throw()
 {
 	return ("Form has to be signed before execution !");
-}
-
-const char*			A_Form::InvalidNameException::what() const throw()
-{
-	return ("Form has an invalid name !");
 }
 
 /* ************************************************************************** */

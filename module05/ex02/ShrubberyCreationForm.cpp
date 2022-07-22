@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:27:38 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 16:23:04 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &src) :
 ShrubberyCreationForm&		ShrubberyCreationForm::operator=(ShrubberyCreationForm const &src)
 {
 	this->_target = src._target;
-	return *this;
+	return (*this);
 }
 
 std::ostream&	operator<<(std::ostream &stream, ShrubberyCreationForm const &ShrubberyCreationForm)
@@ -79,7 +79,7 @@ std::ostream&	operator<<(std::ostream &stream, ShrubberyCreationForm const &Shru
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                        ~~~ OTHER MEMBER FUNCTIONS ~~~                      */
+/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,6 @@ void				ShrubberyCreationForm::doFormJob(void) const
 ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
 	std::cout << PURPLE << "[DESTRUCTOR] : " << END
-			  << "The newly archived form is a ShrubberyCreationForm." << std::endl;
+			  << "The ShrubberyCreationForm can be archived." << std::endl;
 	return ;
 }

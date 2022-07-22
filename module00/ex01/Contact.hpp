@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:28:33 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/07 11:02:35 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/07/22 10:39:29 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,17 @@
 class Contact
 {
 	public:
-
-		Contact(void);
+		/* constructor 		*/
+					Contact(void);
+		/* member functions */
 		int			set_contact_info(int i);
 		void		get_contact_info(void);
 		std::string	get_contact_summary(void);
-		~Contact(void);
+		/* destructor */
+					~Contact(void);
 
 	private:
-
+		/* private attributes */
 		int			_i;
 		std::string	_first_name;
 		std::string	_last_name;

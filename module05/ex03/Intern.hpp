@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:35:12 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 19:08:03 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 13:49:35 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,33 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-class A_Form;
+class	A_Form;
 
 class Intern
 {
 	public :
 		/* constructors			*/
-				Intern(const std::string name, const std::string grade);
-				Intern(const Intern& src);
+								Intern(void);
+								Intern(const Intern& src);
 		/* operator overload	*/
-		Intern	&operator=(const Intern& src);
+		Intern&					operator=(const Intern& src);
 		/* member functions		*/
-		A_Form	*makeForm(std::string name, std::string target);
-		// faire un try/catch de A_Form::isValid avec le nom du form, si ca passe creer le form et le renvoyer
-
+		int						nameIsValid(const std::string &name);
+		A_Form*					makeForm(std::string name, std::string target);
+		/* exceptions			*/
+		class InvalidNameException : public std::exception
+		{
+			public:
+				virtual const char*	what() const throw();
+		};
 		/* destructor 			*/
-		virtual	~Intern(void);
+		virtual					~Intern(void);
 
-		private:
-				Intern(void);
+	private:
+
+		std::string				_formNameTab[3];
+		void					_makeSF();
+		void					_makeRR();
+		void					_makePP();
+		void					(Intern::*_funcTab[3])(void);
 };

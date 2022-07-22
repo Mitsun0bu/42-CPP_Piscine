@@ -6,7 +6,7 @@
 #    By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/19 18:13:55 by llethuil          #+#    #+#              #
-#    Updated: 2022/07/21 18:18:56 by llethuil         ###   ########lyon.fr    #
+#    Updated: 2022/07/22 10:06:56 by llethuil         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,12 +43,14 @@ SRCS_LST	:=	main.cpp					\
 				ShrubberyCreationForm.cpp	\
 				RobotomyRequestForm.cpp		\
 				PresidentialPardonForm.cpp	\
+				Intern.cpp					\
 
 INCS_LST	:=	Bureaucrat.hpp				\
 				A_Form.hpp					\
 				ShrubberyCreationForm.hpp	\
 				RobotomyRequestForm.hpp		\
 				PresidentialPardonForm.hpp	\
+				Intern.hpp					\
 
 OBJS_LST	:=	$(SRCS_LST:.cpp=.o)
 

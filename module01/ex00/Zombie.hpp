@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 09:26:41 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/08 15:59:41 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/07/22 10:58:32 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,21 @@ class Zombie
 {
     public:
 
-        Zombie(std::string name);
-        void        announce(void) const;
-        ~Zombie(void);
-      
-    private:
+        /* constructor          */
+                        Zombie(std::string name);
+        /* member function      */
+        void            announce(void) const;
+        /* destructor           */
+                        ~Zombie(void);
 
-        std::string _name;
+    private:
+        /* private attribute */
+        std::string     _name;
 };
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                              ~~~ PROTOTYPES ~~~                            */
+/*                        ~~~ NON-MEMBER FUNCTIONS ~~~                        */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 10:48:51 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 14:55:18 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ Brain&	Brain::operator=(Brain const &src)
 {
 	for (int i = 0; i < 100; i++)
 			this->_ideas[i] = src._ideas[i];
-	return *this;
+	return (*this);
 }
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                        ~~~ OTHER MEMBER FUNCTIONS ~~~                      */
+/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
 /*                                                                            */
 /* ************************************************************************** */
 

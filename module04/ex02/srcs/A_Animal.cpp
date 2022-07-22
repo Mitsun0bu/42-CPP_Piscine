@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:05:42 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 16:23:13 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/21 18:47:20 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ A_Animal::A_Animal(A_Animal const &src)
 A_Animal&	A_Animal::operator=(A_Animal const &src)
 {
 	this->_type = src.getType();
-	return *this;
+	return (*this);
 }
 
 /* ************************************************************************** */

@@ -3,40 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 09:26:39 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/04 15:15:37 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/07/22 10:53:39 by llethuil         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                            ~~~ INCLUDES ~~~                                */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Zombie.hpp"
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                           ~~~ CONSTRUCTORS ~~~                             */
+/*                                                                            */
+/* ************************************************************************** */
 
 Zombie::Zombie(void)
 {
     static int  i = 0;
 
     this->_i = i;
-    std::cout << "Zombie #" 
+    std::cout << "Zombie #"
               << this->_i
               << " from the MegaHorde"
-              << this->_name 
+              << this->_name
               << " has been created !" << std::endl;
     i ++;
     return ;
 }
 
-Zombie::~Zombie(void)
-{
-    std::cout << "Zombie #" 
-              << this->_i
-              << " has been killed !" << std::endl; 
-    return ;
-}
+/* ************************************************************************** */
+/*                                                                            */
+/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
+/*                                                                            */
+/* ************************************************************************** */
 
 void    Zombie::announce(void) const
 {
-    std::cout << "Zombie #" 
+    std::cout << "Zombie #"
               << this->_i
               << " : I want BraiiiiiiinnnzzzZ..." << std::endl;
     return ;
@@ -45,5 +55,19 @@ void    Zombie::announce(void) const
 void    Zombie::set_name(std::string name)
 {
     this->_name = name;
+    return ;
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                           ~~~ DESTRUCTOR ~~~                               */
+/*                                                                            */
+/* ************************************************************************** */
+
+Zombie::~Zombie(void)
+{
+    std::cout << "Zombie #"
+              << this->_i
+              << " has been killed !" << std::endl;
     return ;
 }

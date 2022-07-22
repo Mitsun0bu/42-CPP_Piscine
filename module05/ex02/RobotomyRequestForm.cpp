@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 16:17:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 16:35:45 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src) :
 RobotomyRequestForm&		RobotomyRequestForm::operator=(RobotomyRequestForm const &src)
 {
 	this->_target = src._target;
-	return *this;
+	return (*this);
 }
 
 std::ostream&	operator<<(std::ostream &stream, RobotomyRequestForm const &RobotomyRequestForm)
@@ -79,7 +79,7 @@ std::ostream&	operator<<(std::ostream &stream, RobotomyRequestForm const &Roboto
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                        ~~~ OTHER MEMBER FUNCTIONS ~~~                      */
+/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,6 @@ void				RobotomyRequestForm::doFormJob(void) const
 RobotomyRequestForm::~RobotomyRequestForm(void)
 {
 	std::cout << PURPLE << "[DESTRUCTOR] : " << END
-			  << "The newly archived form is a RobotomyRequestForm." << std::endl;
+			  << "The RobotomyRequestForm can be archived." << std::endl;
 	return ;
 }

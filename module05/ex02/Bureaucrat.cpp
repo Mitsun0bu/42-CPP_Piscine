@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:57:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 15:32:45 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ Bureaucrat::Bureaucrat(Bureaucrat const &src)
 Bureaucrat&		Bureaucrat::operator=(Bureaucrat const &src)
 {
 	this->_grade = src._grade;
-	return *this;
+	return (*this);
 }
 
 std::ostream&	operator<<(std::ostream &stream, Bureaucrat const &Bureaucrat)
@@ -73,7 +73,7 @@ std::ostream&	operator<<(std::ostream &stream, Bureaucrat const &Bureaucrat)
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                        ~~~ OTHER MEMBER FUNCTIONS ~~~                      */
+/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
 /*                                                                            */
 /* ************************************************************************** */
 

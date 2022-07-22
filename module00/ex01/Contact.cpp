@@ -6,25 +6,35 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 17:21:57 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/01 15:41:47 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 10:44:22 by llethuil         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                            ~~~ INCLUDES ~~~                                */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "main.hpp"
 
-/* Constructor of Contact class */
+/* ************************************************************************** */
+/*                                                                            */
+/*                            ~~~ CONSTRUCTOR ~~~                             */
+/*                                                                            */
+/* ************************************************************************** */
+
 Contact::Contact(void)
 {
 	return ;
 }
 
-/* Destructor of Contact class */
-Contact::~Contact(void)
-{
-	return ;
-}
+/* ************************************************************************** */
+/*                                                                            */
+/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
+/*                                                                            */
+/* ************************************************************************** */
 
-/* This method allows the user to set contact informations */
 int	Contact::set_contact_info(int i)
 {
 	this->_i = i;
@@ -55,7 +65,6 @@ int	Contact::set_contact_info(int i)
 	return (SUCCESS);
 }
 
-/* This method allows the user to get contact informations */
 void	Contact::get_contact_info()
 {
 	std::cout << std::endl;
@@ -68,10 +77,6 @@ void	Contact::get_contact_info()
 	std::cout << std::endl;
 }
 
-/*
-	This method show some contact informations
-	in the format indicated in the subject
-*/
 std::string	Contact::get_contact_summary()
 {
 	std::string			index;
@@ -93,29 +98,33 @@ std::string	Contact::get_contact_summary()
 	return str;
 }
 
-/* This method format a string as asked in the subject */
 std::string	Contact::format_str(std::string str)
 {
 	std::string	result = "";
 
-	/* Add whitespaces to str until it is 10 */
 	if (str.length() < 10)
 	{
 		result = str;
 		while(result.length() < 10)
 			result = result.insert(0, " ");
 	}
-	/*
-		Keep the 10th first characters of the str only
-		and replace the last one by a dot
-	*/
 	else if (str.length() > 10)
 	{
 		result = str.substr(0, 10);
 		result[9] = '.';
 	}
-	/*	Do nothing */
 	else
 		result = str;
 	return result;
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                           ~~~ DESTRUCTOR ~~~                               */
+/*                                                                            */
+/* ************************************************************************** */
+
+Contact::~Contact(void)
+{
+	return ;
 }

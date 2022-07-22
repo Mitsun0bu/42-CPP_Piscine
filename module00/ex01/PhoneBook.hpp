@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:28:37 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/07 11:02:45 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/07/22 10:40:30 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,18 @@
 class PhoneBook
 {
 	public:
-
-		PhoneBook(void);
-		Contact contact[8];
+		/* constructor */
+				PhoneBook(void);
+		/* public attributes */
+		Contact	contact[8];
+		/* member functions */
 		int		add_contact(int *i);
 		int		search_contact(void);
-		~PhoneBook(void);
+		/* destructor */
+				~PhoneBook(void);
 
 	private:
-
+		/* private attributes */
 		int		_n_contact;
 		int		_check_if_empty(void);
 		void	_display_contacts(void);

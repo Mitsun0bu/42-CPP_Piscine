@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:08:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 15:34:01 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ A_Form::A_Form(A_Form const &src) :
 A_Form&		A_Form::operator=(A_Form const &src)
 {
 	this->_sign_state = src._sign_state;
-	return *this;
+	return (*this);
 }
 
 std::ostream&	operator<<(std::ostream &stream, A_Form const &A_Form)
@@ -81,7 +81,7 @@ std::ostream&	operator<<(std::ostream &stream, A_Form const &A_Form)
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                        ~~~ OTHER MEMBER FUNCTIONS ~~~                      */
+/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ const char*			A_Form::FormNotSignedException::what() const throw()
 A_Form::~A_Form(void)
 {
 	std::cout << PURPLE << "[DESTRUCTOR] : " << END
-			  << "A Form named " << this->_name
+			  << "A Form of type " << this->_name
 			  << " has been archived by the secretary." << std::endl;
 	return ;
 }

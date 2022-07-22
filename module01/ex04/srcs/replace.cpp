@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   replace.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 19:11:36 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/06 19:13:23 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:09:59 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ void    replace(std::string infile_name, std::string old, std::string sub, std::
         else
         {
             std::cout << "No occurence of \""
-                        << old
-                        << "\" in "
-                        << infile_name << std::endl;
+                      << old << "\" in "
+                      << infile_name << std::endl;
         }
     }
     else
@@ -40,7 +39,7 @@ int replacing_loop(std::ifstream &infile, std::string old, std::string sub, std:
     std::ofstream   out_file(outfile_name);
     bool            n_subs = TO_DO;
     std::string     buffer = "";
-    
+
     while (infile >> buffer)
     {
         if (buffer == old)

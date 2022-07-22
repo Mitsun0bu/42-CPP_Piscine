@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:57:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 18:47:20 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 13:33:57 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ std::ostream&	operator<<(std::ostream &stream, Bureaucrat const &Bureaucrat)
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                        ~~~ OTHER MEMBER FUNCTIONS ~~~                      */
+/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ void				Bureaucrat::signForm(A_Form& form) const
 				  << this->_name << " couldn't signed the "
 				  << form.getName() << " form because "
 				  << e.what() << std::endl;
-		return ;
 	}
 }
 
@@ -145,7 +144,6 @@ void				Bureaucrat::executeForm(A_Form const &form)
 				  << this->_name << " couldn't execute the "
 				  << form.getName() << " form because "
 				  << e.what() << std::endl;
-		return ;
 	}
 }
 

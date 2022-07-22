@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:35:29 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 18:27:41 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ Form::Form(Form const &src) : _sign_grade(src.getSignGrade()), _exec_grade(src.g
 Form&		Form::operator=(Form const &src)
 {
 	this->_sign_state = src._sign_state;
-	return *this;
+	return (*this);
 }
 
 std::ostream&	operator<<(std::ostream &stream, Form const &Form)
@@ -72,7 +72,7 @@ std::ostream&	operator<<(std::ostream &stream, Form const &Form)
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                        ~~~ OTHER MEMBER FUNCTIONS ~~~                      */
+/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
 /*                                                                            */
 /* ************************************************************************** */
 

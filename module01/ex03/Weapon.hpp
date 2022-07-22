@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:26:24 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/06 10:55:42 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:06:02 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,16 @@
 class   Weapon
 {
     public:
-
-        Weapon(void);
-        Weapon(std::string type);
-        ~Weapon(void);
-        std::string const &getType(void);
-        void        setType(std::string new_type);
+        /* constructors          */
+                            Weapon(void);
+                            Weapon(std::string type);
+        /* member functions      */
+        std::string const   &getType(void);
+        void                setType(std::string new_type);
+        /* destructor           */
+                            ~Weapon(void);
 
     private:
-
-        std::string _type;
+        /* private attribute */
+        std::string         _type;
 };

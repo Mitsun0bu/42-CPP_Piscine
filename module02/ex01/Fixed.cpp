@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:55:37 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/13 09:35:04 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/21 18:47:20 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ Fixed   &Fixed::operator=(Fixed const & src)
 {
     std::cout << "Assignation operator called." << std::endl;
     this->_value = src.getRawBits();
-    return *this;
+    return (*this);
 }
 
 int     Fixed::getRawBits(void) const

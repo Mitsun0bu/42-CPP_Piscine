@@ -3,18 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:25:53 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/06 10:51:57 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:07:51 by llethuil         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                            ~~~ INCLUDES ~~~                                */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Weapon.hpp"
 
+/* ************************************************************************** */
+/*                                                                            */
+/*                           ~~~ CONSTRUCTORS ~~~                             */
+/*                                                                            */
+/* ************************************************************************** */
+
 Weapon::Weapon(void)
 {
-    std::cout << "An unknown type weapon has been created !" 
+    std::cout << "An unknown type weapon has been created !"
               << std::endl;
     return;
 }
@@ -28,11 +40,11 @@ Weapon::Weapon(std::string type): _type(type)
     return;
 }
 
-Weapon::~Weapon()
-{
-    std::cout << "A weapon has been destroyed !" << std::endl;
-    return;
-}
+/* ************************************************************************** */
+/*                                                                            */
+/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
+/*                                                                            */
+/* ************************************************************************** */
 
 std::string const &Weapon::getType(void)
 {
@@ -43,4 +55,16 @@ void        Weapon::setType(std::string new_type)
 {
     this->_type = new_type;
     return ;
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                           ~~~ DESTRUCTOR ~~~                               */
+/*                                                                            */
+/* ************************************************************************** */
+
+Weapon::~Weapon()
+{
+    std::cout << "A weapon has been destroyed !" << std::endl;
+    return;
 }

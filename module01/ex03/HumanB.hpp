@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 19:05:40 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/07 11:03:16 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/07/22 10:58:10 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,16 @@
 class   HumanB
 {
     public:
-
-        HumanB(std::string name);
-        void    setWeapon(Weapon &weapon);
-        void    attack(void) const;
-        ~HumanB(void);
+        /* constructor          */
+                    HumanB(std::string name);
+        /* member function      */
+        void        setWeapon(Weapon &weapon);
+        void        attack(void) const;
+        /* destructor           */
+                    ~HumanB(void);
 
     private:
-
+        /* private attribute */
         std::string _name;
-        Weapon  *_weapon;
+        Weapon      *_weapon;
 };

@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 17:03:32 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 16:25:16 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/21 18:47:20 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ DiamondTrap	&DiamondTrap::operator=(DiamondTrap const &src)
 	this->_hit_points = src._hit_points;
 	this->_energy_points = src._energy_points;
 	this->_attack_damage = src._attack_damage;
-	return *this;
+	return (*this);
 }
 
 /* ************************************************************************** */

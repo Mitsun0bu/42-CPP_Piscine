@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 19:04:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/06 11:28:05 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/07/22 10:57:14 by llethuil         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                            ~~~ INCLUDES ~~~                                */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "HumanA.hpp"
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                           ~~~ CONSTRUCTORS ~~~                             */
+/*                                                                            */
+/* ************************************************************************** */
 
 HumanA::HumanA(std::string name, Weapon &weapon): _name(name), _weapon(&weapon)
 {
@@ -20,19 +32,31 @@ HumanA::HumanA(std::string name, Weapon &weapon): _name(name), _weapon(&weapon)
     return ;
 }
 
-HumanA::~HumanA(void)
-{
-    std::cout << this->_name
-              << " has left the battlefield !"
-              << std::endl;
-    return ;
-}
+/* ************************************************************************** */
+/*                                                                            */
+/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
+/*                                                                            */
+/* ************************************************************************** */
 
 void    HumanA::attack(void)
 {
     std::cout << this->_name
               << " attacks with his "
               << this->_weapon->getType()
+              << std::endl;
+    return ;
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                           ~~~ DESTRUCTOR ~~~                               */
+/*                                                                            */
+/* ************************************************************************** */
+
+HumanA::~HumanA(void)
+{
+    std::cout << this->_name
+              << " has left the battlefield !"
               << std::endl;
     return ;
 }

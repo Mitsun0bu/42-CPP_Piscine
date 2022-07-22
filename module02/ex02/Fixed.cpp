@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:55:37 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/13 10:10:58 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/21 18:47:20 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ Fixed::Fixed(float const to_convert)
 Fixed   &Fixed::operator=(Fixed const &src)
 {
     this->_value = src.getRawBits();
-    return *this;
+    return (*this);
 }
 
 Fixed   &Fixed::operator++(void)
 {
     this->_value++;
-    return *this;
+    return (*this);
 }
 
 Fixed   Fixed::operator++(int inc)
@@ -85,7 +85,7 @@ Fixed   Fixed::operator++(int inc)
 Fixed   &Fixed::operator--(void)
 {
     this->_value--;
-    return *this;
+    return (*this);
 }
 
 Fixed   Fixed::operator--(int inc)

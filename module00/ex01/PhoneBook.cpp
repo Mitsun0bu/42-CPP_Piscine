@@ -6,26 +6,36 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 17:18:27 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/01 15:42:01 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 10:42:20 by llethuil         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                            ~~~ INCLUDES ~~~                                */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "main.hpp"
 
-/* Constructor of PhoneBook class */
+/* ************************************************************************** */
+/*                                                                            */
+/*                            ~~~ CONSTRUCTOR ~~~                             */
+/*                                                                            */
+/* ************************************************************************** */
+
 PhoneBook::PhoneBook(void)
 {
 	this->_n_contact = 0;
 	return ;
 }
 
-/* Destructor of PhoneBook class */
-PhoneBook::~PhoneBook(void)
-{
-	return ;
-}
+/* ************************************************************************** */
+/*                                                                            */
+/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
+/*                                                                            */
+/* ************************************************************************** */
 
-/* This method allows the user to add a contact to the phonebook */
 int	PhoneBook::add_contact(int *i)
 {
 	if (*i >= 8)
@@ -37,7 +47,6 @@ int	PhoneBook::add_contact(int *i)
 	return (SUCCESS);
 }
 
-/* This method allows the user to search for a contact in the phonebook */
 int	PhoneBook::search_contact(void)
 {
 	if (_check_if_empty() == TRUE)
@@ -50,7 +59,6 @@ int	PhoneBook::search_contact(void)
 	return (SUCCESS);
 }
 
-/* This method check if the phonebook is empty */
 int	PhoneBook::_check_if_empty(void)
 {
 	if (this->_n_contact == 0)
@@ -63,7 +71,6 @@ int	PhoneBook::_check_if_empty(void)
 	return (FALSE);
 }
 
-/* This method display the contacts that are available in the phonebook */
 void	PhoneBook::_display_contacts(void)
 {
 	int	i = 0;
@@ -75,7 +82,6 @@ void	PhoneBook::_display_contacts(void)
 	}
 }
 
-/* This method ask the user to select a contact to display its details */
 int	PhoneBook::_select_contact(void)
 {
 	std::string	buff = "";
@@ -104,3 +110,15 @@ int	PhoneBook::_select_contact(void)
 	}
 	return (SUCCESS);
 }
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                           ~~~ DESTRUCTOR ~~~                               */
+/*                                                                            */
+/* ************************************************************************** */
+
+PhoneBook::~PhoneBook(void)
+{
+	return ;
+}
+

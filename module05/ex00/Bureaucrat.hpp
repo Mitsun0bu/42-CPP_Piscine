@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:57:29 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 17:14:27 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/21 11:21:30 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,6 @@ class Bureaucrat
 		/* constructors 		*/
 							Bureaucrat(void);
 							Bureaucrat(const std::string name, int grade);
-							Bureaucrat(const Bureaucrat& src);
-		/* operator overload	*/
-		Bureaucrat			&operator=(const Bureaucrat& src);
 		/* member functions */
 		int					getGrade(void) const;
 		const std::string	getName(void) const;
@@ -71,6 +68,11 @@ class Bureaucrat
 
 	private :
 
+		/* copy constructor 	*/
+							Bureaucrat(const Bureaucrat& src); // private because const member attributes are not accessible
+		/* operator overload	*/
+		Bureaucrat			&operator=(const Bureaucrat& src); // private because const member attributes are not accessible
+		/* attributes */
 		const std::string	_name;
 		int					_grade;
 };

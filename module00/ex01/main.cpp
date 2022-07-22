@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 11:50:04 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/01 15:43:23 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 10:37:13 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	main(void)
 	return (0);
 }
 
-/* This function print the phonebook menu */
 void	print_menu(void)
 {
 	std::cout << "~~~ Welcome to your PhoneBook ~~~" << std::endl;

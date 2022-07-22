@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 19:04:32 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/07 11:03:10 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/07/22 11:03:57 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,15 @@
 class   HumanA
 {
     public:
-
-        HumanA(std::string name, Weapon &weapon);
-        void    attack(void);
-        ~HumanA(void);
+        /* constructor		*/
+                        HumanA(std::string name, Weapon &weapon);
+        /* member function  */
+        void            attack(void);
+        /* destructor       */
+                        ~HumanA(void);
 
     private:
-
+        /* private attributes */
         std::string     _name;
         Weapon          *_weapon;
 };

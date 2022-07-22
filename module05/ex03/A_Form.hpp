@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:08:45 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 19:05:04 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/07/22 11:37:27 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,29 +42,23 @@ class A_Form
 		virtual void				beSigned(const Bureaucrat &bureaucrat);
 		virtual void				execute(const Bureaucrat &bureaucrat) const;
 		virtual void				doFormJob(void) const = 0;
-		virtual bool				isValid(const std::string &name);
 		/* exceptions 			*/
-		class GradeTooHighException : public std::exception
+		class						GradeTooHighException : public std::exception
 		{
 			public:
 				virtual const char*	what() const throw();
 		};
-		class GradeTooLowException : public std::exception
+		class						GradeTooLowException : public std::exception
 		{
 			public:
 				virtual const char*	what() const throw();
 		};
-		class BureaucratGradeTooLowException : public std::exception
+		class						BureaucratGradeTooLowException : public std::exception
 		{
 			public:
 				virtual const char*	what() const throw();
 		};
-		class FormNotSignedException : public std::exception
-		{
-			public:
-				virtual const char*	what() const throw();
-		};
-		class InvalidNameException : public std::exception
+		class						FormNotSignedException : public std::exception
 		{
 			public:
 				virtual const char*	what() const throw();
@@ -75,14 +69,14 @@ class A_Form
 	private :
 
 		/* copy constructor : private because const member attributes are not accessible */
-							A_Form(const A_Form& src);
+									A_Form(const A_Form& src);
 		/* operator overload : private because const member attributes are not accessible */
-		A_Form				&operator=(const A_Form& src);
+		A_Form						&operator=(const A_Form& src);
 		/* attributes */
-		const std::string	_name;
-		bool				_sign_state;
-		const int			_sign_grade;
-		const int			_exec_grade;
+		const std::string			_name;
+		bool						_sign_state;
+		const int					_sign_grade;
+		const int					_exec_grade;
 };
 
 std::ostream	&operator<<(std::ostream& stream, const A_Form& A_Form);

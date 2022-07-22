@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 09:26:41 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/07 11:02:58 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/07/22 10:59:31 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,23 @@ class Zombie
 {
      public:
 
-        Zombie(void);
-        void        announce(void) const;
-        void        set_name(std::string);
-        ~Zombie(void);
-      
-    private:
+        /* constructor		*/
+                        Zombie(void);
+        /* member functions */
+        void            announce(void) const;
+        void            set_name(std::string);
+        /* destructor       */
+                        ~Zombie(void);
 
-        int 	    _i;
-        std::string _name;
+    private:
+        /* private attributes */
+        int 	        _i;
+        std::string     _name;
 };
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                              ~~~ PROTOTYPES ~~~                            */
+/*                        ~~~ NON-MEMBER FUNCTIONS ~~~                        */
 /*                                                                            */
 /* ************************************************************************** */
 
