@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:00:20 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/01 18:25:44 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/08/03 13:31:29 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,37 +140,39 @@ bool Converter::argIsDouble()
 void Converter::handleChar()
 {
 	this->argToChar();
-    try
-    {
-        this->printCharValue();
-    }
-    catch (std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
+
+    this->printCharValue();
+
     this->charToInt();
     this->charToFloat();
     this->charToDouble();
+
+    return ;
 }
 
 void Converter::argToChar()
 {
     const char    *temp = this->_arg.c_str();
+
     this->_char = temp[0];
+
     return ;
 }
 
 void Converter::printCharValue()
 {
-    std::cout << "char : ";
-     std::cout << "'" << this->_char << "'" << std::endl;
+    std::cout << "char\t:\t'"
+              << this->_char
+              << "'" 
+              << std::endl;
     return ;
 }
 
 void Converter::charToInt()
 {
     this->_int = static_cast <int> (this->_char);
-    std::cout << "int : " << this->_int << std::endl;
+
+    std::cout << "int\t:\t" << this->_int << std::endl;
 
     return ;
 }
@@ -181,7 +183,8 @@ void Converter::charToFloat()
     std::cout.precision(1);
 
     this->_float = static_cast <float> (this->_char);
-    std::cout << "float : " << this->_float << "f" << std::endl;
+
+    std::cout << "float\t:\t" << this->_float << "f" << std::endl;
 
     return ;
 }
@@ -189,57 +192,95 @@ void Converter::charToFloat()
 void Converter::charToDouble()
 {
     this->_double = static_cast <double> (this->_char);
-    std::cout << "double : " << this->_double << std::endl;
+
+    std::cout << "double\t:\t" << this->_double << std::endl;
 
     return ;
 }
 
 /* Functions to handle int arguments */
+
+void Converter::handleInt()
+{
+    this->argToInt();
+
+    try
+    {
+        this->intToChar();
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    try
+    {
+        this->printIntValue();
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    try
+    {
+        this->intToFloat();
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    try
+    {
+        this->intToDouble();
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    return ;
+}
 
 void Converter::argToInt()
 {
     std::istringstream(this->_arg) >> this->_int;
+
     return ;
 }
-
-void Converter::argToFloat()
-{
-    double  temp = atof(_arg.c_str());
-    this->_float = (float) temp;
-    return ;
-}
-
-void Converter::argToDouble()
-{
-    this->_double = atof(_arg.c_str());
-    return ;
-}
-
-
-/* Functions to handle int arguments */
 
 void Converter::intToChar()
 {
     this->_char = static_cast <char> (this->_int);
-    std::cout << "char : ";
+
+    std::cout << "char\t:\t";
+
     if (this->_arg != "-2147483648" && this->_int == std::numeric_limits<int>::min())
         throw ImpossibleException();
     else if (this->_arg != "2147483647" && this->_int == std::numeric_limits<int>::max())
         throw ImpossibleException();
-    else if (this->_int < 32 || this->_int > 126)
+    else if ((this->_int >=0 && this->_int < 32) || (this->_int > 126 && this->_int <= 256))
         throw NonDisplayableException();
-    std::cout << "'" << this->_char << "'" << std::endl;
+    else if ((this->_int < 0 || this->_int > 256))
+        throw ImpossibleException();
+    else
+        std::cout << "'" << this->_char << "'" << std::endl;
+
     return ;
 }
 
 void Converter::printIntValue()
 {
-    std::cout << "int : ";
+    std::cout << "int\t:\t";
+
     if (this->_arg != "-2147483648" && this->_int == std::numeric_limits<int>::min())
         throw UnderflowException();
     else if (this->_arg != "2147483647" && this->_int == std::numeric_limits<int>::max())
         throw OverflowException();
-    std::cout << this->_int << std::endl;
+    else
+        std::cout << this->_int << std::endl;
+
     return ;
 }
 
@@ -249,7 +290,15 @@ void Converter::intToFloat()
     std::cout.precision(1);
 
     this->_float = static_cast <float> (this->_int);
-    std::cout << "float : " << this->_float << "f" << std::endl;
+
+    std::cout << "float\t:\t";
+
+    if (this->_arg != "-2147483648" && this->_int == std::numeric_limits<int>::min())
+        throw ImpossibleException();
+    else if (this->_arg != "2147483647" && this->_int == std::numeric_limits<int>::max())
+        throw ImpossibleException();
+    else
+        std::cout << this->_float << "f" << std::endl;
 
     return ;
 }
@@ -260,17 +309,90 @@ void Converter::intToDouble()
     std::cout.precision(1);
     
     this->_double = static_cast <double> (this->_int);
-    std::cout << "double : " << this->_double << std::endl;
+
+    std::cout << "double\t:\t";
+
+    if (this->_arg != "-2147483648" && this->_int == std::numeric_limits<int>::min())
+        throw ImpossibleException();
+    else if (this->_arg != "2147483647" && this->_int == std::numeric_limits<int>::max())
+        throw ImpossibleException();
+    else
+        std::cout << this->_double << std::endl;
     
     return ;
 }
 
+
 /* Functions to handle float arguments */
+
+void Converter::handleFloat()
+{
+    this->argToFloat();
+
+    try
+    {
+        this->floatToChar();
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    try
+    {
+        this->floatToInt();
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    try
+    {
+        this->printFloatValue();
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    try
+    {
+        this->floatToDouble();
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    return ;
+}
+
+void Converter::argToFloat()
+{
+    double  temp = atof(_arg.c_str());
+    this->_float = static_cast <float> (temp);
+
+    return ;
+}
 
 void Converter::floatToChar()
 {
     this->_char = static_cast <char> (this->_float);
-    std::cout << "char : '" << this->_char << "'" << std::endl;
+
+    float   whole = floor(this->_float);
+    float   frac = this->_float - whole;
+
+    std::cout << "char\t:\t";
+
+    if (frac != 0)
+        throw ImpossibleException();
+    else if (((this->_float >= 0 && this->_float < 32) || (this->_float > 126 && this->_float < 256)))
+        throw NonDisplayableException();
+    else if ((this->_float < 0 || this->_float >= 256))
+        throw ImpossibleException();
+    else
+        std::cout << "'" << this->_char << "'" << std::endl;
 
     return ;
 }
@@ -278,7 +400,23 @@ void Converter::floatToChar()
 void Converter::floatToInt()
 {
     this->_int = static_cast <int> (this->_float);
-    std::cout << "int : " << this->_int << std::endl;
+    
+    std::cout << "int\t:\t";
+
+    if (this->_int == std::numeric_limits<int>::min() || this->_int == std::numeric_limits<int>::max())
+        throw ImpossibleException();
+    else
+        std::cout << this->_int << std::endl;
+
+    return ;
+}
+
+void Converter::printFloatValue()
+{
+    std::cout << std::fixed;
+    std::cout.precision(1);
+
+    std::cout << "float\t:\t" << this->_float << "f" << std::endl;
 
     return ;
 }
@@ -289,17 +427,80 @@ void Converter::floatToDouble()
     std::cout.precision(1);
 
     this->_double = static_cast <double> (this->_float);
-    std::cout << "double : " << this->_double << std::endl;
+    std::cout << "double\t:\t" << this->_double << std::endl;
     
     return ;
 }
 
 /* Functions to convert double argument to other types */
 
+void Converter::handleDouble()
+{
+    this->argToDouble();
+
+    try
+    {
+        this->doubleToChar();
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    try
+    {
+        this->doubleToInt();
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    try
+    {
+        this->doubleToFloat();
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    try
+    {
+        this->printDoubleValue();
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    return ;
+}
+
+void Converter::argToDouble()
+{
+    this->_double = atof(_arg.c_str());
+
+    return ;
+}
+
 void Converter::doubleToChar()
 {
     this->_char = static_cast <char> (this->_double);
-    std::cout << "char : '" << this->_char << "'" << std::endl;
+    
+    double   whole = floor(this->_double);
+    double   frac = this->_double - whole;
+
+    std::cout << "char\t:\t";
+
+    if (frac != 0)
+        throw ImpossibleException();
+    else if (((this->_double >= 0 && this->_double < 32) || (this->_double > 126 && this->_double < 256)))
+        throw NonDisplayableException();
+    else if ((this->_double < 0 || this->_double >= 256))
+        throw ImpossibleException();
+    else
+        std::cout << "'" << this->_char << "'" << std::endl;
 
     return ;
 }
@@ -307,7 +508,13 @@ void Converter::doubleToChar()
 void Converter::doubleToInt()
 {
     this->_int = static_cast <int> (this->_double);
-    std::cout << "int : " << this->_int << std::endl;
+    
+    std::cout << "int\t:\t";
+    
+    if (this->_int == std::numeric_limits<int>::min() || this->_int == std::numeric_limits<int>::max())
+        throw ImpossibleException();
+    else
+        std::cout << this->_int << std::endl;
 
     return ;
 }
@@ -318,7 +525,23 @@ void Converter::doubleToFloat()
     std::cout.precision(1);
 
     this->_float = static_cast <float> (this->_double);
-    std::cout << "float : " << this->_float << "f" << std::endl;
+    
+    std::cout << "float\t:\t";
+
+    if (this->_float == std::numeric_limits<float>::min() || this->_float == std::numeric_limits<float>::max())
+        throw ImpossibleException();
+    else
+        std::cout << this->_float << "f" << std::endl;
+
+    return ;
+}
+
+void Converter::printDoubleValue()
+{
+    std::cout << std::fixed;
+    std::cout.precision(1);
+    
+    std::cout << "double\t:\t" << this->_double << std::endl;
 
     return ;
 }
