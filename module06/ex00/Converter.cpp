@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:00:20 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/03 13:31:29 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/08/03 15:49:44 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ bool Converter::argIsFloat()
     bool    dot = false;
     bool    f = false;
 
+    if (this->_arg == "-inff" || this->_arg == "inff" || this->_arg == "+inff" || this->_arg == "nanf")
+        return true;
     for (size_t i = 0; i < this->_arg.length(); i++)
     {
         if (i == 0 && _arg[i] == '-')
@@ -117,6 +119,8 @@ bool Converter::argIsDouble()
 {
     bool    dot = false;
 
+    if (this->_arg == "-inf" || this->_arg == "inf" || this->_arg == "+inf" || this->_arg == "nan")
+        return true;
     for (size_t i = 0; i < this->_arg.length(); i++)
     {
         if (i == 0 && _arg[i] == '-')
@@ -385,6 +389,8 @@ void Converter::floatToChar()
 
     std::cout << "char\t:\t";
 
+    if (this->_arg == "nanf")
+        throw ImpossibleException();
     if (frac != 0)
         throw ImpossibleException();
     else if (((this->_float >= 0 && this->_float < 32) || (this->_float > 126 && this->_float < 256)))
@@ -402,8 +408,10 @@ void Converter::floatToInt()
     this->_int = static_cast <int> (this->_float);
     
     std::cout << "int\t:\t";
-
-    if (this->_int == std::numeric_limits<int>::min() || this->_int == std::numeric_limits<int>::max())
+    
+    if (this->_arg == "nanf")
+        throw ImpossibleException();
+    else if (this->_int == std::numeric_limits<int>::min() || this->_int == std::numeric_limits<int>::max())
         throw ImpossibleException();
     else
         std::cout << this->_int << std::endl;
@@ -486,6 +494,7 @@ void Converter::argToDouble()
 
 void Converter::doubleToChar()
 {
+    
     this->_char = static_cast <char> (this->_double);
     
     double   whole = floor(this->_double);
@@ -493,7 +502,9 @@ void Converter::doubleToChar()
 
     std::cout << "char\t:\t";
 
-    if (frac != 0)
+    if (this->_arg == "nan")
+        throw ImpossibleException();
+    else if (frac != 0)
         throw ImpossibleException();
     else if (((this->_double >= 0 && this->_double < 32) || (this->_double > 126 && this->_double < 256)))
         throw NonDisplayableException();
@@ -507,11 +518,14 @@ void Converter::doubleToChar()
 
 void Converter::doubleToInt()
 {
+
     this->_int = static_cast <int> (this->_double);
     
     std::cout << "int\t:\t";
     
-    if (this->_int == std::numeric_limits<int>::min() || this->_int == std::numeric_limits<int>::max())
+    if (this->_arg == "nan")
+        throw ImpossibleException();
+    else if (this->_int == std::numeric_limits<int>::min() || this->_int == std::numeric_limits<int>::max())
         throw ImpossibleException();
     else
         std::cout << this->_int << std::endl;
