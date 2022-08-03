@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:57:29 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/01 18:26:42 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/08/03 17:52:18 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ class Converter
 	public :
 
 		/* constructors 												*/
-        Converter(void);
-        Converter(std::string arg);
-        Converter(Converter& src);
+        			Converter(void);
+        			Converter(std::string arg);
+        			Converter(Converter& src);
         Converter&	operator=(Converter const & src);
 
 		/* member functions												*/
@@ -97,7 +97,7 @@ class Converter
 
 	private :
 
-		/* attributes 													*/
+		/* private attributes 													*/
 		std::string	_arg;
 		char		_char;
 		int			_int;

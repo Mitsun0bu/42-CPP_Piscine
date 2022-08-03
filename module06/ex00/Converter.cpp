@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:00:20 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/03 15:49:44 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/08/03 15:52:26 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -325,8 +325,7 @@ void Converter::intToDouble()
     
     return ;
 }
-
-
+    
 /* Functions to handle float arguments */
 
 void Converter::handleFloat()
