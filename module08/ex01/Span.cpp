@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 18:18:36 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/08 19:08:09 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/09 12:16:03 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 /* ************************************************************************** */
 
 # include "Span.hpp"
-
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -33,16 +32,10 @@ Span::Span(void)
 	return ;
 }
 
-Span::Span(unsigned int N)
+Span::Span(unsigned int N) : _intVector(N, 0), _spanSize(N)
 {
 	std::cout << std::endl << BLUE << "[CONSTRUCTOR] : " << END
-				<< "A Span has been created." << std::endl
-				<< std::endl;
-
-	if (N <= UINT_MAX)
-		this->_intVector(N, 0);
-	else
-		throw InvalidParameterException();
+				<< "A Span has been created." << std::endl;
 	return ;
 }
 
@@ -63,8 +56,144 @@ Span::Span(Span& src)
 /*                                                                            */
 /* ************************************************************************** */
 
-Span& Span::operator=(Span const & src)
+Span&			Span::operator=(Span const & src)
 {
 	this->_intVector = src._intVector;
 	return (*this);
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
+/*                                                                            */
+/* ************************************************************************** */
+
+void			Span::addNumber(int number)
+{
+	static unsigned int i = 0;
+
+	if (i < this->_spanSize)
+	{
+		this->_intVector.at(i) = number;
+		i ++;
+	}
+	else
+		throw FullSpanException();
+}
+
+void	Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	std::vector<int>::iterator	iter;
+
+	for (iter = begin; iter < end; ++iter)
+	{
+		if (this->_intVector.size() + 1 > this->_spanSize)
+			throw FullSpanException();
+		this->addNumber(*iter);
+	}
+}
+
+int				Span::shortestSpan()
+{
+	int					diff = INT_MAX;
+	int					temp_diff = 0;
+	unsigned int		i = -1;
+
+	if (this->_spanSize == 1)
+		throw SingleNumberException();
+
+	while(++i < this->_spanSize - 1)
+	{
+		if (this->_intVector.at(i) > this->_intVector.at(i + 1))
+			temp_diff = this->_intVector.at(i) - this->_intVector.at(i + 1);
+		else
+			temp_diff = this->_intVector.at(i + 1) - this->_intVector.at(i);
+
+		if(temp_diff < diff)
+			diff = temp_diff;
+	}
+	return (diff);
+}
+
+int				Span::longestSpan()
+{
+	std::vector<int>	tempVector = this->_intVector;
+	int					longestSpan = 0;
+
+	if (this->_spanSize == 1)
+		throw SingleNumberException();
+
+	sort(tempVector.begin(), tempVector.end(), std::greater<int>());
+
+	longestSpan = tempVector.front() - tempVector.back();
+
+	return (longestSpan);
+
+}
+
+unsigned int	Span::getSpanSize(void) const
+{
+	return (this->_spanSize);
+}
+
+int				Span::getValue(unsigned int i) const
+{
+	return (this->_intVector.at(i));
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                              ~~~ EXCEPTIONS ~~~                            */
+/*                                                                            */
+/* ************************************************************************** */
+
+const char*		Span::EmptySpanException::what() const throw()
+{
+	return ("Error! The Span is empty!");
+}
+
+const char*		Span::SingleNumberException::what() const throw()
+{
+	std::cout << RED << "[EXCEPTION] : " << END;
+	return ("Error! There is only one number in the Span!");
+}
+
+const char*		Span::FullSpanException::what() const throw()
+{
+	std::cout << RED << "[EXCEPTION] : " << END;
+	return ("Error! The Span is full!");
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                           ~~~ DESTRUCTOR ~~~                               */
+/*                                                                            */
+/* ************************************************************************** */
+
+Span::~Span(void)
+{
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << "A Span has been destructed." << std::endl;
+	return ;
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                      ~~~ NON-MEMBER FUNCTIONS ~~~                          */
+/*                                                                            */
+/* ************************************************************************** */
+
+std::ostream&	operator<<(std::ostream &stream, Span const &Span)
+{
+	unsigned int i = -1;
+
+	while (++i < Span.getSpanSize())
+	{
+		if (i == Span.getSpanSize() - 1)
+			stream << Span.getValue(i);
+		else
+			stream << Span.getValue(i) << ", ";
+	}
+	stream << std::endl;
+	return stream;
 }

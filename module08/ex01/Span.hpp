@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 18:18:06 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/08 19:04:41 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/09 12:16:30 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,30 +48,27 @@ class Span
 	public :
 
 		/* constructors 										*/
-				Span(void);
-				Span(unsigned int N);
-				Span(Span& src);
-		Span&	operator=(Span const & src);
+						Span(void);
+						Span(unsigned int N);
+						Span(Span& src);
+		Span&			operator=(Span const & src);
 
 		/* member functions										*/
-		void	addNumber();
-		void	shortestSpan();
-		void	longestSpan();
+		void			addNumber(int number);
+		void			addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+		int				shortestSpan();
+		int				longestSpan();
+		unsigned int	getSpanSize(void) const;
+		int				getValue(unsigned int i) const;
 
 		/* exceptions 											*/
-		class	InvalidParameterException : public std::exception
-		{
-			public:
-				virtual const char*	what() const throw();
-		};
-
 		class	EmptySpanException : public std::exception
 		{
 			public:
 				virtual const char*	what() const throw();
 		};
 
-		class	SoloSpanException : public std::exception
+		class	SingleNumberException : public std::exception
 		{
 			public:
 				virtual const char*	what() const throw();
@@ -90,6 +87,9 @@ class Span
 
 		/* private attributes 									*/
 		std::vector<int>	_intVector;
+		unsigned int		_spanSize;
 };
+
+std::ostream	&operator<<(std::ostream &stream, Span const &Span);
 
 # endif
