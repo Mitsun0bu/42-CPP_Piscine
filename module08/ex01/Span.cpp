@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 18:18:36 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/09 12:16:03 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/09 15:33:38 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,27 @@ void			Span::addNumber(int number)
 		throw FullSpanException();
 }
 
-void	Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+void			Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
 {
-	std::vector<int>::iterator	iter;
+	std::vector<int>::iterator	iter = begin;
 
-	for (iter = begin; iter < end; ++iter)
+	static unsigned int i = 0;
+
+	while(iter < end)
 	{
-		if (this->_intVector.size() + 1 > this->_spanSize)
+		if (i < this->_spanSize)
+		{
+			this->_intVector.at(i) = *iter;
+			i ++;
+			iter ++;
+		}
+		else
 			throw FullSpanException();
-		this->addNumber(*iter);
 	}
+
+	i = 0;
+
+	return ;
 }
 
 int				Span::shortestSpan()
@@ -100,7 +111,7 @@ int				Span::shortestSpan()
 	unsigned int		i = -1;
 
 	if (this->_spanSize == 1)
-		throw SingleNumberException();
+		throw InvalidSpanException();
 
 	while(++i < this->_spanSize - 1)
 	{
@@ -121,7 +132,7 @@ int				Span::longestSpan()
 	int					longestSpan = 0;
 
 	if (this->_spanSize == 1)
-		throw SingleNumberException();
+		throw InvalidSpanException();
 
 	sort(tempVector.begin(), tempVector.end(), std::greater<int>());
 
@@ -147,15 +158,10 @@ int				Span::getValue(unsigned int i) const
 /*                                                                            */
 /* ************************************************************************** */
 
-const char*		Span::EmptySpanException::what() const throw()
-{
-	return ("Error! The Span is empty!");
-}
-
-const char*		Span::SingleNumberException::what() const throw()
+const char*		Span::InvalidSpanException::what() const throw()
 {
 	std::cout << RED << "[EXCEPTION] : " << END;
-	return ("Error! There is only one number in the Span!");
+	return ("Error! The Span is invalid!");
 }
 
 const char*		Span::FullSpanException::what() const throw()

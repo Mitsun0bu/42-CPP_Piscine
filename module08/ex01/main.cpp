@@ -6,32 +6,88 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 18:17:07 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/09 12:16:29 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/09 15:34:42 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Span.hpp"
+
+void	checkSpanInit(Span& span);
+void	addNumbers(Span& span);
+void	catchFullSpanException(Span& span);
+void	testSpan(Span& span);
+void	addSmallRange(Span& span);
+void	addLargeRange(Span& span);
+
+// What do we have to do with a Span full of 0's ???
 
 int	main(void)
 {
 	Span	intSpan(5);
 
 	std::cout << std::endl;
+	checkSpanInit(intSpan);
+	addNumbers(intSpan);
+	catchFullSpanException(intSpan);
+	testSpan(intSpan);
+
+
+	Span	singleSpan(1);
+
+	std::cout << std::endl;
+	testSpan(singleSpan);
+
+
+	Span	smallRangeSpan(10);
+
+	std::cout << std::endl;
+
+	addSmallRange(smallRangeSpan);
+	testSpan(smallRangeSpan);
+
+	Span	largeRangeSpan(15000);
+
+	std::cout << std::endl;
+
+	addLargeRange(largeRangeSpan);
+	testSpan(largeRangeSpan);
+
+	std::cout << std::endl;
+
+	return (0);
+}
+
+void	checkSpanInit(Span& span)
+{
 	std::cout << "TEST - SPAN DECLARATION (size = 5)" << std::endl;
-	std::cout << intSpan << std::endl;
 
-	std::cout << "TEST - ADD NUMBERS" << std::endl;
-	intSpan.addNumber(6);
-	intSpan.addNumber(3);
-	intSpan.addNumber(17);
-	intSpan.addNumber(9);
-	intSpan.addNumber(11);
-	std::cout << intSpan << std::endl;
+	std::cout << span << std::endl;
 
+	return ;
+}
+
+void	addNumbers(Span& span)
+{
+	std::cout << "TEST - ADD NUMBER FUNCTION" << std::endl;
+
+	span.addNumber(6);
+	span.addNumber(3);
+	span.addNumber(17);
+	span.addNumber(9);
+	span.addNumber(11);
+
+	std::cout << span << std::endl;
+
+	return ;
+}
+
+void	catchFullSpanException(Span& span)
+{
 	std::cout << "TEST - FULL SPAN EXCEPTION" << std::endl;
+
 	try
 	{
-		intSpan.addNumber(84);
+		span.addNumber(84);
 	}
 	catch(const std::exception& e)
 	{
@@ -40,22 +96,29 @@ int	main(void)
 
 	std::cout << std::endl;
 
+	return ;
+}
+
+void	testSpan(Span& span)
+{
 	std::cout << "TEST - SHORTEST SPAN" << std::endl;
-	std::cout << intSpan.shortestSpan() << std::endl;
+
+	try
+	{
+		std::cout << span.shortestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 
 	std::cout << std::endl;
 
 	std::cout << "TEST - LONGEST SPAN" << std::endl;
-	std::cout << intSpan.longestSpan() << std::endl;
 
-	std::cout << std::endl;
-
-	Span	singleSpan(1);
-
-	std::cout << "TEST - SHORTEST SPAN ON singleSpan" << std::endl;
 	try
 	{
-		std::cout << singleSpan.shortestSpan() << std::endl;
+		std::cout << span.longestSpan() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -64,30 +127,46 @@ int	main(void)
 
 	std::cout << std::endl;
 
-	std::cout << "TEST - LONGEST SPAN ON singleSpan" << std::endl;
-	try
-	{
-		std::cout << singleSpan.longestSpan() << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	return ;
+}
 
-	std::cout << std::endl;
+void	addSmallRange(Span& span)
+{
+	std::cout << "TEST - ADD RANGE (small set)" << std::endl;
 
+	std::vector<int>	testVector(10, 0);
 
-	Span				rangeSpan(15000);
+	testVector[0] = 1;
+	testVector[1] = 34;
+	testVector[2] = 67;
+	testVector[3] = 69;
+	testVector[4] = 109;
+	testVector[5] = 42;
+	testVector[6] = 24;
+	testVector[7] = 74;
+	testVector[8] = 19;
+	testVector[9] = 9;
 
-	std::vector<int>	vector(15000, 42);
-	vector[67] = 50;
-	vector[10] = 41;
+	span.addRange(testVector.begin(), testVector.end());
 
-	rangeSpan.addRange(vector.begin(), vector.end());
-	std::cout << rangeSpan.shortestSpan() << std::endl;
-	std::cout << rangeSpan.longestSpan() << std::endl;
+	std::cout << span << std::endl;
 
-	std::cout << std::endl;
+	return ;
+}
 
-	return (0);
+void	addLargeRange(Span& span)
+{
+	std::cout << "TEST - ADD RANGE (large set)" << std::endl;
+
+	std::vector<int>	testVector(15000, 0);
+
+	testVector[67] = 67;
+	testVector[42] = 42;
+	testVector[14999] = 9;
+
+	span.addRange(testVector.begin(), testVector.end());
+
+	std::cout << span << std::endl;
+
+	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 18:18:06 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/09 12:16:30 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/09 14:18:40 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,7 @@ class Span
 		int				getValue(unsigned int i) const;
 
 		/* exceptions 											*/
-		class	EmptySpanException : public std::exception
-		{
-			public:
-				virtual const char*	what() const throw();
-		};
-
-		class	SingleNumberException : public std::exception
+		class	InvalidSpanException : public std::exception
 		{
 			public:
 				virtual const char*	what() const throw();
