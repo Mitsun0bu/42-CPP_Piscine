@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:08:40 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/10 11:50:58 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/10 14:34:41 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 int	main(void)
 {
+	std::cout << std::endl;
+
 	Bureaucrat				B1("Mitsunobu", 1);
 	Bureaucrat				B2("Jacques Célert", 150);
 	ShrubberyCreationForm	SCF1("MagicTree");

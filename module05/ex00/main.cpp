@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:08:40 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/10 10:58:38 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/10 14:33:25 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	forbiddenGradeModification(Bureaucrat &B1, Bureaucrat &B2);
 
 int	main(void)
 {
+	std::cout << std::endl;
+
 	Bureaucrat	Thomas("Thomas", 42);
 	Bureaucrat	Lucas("Lucas", 1);
 	Bureaucrat	Manu("Manu", 150);

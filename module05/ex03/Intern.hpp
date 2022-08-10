@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:35:12 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 17:28:54 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/10 14:28:26 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef INTERN_HPP
+# define INTERN_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -46,28 +47,36 @@ class	A_Form;
 class Intern
 {
 	public :
-		/* constructors			*/
+
+		/* constructors															*/
 								Intern(void);
 								Intern(const Intern& src);
-		/* operator overload	*/
+
+		/* operator overload													*/
 		Intern&					operator=(const Intern& src);
-		/* member functions		*/
+
+		/* member functions														*/
 		int						nameIsValid(const std::string &name);
 		A_Form*					makeForm(std::string name, std::string target);
-		/* exceptions			*/
+
+		/* exceptions															*/
 		class InvalidNameException : public std::exception
 		{
 			public:
 				virtual const char*	what() const throw();
 		};
-		/* destructor 			*/
+
+		/* destructor															*/
 		virtual					~Intern(void);
 
 	private:
 
+		/* private attributes													*/
 		std::string				_formNameTab[3];
 		A_Form*					_makeShruberryCreationForm(std::string name);
 		A_Form*					_makeRobotomyRequestForm(std::string name);
 		A_Form*					_makePresidentialPardonForm(std::string name);
 		A_Form*					(Intern::*_funcTab[3])(std::string target);
 };
+
+# endif
