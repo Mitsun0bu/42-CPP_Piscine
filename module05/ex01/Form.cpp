@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:35:29 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/10 11:13:38 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-Form::Form(void) : _name("Secret File"), _sign_state(false), _sign_grade(1), _exec_grade(1)
+Form::Form(void) :
+	_name("Secret File"), _sign_state(false), _sign_grade(1), _exec_grade(1)
 {
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
 			  << "A Form has been created by the secretary." << std::endl;
 	return ;
 }
 
-Form::Form(const std::string name, const int sign_grade, const int exec_grade) : _name(name), _sign_state(false), _sign_grade(sign_grade), _exec_grade(exec_grade)
+Form::Form(const std::string name, const int sign_grade, const int exec_grade) :
+	_name(name), _sign_state(false), _sign_grade(sign_grade), _exec_grade(exec_grade)
 {
 	if (sign_grade < 1 || exec_grade < 1)
 		throw GradeTooHighException();
@@ -39,7 +41,8 @@ Form::Form(const std::string name, const int sign_grade, const int exec_grade) :
 	return ;
 }
 
-Form::Form(Form const &src) : _sign_grade(src.getSignGrade()), _exec_grade(src.getExecGrade())
+Form::Form(Form const &src) :
+	_name(src.getName()), _sign_grade(src.getSignGrade()), _exec_grade(src.getExecGrade())
 {
 	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
 			<< "A Form named " << src.getName()

@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:08:45 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 11:37:27 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/10 12:01:07 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef FORM_HPP
+# define FORM_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -31,10 +32,15 @@ class Bureaucrat;
 class A_Form
 {
 	public :
-		/* constructors 		*/
+
+		/* constructors																						*/
 									A_Form(void);
 									A_Form(const std::string name, const int sign_grade, const int exec_grade);
-		/* member functions */
+
+		/* copy constructor																					*/
+									A_Form(const A_Form& src);
+
+		/* member functions																					*/
 		virtual const std::string	getName(void) const;
 		virtual bool				getSignState(void) const;
 		virtual int					getSignGrade(void) const;
@@ -42,7 +48,8 @@ class A_Form
 		virtual void				beSigned(const Bureaucrat &bureaucrat);
 		virtual void				execute(const Bureaucrat &bureaucrat) const;
 		virtual void				doFormJob(void) const = 0;
-		/* exceptions 			*/
+
+		/* exceptions																						*/
 		class						GradeTooHighException : public std::exception
 		{
 			public:
@@ -63,20 +70,23 @@ class A_Form
 			public:
 				virtual const char*	what() const throw();
 		};
-		/* destructor 			*/
+
+		/* destructor																						*/
 		virtual 					~A_Form(void);
 
 	private :
 
-		/* copy constructor : private because const member attributes are not accessible */
-									A_Form(const A_Form& src);
-		/* operator overload : private because const member attributes are not accessible */
-		A_Form						&operator=(const A_Form& src);
-		/* attributes */
+		/* private attributes																				*/
 		const std::string			_name;
 		bool						_sign_state;
 		const int					_sign_grade;
 		const int					_exec_grade;
+
+		/* operator overload
+			private because const member attributes are not accessible										*/
+		A_Form&				operator=(const A_Form& src);
 };
 
 std::ostream	&operator<<(std::ostream& stream, const A_Form& A_Form);
+
+# endif

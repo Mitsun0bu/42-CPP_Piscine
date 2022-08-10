@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:57:29 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 16:14:00 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/10 11:39:48 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -46,17 +47,23 @@ class A_Form;
 class Bureaucrat
 {
 	public :
-		/* constructors 		*/
+
+		/* constructors													*/
 							Bureaucrat(void);
 							Bureaucrat(const std::string name, int grade);
-		/* member functions */
+
+		/* copy constructor												*/
+							Bureaucrat(const Bureaucrat& src);
+
+		/* member functions												*/
 		int					getGrade(void) const;
 		const std::string	getName(void) const;
 		void				upGrade(void);
 		void				downGrade(void);
 		void				signForm(A_Form &form) const;
 		void				executeForm(A_Form const &form);
-		/* exceptions 			*/
+
+		/* exceptions													*/
 		class GradeTooHighException : public std::exception
 		{
 			public:
@@ -67,18 +74,22 @@ class Bureaucrat
 			public:
 				virtual const char*	what() const throw();
 		};
-		/* destructor 			*/
+
+		/* destructor													*/
 		virtual 			~Bureaucrat(void);
 
 	private :
 
-		/* copy constructor : private because const member attributes are not accessible */
-							Bureaucrat(const Bureaucrat& src);
-		/* operator overload : private because const member attributes are not accessible */
-		Bureaucrat			&operator=(const Bureaucrat& src);
-		/* attributes */
+		/* private attributes											*/
 		const std::string	_name;
 		int					_grade;
+
+		/* operator overload
+			private because const member attributes are not accessible	*/
+		Bureaucrat			&operator=(const Bureaucrat& src);
+
 };
 
 std::ostream	&operator<<(std::ostream& stream, const Bureaucrat& bureaucrat);
+
+# endif

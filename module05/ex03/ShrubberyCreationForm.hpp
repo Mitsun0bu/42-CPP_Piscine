@@ -6,12 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:19:01 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 16:14:56 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/10 12:10:37 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-# pragma once
+# ifndef SHRUBBERYCREATIONFORM_HPP
+# define SHRUBBERYCREATIONFORM_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -33,22 +33,30 @@ class Bureaucrat;
 class ShrubberyCreationForm : public A_Form
 {
 	public :
-		/* constructors 		*/
+
+		/* constructors																	*/
 								ShrubberyCreationForm(void);
 								ShrubberyCreationForm(const std::string target);
-		/* member functions */
+
+		/* copy constructor																*/
+								ShrubberyCreationForm(const ShrubberyCreationForm& src);
+
+		/* member functions																*/
 		virtual void			doFormJob(void) const;
-		/* destructor 			*/
+
+		/* destructor																	*/
 		virtual 				~ShrubberyCreationForm(void);
 
 	private :
 
-		/* copy constructor : private because const member attributes are not accessible */
-								ShrubberyCreationForm(const ShrubberyCreationForm& src);
-		/* operator overload : private because const member attributes are not accessible */
-		ShrubberyCreationForm	&operator=(const ShrubberyCreationForm& src);
-		/* attributes */
+		/* private attributes															*/
 		std::string				_target;
+
+		/* operator overload
+			private because const member attributes are not accessible					*/
+		ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& src);
 };
 
-std::ostream					&operator<<(std::ostream& stream, const ShrubberyCreationForm& ShrubberyCreationForm);
+std::ostream&					operator<<(std::ostream& stream, const ShrubberyCreationForm& ShrubberyCreationForm);
+
+# endif

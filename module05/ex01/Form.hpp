@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:35:31 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 11:24:37 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/10 11:25:30 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef FORM_HPP
+# define FORM_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -31,16 +32,21 @@ class Bureaucrat;
 class Form
 {
 	public :
-		/* constructors 		*/
+		/* constructors													*/
 							Form(void);
 							Form(const std::string name, const int sign_grade, const int exec_grade);
-		/* member functions */
+
+		/* copy constructor												*/
+							Form(const Form& src);
+
+		/* member functions												*/
 		const std::string	getName(void) const;
 		bool				getSignState(void) const;
 		int					getSignGrade(void) const;
 		int					getExecGrade(void) const;
 		void				beSigned(const Bureaucrat &bureaucrat);
-		/* exceptions 			*/
+
+		/* exceptions													*/
 		class GradeTooHighException : public std::exception
 		{
 			public:
@@ -51,16 +57,17 @@ class Form
 			public:
 				virtual const char*	what() const throw();
 		};
+
 		/* destructor 			*/
 		virtual 			~Form(void);
 
 	private :
 
-		/* copy constructor 	*/
-							Form(const Form& src); // private because const member attributes are not accessible
-		/* operator overload	*/
-		Form				&operator=(const Form& src); // private because const member attributes are not accessible
-		/* attributes */
+		/* operator overload
+			private because const member attributes are not accessible	*/
+		Form				&operator=(const Form& src);
+
+		/* private attributes													*/
 		const std::string	_name;
 		bool				_sign_state;
 		const int			_sign_grade;
@@ -68,3 +75,5 @@ class Form
 };
 
 std::ostream	&operator<<(std::ostream& stream, const Form& Form);
+
+# endif

@@ -6,15 +6,16 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:08:40 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 11:12:11 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/10 10:58:38 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Bureaucrat.hpp"
 
-void	print_state(Bureaucrat &Thomas, Bureaucrat &Lucas, Bureaucrat &Manu);
-void	allowed_grade_modif(Bureaucrat &Thomas);
-void	forbidden_grade_modif(Bureaucrat &Lucas, Bureaucrat &Manu);
+void	printState(Bureaucrat &B1, Bureaucrat &B2, Bureaucrat &B3, std::string state);
+void	allowedGradeModification(Bureaucrat &B);
+void	copyBureaucrat(Bureaucrat &B);
+void	forbiddenGradeModification(Bureaucrat &B1, Bureaucrat &B2);
 
 int	main(void)
 {
@@ -22,62 +23,84 @@ int	main(void)
 	Bureaucrat	Lucas("Lucas", 1);
 	Bureaucrat	Manu("Manu", 150);
 
-	std::cout << std::endl << GREEN << "[TEST - BUREAUCRAT INIT STATE]" << END << std::endl;
-	print_state(Thomas, Lucas, Manu);
+	printState(Thomas, Lucas, Manu, "init");
 
-	std::cout << GREEN << "[TEST - ALLOWED GRADE MODIFICATIONS]" << END << std::endl;
-	allowed_grade_modif(Thomas);
+	allowedGradeModification(Thomas);
 
-	std::cout << std::endl << GREEN << "[TEST - FORBIDDEN GRADE MODIFICATIONS]" << END << std::endl;
-	forbidden_grade_modif(Lucas, Manu);
+	forbiddenGradeModification(Lucas, Manu);
 
-	std::cout << std::endl << GREEN << "[TEST - BUREAUCRAT FINAL STATE]" << END << std::endl;
-	print_state(Thomas, Lucas, Manu);
+	copyBureaucrat(Lucas);
+
+	printState(Thomas, Lucas, Manu, "final");
 
 	return (0);
 }
 
-void	print_state(Bureaucrat &Thomas, Bureaucrat &Lucas, Bureaucrat &Manu)
+void	printState(Bureaucrat &B1, Bureaucrat &B2, Bureaucrat &B3, std::string state)
 {
-	std::cout << Thomas;
-	std::cout << Lucas;
-	std::cout << Manu << std::endl;
+	if (state == "init")
+		std::cout << std::endl << GREEN << "[TEST - BUREAUCRAT INIT STATE]" << END << std::endl;
+	else if (state == "final")
+		std::cout << std::endl << GREEN << "[TEST - BUREAUCRAT FINAL STATE]" << END << std::endl;
+
+	std::cout << B1;
+	std::cout << B2;
+	std::cout << B3 << std::endl;
+
 	return ;
 }
 
-void	allowed_grade_modif(Bureaucrat &Thomas)
+void	allowedGradeModification(Bureaucrat &B)
 {
+	std::cout << GREEN << "[TEST - ALLOWED GRADE MODIFICATIONS]" << END << std::endl;
+
 	try
 	{
-		Thomas.upGrade();
-		Thomas.upGrade();
-		Thomas.upGrade();
-		Thomas.downGrade();
+		B.upGrade();
+		B.upGrade();
+		B.upGrade();
+		B.downGrade();
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+
 	return ;
 }
 
-void	forbidden_grade_modif(Bureaucrat &Lucas, Bureaucrat &Manu)
+void	forbiddenGradeModification(Bureaucrat &B1, Bureaucrat &B2)
 {
+	std::cout << std::endl << GREEN << "[TEST - FORBIDDEN GRADE MODIFICATIONS]" << END << std::endl;
+
 	try
 	{
-		Lucas.upGrade();
+		B1.upGrade();
 	}
 	catch (std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+
 	try
 	{
-		Manu.downGrade();
+		B2.downGrade();
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+
+	return ;
+}
+
+void	copyBureaucrat(Bureaucrat &B)
+{
+	std::cout << std::endl << GREEN << "[TEST - BUREAUCRAT COPY]" << END << std::endl;
+
+	Bureaucrat	copyLucas(B);
+
+	std::cout << copyLucas;
+
 	return ;
 }
