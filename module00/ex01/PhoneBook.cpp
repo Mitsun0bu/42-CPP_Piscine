@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 17:18:27 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/08 15:32:03 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/17 15:10:08 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,15 @@ int		PhoneBook::_selectContact(void)
 			return (FAIL);
 		std::istringstream(buff) >> i_contact;
 
-		if (i_contact > this->_nContact)
+		std::string::const_iterator	iter = buff.begin();
+		while (iter != buff.end())
+		{
+			if (!std::isdigit(*iter))
+				break ;
+			iter ++;
+		}
+
+		if (i_contact > this->_nContact - 1 || iter != buff.end())
 		{
 			std::cout << std::endl;
 			std::cout << "This contact does not exist !" << std::endl;
