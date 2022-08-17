@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 20:00:05 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/01 17:04:46 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/08/08 18:55:32 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef MAIN_HPP
+# define MAIN_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -46,3 +47,5 @@
 
 void    argNumberError(void);
 void    argInvalidError(void);
+
+# endif

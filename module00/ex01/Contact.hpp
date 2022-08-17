@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:28:33 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:39:29 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/08 16:10:17 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef CONTACT_HPP
+# define CONTACT_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -32,19 +33,21 @@ class Contact
 		/* constructor 		*/
 					Contact(void);
 		/* member functions */
-		int			set_contact_info(int i);
-		void		get_contact_info(void);
-		std::string	get_contact_summary(void);
+		int			setContactInfo(int i);
+		void		getContactInfo(void) const;
+		std::string	getContactSummary(void) const;
 		/* destructor */
 					~Contact(void);
 
 	private:
 		/* private attributes */
 		int			_i;
-		std::string	_first_name;
-		std::string	_last_name;
-		std::string	_nickname;
-		std::string	_phone_number;
+		std::string	_firstName;
+		std::string	_lastName;
+		std::string	_nickName;
+		std::string	_phoneNumber;
 		std::string	_secret;
-		std::string	format_str(std::string str);
+		std::string	_formatStr(std::string str)const;
 };
+
+# endif

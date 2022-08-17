@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 18:17:07 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/09 15:34:42 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/10 10:24:47 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	main(void)
 	addNumbers(intSpan);
 	catchFullSpanException(intSpan);
 	testSpan(intSpan);
-
 
 	Span	singleSpan(1);
 
@@ -143,7 +142,7 @@ void	addSmallRange(Span& span)
 	testVector[4] = 109;
 	testVector[5] = 42;
 	testVector[6] = 24;
-	testVector[7] = 74;
+	testVector[7] = 2;
 	testVector[8] = 19;
 	testVector[9] = 9;
 

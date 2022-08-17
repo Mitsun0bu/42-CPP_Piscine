@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 15:59:21 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/03 17:52:57 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/08/08 10:28:26 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,23 +42,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-class Data
+struct Data
 {
-	public :
-
-		/* constructors 					*/
-                Data(void);
-                Data(Data& src);
-        Data&	operator=(Data const & src);
-
-		/* member functions					*/
-        int     getValue(void);
-
-        /* destructor 	   				    */
-		virtual ~Data(void);
-    
-    private :
-
-        /* private attributes */
-        int     _value;
+    int x;
+    int y;
 };
+

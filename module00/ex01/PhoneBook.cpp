@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 17:18:27 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:42:20 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/08 15:32:03 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 PhoneBook::PhoneBook(void)
 {
-	this->_n_contact = 0;
+	this->_nContact = 0;
 	return ;
 }
 
@@ -36,67 +36,77 @@ PhoneBook::PhoneBook(void)
 /*                                                                            */
 /* ************************************************************************** */
 
-int	PhoneBook::add_contact(int *i)
+int		PhoneBook::addContact(int *i)
 {
 	if (*i >= 8)
 		*i = 0;
-	if (this->contact[*i].set_contact_info(*i) == FAIL)
+
+	if (this->contact[*i].setContactInfo(*i) == FAIL)
 		return (FAIL);
-	if (this->_n_contact < 8)
-		this->_n_contact++;
+
+	if (this->_nContact < 8)
+		this->_nContact++;
+
 	return (SUCCESS);
 }
 
-int	PhoneBook::search_contact(void)
+int		PhoneBook::searchContact(void)
 {
-	if (_check_if_empty() == TRUE)
+	if (_checkIfEmpty() == TRUE)
 		return (SUCCESS);
 
-	this->_display_contacts();
+	this->_displayContacts();
 
-	if (_select_contact() == FAIL)
+	if (_selectContact() == FAIL)
 		return (FAIL);
+
 	return (SUCCESS);
 }
 
-int	PhoneBook::_check_if_empty(void)
+int		PhoneBook::_checkIfEmpty(void)
 {
-	if (this->_n_contact == 0)
+	if (this->_nContact == 0)
 	{
 		std::cout << std::endl;
 		std::cout << "You don't have any contact in memory !" << std::endl;
 		std::cout << std::endl;
 		return (TRUE);
 	}
+
 	return (FALSE);
 }
 
-void	PhoneBook::_display_contacts(void)
+void	PhoneBook::_displayContacts(void)
 {
 	int	i = 0;
 
-	while(i < this->_n_contact)
+	while(i < this->_nContact)
 	{
-		std::cout << this->contact[i].get_contact_summary() << std::endl;
+		std::cout << this->contact[i].getContactSummary() << std::endl;
 		i ++;
 	}
+
+	return ;
 }
 
-int	PhoneBook::_select_contact(void)
+int		PhoneBook::_selectContact(void)
 {
 	std::string	buff = "";
 	int			i_contact = -1;
 
-	while (i_contact < 0 || i_contact > this->_n_contact)
+	while (i_contact < 0 || i_contact > this->_nContact)
 	{
 		std::cout << std::endl;
+
 		std::cout << "Please enter the index of the contact"
 					 " whose details you want to see : ";
+
 		std::cin >> buff;
 		if (std::cin.eof() == TRUE)
 			return (FAIL);
 		std::istringstream(buff) >> i_contact;
-		if (i_contact > this->_n_contact)
+
+		if (i_contact > this->_nContact)
 		{
 			std::cout << std::endl;
 			std::cout << "This contact does not exist !" << std::endl;
@@ -104,10 +114,11 @@ int	PhoneBook::_select_contact(void)
 		}
 		else
 		{
-			this->contact[i_contact].get_contact_info();
+			this->contact[i_contact].getContactInfo();
 			break ;
 		}
 	}
+
 	return (SUCCESS);
 }
 

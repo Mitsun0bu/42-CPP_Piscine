@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Converter.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:57:29 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/03 17:52:18 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/08/08 18:55:08 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef CONVERTER_HPP
+# define CONVERTER_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -19,6 +20,7 @@
 /* ************************************************************************** */
 
 # include "main.hpp"
+# include <cmath>
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -62,7 +64,7 @@ class Converter
 		void		floatToInt();
 		void		printFloatValue();
 		void		floatToDouble();
-		
+
 		void		handleDouble();
 		void		argToDouble();
 		void		doubleToChar();
@@ -91,7 +93,7 @@ class Converter
 			public:
 				virtual const char*	what() const throw();
 		};
-		
+
 		/* destructor 													*/
 		virtual 	~Converter(void);
 
@@ -102,5 +104,7 @@ class Converter
 		char		_char;
 		int			_int;
 		float		_float;
-		double		_double; 
+		double		_double;
 };
+
+# endif

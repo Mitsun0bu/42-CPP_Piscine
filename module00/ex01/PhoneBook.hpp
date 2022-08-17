@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 18:28:37 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:40:30 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/08 16:11:03 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -34,15 +35,17 @@ class PhoneBook
 		/* public attributes */
 		Contact	contact[8];
 		/* member functions */
-		int		add_contact(int *i);
-		int		search_contact(void);
+		int		addContact(int *i);
+		int		searchContact(void);
 		/* destructor */
 				~PhoneBook(void);
 
 	private:
 		/* private attributes */
-		int		_n_contact;
-		int		_check_if_empty(void);
-		void	_display_contacts(void);
-		int		_select_contact(void);
+		int		_nContact;
+		int		_checkIfEmpty(void);
+		void	_displayContacts(void);
+		int		_selectContact(void);
 };
+
+# endif

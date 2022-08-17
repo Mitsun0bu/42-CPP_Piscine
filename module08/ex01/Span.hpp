@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 18:18:06 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/09 14:18:40 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/09 17:26:16 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ class Span
 						Span(void);
 						Span(unsigned int N);
 						Span(Span& src);
+
+		/* operator overload */
 		Span&			operator=(Span const & src);
 
 		/* member functions										*/
@@ -75,7 +77,7 @@ class Span
 		};
 
 		/* destructor 											*/
-		virtual	~Span(void);
+						~Span(void);
 
 	private :
 

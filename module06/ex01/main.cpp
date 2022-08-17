@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 18:32:52 by lle-briq          #+#    #+#             */
-/*   Updated: 2022/08/03 18:05:12 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/08/08 10:28:42 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@ int	main(void)
 	Data		*deserialized;
 
 	data = new Data();
+	data->x = 6;
+	data->y = 7;
+
 	std::cout << "Data address\t\t[ data ]\t\t\t:\t" << data << std::endl;
-	std::cout << "Date value\t\t[ data->getValue() ]\t\t:\t" << data->getValue() << std::endl;
+	std::cout << "Data values\t\t[ data->x, data->y]\t\t:\t"
+			  << data->x << ", " << data->y << std::endl;
 	std::cout << std::endl;
 
 	serialized = serialize(data);
@@ -29,7 +33,8 @@ int	main(void)
 
 	deserialized = deserialize(serialized);
 	std::cout << "deserialized\t\t[ deserialize(serialized) ]\t:\t" << deserialized << std::endl;
-	std::cout << "deserialized value\t[ deserialized->getValue() ]\t:\t" << deserialized->getValue() << std::endl;
+	std::cout << "Data values\t\t[ data->x, data->y]\t\t:\t"
+			  << data->x << ", " << data->y << std::endl;
 
 	delete data;
 	return (0);

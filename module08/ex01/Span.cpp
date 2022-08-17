@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 18:18:36 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/09 15:33:38 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/10 10:19:02 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ Span::Span(Span& src)
 Span&			Span::operator=(Span const & src)
 {
 	this->_intVector = src._intVector;
+	this->_spanSize = src._spanSize;
 	return (*this);
 }
 
@@ -72,8 +73,12 @@ void			Span::addNumber(int number)
 {
 	static unsigned int i = 0;
 
+	std::cout << this->_spanSize << std::endl;
+	std::cout << i << std::endl;
+
 	if (i < this->_spanSize)
 	{
+		std::cout << i << std::endl;
 		this->_intVector.at(i) = number;
 		i ++;
 	}
@@ -109,16 +114,20 @@ int				Span::shortestSpan()
 	int					diff = INT_MAX;
 	int					temp_diff = 0;
 	unsigned int		i = -1;
+	std::vector<int>	tempVector = this->_intVector;
+
 
 	if (this->_spanSize == 1)
 		throw InvalidSpanException();
 
+	sort(tempVector.begin(), tempVector.end(), std::greater<int>());
+
 	while(++i < this->_spanSize - 1)
 	{
-		if (this->_intVector.at(i) > this->_intVector.at(i + 1))
-			temp_diff = this->_intVector.at(i) - this->_intVector.at(i + 1);
+		if (tempVector.at(i) > tempVector.at(i + 1))
+			temp_diff = tempVector.at(i) - tempVector.at(i + 1);
 		else
-			temp_diff = this->_intVector.at(i + 1) - this->_intVector.at(i);
+			temp_diff = tempVector.at(i + 1) - tempVector.at(i);
 
 		if(temp_diff < diff)
 			diff = temp_diff;

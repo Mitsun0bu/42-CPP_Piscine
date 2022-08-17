@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 16:04:33 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/08 17:08:30 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/08 18:25:04 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,5 @@ void	easyfind(T batch, int elem)
 	else
 		throw NotFoundException();
 }
-
 
 # endif

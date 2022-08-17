@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 10:42:24 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/08 12:04:46 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/08 16:05:40 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,21 @@
 /* ************************************************************************** */
 
 template <typename T>
-class Array :
+class Array
 {
 	public:
 
 		/* constructors										*/
-				Array(void);
-				Array(unsigned int n);
-				Array(const Array& src);
+					Array(void);
+					Array(unsigned int n);
+					Array(const Array& src);
 
 		/* operator overload								*/
 		Array<T>&	operator=(const Array<T>& src);
-		Array<T>&	operator[](int i);
+		T&			operator[](int i);
 
 		/* member functions									*/
-		int		size(void) const;
+		int			size(void) const;
 
 		/* exceptions										*/
 		class	InvalidIndexException : public std::exception
@@ -73,7 +73,7 @@ class Array :
 
 		/* private attributes								*/
 		T*		_array;
-		int		_n;
+		int		_size;
 };
 
 /* ************************************************************************** */
@@ -96,7 +96,22 @@ Array<T>::Array(unsigned int n)
 {
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
 			<< "An array of " << n << " elements has been created !" << std::endl;
-	this->_array = new T[n];
+	this->_array = new T [n];
+	for (unsigned int i = 0; i < n; i++)
+		this->_array[i] = 0;
+	this->_size = n;
+	return ;
+}
+
+template <>
+Array<std::string>::Array(unsigned int n)
+{
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			<< "An array of " << n << " elements has been created !" << std::endl;
+	this->_array = new std::string [n];
+	for (unsigned int i = 0; i < n; i++)
+		this->_array[i] = "";
+	this->_size = n;
 	return ;
 }
 
@@ -115,19 +130,24 @@ Array<T>::Array(const Array& src)
 /*                                                                            */
 /* ************************************************************************** */
 
-Array<T>&		Array<T>::operator=(Array const &src)
+template <typename T>
+Array<T>&		Array<T>::operator=(Array<T> const &src)
 {
 	this->_array = new T[src.size()];
 
 	for (int i = 0; i < src.size(); i ++)
 		this->_array[i] = src._array[i];
-
+	this->_size = src.size();
 	return (*this);
 }
 
-Array<T>&		Array<T>::operator[] (int index)
+template <typename T>
+T&	Array<T>::operator[] (int index)
 {
-	return this->_array[index];
+	if (index >= 0 && index < this->size())
+		return (this->_array[index]);
+	else
+		throw InvalidIndexException();
 }
 
 /* ************************************************************************** */
@@ -139,12 +159,7 @@ Array<T>&		Array<T>::operator[] (int index)
 template <typename T>
 int			Array<T>::size(void) const
 {
-	int	i = 0;
-
-	while (this->_array[i])
-		i++;
-	this->_n = i;
-	return (this->_n);
+	return (this->_size);
 }
 
 /* ************************************************************************** */
@@ -173,6 +188,17 @@ Array<T>::~Array(void)
 			  << "An array has been destroyed !" << std::endl;
 
 	delete this->_array;
+
+	return ;
+}
+
+template <>
+Array<std::string>::~Array(void)
+{
+		std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << "An array has been destroyed !" << std::endl;
+
+	delete [] this->_array;
 
 	return ;
 }

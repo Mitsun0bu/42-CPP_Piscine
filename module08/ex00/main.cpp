@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 16:22:48 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/08 17:10:26 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/08 18:22:08 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "easyfind.hpp"
+# include "easyfind.tpp"
 
 
 int	main(void)
