@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 11:46:37 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/06 19:14:56 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/08/18 16:23:58 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef MAIN_HPP
+# define MAIN_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -32,19 +33,18 @@
 # define NO_INFILE 1
 # define EMPTY_ARG_ERR 2
 
-# define TO_DO 0
-# define DONE 1
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                              ~~~ PROTOTYPES ~~~                            */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*      srcs/print_error.cpp */ 
-void	print_error(int error_type);
+/*      srcs/print_error.cpp */
+void	printError(int errorType);
 
-/*      srcs/replace.cpp */ 
-void    replace(std::string infile_name, std::string old, std::string sub, std::string outfile_name);
-int     replacing_loop(std::ifstream &infile, std::string old, std::string sub, std::string outfile_name);
+/*      srcs/replace.cpp */
+void		myReplace(std::string infileName, std::string old, std::string sub, std::string outfileName);
+std::string	getText(std::ifstream &infile);
+int			replaceLoop(std::string text, std::string old, std::string sub, std::string outfileName);
 
+# endif

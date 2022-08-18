@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:25:53 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 11:07:51 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 11:41:58 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@
 
 Weapon::Weapon(void)
 {
-    std::cout << "An unknown type weapon has been created !"
+    std::cout << "A weapon of type * undefined * has been created !"
               << std::endl;
-    return;
+    return ;
 }
 
 Weapon::Weapon(std::string type): _type(type)
 {
-    std::cout << "A weapon of type "
-              << this->_type
-              << " has been created !"
-              << std::endl;
-    return;
+    std::cout << BLUE << "[CONSTRUCTOR] : " << END
+              << "A weapon of type * " << this->_type
+              << " * has been created !" << std::endl;
+
+    return ;
 }
 
 /* ************************************************************************** */
@@ -51,9 +51,15 @@ std::string const &Weapon::getType(void)
     return (this->_type);
 }
 
-void        Weapon::setType(std::string new_type)
+void        Weapon::setType(std::string newType, std::string humanName)
 {
-    this->_type = new_type;
+    std::cout << humanName
+              << " stops using his " << this->_type
+              << " and is now using a " << newType
+              << std::endl;
+
+    this->_type = newType;
+
     return ;
 }
 
@@ -65,6 +71,8 @@ void        Weapon::setType(std::string new_type)
 
 Weapon::~Weapon()
 {
-    std::cout << "A weapon has been destroyed !" << std::endl;
+    std::cout << PURPLE << "[DESTRUCTOR] : " << END
+              << "A weapon has been destroyed !" << std::endl;
+
     return;
 }

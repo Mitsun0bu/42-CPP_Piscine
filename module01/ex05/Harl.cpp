@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 09:39:06 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 11:15:04 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 16:49:23 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,20 @@
 
 Harl::Harl(void)
 {
-    this->_lvl_tab[0] = "DEBUG";
-	this->_lvl_tab[1] = "INFO";
-	this->_lvl_tab[2] = "WARNING";
-	this->_lvl_tab[3] = "ERROR";
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "Harl has been created !" << std::endl;
 
-	this->_func_ptr_tab[0] = &Harl::_debug;
-	this->_func_ptr_tab[1] = &Harl::_info;
-	this->_func_ptr_tab[2] = &Harl::_warning;
-	this->_func_ptr_tab[3] = &Harl::_error;
+	this->_lvlTable[0] = "DEBUG";
+	this->_lvlTable[1] = "INFO";
+	this->_lvlTable[2] = "WARNING";
+	this->_lvlTable[3] = "ERROR";
 
-    std::cout << "Harl has been created !" << std::endl;
-    return ;
+	this->_funcPtrTab[0] = &Harl::_debug;
+	this->_funcPtrTab[1] = &Harl::_info;
+	this->_funcPtrTab[2] = &Harl::_warning;
+	this->_funcPtrTab[3] = &Harl::_error;
+
+	return ;
 }
 
 /* ************************************************************************** */
@@ -46,48 +48,55 @@ Harl::Harl(void)
 /*                                                                            */
 /* ************************************************************************** */
 
-void    Harl::complain(std::string level)
+void	Harl::complain(std::string level)
 {
-
-    for (int i = 0; i < 4; i ++)
-    {
-        if (this->_lvl_tab[i] == level)
-        {
-            (void)(this->*_func_ptr_tab[i])();
-            return ;
-        }
-    }
-    return ;
+	for (int i = 0; i < 4; i ++)
+	{
+		if (this->_lvlTable[i] == level)
+		{
+			(void)(this->*_funcPtrTab[i])();
+			return ;
+		}
+	}
+	return ;
 }
 
-void    Harl::_debug(void)
+void	Harl::_debug(void)
 {
-    std::cout << "I love having extra bacon for my burger. "
-              << "I really do!" << std::endl;
-    return ;
+	std::cout << GREEN << "[DEBUG]\t\t" << END
+			  << "Harl 2.0 : "
+			  << "I hate debugging, it's boring..."
+			  << std::endl;
+	return ;
 }
 
-void    Harl::_info(void)
+void	Harl::_info(void)
 {
-    std::cout << "I cannot believe adding extra bacon costs more money. "
-              << "You didn’t put enough bacon in my burger! "
-              << "If you did, I wouldn’t be asking for more!" << std::endl;
-    return ;
+	std::cout << GREEN << "[INFO]\t\t" << END
+			  << "Harl 2.0 : "
+			  << "Come on, you don't need any infos, I am the one doing the job..."
+			  << std::endl;
+	return ;
 }
 
-void    Harl::_warning(void)
+void	Harl::_warning(void)
 {
-    std::cout << "I think I deserve to have some extra bacon for free. "
-              << "I’ve been coming for years "
-              << "whereas you started working here since last month." << std::endl;
-    return ;
+	std::cout << GREEN << "[WARNING]\t" << END
+			  << "Harl 2.0 : "
+			  << "I'm warning you, if you continue doing bullshit we'll both be in danger !"
+			  << std::endl;
+	return ;
 }
 
-void    Harl::_error(void)
+void	Harl::_error(void)
 {
-    std::cout << "This is unacceptable! "
-              << "I want to speak to the manager now." << std::endl;
-    return ;
+	std::cout << GREEN << "[ERROR]\t\t" << END
+			  << "Harl 2.0 : "
+			  << "I told you to stop your %@$#* !!! "
+			  << std::endl;
+	std::cout << "\t\t*** LOUD EXPLOSION NOISE ***" << std::endl;
+
+	return ;
 }
 
 /* ************************************************************************** */
@@ -98,6 +107,7 @@ void    Harl::_error(void)
 
 Harl::~Harl(void)
 {
-    std::cout << "Harl has been destroyed !" << std::endl;
-    return ;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << "Harl has been destroyed !" << std::endl;
+	return ;
 }

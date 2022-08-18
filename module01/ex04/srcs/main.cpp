@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 11:42:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/06 19:13:51 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/08/18 11:46:14 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 int main(int ac, char **av)
 {
     (void)av;
-    
+
     if (ac == 4)
     {
-        std::string 	infile_name(av[1]);
+        std::string 	infileName(av[1]);
         std::string 	old(av[2]);
         std::string     sub(av[3]);
-        std::string 	outfile_name = infile_name + ".replace";
+        std::string 	outfileName = infileName + ".replace";
 
-        if (infile_name.empty() || old.empty() || sub.empty())
-            print_error(EMPTY_ARG_ERR);
+        if (infileName.empty() || old.empty() || sub.empty())
+            printError(EMPTY_ARG_ERR);
 
-        replace(infile_name, old, sub, outfile_name);
+        myReplace(infileName, old, sub, outfileName);
 
         return 0;
     }
-    print_error(N_ARG_ERR);
+    printError(N_ARG_ERR);
     return (0);
 }

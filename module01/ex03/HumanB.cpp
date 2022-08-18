@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 19:05:36 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 11:04:44 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 11:33:26 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 
 HumanB::HumanB(std::string name): _name(name)
 {
-    std::cout << this->_name
-              << " is ready to battle !"
+    std::cout << BLUE << "[CONSTRUCTOR] : " << END
+              << this->_name << " is ready to battle !"
               << std::endl;
     return ;
 }
@@ -61,8 +61,8 @@ void    HumanB::attack(void) const
 
 HumanB::~HumanB(void)
 {
-    std::cout << this->_name
-              << " has left the battlefield !"
+    std::cout << PURPLE << "[DESTRUCTOR] : " << END
+              << this->_name << " has left the battlefield !"
               << std::endl;
     return ;
 }
