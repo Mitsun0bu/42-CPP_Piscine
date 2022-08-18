@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 09:58:55 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/04 13:23:00 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/08/18 09:47:44 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	Account::displayAccountsInfos(void)
 
 	std::cout << " accounts:" << _nbAccounts
 			  << ";total:" << _totalAmount
-			  << ";deposit:" << _totalNbDeposits
+			  << ";deposits:" << _totalNbDeposits
 			  << ";withdrawals:" << _totalNbWithdrawals << std::endl;
 	return ;
 }
@@ -92,6 +92,7 @@ void	Account::makeDeposit(int deposit)
 	this->_amount += deposit;
 	_totalAmount += deposit;
 	this->_nbDeposits ++;
+	this->_totalNbDeposits ++;
 
 	_displayTimestamp();
 
@@ -112,6 +113,7 @@ bool	Account::makeWithdrawal(int withdrawal)
 		this->_amount -= withdrawal;
 		_totalAmount -= withdrawal;
 		this->_nbWithdrawals ++;
+		this->_totalNbWithdrawals ++;
 
 		_displayTimestamp();
 
@@ -119,7 +121,7 @@ bool	Account::makeWithdrawal(int withdrawal)
 			<< ";p_amount:" << p_amount
 			<< ";withdrawal:" << withdrawal
 			<< ";amount:" << this->_amount
-			<< ";withdrawals:" << this->_nbWithdrawals << std::endl;
+			<< ";nb_withdrawals:" << this->_nbWithdrawals << std::endl;
 		return (true);
 	}
 	else
@@ -128,7 +130,7 @@ bool	Account::makeWithdrawal(int withdrawal)
 
 		std::cout << " index:" << this->_accountIndex
 			<< ";p_amount:" << p_amount
-			<< ";withdrawals:refused" << std::endl;
+			<< ";withdrawal:refused" << std::endl;
 		return (false);
 	}
 }
