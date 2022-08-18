@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 11:46:37 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/18 16:23:58 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 18:39:06 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define N_ARG_ERR 0
 # define NO_INFILE 1
 # define EMPTY_ARG_ERR 2
+# define EMPTY_FILE 3
 
 /* ************************************************************************** */
 /*                                                                            */

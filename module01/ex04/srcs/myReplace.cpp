@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:55:14 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/18 16:23:30 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 18:44:21 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,15 @@ void    myReplace(std::string infileName, std::string old, std::string sub, std:
     if (infile)
     {
         text = getText(infile);
-        if (replaceLoop(text, old, sub, outfileName))
-            std::cout << "Substitution done !" << std::endl;
-        else
+        if (text.length())
         {
-            std::cout << "No occurence of \"" << old
-                      << "\" in " << infileName << std::endl;
+            if (replaceLoop(text, old, sub, outfileName))
+                std::cout << "Substitution done !" << std::endl;
+            else
+            {
+                std::cout << "No occurence of \"" << old
+                        << "\" in " << infileName << std::endl;
+            }
         }
     }
     else
@@ -41,13 +44,19 @@ std::string getText(std::ifstream &infile)
     std::string word;
     std::string text;
 
-    while (infile >> word)
+    try
     {
-        word = word + ' ';
-        text += word;
+        while (infile >> word)
+        {
+            word = word + ' ';
+            text += word;
+        }
+        text.erase(text.size()-1,1);
     }
-    text.erase(text.size()-1,1);
-
+    catch (std::out_of_range &e)
+    {
+        printError(EMPTY_FILE);
+    }
     return (text);
 }
 

@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 09:26:39 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/18 10:30:59 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 18:30:47 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ Zombie::Zombie(void)
 
 void    Zombie::announce(void) const
 {
-    std::cout << "Zombie #" << this->_i
+    std::cout << "[Zombie #" << this->_i << "] " << this->_name
               << " : I want BraiiiiiiinnnzzzZ..." << std::endl;
 
     return ;

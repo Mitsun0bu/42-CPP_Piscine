@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:35:44 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/18 11:37:34 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 18:25:45 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int main()
     HumanB  character2("Usopp");
 
     std::cout << std::endl;
+    character2.attack();
     character2.setWeapon(weapon2);
     character2.attack();
     weapon2.setType("nunchaku", "Usopp");
