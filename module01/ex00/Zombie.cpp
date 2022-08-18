@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 09:26:39 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:50:21 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 17:02:02 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@
 
 Zombie::Zombie(std::string name) : _name(name)
 {
-    std::cout << this->_name << " has been created !" << std::endl;
-    return ;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << this->_name << " has been created !" << std::endl;
+
+	return ;
 }
 
 /* ************************************************************************** */
@@ -36,10 +38,10 @@ Zombie::Zombie(std::string name) : _name(name)
 /*                                                                            */
 /* ************************************************************************** */
 
-void    Zombie::announce(void) const
+void	Zombie::announce(void) const
 {
-    std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-    return ;
+	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	return ;
 }
 
 /* ************************************************************************** */
@@ -50,6 +52,7 @@ void    Zombie::announce(void) const
 
 Zombie::~Zombie(void)
 {
-    std::cout << this->_name << " has been killed !" << std::endl;
-    return ;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << this->_name << " has been killed !" << std::endl;
+	return ;
 }
