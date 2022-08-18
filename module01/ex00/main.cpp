@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/04 09:26:12 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/04 12:54:53 by llethuil         ###   ########.fr       */
+/*   Created: 2022/08/18 09:53:19 by llethuil          #+#    #+#             */
+/*   Updated: 2022/08/18 10:11:11 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,24 @@
 
 # include "Zombie.hpp"
 
-int main(void)
+int	main(void)
 {
-    srand (time(NULL));
-    
-    std::string name_list[4] = { "Rick", "Darryl", "Sarah", "Michonne" };
-    std::string name_1;
-    std::string name_2;
-    
-    name_1 = name_list[rand() % 4] + " from Stack City";
-    name_2 = name_list[rand() % 4] + " from Heap City";
+	srand (time(NULL));
 
-    randomChump(name_1);
+	std::string	nameList[4] = { "Rick", "Darryl", "Sarah", "Michonne" };
+	std::string	name1;
+	std::string	name2;
 
-    Zombie *heap_zombie = newZombie(name_2);
-    heap_zombie->announce();
-    delete heap_zombie;
-    
-    return (0);
+	name1 = nameList[rand() % 4] + " from Stack City";
+	name2 = nameList[rand() % 4] + " from Heap City";
+
+	/* Create a Zombie on the stack and make it announce himself */
+	randomChump(name1);
+
+	/* The newZombie() function allocate a Zombie on the heap and return it */
+	Zombie	*heapZombie = newZombie(name2);
+	heapZombie->announce();
+	delete heapZombie;
+
+	return (0);
 }

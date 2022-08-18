@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 09:26:39 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:53:39 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:30:59 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ Zombie::Zombie(void)
     static int  i = 0;
 
     this->_i = i;
-    std::cout << "Zombie #"
-              << this->_i
-              << " from the MegaHorde"
-              << this->_name
+
+    std::cout << BLUE << "[CONSTRUCTOR] : " << END
+              << "Zombie #" << this->_i
+              << " from the MegaHorde" << this->_name
               << " has been created !" << std::endl;
+
     i ++;
+
     return ;
 }
 
@@ -46,15 +48,16 @@ Zombie::Zombie(void)
 
 void    Zombie::announce(void) const
 {
-    std::cout << "Zombie #"
-              << this->_i
+    std::cout << "Zombie #" << this->_i
               << " : I want BraiiiiiiinnnzzzZ..." << std::endl;
+
     return ;
 }
 
 void    Zombie::set_name(std::string name)
 {
     this->_name = name;
+
     return ;
 }
 
@@ -66,8 +69,9 @@ void    Zombie::set_name(std::string name)
 
 Zombie::~Zombie(void)
 {
-    std::cout << "Zombie #"
-              << this->_i
+    std::cout << PURPLE << "[DESTRUCTOR] : " << END
+              << "Zombie #" << this->_i
               << " has been killed !" << std::endl;
+
     return ;
 }

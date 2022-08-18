@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 09:26:30 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/04 12:31:36 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/08/18 10:03:18 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Zombie  *newZombie(std::string name)
 {
-    Zombie  *heap_zombie = new Zombie(name);
+    Zombie* heapZombie = new Zombie(name);
 
-    return (heap_zombie);
+    return (heapZombie);
 }

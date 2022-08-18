@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 09:26:25 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/04 12:27:57 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/08/18 10:04:42 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void    randomChump(std::string name)
 {
-    Zombie  stack_zombie = Zombie(name);
+    Zombie  stackZombie = Zombie(name);
 
-    stack_zombie.announce();
+    stackZombie.announce();
 
     return ;
 }

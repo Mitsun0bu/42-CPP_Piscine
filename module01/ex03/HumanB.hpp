@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 19:05:40 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:58:10 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:57:11 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef HUMANB_HPP
+# define HUMANB_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -31,16 +32,22 @@
 class   HumanB
 {
     public:
-        /* constructor          */
+
+        /* constructor                          */
                     HumanB(std::string name);
-        /* member function      */
-        void        setWeapon(Weapon &weapon);
+
+        /* member function                      */
+        void        setWeapon(Weapon& weapon);
         void        attack(void) const;
-        /* destructor           */
+
+        /* destructor                           */
                     ~HumanB(void);
 
     private:
-        /* private attribute */
+
+        /* private attribute                    */
         std::string _name;
-        Weapon      *_weapon;
+        Weapon*     _weapon;
 };
+
+# endif

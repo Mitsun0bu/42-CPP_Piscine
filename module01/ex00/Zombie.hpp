@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 09:26:41 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:58:32 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/18 10:54:23 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+# ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -30,16 +31,19 @@
 
 class Zombie
 {
-    public:
+        public:
 
         /* constructor          */
                         Zombie(std::string name);
+
         /* member function      */
         void            announce(void) const;
+
         /* destructor           */
                         ~Zombie(void);
 
-    private:
+        private:
+
         /* private attribute */
         std::string     _name;
 };
@@ -52,3 +56,5 @@ class Zombie
 
 Zombie      *newZombie(std::string name);
 void        randomChump(std::string name);
+
+# endif
