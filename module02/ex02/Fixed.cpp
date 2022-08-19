@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:55:37 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 18:47:20 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/19 11:51:13 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,41 +18,58 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-Fixed::Fixed(void)
+Fixed::Fixed(void) : _value(0)
 {
-    this->_value = 0;
-    return ;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "Default constructor called." << std::endl;
+
+	return ;
 }
 
-Fixed::Fixed(Fixed const &src)
+Fixed::Fixed(const int to_convert)
 {
-    *this = src;
-    return ;
+		std::cout << BLUE << "[CONSTRUCTOR] : " << END
+				  << "Int constructor called." << std::endl;
+
+	/*
+		To convert an int into fixed value:
+
+		Do the following :  fixed = int^(fract_len)
+		here			 :  fixed = int^(fract_len) = int^(8) = int << 8
+	*/
+	this->_value = to_convert << this->_frac_len;
+
+	return ;
 }
 
-Fixed::Fixed(int const to_convert)
+Fixed::Fixed(const float to_convert)
 {
-    /*
-        To convert an int into fixed value:
+			std::cout << BLUE << "[CONSTRUCTOR] : " << END
+					  << "Float constructor called." << std::endl;
 
-        Calculate fixed = int^fract_len
-        here, int^fract_len = int^8 = int << 8
-    */
-    this->_value = to_convert << this->_frac_len;
-    return ;
+	/*
+		To convert a float into fixe value :
+
+		Step 1:
+			Do the following : fixed = float * 2^(fract_len)
+			here			 : fixed = 2^(fract_len) = 2^8 = 1 << 8 = 1 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2
+			(for every 1 on the right, you can multiply the value on the left by 2)
+		Step 2:
+			Round the value to the nearest integer
+	*/
+	this->_value = roundf(to_convert * (1 << this->_frac_len));
+
+	return ;
 }
 
-Fixed::Fixed(float const to_convert)
+Fixed::Fixed(const Fixed& src)
 {
-    /*
-        To convert a float into fixe value :
+	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
+			  << "Copy constructor called." << std::endl;
 
-        Step 1: Calculate fixed = float * 2^fract_len
-                here, 2^fract_len = 2^8 = 1 << 8
-        Step 2: Round the value to the nearest integer
-    */
-    this->_value = roundf(to_convert * (1 << this->_frac_len));
-    return ;
+	*this = src;
+
+	return ;
 }
 
 /* ************************************************************************** */
@@ -61,120 +78,132 @@ Fixed::Fixed(float const to_convert)
 /*                                                                            */
 /* ************************************************************************** */
 
-Fixed   &Fixed::operator=(Fixed const &src)
+Fixed	&Fixed::operator=(Fixed const &src)
 {
-    this->_value = src.getRawBits();
-    return (*this);
+	std::cout << YELLOW << "[ASSIGNMENT OPERATOR] : " << END
+			  << "Assignation operator called." << std::endl;
+
+	this->_value = src.getRawBits();
+
+	return (*this);
 }
 
-Fixed   &Fixed::operator++(void)
+Fixed	&Fixed::operator++(void)
 {
-    this->_value++;
-    return (*this);
+	this->_value++;
+
+	return (*this);
 }
 
-Fixed   Fixed::operator++(int inc)
+Fixed	Fixed::operator++(int inc)
 {
-    Fixed   temp = *this;
-    (void)inc;
+	Fixed	temp = *this;
+	(void)inc;
 
-    ++(*this);
-    return (temp);
+	++(*this);
+
+	return (temp);
 }
 
-Fixed   &Fixed::operator--(void)
+Fixed	&Fixed::operator--(void)
 {
-    this->_value--;
-    return (*this);
+	this->_value--;
+
+	return (*this);
 }
 
-Fixed   Fixed::operator--(int inc)
+Fixed	Fixed::operator--(int inc)
 {
-    Fixed   temp = *this;
-    (void)inc;
+	Fixed	temp = *this;
+	(void)inc;
 
-    --(*this);
-    return (temp);
+	--(*this);
+
+	return (temp);
 }
 
-Fixed   Fixed::operator+(Fixed const &to_add) const
+Fixed	Fixed::operator+(Fixed const &to_add) const
 {
-    float   addition;
+	float	addition;
 
-    addition = this->toFloat() + to_add.toFloat();
-    return (Fixed(addition));
+	addition = this->toFloat() + to_add.toFloat();
+
+	return (Fixed(addition));
 }
 
-Fixed   Fixed::operator-(Fixed const &to_substract) const
+Fixed	Fixed::operator-(Fixed const &to_substract) const
 {
-    float   subtraction;
+	float	subtraction;
 
-    subtraction = this->toFloat() - to_substract.toFloat();
-    return (Fixed(subtraction));
+	subtraction = this->toFloat() - to_substract.toFloat();
+
+	return (Fixed(subtraction));
 }
 
-Fixed   Fixed::operator*(Fixed const &to_multiply) const
+Fixed	Fixed::operator*(Fixed const &to_multiply) const
 {
-    float   multiplication;
+	float	multiplication;
 
-    multiplication = this->toFloat() * to_multiply.toFloat();
-    return (Fixed(multiplication));
+	multiplication = this->toFloat() * to_multiply.toFloat();
+
+	return (Fixed(multiplication));
 }
 
-Fixed   Fixed::operator/(Fixed const &to_divide) const
+Fixed	Fixed::operator/(Fixed const &to_divide) const
 {
-    float   division;
+	float	division;
 
-    division = this->toFloat() * to_divide.toFloat();
-    return (Fixed(division));
+	division = this->toFloat() * to_divide.toFloat();
+
+	return (Fixed(division));
 }
 
-bool    Fixed::operator>(Fixed const &to_compare) const
+bool	Fixed::operator>(Fixed const &to_compare) const
 {
-    if (this->_value > to_compare.getRawBits())
-        return true;
-    else
-        return false;
+	if (this->_value > to_compare.getRawBits())
+		return true;
+	else
+		return false;
 }
 
-bool    Fixed::operator<(Fixed const &to_compare) const
+bool	Fixed::operator<(Fixed const &to_compare) const
 {
-    if (this->_value < to_compare.getRawBits())
-        return true;
-    else
-        return false;
+	if (this->_value < to_compare.getRawBits())
+		return true;
+	else
+		return false;
 }
 
-bool    Fixed::operator>=(Fixed const &to_compare) const
+bool	Fixed::operator>=(Fixed const &to_compare) const
 {
-    if (this->_value >= to_compare.getRawBits())
-        return true;
-    else
-        return false;
+	if (this->_value >= to_compare.getRawBits())
+		return true;
+	else
+		return false;
 }
 
-bool    Fixed::operator<=(Fixed const &to_compare) const
+bool	Fixed::operator<=(Fixed const &to_compare) const
 {
-    if (this->_value <= to_compare.getRawBits())
-        return true;
-    else
-        return false;
+	if (this->_value <= to_compare.getRawBits())
+		return true;
+	else
+		return false;
 }
 
-bool    Fixed::operator==(Fixed const &to_compare) const
+bool	Fixed::operator==(Fixed const &to_compare) const
 {
-    if (this->_value == to_compare.getRawBits())
-        return true;
-    else
-        return false;
+	if (this->_value == to_compare.getRawBits())
+		return true;
+	else
+		return false;
 }
 
-bool    Fixed::operator!=(Fixed const &to_compare) const
+bool	Fixed::operator!=(Fixed const &to_compare) const
 {
-    if (this->_value != to_compare.getRawBits())
-        return true;
-    else
-        return false;
+	if (this->_value != to_compare.getRawBits())
+		return true;
+	else
+		return false;
 }
 
 /* ************************************************************************** */
@@ -183,63 +212,66 @@ bool    Fixed::operator!=(Fixed const &to_compare) const
 /*                                                                            */
 /* ************************************************************************** */
 
-int     Fixed::getRawBits(void) const
+int	Fixed::getRawBits(void) const
 {
-    return (this->_value);
+	return (this->_value);
 }
 
-void    Fixed::setRawBits(int const raw)
+void	Fixed::setRawBits(int const raw)
 {
-    this->_value = raw;
-    return ;
+	this->_value = raw;
+
+	return ;
 }
 
-float   Fixed::toFloat(void) const
+float	Fixed::toFloat(void) const
 {
-    float result;
+	float result;
 
-    result = (float)this->_value / (1 << this->_frac_len);
-    return (result);
+	result = (float)this->_value / (1 << this->_frac_len);
+
+	return (result);
 }
 
-int     Fixed::toInt(void) const
+int	Fixed::toInt(void) const
 {
-    int result;
+	int result;
 
-    result = (int)this->_value >> this->_frac_len;
-    return (result);
+	result = (int)this->_value >> this->_frac_len;
+
+	return (result);
 }
 
-Fixed   &Fixed::min(Fixed &n_1, Fixed &n_2)
+Fixed&	Fixed::min(Fixed& n_1, Fixed& n_2)
 {
-    if (n_1 < n_2)
-        return (n_1);
-    else
-        return (n_2);
+	if (n_1 < n_2)
+	   return (n_1);
+	else
+	   return (n_2);
 }
 
-Fixed const &Fixed::min(Fixed const &n_1, Fixed const &n_2)
+const Fixed&	Fixed::min(const Fixed& n_1, const Fixed& n_2)
 {
-    if (n_1 < n_2)
-        return (n_1);
-    else
-        return (n_2);
+	if (n_1 < n_2)
+	   return (n_1);
+	else
+	   return (n_2);
 }
 
-Fixed   &Fixed::max(Fixed &n_1, Fixed &n_2)
+Fixed	&Fixed::max(Fixed& n_1, Fixed& n_2)
 {
-    if (n_1 > n_2)
-        return (n_1);
-    else
-        return (n_2);
+	if (n_1 > n_2)
+	   return (n_1);
+	else
+	   return (n_2);
 }
 
-Fixed const &Fixed::max(Fixed const &n_1, Fixed const &n_2)
+const Fixed&	Fixed::max(const Fixed& n_1, const Fixed& n_2)
 {
-    if (n_1 > n_2)
-        return (n_1);
-    else
-        return (n_2);
+	if (n_1 > n_2)
+		return (n_1);
+	else
+		return (n_2);
 }
 
 /* ************************************************************************** */
@@ -250,7 +282,10 @@ Fixed const &Fixed::max(Fixed const &n_1, Fixed const &n_2)
 
 Fixed::~Fixed(void)
 {
-    return ;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << "Destructor called." << std::endl;
+
+	return ;
 }
 
 /* ************************************************************************** */
@@ -261,6 +296,7 @@ Fixed::~Fixed(void)
 
 std::ostream    &operator<<(std::ostream &stream, Fixed const &fix)
 {
-    stream << fix.toFloat();
-    return stream;
+	stream << fix.toFloat();
+
+	return (stream);
 }

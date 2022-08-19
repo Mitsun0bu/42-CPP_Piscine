@@ -6,98 +6,147 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:55:37 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 18:47:20 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/19 12:02:14 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Fixed.hpp"
 
-Fixed::Fixed(void)
+/* ************************************************************************** */
+/*                                                                            */
+/*                           ~~~ CONSTRUCTORS ~~~                             */
+/*                                                                            */
+/* ************************************************************************** */
+
+Fixed::Fixed(void) : _value(0)
 {
-    std::cout << "Default constructor called." << std::endl;
-    this->_value = 0;
-    return ;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "Default constructor called." << std::endl;
+
+	return ;
 }
 
-Fixed::Fixed(Fixed const &src)
+Fixed::Fixed(const int to_convert)
 {
-    std::cout << "Copy constructor called." << std::endl;
-    *this = src;
-    return ;
+		std::cout << BLUE << "[CONSTRUCTOR] : " << END
+				  << "Int constructor called." << std::endl;
+
+	/*
+		To convert an int into fixed value:
+
+		Do the following :  fixed = int^(fract_len)
+		here			 :  fixed = int^(fract_len) = int^(8) = int << 8
+	*/
+	this->_value = to_convert << this->_frac_len;
+
+	return ;
 }
 
-Fixed::Fixed(int const to_convert)
+Fixed::Fixed(const float to_convert)
 {
-    std::cout << "Int constructor called." << std::endl;
-    /*
-        To convert an int into fixed value:
+			std::cout << BLUE << "[CONSTRUCTOR] : " << END
+					  << "Float constructor called." << std::endl;
 
-        Calculate fixed = int^fract_len
-        here, int^fract_len = int^8 = int << 8
-    */
-    this->_value = to_convert << this->_frac_len;
-    return ;
+	/*
+		To convert a float into fixe value :
+
+		Step 1:
+			Do the following : fixed = float * 2^(fract_len)
+			here			 : fixed = 2^(fract_len) = 2^8 = 1 << 8 = 1 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2
+			(for every 1 on the right, you can multiply the value on the left by 2)
+		Step 2:
+			Round the value to the nearest integer
+	*/
+	this->_value = roundf(to_convert * (1 << this->_frac_len));
+
+	return ;
 }
 
-Fixed::Fixed(float const to_convert)
+Fixed::Fixed(const Fixed& src)
 {
-    std::cout << "Float constructor called." << std::endl;
+	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
+			  << "Copy constructor called." << std::endl;
 
-    /*
-        To convert a float into fixe value :
+	*this = src;
 
-        Step 1: Calculate fixed = float * 2^fract_len
-                here, 2^fract_len = 2^8 = 1 << 8 = 1 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2
-                (for every 1 on the right, you can multiply the value on the left by 2)
-        Step 2: Round the value to the nearest integer
-    */
-    this->_value = roundf(to_convert * (1 << this->_frac_len));
-    return ;
+	return ;
 }
 
-Fixed   &Fixed::operator=(Fixed const & src)
+/* ************************************************************************** */
+/*                                                                            */
+/*                          ~~~ OPERATOR OVERLOAD ~~~                         */
+/*                                                                            */
+/* ************************************************************************** */
+
+Fixed   &Fixed::operator=(const Fixed& src)
 {
-    std::cout << "Assignation operator called." << std::endl;
-    this->_value = src.getRawBits();
-    return (*this);
+	std::cout << YELLOW << "[ASSIGNMENT OPERATOR] : " << END
+			  << "Assignation operator called." << std::endl;
+
+	this->_value = src.getRawBits();
+
+	return (*this);
 }
 
-int     Fixed::getRawBits(void) const
+/* ************************************************************************** */
+/*                                                                            */
+/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	Fixed::getRawBits(void) const
 {
-    std::cout << "getRawBits member function called." << std::endl;
-    return (this->_value);
+	return (this->_value);
 }
 
-void    Fixed::setRawBits(int const raw)
+void	Fixed::setRawBits(const int raw)
 {
-    this->_value = raw;
-    return ;
+	this->_value = raw;
+
+	return ;
 }
 
-float   Fixed::toFloat(void) const
+float	Fixed::toFloat(void) const
 {
-    float result;
+	float result;
 
-    result = (float)this->_value / (1 << this->_frac_len);
-    return (result);
+	result = (float)this->_value / (1 << this->_frac_len);
+
+	return (result);
 }
 
-int     Fixed::toInt(void) const
+int	Fixed::toInt(void) const
 {
-    int result;
+	int result;
 
-    result = (int)this->_value >> this->_frac_len;
-    return (result);
+	result = (int)this->_value >> this->_frac_len;
+
+	return (result);
 }
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                           ~~~ DESTRUCTOR ~~~                               */
+/*                                                                            */
+/* ************************************************************************** */
 
 Fixed::~Fixed(void)
 {
-    std::cout << "Destructor called." << std::endl;
-    return ;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << "Destructor called." << std::endl;
+
+	return ;
 }
 
-std::ostream    &operator<<(std::ostream &stream, Fixed const &fix)
+/* ************************************************************************** */
+/*                                                                            */
+/*                      ~~~ NON-MEMBER FUNCTIONS ~~~                          */
+/*                                                                            */
+/* ************************************************************************** */
+
+std::ostream	&operator<<(std::ostream &stream, const Fixed& fix)
 {
-    stream << fix.toFloat();
-    return stream;
+	stream << fix.toFloat();
+
+	return (stream);
 }
