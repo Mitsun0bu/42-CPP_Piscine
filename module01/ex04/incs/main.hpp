@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 11:46:37 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/18 18:39:06 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/19 09:44:32 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*      srcs/print_error.cpp */
+/*	srcs/print_error.cpp																				*/
 void	printError(int errorType);
 
-/*      srcs/replace.cpp */
+/*	srcs/replace.cpp																					*/
 void		myReplace(std::string infileName, std::string old, std::string sub, std::string outfileName);
 std::string	getText(std::ifstream &infile);
 int			replaceLoop(std::string text, std::string old, std::string sub, std::string outfileName);
