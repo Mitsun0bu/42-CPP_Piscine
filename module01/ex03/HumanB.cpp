@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 19:05:36 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/18 18:28:05 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/19 09:40:29 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 
 HumanB::HumanB(std::string name): _name(name)
 {
-    std::cout << BLUE << "[CONSTRUCTOR] : " << END
-              << this->_name << " is ready to battle !"
-              << std::endl;
-    return ;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << this->_name << " is ready to battle !"
+			  << std::endl;
+	return ;
 }
 
 /* ************************************************************************** */
@@ -38,25 +38,25 @@ HumanB::HumanB(std::string name): _name(name)
 /*                                                                            */
 /* ************************************************************************** */
 
-void    HumanB::setWeapon(Weapon &weapon)
+void	HumanB::setWeapon(Weapon &weapon)
 {
-    this->_weapon = &weapon;
-    return ;
+	this->_weapon = &weapon;
+	return ;
 }
 
-void    HumanB::attack(void) const
+void	HumanB::attack(void) const
 {
-    if (this->_weapon != NULL)
-    {
-        std::cout << this->_name
-                  << " attacks with his "
-                  << this->_weapon->getType()
-                  << std::endl;
-    }
-    else
-        std::cout << this->_name << " has no weapon ! " << std::endl;
+	if (this->_weapon != NULL)
+	{
+		std::cout << this->_name
+				  << " attacks with his "
+				  << this->_weapon->getType()
+				  << std::endl;
+	}
+	else
+		std::cout << this->_name << " has no weapon ! " << std::endl;
 
-    return ;
+	return ;
 }
 
 /* ************************************************************************** */
@@ -67,8 +67,8 @@ void    HumanB::attack(void) const
 
 HumanB::~HumanB(void)
 {
-    std::cout << PURPLE << "[DESTRUCTOR] : " << END
-              << this->_name << " has left the battlefield !"
-              << std::endl;
-    return ;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << this->_name << " has left the battlefield !"
+			  << std::endl;
+	return ;
 }

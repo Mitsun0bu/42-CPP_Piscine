@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:01:28 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/18 10:46:27 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/19 09:38:53 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,40 +33,40 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(void)
+int	main(void)
 {
-    std::string str = "HI THIS IS BRAIN";
-    std::string *stringPTR = &str;
-    std::string &stringREF = str;
+	std::string str = "HI THIS IS BRAIN";
+	std::string *stringPTR = &str;
+	std::string &stringREF = str;
 
 
-    std::cout << GREEN
-              << "[TEST] - DISPLAYING THE ADRESS OF THE STRING USING :"
-              << END << std::endl;
+	std::cout << GREEN
+			  << "[TEST] - DISPLAYING THE ADRESS OF THE STRING USING :"
+			  << END << std::endl;
 
-    std::cout << "\t- The string variable\t\t:\t"
-              << &str << std::endl;
+	std::cout << "\t- The string variable\t\t:\t"
+			  << &str << std::endl;
 
-    std::cout << "\t- The pointer to the string\t:\t"
-              << stringPTR << std::endl;
+	std::cout << "\t- The pointer to the string\t:\t"
+			  << stringPTR << std::endl;
 
-    std::cout << "\t- The reference to the string\t:\t"
-              << &stringREF << std::endl;
+	std::cout << "\t- The reference to the string\t:\t"
+			  << &stringREF << std::endl;
 
-    std::cout << std::endl;
+	std::cout << std::endl;
 
-    std::cout << GREEN
-              << "[TEST] - DISPLAYING THE STRING USING :"
-              << END << std::endl;
+	std::cout << GREEN
+			  << "[TEST] - DISPLAYING THE STRING USING :"
+			  << END << std::endl;
 
-    std::cout << "\t- The string variable\t\t:\t"
-              << str << std::endl;
+	std::cout << "\t- The string variable\t\t:\t"
+			  << str << std::endl;
 
-    std::cout << "\t- The pointer to the string\t:\t"
-              << *stringPTR << std::endl;
+	std::cout << "\t- The pointer to the string\t:\t"
+			  << *stringPTR << std::endl;
 
-    std::cout << "\t- The reference to the string\t:\t"
-              << stringREF << std::endl;
+	std::cout << "\t- The reference to the string\t:\t"
+			  << stringREF << std::endl;
 
-    return (0);
+	return (0);
 }

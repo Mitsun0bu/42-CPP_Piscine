@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:26:24 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/18 11:42:10 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/22 09:38:13 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,23 @@
 
 class   Weapon
 {
-    public:
+	public:
 
-        /* constructors          */
-                            Weapon(void);
-                            Weapon(std::string type);
+		/* constructors															*/
+							Weapon(void);
+							Weapon(std::string type);
 
-        /* member functions      */
-        std::string const & getType(void);
-        void                setType(std::string newType, std::string humanName);
+		/* member functions														*/
+		std::string const &	getType(void);
+		void				setType(std::string newType);
 
-        /* destructor           */
-                            ~Weapon(void);
+		/* destructor															*/
+							~Weapon(void);
 
-    private:
+	private:
 
-        /* private attribute */
-        std::string         _type;
+		/* private attribute													*/
+		std::string			_type;
 };
 
 # endif

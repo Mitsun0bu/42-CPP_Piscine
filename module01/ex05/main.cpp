@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 09:49:38 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/18 16:37:58 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/19 09:46:36 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int main(void)
 {
-    Harl    Harl_2_0;
+	Harl	Harl_2_0;
 
-    /* Test existing levels */
+	/* Test existing levels */
 	std::cout << std::endl;
 	Harl_2_0.complain("DEBUG");
 	Harl_2_0.complain("INFO");
@@ -27,5 +27,5 @@ int main(void)
 	/* Test with a non-existing level */
 	Harl_2_0.complain("TROLL");
 
-    return (0);
+	return (0);
 }

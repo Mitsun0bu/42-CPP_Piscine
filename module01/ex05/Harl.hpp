@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 09:35:40 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/18 16:34:02 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/19 09:50:54 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,28 +42,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-class   Harl
+class	Harl
 {
-    public:
+	public:
 
-        /* constructor                          */
-                    Harl(void);
+		/* constructor						  */
+					Harl(void);
 
-        /* member function                      */
-        void        complain(std::string level);
+		/* member function					  */
+		void		complain(std::string level);
 
-        /* destructor                           */
-                    ~Harl(void);
+		/* destructor						   */
+					~Harl(void);
 
-    private:
+	private:
 
-        /* private attributes */
-        void        _debug(void);
-        void        _info(void);
-        void        _warning(void);
-        void        _error(void);
-        std::string _lvlTable[4];
-		void        (Harl::*_funcPtrTab[4])(void);
+		/* private attributes */
+		void		_debug(void);
+		void		_info(void);
+		void		_warning(void);
+		void		_error(void);
+		std::string	_lvlTable[4];
+		void		(Harl::*_funcPtrTab[4])(void);
 };
 
 # endif

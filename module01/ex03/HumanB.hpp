@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 19:05:40 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/18 11:31:32 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/19 09:42:04 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-class   HumanB
+class	HumanB
 {
-    public:
+	public:
 
-        /* constructor                          */
-                    HumanB(std::string name);
+	/* constructor								*/
+						HumanB(std::string name);
 
-        /* member function                      */
-        void        setWeapon(Weapon& weapon);
-        void        attack(void) const;
+	/* member function							*/
+	void				setWeapon(Weapon& weapon);
+	void				attack(void) const;
 
-        /* destructor                           */
-                    ~HumanB(void);
+	/* destructor								*/
+						~HumanB(void);
 
-    private:
+	 private:
 
-        /* private attribute                    */
-        std::string _name;
-        Weapon*     _weapon;
+	/* private attribute						*/
+	std::string			_name;
+	Weapon*				_weapon;
 };
 
 # endif

@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 09:26:41 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/18 10:54:12 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/19 09:38:28 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-class Zombie
+class	Zombie
 {
-     public:
+	public:
 
-        /* constructor		*/
-                        Zombie(void);
+		/* constructor							*/
+					Zombie(void);
 
-        /* member functions */
-        void            announce(void) const;
-        void            set_name(std::string);
+		/* member functions						*/
+		void		announce(void) const;
+		void		set_name(std::string);
 
-        /* destructor       */
-                        ~Zombie(void);
+		/* destructor							*/
+					~Zombie(void);
 
-    private:
+	private:
 
-        /* private attributes */
-        int             _i;
-        std::string     _name;
+		/* private attributes					*/
+		int			 _i;
+		std::string	 _name;
 };
 
 /* ************************************************************************** */

@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 11:55:14 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/19 09:46:03 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/22 13:35:10 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ void	myReplace(std::string infileName, std::string old, std::string sub, std::st
 
 std::string getText(std::ifstream &infile)
 {
-	std::string	word;
+	std::string	line;
 	std::string	text;
 
 	try
 	{
-		while (infile >> word)
+		while (std::getline(infile, line))
 		{
-			word = word + ' ';
-			text += word;
+			if (!infile.eof())
+				line.append("\n");
+			text += line;
 		}
-		text.erase(text.size()-1,1);
 	}
 	catch (std::out_of_range &e)
 	{

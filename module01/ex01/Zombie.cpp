@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 09:26:39 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/18 18:30:47 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/19 09:37:29 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@
 
 Zombie::Zombie(void)
 {
-    static int  i = 0;
+	static int  i = 0;
 
-    this->_i = i;
+	this->_i = i;
 
-    std::cout << BLUE << "[CONSTRUCTOR] : " << END
-              << "Zombie #" << this->_i
-              << " from the MegaHorde" << this->_name
-              << " has been created !" << std::endl;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "Zombie #" << this->_i
+			  << " from the MegaHorde" << this->_name
+			  << " has been created !" << std::endl;
 
-    i ++;
+	i ++;
 
-    return ;
+	return ;
 }
 
 /* ************************************************************************** */
@@ -46,19 +46,19 @@ Zombie::Zombie(void)
 /*                                                                            */
 /* ************************************************************************** */
 
-void    Zombie::announce(void) const
+void	Zombie::announce(void) const
 {
-    std::cout << "[Zombie #" << this->_i << "] " << this->_name
-              << " : I want BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << "[Zombie #" << this->_i << "] " << this->_name
+			  << " : I want BraiiiiiiinnnzzzZ..." << std::endl;
 
-    return ;
+	return ;
 }
 
-void    Zombie::set_name(std::string name)
+void	Zombie::set_name(std::string name)
 {
-    this->_name = name;
+	this->_name = name;
 
-    return ;
+	return ;
 }
 
 /* ************************************************************************** */
@@ -69,9 +69,9 @@ void    Zombie::set_name(std::string name)
 
 Zombie::~Zombie(void)
 {
-    std::cout << PURPLE << "[DESTRUCTOR] : " << END
-              << "Zombie #" << this->_i
-              << " has been killed !" << std::endl;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << "Zombie #" << this->_i
+			  << " has been killed !" << std::endl;
 
-    return ;
+	return ;
 }

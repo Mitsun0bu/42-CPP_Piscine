@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 19:04:32 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/18 11:34:33 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/19 09:40:02 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,22 +45,22 @@
 
 class   HumanA
 {
-    public:
+	public:
 
-        /* constructor                                          */
-                    HumanA(std::string name, Weapon& weapon);
+		/* constructor										*/
+					HumanA(std::string name, Weapon& weapon);
 
-        /* member function                                      */
-        void        attack(void) const;
+		/* member function									*/
+		void		attack(void) const;
 
-        /* destructor                                           */
-                    ~HumanA(void);
+		/* destructor										*/
+					~HumanA(void);
 
-    private:
+	private:
 
-        /* private attributes                                   */
-        std::string _name;
-        Weapon&     _weapon;
+		/* private attributes								*/
+		std::string	_name;
+		Weapon&		_weapon;
 };
 
 # endif

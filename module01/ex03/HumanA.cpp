@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 19:04:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/18 11:33:43 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/19 09:39:16 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@
 
 HumanA::HumanA(std::string name, Weapon& weapon): _name(name), _weapon(weapon)
 {
-    std::cout << BLUE << "[CONSTRUCTOR] : " << END
-              << this->_name << " is ready to battle !"
-              << std::endl;
-    return ;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << this->_name << " is ready to battle !"
+			  << std::endl;
+	return ;
 }
 
 /* ************************************************************************** */
@@ -38,13 +38,13 @@ HumanA::HumanA(std::string name, Weapon& weapon): _name(name), _weapon(weapon)
 /*                                                                            */
 /* ************************************************************************** */
 
-void    HumanA::attack(void) const
+void	HumanA::attack(void) const
 {
-    std::cout << this->_name
-              << " attacks with his "
-              << this->_weapon.getType()
-              << std::endl;
-    return ;
+	std::cout << this->_name
+			  << " attacks with his "
+			  << this->_weapon.getType()
+			  << std::endl;
+	return ;
 }
 
 /* ************************************************************************** */
@@ -55,8 +55,8 @@ void    HumanA::attack(void) const
 
 HumanA::~HumanA(void)
 {
-    std::cout << PURPLE << "[DESTRUCTOR] : " << END
-              << this->_name << " has left the battlefield !"
-              << std::endl;
-    return ;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << this->_name << " has left the battlefield !"
+			  << std::endl;
+	return ;
 }

@@ -6,18 +6,18 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 14:34:05 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/18 10:18:27 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/19 09:38:37 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Zombie.hpp"
 
-Zombie*    zombieHorde(int N, std::string name)
+Zombie*	zombieHorde(int N, std::string name)
 {
-    Zombie* horde = new Zombie[N];
+	Zombie* horde = new Zombie[N];
 
-    for (int i = 0; i < N; i++)
-        horde[i].set_name(name);
+	for (int i = 0; i < N; i++)
+		horde[i].set_name(name);
 
-    return (horde);
+	return (horde);
 }
