@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:55:37 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/19 12:02:14 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/22 14:55:10 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ float	Fixed::toFloat(void) const
 {
 	float result;
 
-	result = (float)this->_value / (1 << this->_frac_len);
+	result = (float)this->_value / (float)(1 << this->_frac_len);
 
 	return (result);
 }

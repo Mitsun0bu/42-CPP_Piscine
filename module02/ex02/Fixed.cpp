@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 15:55:37 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/19 11:51:13 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/22 17:23:58 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ Fixed	Fixed::operator/(Fixed const &to_divide) const
 {
 	float	division;
 
-	division = this->toFloat() * to_divide.toFloat();
+	division = this->toFloat() / to_divide.toFloat();
 
 	return (Fixed(division));
 }
