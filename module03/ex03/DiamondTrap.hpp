@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:05:42 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/18 16:19:50 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 10:32:01 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ class DiamondTrap : public ScavTrap, public FragTrap
 		DiamondTrap(std::string name);
 		DiamondTrap(DiamondTrap const &src);
 		DiamondTrap	&operator=(DiamondTrap const &src);
-		std::string	get_name(void) const;
-		void		set_name(std::string name);
+		std::string	getName(void) const;
+		void		setName(std::string name);
 		void		attack(std::string const &target);
 		void		whoAmI(void) const;
 		~DiamondTrap();

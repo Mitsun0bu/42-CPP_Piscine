@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 15:28:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 16:03:33 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 10:32:41 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	main(void)
 	std::cout << std::endl;
 
 	std::cout << GREEN << "[TEST - SET VALUES]" << END << std::endl;
-	clap_trap_1.set_ad(10);
-	frag_trap_1.set_ad(2);
-	frag_trap_2.set_name("FT2");
+	clap_trap_1.setAttackDamage(10);
+	frag_trap_1.setAttackDamage(2);
+	frag_trap_2.setName("FT2");
 	std::cout << std::endl;
 	std::cout << clap_trap_1;
 	std::cout << frag_trap_1;

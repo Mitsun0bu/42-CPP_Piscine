@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:41:41 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/13 14:47:24 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 10:32:01 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ class FragTrap : public ClapTrap
 		FragTrap(std::string name);
 		FragTrap(FragTrap const &src);
 		FragTrap	&operator=(FragTrap const &src);
-		std::string	get_name(void) const;
-		void		set_name(std::string name);
+		std::string	getName(void) const;
+		void		setName(std::string name);
 		void		attack(std::string const &target);
 		void		highFivesGuys(void);
 		~FragTrap();

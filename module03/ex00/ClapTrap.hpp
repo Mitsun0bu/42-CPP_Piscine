@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:55:16 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 15:24:22 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 10:06:01 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef CLAP_TRAP_HPP
+# define CLAP_TRAP_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -45,29 +46,41 @@ class ClapTrap
 {
 	public :
 
-		ClapTrap(void);
-		ClapTrap(std::string name);
-		ClapTrap(ClapTrap const &src);
-		ClapTrap	&operator=(ClapTrap const &src);
-		std::string	get_name(void) const;
-		int			get_hp(void) const;
-		int			get_ep(void) const;
-		int			get_ad(void) const;
-		void		set_name(std::string name);
-		void		set_hp(int hp);
-		void		set_ep(int ep);
-		void		set_ad(int ad);
+		/* constructors									*/
+					ClapTrap(void);
+					ClapTrap(std::string name);
+
+		/* copy constructor								*/
+					ClapTrap(ClapTrap const &src);
+
+		/* operator overload							*/
+		ClapTrap&	operator=(ClapTrap const &src);
+
+		/* member functions								*/
+		std::string	getName(void) const;
+		int			getHitPoints(void) const;
+		int			getEnergyPoints(void) const;
+		int			getAttackDamage(void) const;
+		void		setName(std::string name);
+		void		setHitPoints(int hp);
+		void		setEnergyPoints(int ep);
+		void		setAttackDamage(int ad);
 		void		attack(std::string const &target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
-		~ClapTrap();
+
+		/* destructor									*/
+					~ClapTrap();
 
 	private :
 
+		/* private attributes							*/
 		std::string	_name;
-		int			_hit_points;
-		int			_energy_points;
-		int			_attack_damage;
+		int			_hitPoints;
+		int			_energyPoints;
+		int			_attackDamage;
 };
 
-std::ostream	&operator<<(std::ostream &stream, ClapTrap const &ClapTrap);
+std::ostream&		operator<<(std::ostream &stream, ClapTrap const &ClapTrap);
+
+# endif

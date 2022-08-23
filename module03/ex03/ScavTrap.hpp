@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 17:17:38 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 16:15:11 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 10:32:01 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ class ScavTrap : virtual public ClapTrap
 		ScavTrap(std::string name);
 		ScavTrap(ScavTrap const &src);
 		ScavTrap			&operator=(ScavTrap const &src);
-		std::string			get_name(void) const;
-		void				set_name(std::string name);
+		std::string			getName(void) const;
+		void				setName(std::string name);
 		void				attack(std::string const &target);
 		void				guardGate(void);
 		static const int	EP = 50;

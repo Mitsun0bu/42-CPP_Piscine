@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 17:20:31 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 18:47:20 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 11:53:10 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ ScavTrap::ScavTrap(void) : ClapTrap()
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
 			<< "A ScavTrap named " << this->_name
 			<< " has spawned !" << std::endl;
-	this->_hit_points = 100;
-	this->_energy_points = 50;
-	this->_attack_damage = 20;
+	this->_hitPoints = 100;
+	this->_energyPoints = 50;
+	this->_attackDamage = 20;
 	return ;
 }
 
@@ -34,9 +34,9 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
 			  << "A ScavTrap named " << this->_name
 			  << " has spawned !" << std::endl;
-	this->_hit_points = 100;
-	this->_energy_points = 50;
-	this->_attack_damage = 20;
+	this->_hitPoints = 100;
+	this->_energyPoints = 50;
+	this->_attackDamage = 20;
 	return;
 }
 
@@ -58,9 +58,9 @@ ScavTrap::ScavTrap(ScavTrap const &src) : ClapTrap(src)
 ScavTrap	&ScavTrap::operator=(ScavTrap const &src)
 {
 	this->_name = src._name;
-	this->_hit_points = src._hit_points;
-	this->_energy_points = src._energy_points;
-	this->_attack_damage = src._attack_damage;
+	this->_hitPoints = src._hitPoints;
+	this->_energyPoints = src._energyPoints;
+	this->_attackDamage = src._attackDamage;
 	return (*this);
 }
 
@@ -70,12 +70,12 @@ ScavTrap	&ScavTrap::operator=(ScavTrap const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-std::string	ScavTrap::get_name(void) const
+std::string	ScavTrap::getName(void) const
 {
 	return (this->_name);
 }
 
-void	ScavTrap::set_name(std::string name)
+void	ScavTrap::setName(std::string name)
 {
 	this->_name = name;
 	std::cout << "ScavTrap is now named " << name << std::endl;
@@ -85,13 +85,13 @@ void	ScavTrap::set_name(std::string name)
 
 void	ScavTrap::attack(std::string const &target)
 {
-	if (this->_hit_points == 0)
+	if (this->_hitPoints == 0)
 	{
 		std::cout << "ScavTrap " << this->_name
 				  << " is dead... Nothing happened..."
 				  << std::endl;
 	}
-	else if (this->_energy_points == 0)
+	else if (this->_energyPoints == 0)
 	{
 		std::cout << "ScavTrap " << this->_name
 				  << " tries to attack " << target << " ! "
@@ -99,10 +99,10 @@ void	ScavTrap::attack(std::string const &target)
 	}
 	else
 	{
-		this->_energy_points--;
+		this->_energyPoints--;
 		std::cout << "ScavTrap " << this->_name
 				  << " attacks " << target
-				  << " causing " << this->_attack_damage
+				  << " causing " << this->_attackDamage
 				  << " points of damage!" << std::endl;
 	}
 	return ;
@@ -140,9 +140,9 @@ ScavTrap::~ScavTrap()
 
 std::ostream	&operator<<(std::ostream &stream, ScavTrap const &ScavTrap)
 {
-	stream << "The ScavTrap " << ScavTrap.get_name() << " has "
-		   << ScavTrap.get_hp() << " hit points, "
-		   << ScavTrap.get_ep() << " energy points, and can cause "
-		   << ScavTrap.get_ad() << " attack damage." << std::endl;
+	stream << "The ScavTrap " << ScavTrap.getName() << " has "
+		   << ScavTrap.getHitPoints() << " hit points, "
+		   << ScavTrap.getEnergyPoints() << " energy points, and can cause "
+		   << ScavTrap.getAttackDamage() << " attack damage." << std::endl;
 	return stream;
 }

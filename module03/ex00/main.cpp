@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 15:28:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 15:26:18 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 12:19:11 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,50 +14,56 @@
 
 int	main(void)
 {
-	ClapTrap	clap_trap_1("CT1");
-	ClapTrap	clap_trap_2("CT2");
-	ClapTrap	clap_trap_3;
+	ClapTrap	clapTrap1("CT1");
+	ClapTrap	clapTrap2("CT2");
+	ClapTrap	clapTrap3;
 
 	std::cout << std::endl;
 
 	std::cout << GREEN << "[TEST - INITILIZATION]" << END << std::endl;
-	std::cout << clap_trap_1;
-	std::cout << clap_trap_2;
-	std::cout << clap_trap_3;
+	std::cout << clapTrap1;
+	std::cout << clapTrap2;
+	std::cout << clapTrap3;
 
 	std::cout << std::endl;
 
 	std::cout << GREEN << "[TEST - SET VALUES]" << END << std::endl;
-	clap_trap_1.set_ad(10);
-	clap_trap_2.set_ad(2);
-	clap_trap_3.set_name("CT3");
-	clap_trap_3.set_ep(0);
+	clapTrap1.setAttackDamage(10);
+	clapTrap2.setAttackDamage(2);
+	clapTrap3.setName("CT3");
+	clapTrap3.setEnergyPoints(0);
 	std::cout << std::endl;
-	std::cout << clap_trap_1;
-	std::cout << clap_trap_2;
-	std::cout << clap_trap_3;
+	std::cout << clapTrap1;
+	std::cout << clapTrap2;
+	std::cout << clapTrap3;
 
 	std::cout << std::endl;
 
 	std::cout << GREEN << "[TEST - BATTLE (ROUND 1)]" << END << std::endl;
-	clap_trap_1.attack("CT2");
-	clap_trap_2.takeDamage(10);
-	clap_trap_3.attack("CT2");
+	clapTrap1.attack("CT2");
+	clapTrap2.takeDamage(10);
+	clapTrap3.attack("CT2");
 	std::cout << std::endl;
-	std::cout << clap_trap_1;
-	std::cout << clap_trap_2;
-	std::cout << clap_trap_3;
+	std::cout << clapTrap1;
+	std::cout << clapTrap2;
+	std::cout << clapTrap3;
 
 	std::cout << std::endl;
 
 	std::cout << GREEN << "[TEST - BATTLE (ROUND 2)]" << END << std::endl;
-	clap_trap_1.beRepaired(5);
-	clap_trap_2.attack("CT3");
-	clap_trap_3.beRepaired(2);
+	clapTrap1.beRepaired(5);
+	clapTrap2.attack("CT3");
+	clapTrap3.beRepaired(2);
 	std::cout << std::endl;
-	std::cout << clap_trap_1;
-	std::cout << clap_trap_2;
-	std::cout << clap_trap_3;
+	std::cout << clapTrap1;
+	std::cout << clapTrap2;
+	std::cout << clapTrap3;
+
+	std::cout << std::endl;
+
+	std::cout << GREEN << "[TEST - COPY]" << END << std::endl;
+	ClapTrap	clapTrap4(clapTrap2);
+	std::cout << clapTrap4;
 
 	std::cout << std::endl;
 
