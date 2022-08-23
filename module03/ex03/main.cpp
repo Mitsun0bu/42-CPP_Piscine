@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 15:28:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/20 16:29:59 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 15:42:03 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,40 @@
 
 int	main(void)
 {
-	DiamondTrap	diamond_trap_1("DT1");
-	DiamondTrap	diamond_trap_2;
+	DiamondTrap	diamondTrap1("DT1");
+	DiamondTrap	diamondTrap2;
 
 	std::cout << std::endl;
 
 	std::cout << GREEN << "[TEST - INITILIZATION]" << END << std::endl;
-	std::cout << diamond_trap_1;
-	std::cout << diamond_trap_2;
+	std::cout << diamondTrap1;
+	std::cout << diamondTrap2;
 	std::cout << std::endl;
 
 
 	std::cout << GREEN << "[TEST - WHOAMI FUNCTION]" << END << std::endl;
-	diamond_trap_1.whoAmI();
+	diamondTrap1.whoAmI();
 
 	std::cout << std::endl;
 	std::cout << std::endl;
 
 	std::cout << GREEN << "[TEST - ATTACK FUNCTION INHERITED FROM SCAVTRAP]" << END << std::endl;
-	diamond_trap_1.attack("Laure Dure");
+	diamondTrap1.attack("Laure Dure");
+
+	std::cout << std::endl;
+
+	std::cout << GREEN << "[TEST - FUNCTIONS INHERITED FROM SCAVTRAP AND FRAGTRAP]" << END << std::endl;
+	diamondTrap1.guardGate();
+	diamondTrap1.highFivesGuys();
+
+	std::cout << std::endl;
+
+	std::cout << GREEN << "[TEST - COPY CONSTRUCTOR]" << END << std::endl;
+	std::cout << diamondTrap1;
+	std::cout << std::endl;
+	DiamondTrap	diamondTrap3(diamondTrap1);
+	std::cout << std::endl;
+	std::cout << diamondTrap3;
 
 	std::cout << std::endl;
 

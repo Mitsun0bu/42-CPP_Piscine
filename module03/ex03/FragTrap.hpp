@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:41:41 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/23 10:32:01 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 15:28:12 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef FRAG_TRAP_HPP
+# define FRAG_TRAP_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -30,17 +31,28 @@ class FragTrap : virtual public ClapTrap
 {
 	public:
 
-		FragTrap(void);
-		FragTrap(std::string name);
-		FragTrap(FragTrap const &src);
-		FragTrap			&operator=(FragTrap const &src);
+		/* constructors										*/
+							FragTrap(void);
+							FragTrap(std::string name);
+
+		/* copy constructor									*/
+							FragTrap(FragTrap const & src);
+
+		/* operator overload								*/
+		FragTrap&			operator=(FragTrap const & src);
+
+		/* member functions									*/
 		std::string			getName(void) const;
 		void				setName(std::string name);
-		void				attack(std::string const &target);
+		void				attack(std::string const & target);
 		void				highFivesGuys(void) const;
 		static const int	HP = 100;
 		static const int	AD = 30;
-		~FragTrap();
+
+		/* destructor									*/
+							~FragTrap();
 };
 
 std::ostream	&operator<<(std::ostream &stream, FragTrap const &FragTrap);
+
+# endif

@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 16:05:42 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/23 10:32:01 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 15:37:49 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef DIAMOND_TRAP_HPP
+# define DIAMOND_TRAP_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -32,19 +33,31 @@ class DiamondTrap : public ScavTrap, public FragTrap
 {
 	public:
 
-		DiamondTrap(void);
-		DiamondTrap(std::string name);
-		DiamondTrap(DiamondTrap const &src);
-		DiamondTrap	&operator=(DiamondTrap const &src);
-		std::string	getName(void) const;
-		void		setName(std::string name);
-		void		attack(std::string const &target);
-		void		whoAmI(void) const;
-		~DiamondTrap();
+		/* constructors									*/
+						DiamondTrap(void);
+						DiamondTrap(std::string name);
+
+		/* copy constructor								*/
+						DiamondTrap(DiamondTrap const &src);
+
+		/* operator overload							*/
+		DiamondTrap&	operator=(DiamondTrap const &src);
+
+		/* member functions								*/
+		std::string		getName(void) const;
+		void			setName(std::string name);
+		void			attack(std::string const &target);
+		void			whoAmI(void) const;
+
+		/* destructor									*/
+						~DiamondTrap();
 
 	private :
 
-		std::string	_name;
+		/* private attributes							*/
+		std::string		_name;
 };
 
 std::ostream	&operator<<(std::ostream &stream, DiamondTrap const &DiamondTrap);
+
+# endif
