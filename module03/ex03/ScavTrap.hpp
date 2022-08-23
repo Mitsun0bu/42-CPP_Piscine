@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 17:17:38 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/23 10:32:01 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 14:39:47 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef SCAV_TRAP_HPP
+# define SCAV_TRAP_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -30,17 +31,28 @@ class ScavTrap : virtual public ClapTrap
 {
 	public:
 
-		ScavTrap(void);
-		ScavTrap(std::string name);
-		ScavTrap(ScavTrap const &src);
-		ScavTrap			&operator=(ScavTrap const &src);
+		/* constructors										*/
+							ScavTrap(void);
+							ScavTrap(std::string name);
+
+		/* copy constructor									*/
+							ScavTrap(ScavTrap const & src);
+
+		/* operator overload								*/
+		ScavTrap&			operator=(ScavTrap const & src);
+
+		/* member functions									*/
 		std::string			getName(void) const;
 		void				setName(std::string name);
-		void				attack(std::string const &target);
+		void				attack(std::string const & target);
 		void				guardGate(void);
 		static const int	EP = 50;
-		~ScavTrap();
+
+		/* destructor									*/
+							~ScavTrap();
 
 };
 
 std::ostream	&operator<<(std::ostream &stream, ScavTrap const &ScavTrap);
+
+# endif

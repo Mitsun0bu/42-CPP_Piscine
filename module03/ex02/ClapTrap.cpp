@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 13:21:54 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/23 11:53:10 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 13:50:33 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ ClapTrap::ClapTrap(void) : _name("---"), _hitPoints(10), _energyPoints(10), _att
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
 			  << "A ClapTrap named " << this->_name
 			  << " has spawned !" << std::endl;
+
 	return ;
 }
 
@@ -31,15 +32,18 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoint
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
 			  << "A ClapTrap named " << this->_name
 			  << " has spawned !" << std::endl;
+
 	return;
 }
 
-ClapTrap::ClapTrap(ClapTrap const &src)
+ClapTrap::ClapTrap(ClapTrap const & src)
 {
 	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
 			  << "A ClapTrap named " << this->_name
 			  << " has been duplicated !" << std::endl;
+
 	*this = src;
+
 	return ;
 }
 
@@ -49,12 +53,13 @@ ClapTrap::ClapTrap(ClapTrap const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-ClapTrap	&ClapTrap::operator=(ClapTrap const &src)
+ClapTrap&	ClapTrap::operator=(ClapTrap const & src)
 {
 	this->_name = src._name;
 	this->_hitPoints = src._hitPoints;
 	this->_energyPoints = src._energyPoints;
 	this->_attackDamage = src._attackDamage;
+
 	return (*this);
 }
 
@@ -86,30 +91,39 @@ int	ClapTrap::getAttackDamage(void) const
 
 void	ClapTrap::setName(std::string name)
 {
-	this->_name = name;
-	std::cout << "ClapTrap is now named " << name << std::endl;
+	if (name.length())
+	{
+		this->_name = name;
+		std::cout << "ClapTrap is now named " << name << std::endl;
+	}
+	else
+		std::cout << "ClapTrap has no name !" << std::endl;
+
 	return ;
 }
 
 void	ClapTrap::setHitPoints(int hp)
 {
 	this->_hitPoints = hp;
+
 	return ;
 }
 
 void	ClapTrap::setEnergyPoints(int ep)
 {
 	this->_energyPoints = ep;
+
 	return ;
 }
 
 void	ClapTrap::setAttackDamage(int ad)
 {
 	this->_attackDamage = ad;
+
 	return ;
 }
 
-void	ClapTrap::attack(std::string const &target)
+void	ClapTrap::attack(std::string const & target)
 {
 	if (this->_hitPoints <= 0)
 	{
@@ -131,6 +145,7 @@ void	ClapTrap::attack(std::string const &target)
 				  << " causing " << this->_attackDamage
 				  << " points of damage!" << std::endl;
 	}
+
 	return ;
 }
 
@@ -143,12 +158,13 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	}
 	else
 	{
-		this->_hitPoints-= amount;
+		this->_hitPoints -= amount;
 		std::cout << "ClapTrap " << this->_name
 				  << " takes " << amount
 				  << " points of damage!"
 				  << std::endl;
 	}
+
 	return ;
 }
 
@@ -175,6 +191,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 				  << this->_hitPoints << " energy points."
 				  << std::endl;
 	}
+
 	return ;
 }
 
@@ -189,6 +206,7 @@ ClapTrap::~ClapTrap()
 	std::cout << PURPLE << "[DESTRUCTOR] : " << END
 			  << "A ClapTrap named " << this->_name
 			  << " has been destroyed !" << std::endl;
+
 	return ;
 }
 
@@ -198,11 +216,13 @@ ClapTrap::~ClapTrap()
 /*                                                                            */
 /* ************************************************************************** */
 
-std::ostream	&operator<<(std::ostream &stream, ClapTrap const &ClapTrap)
+std::ostream&	operator<<(std::ostream& stream, ClapTrap const & ClapTrap)
 {
-	stream << "The ClapTrap " << ClapTrap.getName() << " has "
-		   << ClapTrap.getHitPoints() << " hit points, "
-		   << ClapTrap.getEnergyPoints() << " energy points, and can cause "
-		   << ClapTrap.getAttackDamage() << " attack damage." << std::endl;
+	stream << "The ClapTrap named " << ClapTrap.getName()
+		   << " has :" << std::endl
+		   << "\t- " << ClapTrap.getHitPoints() << " hit points" << std::endl
+		   << "\t- " << ClapTrap.getEnergyPoints() << " energy points" << std::endl
+		   << "\t- " << ClapTrap.getAttackDamage() << " attack damage" << std::endl;
+
 	return stream;
 }

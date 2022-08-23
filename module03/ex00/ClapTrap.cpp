@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 13:21:54 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/23 10:25:34 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 14:57:45 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoint
 	return;
 }
 
-ClapTrap::ClapTrap(ClapTrap const &src)
+ClapTrap::ClapTrap(ClapTrap const & src)
 {
 	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
 			  << "A ClapTrap named " << this->_name
@@ -53,7 +53,7 @@ ClapTrap::ClapTrap(ClapTrap const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-ClapTrap& ClapTrap::operator=(ClapTrap const & src)
+ClapTrap&	ClapTrap::operator=(ClapTrap const & src)
 {
 	this->_name = src._name;
 	this->_hitPoints = src._hitPoints;
@@ -215,7 +215,7 @@ ClapTrap::~ClapTrap()
 /*                                                                            */
 /* ************************************************************************** */
 
-std::ostream	&operator<<(std::ostream &stream, ClapTrap const &ClapTrap)
+std::ostream&	operator<<(std::ostream& stream, ClapTrap const & ClapTrap)
 {
 	stream << "The ClapTrap named " << ClapTrap.getName()
 		   << " has :" << std::endl

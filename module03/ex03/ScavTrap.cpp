@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 17:20:31 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/23 11:53:10 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 14:53:08 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@
 ScavTrap::ScavTrap(void) : ClapTrap()
 {
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
-			<< "A ScavTrap named " << this->_name
-			<< " has spawned !" << std::endl;
+			  << "A ScavTrap named " << this->_name
+			  << " has spawned !" << std::endl;
+
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
+
 	return ;
 }
 
@@ -34,18 +36,22 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
 			  << "A ScavTrap named " << this->_name
 			  << " has spawned !" << std::endl;
+
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
+
 	return;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &src) : ClapTrap(src)
+ScavTrap::ScavTrap(ScavTrap const & src) : ClapTrap(src)
 {
 	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
 			  << "A ClapTrap named " << this->_name
 			  << " has been duplicated !" << std::endl;
+
 	*this = src;
+
 	return ;
 }
 
@@ -61,6 +67,7 @@ ScavTrap	&ScavTrap::operator=(ScavTrap const &src)
 	this->_hitPoints = src._hitPoints;
 	this->_energyPoints = src._energyPoints;
 	this->_attackDamage = src._attackDamage;
+
 	return (*this);
 }
 
@@ -79,11 +86,12 @@ void	ScavTrap::setName(std::string name)
 {
 	this->_name = name;
 	std::cout << "ScavTrap is now named " << name << std::endl;
+
 	return ;
 }
 
 
-void	ScavTrap::attack(std::string const &target)
+void	ScavTrap::attack(std::string const & target)
 {
 	if (this->_hitPoints == 0)
 	{
@@ -114,6 +122,7 @@ void		ScavTrap::guardGate(void)
 			<< " has entered the \"Gate Keeper\" mode."
 			<< " He's now keeping the Unknown Dungeon gate."
 			<< std::endl;
+
 	return ;
 }
 
@@ -128,6 +137,7 @@ ScavTrap::~ScavTrap()
 	std::cout << PURPLE << "[DESTRUCTOR] : " << END
 			  << "A ScavTrap named " << this->_name
 			  << " has been destroyed !" << std::endl;
+
 	return ;
 
 }
@@ -138,11 +148,13 @@ ScavTrap::~ScavTrap()
 /*                                                                            */
 /* ************************************************************************** */
 
-std::ostream	&operator<<(std::ostream &stream, ScavTrap const &ScavTrap)
+std::ostream&	operator<<(std::ostream & stream, ScavTrap const & ScavTrap)
 {
-	stream << "The ScavTrap " << ScavTrap.getName() << " has "
-		   << ScavTrap.getHitPoints() << " hit points, "
-		   << ScavTrap.getEnergyPoints() << " energy points, and can cause "
-		   << ScavTrap.getAttackDamage() << " attack damage." << std::endl;
+	stream << "The ScavTrap named " << ScavTrap.getName()
+		   << " has :" << std::endl
+		   << "\t- " << ScavTrap.getHitPoints() << " hit points" << std::endl
+		   << "\t- " << ScavTrap.getEnergyPoints() << " energy points" << std::endl
+		   << "\t- " << ScavTrap.getAttackDamage() << " attack damage" << std::endl;
+
 	return stream;
 }

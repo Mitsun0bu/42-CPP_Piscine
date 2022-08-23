@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 17:20:31 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/23 12:00:13 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 14:56:44 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	return;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &src)
+ScavTrap::ScavTrap(ScavTrap const & src) : ClapTrap(src)
 {
 	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
 			  << "A ScavTrap named " << this->_name
@@ -61,7 +61,7 @@ ScavTrap::ScavTrap(ScavTrap const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-ScavTrap	&ScavTrap::operator=(ScavTrap const &src)
+ScavTrap&	ScavTrap::operator=(ScavTrap const & src)
 {
 	this->_name = src._name;
 	this->_hitPoints = src._hitPoints;
@@ -90,7 +90,7 @@ void	ScavTrap::setName(std::string name)
 	return ;
 }
 
-void	ScavTrap::attack(std::string const &target)
+void	ScavTrap::attack(std::string const & target)
 {
 	if (this->_hitPoints <= 0)
 	{
@@ -137,6 +137,7 @@ ScavTrap::~ScavTrap()
 	std::cout << PURPLE << "[DESTRUCTOR] : " << END
 			  << "A ScavTrap named " << this->_name
 			  << " has been destroyed !" << std::endl;
+
 	return ;
 
 }
@@ -147,7 +148,7 @@ ScavTrap::~ScavTrap()
 /*                                                                            */
 /* ************************************************************************** */
 
-std::ostream	&operator<<(std::ostream &stream, ScavTrap const &ScavTrap)
+std::ostream&	operator<<(std::ostream&	stream, ScavTrap const & ScavTrap)
 {
 	stream << "The ScavTrap named " << ScavTrap.getName()
 		   << " has :" << std::endl

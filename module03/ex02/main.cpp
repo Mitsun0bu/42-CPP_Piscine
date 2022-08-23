@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 15:28:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/23 10:32:41 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 13:59:37 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,41 +16,41 @@
 
 int	main(void)
 {
-	ClapTrap	clap_trap_1("CP1");
-	FragTrap	frag_trap_1("FT1");
-	FragTrap	frag_trap_2;
-	FragTrap	frag_trap_3(frag_trap_2);
+	ClapTrap	clapTrap1("CP1");
+	FragTrap	fragTrap1("FT1");
+	FragTrap	fragTrap2;
+	FragTrap	fragTrap3(fragTrap2);
 
 	std::cout << std::endl;
 
 	std::cout << GREEN << "[TEST - INITILIZATION]" << END << std::endl;
-	std::cout << clap_trap_1;
-	std::cout << frag_trap_1;
-	std::cout << frag_trap_2;
-	std::cout << frag_trap_3;
+	std::cout << clapTrap1;
+	std::cout << fragTrap1;
+	std::cout << fragTrap2;
+	std::cout << fragTrap3;
 
 
 	std::cout << std::endl;
 
 	std::cout << GREEN << "[TEST - SET VALUES]" << END << std::endl;
-	clap_trap_1.setAttackDamage(10);
-	frag_trap_1.setAttackDamage(2);
-	frag_trap_2.setName("FT2");
+	clapTrap1.setAttackDamage(10);
+	fragTrap1.setAttackDamage(2);
+	fragTrap2.setName("FT2");
 	std::cout << std::endl;
-	std::cout << clap_trap_1;
-	std::cout << frag_trap_1;
-	std::cout << frag_trap_2;
+	std::cout << clapTrap1;
+	std::cout << fragTrap1;
+	std::cout << fragTrap2;
 
 	std::cout << std::endl;
 
-		std::cout << GREEN << "[TEST - BATTLE (ROUND 1)]" << END << std::endl;
-	frag_trap_1.attack("CP1");
-	clap_trap_1.takeDamage(2);
-	frag_trap_2.highFivesGuys();
+	std::cout << GREEN << "[TEST - BATTLE (ROUND 1)]" << END << std::endl;
+	fragTrap1.attack("CP1");
+	clapTrap1.takeDamage(2);
+	fragTrap1.highFivesGuys();
 	std::cout << std::endl;
-	std::cout << clap_trap_1;
-	std::cout << frag_trap_1;
-	std::cout << frag_trap_2;
+	std::cout << clapTrap1;
+	std::cout << fragTrap1;
+	std::cout << fragTrap2;
 
 	std::cout << std::endl;
 

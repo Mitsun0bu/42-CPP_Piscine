@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 17:17:38 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/23 11:02:24 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 13:50:01 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,21 @@ class ScavTrap : public ClapTrap
 					ScavTrap(std::string name);
 
 		/* copy constructor								*/
-					ScavTrap(ScavTrap const &src);
+					ScavTrap(ScavTrap const & src);
 
 		/* operator overload							*/
-		ScavTrap&	operator=(ScavTrap const &src);
+		ScavTrap&	operator=(ScavTrap const & src);
+
+		/* member functions								*/
 		std::string	getName(void) const;
 		void		setName(std::string name);
-		void		attack(std::string const &target);
+		void		attack(std::string const & target);
 		void		guardGate(void);
 
 		/* destructor									*/
 					~ScavTrap();
 };
 
-std::ostream	&operator<<(std::ostream &stream, ScavTrap const &ScavTrap);
+std::ostream&	operator<<(std::ostream & stream, ScavTrap const & ScavTrap);
 
 # endif

@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:55:16 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/23 11:53:10 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 14:33:08 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef CLAP_TRAP_HPP
+# define CLAP_TRAP_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -45,10 +46,17 @@ class ClapTrap
 {
 	public :
 
-		ClapTrap(void);
-		ClapTrap(std::string name);
-		ClapTrap(ClapTrap const &src);
-		ClapTrap	&operator=(ClapTrap const	&src);
+		/* constructors									*/
+					ClapTrap(void);
+					ClapTrap(std::string name);
+
+		/* copy constructor								*/
+					ClapTrap(ClapTrap const & src);
+
+		/* operator overload							*/
+		ClapTrap	&operator=(ClapTrap const & src);
+
+		/* member functions								*/
 		std::string	getName(void) const;
 		int			getHitPoints(void) const;
 		int			getEnergyPoints(void) const;
@@ -57,13 +65,16 @@ class ClapTrap
 		void		setHitPoints(int hp);
 		void		setEnergyPoints(int ep);
 		void		setAttackDamage(int ad);
-		void		attack(std::string const &target);
+		void		attack(std::string const & target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
-		~ClapTrap();
+
+		/* destructor									*/
+					~ClapTrap();
 
 	protected:
 
+		/* private attributes							*/
 		std::string	_name;
 		int			_hitPoints;
 		int			_energyPoints;
@@ -71,3 +82,5 @@ class ClapTrap
 };
 
 std::ostream	&operator<<(std::ostream &stream, ClapTrap const &ClapTrap);
+
+# endif
