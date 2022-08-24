@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:04 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 09:40:51 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,21 @@
 
 Dog::Dog(void)
 {
-	std::cout << "The newborn animal is a dog !" << std::endl;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "The newborn animal is a dog !" << std::endl;
+
 	this->_type = "dog";
+
 	return ;
 }
 
-Dog::Dog(Dog const &src)
+Dog::Dog(Dog const & src)
 {
+	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
+			  << "An dog has been duplicated !" << std::endl;
+
 	*this = src;
+
 	return ;
 }
 
@@ -40,6 +47,7 @@ Dog::Dog(Dog const &src)
 Dog&	Dog::operator=(Dog const &src)
 {
 	this->_type = src.getType();
+
 	return (*this);
 }
 
@@ -52,6 +60,7 @@ Dog&	Dog::operator=(Dog const &src)
 void	Dog::makeSound() const
 {
 	std::cout << "Dog : \"Woof.\"" << std::endl;
+
 	return ;
 }
 
@@ -63,6 +72,8 @@ void	Dog::makeSound() const
 
 Dog::~Dog(void)
 {
-	std::cout << "A dog just died ..." << std::endl;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << "A dog just died ..." << std::endl;
+
 	return ;
 }

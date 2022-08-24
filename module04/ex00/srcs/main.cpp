@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:06 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 15:17:21 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 10:39:05 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,66 +14,52 @@
 
 int	main(void)
 {
-	/* SUBJECT TEST */
-	subject_test();
-	/* MY TEST */
-	my_test();
+	std::cout << std::endl;
+	std::cout << GREEN << "[SUBJECT TEST - NORMAL]" << END << std::endl;
+	std::cout << std::endl;
+
+	const Animal* animal1 = new Animal();
+	const Animal* animal2 = new Dog();
+	const Animal* animal3 = new Cat();
+
+
+	std::cout << std::endl;
+	std::cout << "Type : " << animal1->getType() << " " << std::endl;
+	std::cout << "Type : " << animal2->getType() << " " << std::endl;
+	std::cout << "Type : " << animal3->getType() << " " << std::endl;
+
+	std::cout << std::endl;
+	animal3->makeSound();
+	animal2->makeSound();
+	animal1->makeSound();
+	std::cout << std::endl;
+
+	delete animal1;
+	delete animal2;
+	delete animal3;
+
+	std::cout << std::endl;
+	std::cout << GREEN << "[SUBJECT TEST - WRONG ANIMAL]" << END << std::endl;
+	std::cout << std::endl;
+
+	const WrongAnimal*	wrongAnimal1 = new WrongAnimal();
+	const WrongAnimal*	wrongAnimal2 = new WrongCat();
+	const WrongCat*		wrongCat = new WrongCat();
+
+	std::cout << std::endl;
+	std::cout << "Type : " << wrongAnimal1->getType() << " " << std::endl;
+	std::cout << "Type : " << wrongAnimal2->getType() << " " << std::endl;
+	std::cout << "Type : " << wrongCat->getType() << " " << std::endl;
+	std::cout << std::endl;
+
+	wrongCat->makeSound();
+	wrongAnimal2->makeSound();
+	wrongAnimal1->makeSound();
+	std::cout << std::endl;
+
+	delete wrongAnimal1;
+	delete wrongAnimal2;
+	delete wrongCat;
 
 	return (0);
-}
-
-void	subject_test(void)
-{
-	std::cout << "===== SUBJECT TEST =====" << std::endl;
-
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-
-	std::cout << std::endl;
-
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << std::endl;
-
-	i->makeSound(); // Will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
-	std::cout << std::endl;
-
-	delete meta;
-	delete j;
-	delete i;
-
-	return ;
-}
-
-void	my_test(void)
-{
-	std::cout << "===== MY TEST =====" << std::endl;
-
-	Animal		God;
-	Dog			Lassie;
-	Cat			Garfield;
-	WrongAnimal	Experiment;
-	WrongCat	Miaouss;
-
-	std::cout << std::endl;
-	std::cout << God.getType() << std::endl;
-	God.makeSound();
-	std::cout << std::endl;
-	std::cout << Lassie.getType() << std::endl;
-	Lassie.makeSound();
-	std::cout << std::endl;
-	std::cout << Garfield.getType() << std::endl;
-	Garfield.makeSound();
-	std::cout << std::endl;
-	std::cout << Experiment.getType() << std::endl;
-	Experiment.makeSound();
-	std::cout << std::endl;
-	std::cout << Miaouss.getType() << std::endl;
-	Miaouss.makeSound();
-	std::cout << std::endl;
-
-	return ;
 }

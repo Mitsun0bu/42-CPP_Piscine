@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:10 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/21 18:47:20 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 10:35:52 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,16 @@
 
 WrongCat::WrongCat(void)
 {
-	std::cout << "The newborn wrong animal is a wrong cat !" << std::endl;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "The newborn wrong animal is a wrong cat !" << std::endl;
+
 	return ;
 }
 
-WrongCat::WrongCat(WrongCat const &src)
+WrongCat::WrongCat(WrongCat const & src)
 {
 	*this = src;
+
 	return ;
 }
 
@@ -36,10 +39,24 @@ WrongCat::WrongCat(WrongCat const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-WrongCat&	WrongCat::operator=(WrongCat const &src)
+WrongCat&	WrongCat::operator=(WrongCat const & src)
 {
 	this->_type = src.getType();
+
 	return (*this);
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	WrongCat::makeSound() const
+{
+	std::cout << "Wrong cat : \"COINCOIN !\"" << std::endl;
+
+	return ;
 }
 
 /* ************************************************************************** */
@@ -50,6 +67,8 @@ WrongCat&	WrongCat::operator=(WrongCat const &src)
 
 WrongCat::~WrongCat(void)
 {
-		std::cout << "A wrong cat just died !" << std::endl;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << "A wrong cat just died !" << std::endl;
+
 	return ;
 }

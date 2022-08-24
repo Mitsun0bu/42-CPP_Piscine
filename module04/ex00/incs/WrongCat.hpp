@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:00:17 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 15:07:35 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 10:34:44 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef WRONG_CAT_HPP
+# define WRONG_CAT_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -30,8 +31,20 @@ class WrongCat : public WrongAnimal
 {
 	public :
 
+		/* constructors									*/
 						WrongCat(void);
-						WrongCat(WrongCat const &src);
-		WrongCat		&operator=(WrongCat const &src);
+
+		/* copy constructor								*/
+						WrongCat(WrongCat const & src);
+
+		/* operator overload							*/
+		WrongCat&		operator=(WrongCat const & src);
+
+		/* member functions								*/
+		void			makeSound(void) const;
+
+		/* destructor									*/
 						~WrongCat(void);
 };
+
+# endif

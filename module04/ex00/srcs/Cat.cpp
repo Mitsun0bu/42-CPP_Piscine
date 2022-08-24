@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:02 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 09:39:23 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,21 @@
 
 Cat::Cat(void)
 {
-	std::cout << "The newborn animal is a cat !" << std::endl;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "The newborn animal is a cat !" << std::endl;
+
 	this->_type = "cat";
+
 	return ;
 }
 
-Cat::Cat(Cat const &src)
+Cat::Cat(Cat const & src)
 {
+	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
+			  << "A cat has been duplicated !" << std::endl;
+
 	*this = src;
+
 	return ;
 }
 
@@ -37,9 +44,10 @@ Cat::Cat(Cat const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-Cat&	Cat::operator=(Cat const &src)
+Cat&	Cat::operator=(Cat const & src)
 {
 	this->_type = src.getType();
+
 	return (*this);
 }
 
@@ -52,6 +60,7 @@ Cat&	Cat::operator=(Cat const &src)
 void	Cat::makeSound() const
 {
 	std::cout << "Cat : \"Meow.\"" << std::endl;
+
 	return ;
 }
 
@@ -63,6 +72,8 @@ void	Cat::makeSound() const
 
 Cat::~Cat(void)
 {
-	std::cout << "A cat just died ..." << std::endl;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << "A cat just died ..." << std::endl;
+
 	return ;
 }
