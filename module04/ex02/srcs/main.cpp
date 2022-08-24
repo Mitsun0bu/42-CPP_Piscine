@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:06 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/24 11:59:03 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 15:21:57 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,101 +14,114 @@
 
 int	main(void)
 {
-	/* TESTS ASKED IN THE SUBJECT */
-	// testLeaks();
-	// testDeepCopy();
-	/* SUBJECT LEAKS TEST */
-	// test_subject_leaks();
-	/* MY TEST */
-	my_test();
+	// A_Animal animal;
+
+	testArray();
+	testAssignmentOperator();
+	testCopyConstructor();
 
 	return (0);
 }
 
-void	testLeaks(void)
+void	testArray(void)
 {
-	std::cout << "===== SUBJECT TEST : ARRAY =====" << std::endl;
+	std::cout << std::endl;
+	std::cout << GREEN << "[TEST - ARRAY]" << END << std::endl;
+	std::cout << std::endl;
 
-	A_Animal	*animal_tab[4];
+	A_Animal	*animalTab[4];
 
-	for (int i = 0; i < 4; i+=2)
+	for (int i = 0; i < 2; i++)
 	{
-		animal_tab[i] = new Dog();
-		std::cout << std::endl;
-		animal_tab[i + 1] = new Cat();
+		animalTab[i] = new Dog();
+		std::cout << "Type : " << animalTab[i]->getType() << std::endl;
 		std::cout << std::endl;
 	}
 
+	for (int i = 2; i < 4; i++)
+	{
+		animalTab[i] = new Cat();
+		std::cout << "Type : " << animalTab[i]->getType() << std::endl;
+		std::cout << std::endl;
+	}
+
+	std::cout << std::endl;
+
 	for (int i = 0; i < 4; i++)
-		delete animal_tab[i];
+		delete animalTab[i];
 
 	return ;
 }
 
-void	testDeepCopy(void)
+void	testAssignmentOperator(void)
 {
-	std::cout << "===== SUBJECT TEST : COPY =====" << std::endl;
-
-	Dog	dog_1;
-	Dog	dog_2;
-	Cat	cat_1;
-	Cat	cat_2;
-
 	std::cout << std::endl;
-	dog_1.setDogIdea(42, "Mhhh I like this module !");
-	dog_1.printIdea(42);
-	dog_2.printIdea(42);
-
-	dog_2 = dog_1;
-	std::cout << std::endl << "After copy :" << std::endl;
-	dog_1.printIdea(42);
-	dog_2.printIdea(42);
-
+	std::cout << GREEN << "[TEST - ASSIGNMENT OPERATOR]" << END << std::endl;
 	std::cout << std::endl;
-	cat_1.setCatIdea(10, " Arf this module is shit !");
-	cat_1.printIdea(10);
-	cat_2.printIdea(10);
 
-	cat_2 = cat_1;
-	std::cout << std::endl << "After copy :" << std::endl;
-	cat_1.printIdea(10);
-	cat_2.printIdea(10);
+	Dog	dog1;
+	Dog	dog2;
 
 	std::cout << std::endl;
 
-}
-
-void	test_subject_leaks(void)
-{
-	std::cout << "===== SUBJECT TEST : COPY =====" << std::endl;
-
-	const A_Animal* j = new Dog();
-	const A_Animal* i = new Cat();
+	std::cout << YELLOW << "[BEFORE ASSIGNMENT] : " << END << std::endl;
+	dog1.setDogIdea(42, "Mhhh I like this module !");
+	std::cout << "Dog 1 : " << std::endl;
+	std::cout << "\t";
+	dog1.printIdea(42);
+	std::cout << "Dog 2 : " << std::endl;
+	std::cout << "\t";
+	dog2.printIdea(42);
 
 	std::cout << std::endl;
 
-	delete j;
-	delete i;
+	dog2 = dog1;
+	std::cout << YELLOW << "[AFTER ASSIGNMENT] : " << END << std::endl;
+	std::cout << "Dog 1 : " << std::endl;
+	std::cout << "\t";
+	dog1.printIdea(42);
+	std::cout << "Dog 2 : " << std::endl;
+	std::cout << "\t";
+	dog2.printIdea(42);
+
+	std::cout << std::endl;
 
 	return ;
 }
 
-void	my_test(void)
+void	testCopyConstructor(void)
 {
-	std::cout << "===== MY TEST =====" << std::endl;
-
-	const A_Animal*	Fredo = new Dog();
-	Dog				Lassie;
-	Cat				Garfield;
-
-	std::cout << std::endl << "Fredo want to speak !" << std::endl;
-	Fredo->makeSound();
-	std::cout << std::endl << "Garfield has an idea : ";
-	Garfield.printIdea(42);
 	std::cout << std::endl;
-	std::cout << std::endl << "Lassie has an idea : ";
-	Lassie.printIdea(42);
+	std::cout << GREEN << "[SUBJECT TEST - COPY CONSTRUCTOR]" << END << std::endl;
 	std::cout << std::endl;
 
-	return ;
+	Cat	cat1;
+
+	std::cout << std::endl;
+
+	std::cout << YELLOW << "[BEFORE COPY] : " << END << std::endl;
+	cat1.setCatIdea(10, " Arf this module is shit !");
+	std::cout << "Cat 1 : " << std::endl;
+	std::cout << "\t";
+	cat1.printIdea(10);
+	std::cout << std::endl;
+
+	std::cout << YELLOW << "[AFTER COPY] : " << END << std::endl;
+
+	Cat	cat2(cat1);
+	std::cout << "Cat 2 : " << std::endl;
+	std::cout << "\t";
+	cat2.printIdea(10);
+	std::cout << std::endl;
+
+	std::cout << YELLOW << "[BRAINS ARE INDEPENDENT] : " << END << std::endl;
+	cat1.setCatIdea(42, " brainfuck !");
+	std::cout << "Cat 1 : " << std::endl;
+	std::cout << "\t";
+	cat1.printIdea(42);
+	std::cout << "Cat 2 : " << std::endl;
+	std::cout << "\t";
+	cat2.printIdea(42);
+
+	std::cout << std::endl;
 }

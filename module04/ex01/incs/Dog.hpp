@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 18:56:06 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/24 12:12:50 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 15:16:28 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,15 @@ class Dog : public Animal
 		Dog&			operator=(Dog const &src);
 
 		/* member functions										*/
-		virtual void	makeSound(void) const;
 		Brain&			getBrain(void) const;
 		void			printIdea(int i_idea) const;
 		void			setDogIdea(int i_idea, std::string text);
+		virtual void	makeSound(void) const;
 
 		/* destructor											*/
 		virtual			~Dog(void);
+
+	private :
 
 		/* private attributes									*/
 		Brain	*_brain;

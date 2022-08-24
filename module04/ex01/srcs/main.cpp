@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:06 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/24 13:34:04 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 15:09:37 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(void)
 void	testArray(void)
 {
 	std::cout << std::endl;
-	std::cout << GREEN << "[TEST - SUBJECT ARRAY]" << std::endl;
+	std::cout << GREEN << "[TEST - ARRAY]" << std::endl;
 	std::cout << std::endl;
 
 	Animal	*animalTab[4];
@@ -32,12 +32,14 @@ void	testArray(void)
 	for (int i = 0; i < 2; i++)
 	{
 		animalTab[i] = new Dog();
+		std::cout << "Type : " << animalTab[i]->getType() << std::endl;
 		std::cout << std::endl;
 	}
 
 	for (int i = 2; i < 4; i++)
 	{
 		animalTab[i] = new Cat();
+		std::cout << "Type : " << animalTab[i]->getType() << std::endl;
 		std::cout << std::endl;
 	}
 

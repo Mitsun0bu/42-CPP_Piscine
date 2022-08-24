@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:06 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/24 10:39:05 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 15:04:35 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(void)
 {
 	std::cout << std::endl;
-	std::cout << GREEN << "[SUBJECT TEST - NORMAL]" << END << std::endl;
+	std::cout << GREEN << "[TEST - ANIMAL]" << END << std::endl;
 	std::cout << std::endl;
 
 	const Animal* animal1 = new Animal();
@@ -24,14 +24,14 @@ int	main(void)
 
 
 	std::cout << std::endl;
-	std::cout << "Type : " << animal1->getType() << " " << std::endl;
-	std::cout << "Type : " << animal2->getType() << " " << std::endl;
-	std::cout << "Type : " << animal3->getType() << " " << std::endl;
+	std::cout << "Type : " << animal1->getType() << std::endl;
+	std::cout << "Type : " << animal2->getType() << std::endl;
+	std::cout << "Type : " << animal3->getType() << std::endl;
 
 	std::cout << std::endl;
-	animal3->makeSound();
-	animal2->makeSound();
 	animal1->makeSound();
+	animal2->makeSound();
+	animal3->makeSound();
 	std::cout << std::endl;
 
 	delete animal1;
@@ -39,7 +39,7 @@ int	main(void)
 	delete animal3;
 
 	std::cout << std::endl;
-	std::cout << GREEN << "[SUBJECT TEST - WRONG ANIMAL]" << END << std::endl;
+	std::cout << GREEN << "[TEST - WRONG ANIMAL]" << END << std::endl;
 	std::cout << std::endl;
 
 	const WrongAnimal*	wrongAnimal1 = new WrongAnimal();
@@ -47,14 +47,14 @@ int	main(void)
 	const WrongCat*		wrongCat = new WrongCat();
 
 	std::cout << std::endl;
-	std::cout << "Type : " << wrongAnimal1->getType() << " " << std::endl;
-	std::cout << "Type : " << wrongAnimal2->getType() << " " << std::endl;
-	std::cout << "Type : " << wrongCat->getType() << " " << std::endl;
+	std::cout << "Type : " << wrongAnimal1->getType() << std::endl;
+	std::cout << "Type : " << wrongAnimal2->getType() << std::endl;
+	std::cout << "Type : " << wrongCat->getType() << std::endl;
 	std::cout << std::endl;
 
-	wrongCat->makeSound();
-	wrongAnimal2->makeSound();
 	wrongAnimal1->makeSound();
+	wrongAnimal2->makeSound();
+	wrongCat->makeSound();
 	std::cout << std::endl;
 
 	delete wrongAnimal1;

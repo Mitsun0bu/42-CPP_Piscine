@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:04 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/24 13:27:57 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 15:08:59 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,6 @@ Dog&	Dog::operator=(Dog const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-void	Dog::makeSound() const
-{
-	std::cout << "Dog : \"Woof.\"" << std::endl;
-
-	return ;
-}
-
 Brain&	Dog::getBrain(void) const
 {
 	return (*(this->_brain));
@@ -79,6 +72,13 @@ void	Dog::printIdea(int i_idea) const
 void	Dog::setDogIdea(int i_idea, std::string text)
 {
 	this->_brain->setIdea(i_idea, text);
+	return ;
+}
+
+void	Dog::makeSound() const
+{
+	std::cout << "Dog : \"Woof.\"" << std::endl;
+
 	return ;
 }
 

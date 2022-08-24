@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 10:48:51 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
+/*   Created: 2022/08/24 10:52:39 by llethuil          #+#    #+#             */
+/*   Updated: 2022/08/24 13:36:36 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@
 
 Brain::Brain(void)
 {
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "A brain has been formed inside an animal's skull !" << std::endl;
+
 	std::string n = "";
 
-	std::cout << "A brain has been formed inside an animal head !" << std::endl;
 	for (int i = 0; i < 100; i++)
 	{
 		n = std::to_string(i);
@@ -31,9 +33,13 @@ Brain::Brain(void)
 	return ;
 }
 
-Brain::Brain(Brain const &src)
+Brain::Brain(Brain const & src)
 {
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "A brain has been cloned !" << std::endl;
+
 	*this = src;
+
 	return ;
 }
 
@@ -43,10 +49,11 @@ Brain::Brain(Brain const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-Brain&	Brain::operator=(Brain const &src)
+Brain&	Brain::operator=(Brain const & src)
 {
 	for (int i = 0; i < 100; i++)
-			this->_ideas[i] = src._ideas[i];
+		this->_ideas[i] = src.getIdea(i);
+
 	return (*this);
 }
 
@@ -64,6 +71,7 @@ std::string	Brain::getIdea(int i_idea) const
 void	Brain::setIdea(int i_idea, std::string text)
 {
 	this->_ideas[i_idea] += text;
+
 	return ;
 }
 
@@ -75,6 +83,8 @@ void	Brain::setIdea(int i_idea, std::string text)
 
 Brain::~Brain(void)
 {
-	std::cout << "A brain stopped working inside an animal head !" << std::endl;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << "An animal's brain stopped working :(" << std::endl;
+
 	return ;
 }

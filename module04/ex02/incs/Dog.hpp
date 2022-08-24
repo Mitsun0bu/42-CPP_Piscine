@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 18:56:06 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 16:27:44 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 15:17:47 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef DOG_HPP
+# define DOG_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -30,16 +31,28 @@ class Dog : public A_Animal
 {
 	public :
 
-							Dog(void);
-							Dog(Dog const &src);
-		Dog					&operator=(Dog const &src);
-		virtual std::string	getType(void) const;
-		virtual void		makeSound(void) const;
-		void				printIdea(int i_idea) const;
-		void				setDogIdea(int i_idea, std::string text);
-		virtual 			~Dog(void);
+		/* constructors											*/
+						Dog(void);
+
+		/* copy constructor										*/
+						Dog(Dog const &src);
+
+		/* operator overload									*/
+		Dog&			operator=(Dog const &src);
+
+		/* member functions										*/
+		virtual void	makeSound(void) const;
+		Brain&			getBrain(void) const;
+		void			printIdea(int i_idea) const;
+		void			setDogIdea(int i_idea, std::string text);
+
+		/* destructor											*/
+		virtual			~Dog(void);
 
 	private :
 
-		Brain	*_brain;
+		/* private attributes									*/
+		Brain*			_brain;
 };
+
+# endif

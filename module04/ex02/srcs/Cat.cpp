@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:02 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 14:50:09 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,21 @@
 
 Cat::Cat(void) : _brain(new Brain())
 {
-	std::cout << "The newborn animal is a cat !" << std::endl;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "The newborn animal is a cat !" << std::endl;
+
 	this->_type = "cat";
+
 	return ;
 }
 
-Cat::Cat(Cat const &src)
+Cat::Cat(Cat const & src) : _brain(new Brain())
 {
+	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
+			  << "A cat has been duplicated !" << std::endl;
+
 	*this = src;
+
 	return ;
 }
 
@@ -37,10 +44,11 @@ Cat::Cat(Cat const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-Cat&	Cat::operator=(Cat const &src)
+Cat&	Cat::operator=(Cat const & src)
 {
 	this->_type = src.getType();
-	*(this->_brain) = *(src._brain);
+	*(this->_brain) = src.getBrain();
+
 	return (*this);
 }
 
@@ -50,26 +58,34 @@ Cat&	Cat::operator=(Cat const &src)
 /*                                                                            */
 /* ************************************************************************** */
 
-std::string	Cat::getType(void) const
-{
-	return ("Type : " + this->_type);
-}
+// std::string	Cat::getType(void) const
+// {
+// 	return (this->_type);
+// }
 
 void	Cat::makeSound() const
 {
 	std::cout << "Cat : \"Meow.\"" << std::endl;
+
 	return ;
+}
+
+Brain&	Cat::getBrain(void) const
+{
+	return (*(this->_brain));
 }
 
 void	Cat::printIdea(int i_idea) const
 {
 	std::cout << this->_brain->getIdea(i_idea) << std::endl;
+
 	return ;
 }
 
 void	Cat::setCatIdea(int i_idea, std::string text)
 {
 	this->_brain->setIdea(i_idea, text);
+
 	return ;
 }
 
@@ -81,7 +97,10 @@ void	Cat::setCatIdea(int i_idea, std::string text)
 
 Cat::~Cat(void)
 {
-	std::cout << "A cat just died ..." << std::endl;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << "A cat just died ..." << std::endl;
+
 	delete this->_brain;
+
 	return ;
 }

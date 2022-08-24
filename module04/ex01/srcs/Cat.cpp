@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:02 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/24 13:37:18 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 15:08:33 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,6 @@ Cat&	Cat::operator=(Cat const & src)
 /*                                                                            */
 /* ************************************************************************** */
 
-void	Cat::makeSound() const
-{
-	std::cout << "Cat : \"Meow.\"" << std::endl;
-
-	return ;
-}
-
 Brain&	Cat::getBrain(void) const
 {
 	return (*(this->_brain));
@@ -80,6 +73,13 @@ void	Cat::printIdea(int i_idea) const
 void	Cat::setCatIdea(int i_idea, std::string text)
 {
 	this->_brain->setIdea(i_idea, text);
+
+	return ;
+}
+
+void	Cat::makeSound() const
+{
+	std::cout << "Cat : \"Meow.\"" << std::endl;
 
 	return ;
 }

@@ -5,12 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 16:05:13 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 16:23:20 by llethuil         ###   ########lyon.fr   */
+/*   Created: 2022/08/24 13:49:30 by llethuil          #+#    #+#             */
+/*   Updated: 2022/08/24 14:50:27 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef A_ANIMAL_HPP
+# define A_ANIMAL_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -30,14 +31,26 @@ class A_Animal
 {
 	public :
 
-								A_Animal(void);
-								A_Animal(A_Animal const &src);
-		A_Animal				&operator=(A_Animal const &src);
-		virtual std::string		getType(void) const = 0;
-		virtual void			makeSound(void) const = 0;
-		virtual 				~A_Animal(void);
+		/* constructors										*/
+							A_Animal(void);
+
+		/* copy constructor									*/
+							A_Animal(A_Animal const & src);
+
+		/* operator overload								*/
+		A_Animal&			operator=(A_Animal const & src);
+
+		/* member functions									*/
+		std::string			getType(void) const;
+		virtual void		makeSound(void) const = 0;
+
+		/* destructor										*/
+		virtual 			~A_Animal(void);
 
 	protected:
 
-		std::string	_type;
+		/* private attributes								*/
+		std::string			_type;
 };
+
+# endif
