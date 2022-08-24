@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:04 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 12:12:37 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-Dog::Dog(void)
+Dog::Dog(void) : _brain(new Brain())
 {
-	std::cout << "The newborn animal is a dog !" << std::endl;
+	std::cout << BLUE << "[CONSTRUCTOR] : " << END
+			  << "The newborn animal is a dog !" << std::endl;
+
 	this->_type = "dog";
-	this->_brain = new Brain();
+
 	return ;
 }
 
-Dog::Dog(Dog const &src)
+Dog::Dog(Dog const & src)
 {
+	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
+			  << "An dog has been duplicated !" << std::endl;
+
 	*this = src;
+
 	return ;
 }
 
@@ -40,8 +46,11 @@ Dog::Dog(Dog const &src)
 
 Dog&	Dog::operator=(Dog const &src)
 {
+	this->_brain = new Brain();
+
 	this->_type = src.getType();
-	*(this->_brain) = *(src._brain);
+	*(this->_brain) = src.getBrain();
+
 	return (*this);
 }
 
@@ -54,7 +63,13 @@ Dog&	Dog::operator=(Dog const &src)
 void	Dog::makeSound() const
 {
 	std::cout << "Dog : \"Woof.\"" << std::endl;
+
 	return ;
+}
+
+Brain&	Dog::getBrain(void) const
+{
+	return (*(this->_brain));
 }
 
 void	Dog::printIdea(int i_idea) const
@@ -77,7 +92,10 @@ void	Dog::setDogIdea(int i_idea, std::string text)
 
 Dog::~Dog(void)
 {
-	std::cout << "A dog just died ..." << std::endl;
+	std::cout << PURPLE << "[DESTRUCTOR] : " << END
+			  << "A dog just died ..." << std::endl;
+
 	delete this->_brain;
+
 	return ;
 }

@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 18:23:13 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 15:05:27 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 09:21:33 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef ANIMAL_HPP
+# define ANIMAL_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -30,14 +31,26 @@ class Animal
 {
 	public :
 
+		/* constructors									*/
 						Animal(void);
-						Animal(Animal const &src);
-		Animal			&operator=(Animal const &src);
+
+		/* copy constructor								*/
+						Animal(Animal const & src);
+
+		/* operator overload							*/
+		Animal&			operator=(Animal const & src);
+
+		/* member functions								*/
 		std::string		getType(void) const;
 		virtual void	makeSound(void) const;
+
+		/* destructor									*/
 		virtual 		~Animal(void);
 
 	protected:
 
-		std::string	_type;
+		/* private attributes							*/
+		std::string		_type;
 };
+
+# endif

@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 18:53:40 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 16:25:19 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 11:51:06 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef CAT_HPP
+# define CAT_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -30,15 +31,28 @@ class Cat : public Animal
 {
 	public :
 
+		/* constructors								*/
 						Cat(void);
+
+		/* copy constructor							*/
 						Cat(Cat const &src);
-		Cat				&operator=(Cat const &src);
+
+		/* operator overload						*/
+		Cat&			operator=(Cat const &src);
+
+		/* member functions							*/
 		virtual void	makeSound(void) const;
+		Brain&			getBrain(void) const;
 		void			printIdea(int i_idea) const;
 		void			setCatIdea(int i_idea, std::string text);
-		virtual			~Cat(void);
 
-	private :
+		/* destructor								*/
+		virtual 		~Cat(void);
 
+		private :
+
+		/* private attributes						*/
 		Brain	*_brain;
 };
+
+# endif

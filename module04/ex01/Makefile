@@ -6,7 +6,7 @@
 #    By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 18:18:50 by llethuil          #+#    #+#              #
-#    Updated: 2022/07/19 11:08:53 by llethuil         ###   ########lyon.fr    #
+#    Updated: 2022/08/24 11:09:55 by llethuil         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ END		:=	\033[0m
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:=	polymorphism
+NAME		:=	polymorphism_brain
 
 CC			:=	c++
 
@@ -41,17 +41,17 @@ INCS_DIR	:=	incs
 
 OBJS_DIR	:=	.objs
 
-SRCS_LST	:=	main.cpp		\
-				Animal.cpp		\
-				Brain.cpp		\
-				Cat.cpp			\
-				Dog.cpp			\
+SRCS_LST	:=	Animal.cpp	\
+				Brain.cpp	\
+				Cat.cpp		\
+				Dog.cpp		\
+				main.cpp	\
 
-INCS_LST	:=	main.hpp		\
-				Animal.hpp		\
-				Brain.hpp		\
-				Cat.hpp			\
-				Dog.hpp			\
+INCS_LST	:=	Animal.hpp	\
+				Brain.hpp	\
+				Cat.hpp		\
+				Dog.hpp		\
+				main.hpp	\
 
 OBJS_LST	:=	$(SRCS_LST:.cpp=.o)
 

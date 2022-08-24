@@ -5,12 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 10:40:27 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 15:05:24 by llethuil         ###   ########lyon.fr   */
+/*   Created: 2022/08/24 10:42:50 by llethuil          #+#    #+#             */
+/*   Updated: 2022/08/24 11:48:45 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef BRAIN_HPP
+# define BRAIN_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -30,11 +31,19 @@ class Brain
 {
 	public :
 
+		/* constructors										*/
 						Brain(void);
-						Brain(Brain const &src);
-		Brain			&operator=(Brain const &src);
+		/* copy constructor									*/
+						Brain(Brain const & src);
+
+		/* operator overload								*/
+		Brain&			operator=(Brain const & src);
+
+		/* member functions									*/
 		std::string		getIdea(int i_idea) const;
 		void			setIdea(int i_idea, std::string text);
+
+		/* destructor										*/
 		virtual 		~Brain(void);
 
 	protected :
@@ -42,3 +51,5 @@ class Brain
 		std::string		_ideas[100];
 
 };
+
+# endif
