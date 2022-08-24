@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:04 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/24 12:12:37 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 13:27:57 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Dog::Dog(void) : _brain(new Brain())
 	return ;
 }
 
-Dog::Dog(Dog const & src)
+Dog::Dog(Dog const & src) : _brain(new Brain())
 {
 	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
 			  << "An dog has been duplicated !" << std::endl;
@@ -46,8 +46,6 @@ Dog::Dog(Dog const & src)
 
 Dog&	Dog::operator=(Dog const &src)
 {
-	this->_brain = new Brain();
-
 	this->_type = src.getType();
 	*(this->_brain) = src.getBrain();
 

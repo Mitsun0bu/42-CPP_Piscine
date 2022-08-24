@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:02 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/24 12:02:31 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 13:37:18 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Cat::Cat(void) : _brain(new Brain())
 	return ;
 }
 
-Cat::Cat(Cat const & src)
+Cat::Cat(Cat const & src) : _brain(new Brain())
 {
 	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
 			  << "A cat has been duplicated !" << std::endl;
@@ -46,8 +46,6 @@ Cat::Cat(Cat const & src)
 
 Cat&	Cat::operator=(Cat const & src)
 {
-	this->_brain = new Brain();
-
 	this->_type = src.getType();
 	*(this->_brain) = src.getBrain();
 

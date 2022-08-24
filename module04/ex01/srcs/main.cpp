@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:06 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/24 12:15:18 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 13:34:04 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 int	main(void)
 {
-	// testLeaks();
-	testDeepCopy();
+	testArray();
+	testAssignmentOperator();
+	testCopyConstructor();
 
 	return (0);
 }
 
-void	testLeaks(void)
+void	testArray(void)
 {
 	std::cout << std::endl;
-	std::cout << GREEN << "[TEST - LEAKS]" << std::endl;
+	std::cout << GREEN << "[TEST - SUBJECT ARRAY]" << std::endl;
 	std::cout << std::endl;
 
 	Animal	*animalTab[4];
@@ -46,10 +47,10 @@ void	testLeaks(void)
 	return ;
 }
 
-void	testDeepCopy(void)
+void	testAssignmentOperator(void)
 {
 	std::cout << std::endl;
-	std::cout << GREEN << "[SUBJECT TEST - COPY]" << END << std::endl;
+	std::cout << GREEN << "[TEST - ASSIGNMENT OPERATOR]" << END << std::endl;
 	std::cout << std::endl;
 
 	Dog	dog1;
@@ -77,6 +78,15 @@ void	testDeepCopy(void)
 	std::cout << "\t";
 	dog2.printIdea(42);
 
+	std::cout << std::endl;
+
+	return ;
+}
+
+void	testCopyConstructor(void)
+{
+	std::cout << std::endl;
+	std::cout << GREEN << "[SUBJECT TEST - COPY CONSTRUCTOR]" << END << std::endl;
 	std::cout << std::endl;
 
 	Cat	cat1;

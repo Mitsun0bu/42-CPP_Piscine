@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 18:23:35 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 16:22:52 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 11:59:03 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	test_subject_array();
-void	test_subject_copy(void);
+void	testLeaks();
+void	testDeepCopy(void);
 void	test_subject_leaks(void);
 void	my_test(void);

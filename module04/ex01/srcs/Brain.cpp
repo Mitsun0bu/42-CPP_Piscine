@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 10:52:39 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/24 11:53:29 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 13:36:36 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ Brain::~Brain(void)
 {
 	std::cout << PURPLE << "[DESTRUCTOR] : " << END
 			  << "An animal's brain stopped working :(" << std::endl;
+
 	return ;
 }

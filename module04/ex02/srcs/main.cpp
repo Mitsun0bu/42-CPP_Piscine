@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:01:06 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/19 16:36:36 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/24 11:59:03 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	main(void)
 {
 	/* TESTS ASKED IN THE SUBJECT */
-	// test_subject_array();
-	// test_subject_copy();
+	// testLeaks();
+	// testDeepCopy();
 	/* SUBJECT LEAKS TEST */
 	// test_subject_leaks();
 	/* MY TEST */
@@ -25,7 +25,7 @@ int	main(void)
 	return (0);
 }
 
-void	test_subject_array(void)
+void	testLeaks(void)
 {
 	std::cout << "===== SUBJECT TEST : ARRAY =====" << std::endl;
 
@@ -45,7 +45,7 @@ void	test_subject_array(void)
 	return ;
 }
 
-void	test_subject_copy(void)
+void	testDeepCopy(void)
 {
 	std::cout << "===== SUBJECT TEST : COPY =====" << std::endl;
 
