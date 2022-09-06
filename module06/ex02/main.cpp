@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 10:15:00 by llethuil          #+#    #+#             */
-/*   Updated: 2022/09/06 15:45:30 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/06 17:45:38 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,21 +92,21 @@ void    identify(Base& p)
 
     try
     {
-        (void)dynamic_cast<A&>(p);
+        static_cast <void> (dynamic_cast <A&> (p));
         std::cout << "A class has been recognized !" << std::endl;
     }
     catch(const std::bad_cast& e) {}
 
     try
     {
-        (void)dynamic_cast<B&>(p);
+        static_cast <void> (dynamic_cast<B&>(p));
         std::cout << "B class has been recognized !" << std::endl;
     }
     catch(const std::bad_cast& e){}
 
     try
     {
-        (void)dynamic_cast<C&>(p);
+        static_cast <void> (dynamic_cast<C&>(p));
         std::cout << "C class has been recognized !" << std::endl;
     }
     catch(const std::bad_cast& e) {}

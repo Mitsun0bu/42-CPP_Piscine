@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:00:20 by llethuil          #+#    #+#             */
-/*   Updated: 2022/09/06 14:35:00 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/06 17:54:01 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -335,6 +335,9 @@ void Converter::charToInt()
 
 void Converter::charToFloat()
 {
+	std::cout << std::fixed;
+	std::cout.precision(1);
+
 	this->_float = static_cast <float> (this->_char);
 
 	std::cout << "float\t:\t" << this->_float << "f" << std::endl;
@@ -376,6 +379,9 @@ void Converter::intToChar()
 
 void Converter::intToFloat()
 {
+	std::cout << std::fixed;
+	std::cout.precision(1);
+
 	this->_float = static_cast <float> (this->_int);
 
 	std::cout << "float\t:\t";
@@ -392,6 +398,9 @@ void Converter::intToFloat()
 
 void Converter::intToDouble()
 {
+	std::cout << std::fixed;
+	std::cout.precision(1);
+
 	this->_double = static_cast <double> (this->_int);
 
 	std::cout << "double\t:\t";
@@ -450,6 +459,9 @@ void Converter::floatToInt()
 
 void Converter::floatToDouble()
 {
+	std::cout << std::fixed;
+	std::cout.precision(1);
+
 	this->_double = static_cast <double> (this->_float);
 
 	std::cout << "double\t:\t" << this->_double << std::endl;
@@ -502,6 +514,9 @@ void Converter::doubleToInt()
 
 void Converter::doubleToFloat()
 {
+	std::cout << std::fixed;
+	std::cout.precision(1);
+
 	this->_float = static_cast <float> (this->_double);
 
 	std::cout << "float\t:\t";
@@ -542,6 +557,9 @@ void Converter::printIntValue()
 
 void Converter::printFloatValue()
 {
+	std::cout << std::fixed;
+	std::cout.precision(1);
+
 	std::cout << "float\t:\t" << this->_float << "f" << std::endl;
 
 	return ;
@@ -549,6 +567,9 @@ void Converter::printFloatValue()
 
 void Converter::printDoubleValue()
 {
+	std::cout << std::fixed;
+	std::cout.precision(1);
+
 	std::cout << "double\t:\t" << this->_double << std::endl;
 
 	return ;
