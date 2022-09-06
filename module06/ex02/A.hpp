@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 10:03:12 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/05 10:55:33 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/09/06 14:40:53 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef A_HPP
+# define A_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -31,3 +32,5 @@ class A : public Base
     // public:
     //     ~A(void);
 };
+
+# endif

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   C.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 10:04:14 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/05 10:55:40 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/09/06 14:40:33 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef C_HPP
+# define C_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -31,3 +32,5 @@ class C : public Base
     // public:
     //     ~C(void);
 };
+
+# endif
