@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:12:05 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/05 14:54:08 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,17 @@ PresidentialPardonForm&		PresidentialPardonForm::operator=(PresidentialPardonFor
 std::ostream&	operator<<(std::ostream &stream, PresidentialPardonForm const &PresidentialPardonForm)
 {
 	std::string	signedMsg = "";
+
 	if (PresidentialPardonForm.getSignState() == true)
 		signedMsg = "Yes";
 	else
 		signedMsg = "No";
-	stream << "===== PRESIDENTIAL PARDON FORM INFOS =====" << std::endl
-		   << "Name : " << PresidentialPardonForm.getName() << std::endl
+
+	stream << "Name : " << PresidentialPardonForm.getName() << std::endl
 		   << "Signed : " << signedMsg << std::endl
 		   << "Grade required to sign : " << PresidentialPardonForm.getSignGrade() << std::endl
 		   << "Grade required to execute : " << PresidentialPardonForm.getExecGrade() << std::endl;
+
 	return stream;
 }
 

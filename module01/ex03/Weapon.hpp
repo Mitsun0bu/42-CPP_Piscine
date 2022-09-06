@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:26:24 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/22 09:38:13 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/08/23 09:56:25 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ class   Weapon
 							Weapon(std::string type);
 
 		/* member functions														*/
-		std::string const &	getType(void);
+		std::string const &	getType(void) const;
 		void				setType(std::string newType);
 
 		/* destructor															*/

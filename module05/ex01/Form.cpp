@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 09:35:29 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/10 11:13:38 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/05 14:44:23 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ Form::Form(Form const &src) :
 	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
 			<< "A Form named " << src.getName()
 			<< " has been duplicated !" << std::endl;
+
 	*this = src;
+
 	return ;
 }
 

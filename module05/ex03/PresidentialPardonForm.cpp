@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:12:05 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/05 15:09:06 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ PresidentialPardonForm::PresidentialPardonForm(void) :
 	A_Form("PresidentialPardonForm", 25, 5)
 {
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
-			  << "A PresidentialPardonForm has been created by the secretary." << std::endl;
+			  << "A PresidentialPardonForm has been created by the intern." << std::endl;
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:57:29 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/10 11:00:46 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/05 14:35:56 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ class Bureaucrat
 			public:
 				virtual const char *what() const throw();
 		};
+
 		class GradeTooLowException : public std::exception
 		{
 			public:

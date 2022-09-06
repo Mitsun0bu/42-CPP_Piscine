@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:27:38 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/05 14:54:46 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,7 @@ std::ostream&	operator<<(std::ostream &stream, ShrubberyCreationForm const &Shru
 		signedMsg = "Yes";
 	else
 		signedMsg = "No";
-	stream << "===== SHRUBBERRY FORM INFOS =====" << std::endl
-		   << "Name : " << ShrubberyCreationForm.getName() << std::endl
+	stream << "Name : " << ShrubberyCreationForm.getName() << std::endl
 		   << "Signed : " << signedMsg << std::endl
 		   << "Grade required to sign : " << ShrubberyCreationForm.getSignGrade() << std::endl
 		   << "Grade required to execute : " << ShrubberyCreationForm.getExecGrade() << std::endl;

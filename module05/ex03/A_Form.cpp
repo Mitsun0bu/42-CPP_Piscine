@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:08:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 17:37:31 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/05 15:14:34 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ A_Form::A_Form(void) :
 	_name("Secret File"), _sign_state(false), _sign_grade(1), _exec_grade(1)
 {
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
-			  << "A Form has been created by the secretary." << std::endl;
+			  << "A Form has been created by the intern." << std::endl;
 	return ;
 }
 
@@ -42,7 +42,7 @@ A_Form::A_Form(const std::string name, const int sign_grade, const int exec_grad
 	else
 	{
 		std::cout << BLUE << "[CONSTRUCTOR] : " << END
-				  << "A Form has been created by the secretary." << std::endl;
+				  << "A Form has been created by the intern." << std::endl;
 	}
 	return ;
 }

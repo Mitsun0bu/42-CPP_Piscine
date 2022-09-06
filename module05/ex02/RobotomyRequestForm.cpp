@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 16:17:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/05 14:54:37 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,7 @@ std::ostream&	operator<<(std::ostream &stream, RobotomyRequestForm const &Roboto
 		signedMsg = "Yes";
 	else
 		signedMsg = "No";
-	stream << "===== ROBOTOMY REQUEST FORM INFOS =====" << std::endl
-		   << "Name : " << RobotomyRequestForm.getName() << std::endl
+	stream << "Name : " << RobotomyRequestForm.getName() << std::endl
 		   << "Signed : " << signedMsg << std::endl
 		   << "Grade required to sign : " << RobotomyRequestForm.getSignGrade() << std::endl
 		   << "Grade required to execute : " << RobotomyRequestForm.getExecGrade() << std::endl;

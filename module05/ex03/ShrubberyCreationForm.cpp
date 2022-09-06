@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:27:38 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/05 15:09:37 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(void) :
 	A_Form("ShrubberyCreationForm", 145, 137)
 {
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
-			  << "A ShrubberyCreationForm has been created by the secretary." << std::endl;
+			  << "A ShrubberyCreationForm has been created by the intern." << std::endl;
 	return ;
 }
 

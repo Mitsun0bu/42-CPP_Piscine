@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 18:08:40 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/10 14:30:41 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/05 15:40:58 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int	main(void)
 	randomForm = someRandomIntern.makeForm("random form :)", "Bender");
 
 	std::cout << std::endl << GREEN << "[TEST - VALID FORM NAME]" << END << std::endl;
+
 	robotomyRequestForm = someRandomIntern.makeForm("Robotomy Request", "Bender");
+	if(!robotomyRequestForm)
+		return (0);
 	A_Form&		formRef = *robotomyRequestForm;
 	B1.signForm(formRef);
 	B1.executeForm(formRef);

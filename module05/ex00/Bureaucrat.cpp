@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:57:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/10 10:58:06 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/05 14:36:12 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ const char*			Bureaucrat::GradeTooHighException::what() const throw()
 Bureaucrat::~Bureaucrat(void)
 {
 	std::cout << PURPLE << "[DESTRUCTOR] : " << END
-			<< "A Bureaucrat named " << this->_name
-			<< " has left the office." << std::endl;
+			  << "A Bureaucrat named " << this->_name
+			  << " has left the office." << std::endl;
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 18:35:08 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 17:30:18 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/05 15:36:42 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,20 +73,17 @@ int	Intern::nameIsValid(const std::string &name)
 
 A_Form	*Intern::_makeShruberryCreationForm(std::string target)
 {
-	ShrubberyCreationForm	*sCF_ptr = new ShrubberyCreationForm(target);
-	return (sCF_ptr);
+	return (new ShrubberyCreationForm(target));
 }
 
 A_Form	*Intern::_makeRobotomyRequestForm(std::string target)
 {
-	RobotomyRequestForm	*rRF_ptr = new RobotomyRequestForm(target);
-	return (rRF_ptr);
+	return (new RobotomyRequestForm(target));
 }
 
 A_Form	*Intern::_makePresidentialPardonForm(std::string target)
 {
-	PresidentialPardonForm	*pPF_ptr = new PresidentialPardonForm(target);
-	return (pPF_ptr);
+	return (new PresidentialPardonForm(target));
 }
 
 A_Form*	Intern::makeForm(std::string name, std::string target)
@@ -101,8 +98,8 @@ A_Form*	Intern::makeForm(std::string name, std::string target)
 	{
 		std::cerr << RED << "[EXCEPTION] : " << END
 				  << e.what() << '\n';
-		return (NULL);
 	}
+	return (NULL);
 }
 
 /* ************************************************************************** */

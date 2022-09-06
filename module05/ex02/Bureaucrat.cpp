@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:57:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/07/22 10:49:50 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/05 14:54:18 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ Bureaucrat&		Bureaucrat::operator=(Bureaucrat const &src)
 
 std::ostream&	operator<<(std::ostream &stream, Bureaucrat const &Bureaucrat)
 {
-	stream << "===== BUREAUCRAT INFOS =====" << std::endl
-		   << Bureaucrat.getName() << ": Good morning sir !"
+	stream << Bureaucrat.getName() << ": Good morning sir !"
 		   << " My name is " << Bureaucrat.getName()
 		   << " and my bureaucrat grade is " << Bureaucrat.getGrade()
 		   << std::endl;
-	return stream;
+
+	return (stream);
 }
 
 /* ************************************************************************** */

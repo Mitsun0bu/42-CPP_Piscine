@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 16:17:26 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/10 11:23:57 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/05 15:09:11 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ RobotomyRequestForm::RobotomyRequestForm(void) :
 	A_Form("RobotomyRequestForm", 72, 45)
 {
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
-			  << "A RobotomyRequestForm has been created by the secretary." << std::endl;
+			  << "A RobotomyRequestForm has been created by the intern." << std::endl;
 	return ;
 }
 

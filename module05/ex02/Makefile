@@ -6,7 +6,7 @@
 #    By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/19 18:13:55 by llethuil          #+#    #+#              #
-#    Updated: 2022/07/21 18:18:56 by llethuil         ###   ########lyon.fr    #
+#    Updated: 2022/09/05 15:00:04 by llethuil         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,7 @@ clean:
 
 fclean: clean
 	printf "$(PINK)> Removing $(NAME) executable file ...$(END)\n"
-	$(RM) $(NAME)
+	$(RM) $(NAME) MagicTree_shrubbery
 	printf "$(GREEN)> $(NAME) executable file has been removed successfully !$(END)\n"
 
 re: fclean all
