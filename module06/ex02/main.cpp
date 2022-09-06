@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lil@stud4student.42nyon.fr       +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 10:15:00 by llethuil          #+#    #+#             */
-/*   Updated: 2022/09/06 44:41:21 by llethuil         ###   ########lyonlyo   */
+/*   Updated: 2022/09/06 15:45:30 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ int main (void)
     std::cout << std::endl;
 
     identify(p);
-    identify(*p);
+    std::cout << std::endl;
+    if (p)
+        identify(*p);
 
     delete p;
 
@@ -44,19 +46,21 @@ Base*   generate(void)
 
     Base *p;
 
+    std::cout << GREEN << "[TEST - generate() function]" << END << std::endl;
+
     switch (n)
     {
         case 1:
             p = new A();
-            std::cout << "[The generate() function has generated a A class]" << std::endl;
+            std::cout << "The generate() function has generated a A class" << std::endl;
             break;
         case 2:
             p = new B();
-            std::cout << "[The generate() function has generated a B class]" << std::endl;
+            std::cout << "The generate() function has generated a B class" << std::endl;
             break;
         case 3:
             p = new C();
-            std::cout << "[The generate() function has generated a C class]" << std::endl;
+            std::cout << "The generate() function has generated a C class" << std::endl;
             break;
         default:
             p = NULL;
@@ -67,37 +71,45 @@ Base*   generate(void)
 
 void    identify(Base* p)
 {
+    std::cout << GREEN << "[TEST - identify(Base* p) function]" << END << std::endl;
+
+
     if (dynamic_cast<A*>(p))
-        std::cout << "The identify(Base* p) function recognize the A class !" << std::endl;
-    if (dynamic_cast<B*>(p))
-        std::cout << "The identify(Base* p) function recognize the B class !" << std::endl;
-    if (dynamic_cast<C*>(p))
-        std::cout << "The identify(Base* p) function recognize the C class !" << std::endl;
+        std::cout << "A class has been recognized !" << std::endl;
+    else if (dynamic_cast<B*>(p))
+        std::cout << "B class has been recognized !" << std::endl;
+    else if (dynamic_cast<C*>(p))
+        std::cout << "C class has been recognized !" << std::endl;
+    else
+        std::cout << "Error ! Dynamic cast return is NULL. " << std::endl;
+
     return ;
 }
 
 void    identify(Base& p)
  {
+    std::cout << GREEN << "[TEST - identify(Base& p) function]" << END << std::endl;
+
     try
     {
         (void)dynamic_cast<A&>(p);
-        std::cout << "The identify(Base& p) function recognize the A class !" << std::endl;
+        std::cout << "A class has been recognized !" << std::endl;
     }
-    catch(const std::exception& e) {}
+    catch(const std::bad_cast& e) {}
 
     try
     {
         (void)dynamic_cast<B&>(p);
-        std::cout << "The identify(Base& p) function recognize the B class !" << std::endl;
+        std::cout << "B class has been recognized !" << std::endl;
     }
-    catch(const std::exception& e){}
+    catch(const std::bad_cast& e){}
 
     try
     {
         (void)dynamic_cast<C&>(p);
-        std::cout << "The identify(Base& p) function recognize the C class !" << std::endl;
+        std::cout << "C class has been recognized !" << std::endl;
     }
-    catch(const std::exception& e) {}
+    catch(const std::bad_cast& e) {}
 
     return ;
  }

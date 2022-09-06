@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 17:42:21 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/03 17:50:02 by llethuil         ###   ########.fr       */
+/*   Updated: 2022/09/06 11:11:05 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef MAIN_HPP
+# define MAIN_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -29,3 +30,5 @@
 void	    argNumberError(void);
 uintptr_t	serialize(Data *ptr);
 Data		*deserialize(uintptr_t raw);
+
+# endif

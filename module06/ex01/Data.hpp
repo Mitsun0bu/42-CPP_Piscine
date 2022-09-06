@@ -6,11 +6,12 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 15:59:21 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/08 10:28:26 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/06 11:11:54 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
+# ifndef DATA_HPP
+# define DATA_HPP
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -48,3 +49,4 @@ struct Data
     int y;
 };
 
+# endif

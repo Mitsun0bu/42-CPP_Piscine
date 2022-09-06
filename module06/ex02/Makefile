@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+         #
+#    By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 10:44:49 by llethuil          #+#    #+#              #
-#    Updated: 2022/08/05 10:46:41 by llethuil         ###   ########.fr        #
+#    Updated: 2022/09/06 15:48:39 by llethuil         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,6 @@ OBJS_DIR	:=	.objs
 
 SRCS_LST	:=	main.cpp	\
 				Base.cpp	\
-				A.cpp		\
-				B.cpp		\
-				C.cpp		\
 
 INCS_LST	:=	Base.hpp	\
 				A.hpp		\

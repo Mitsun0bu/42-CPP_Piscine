@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 16:57:29 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/08 18:55:08 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/06 11:05:14 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,37 +39,49 @@ class Converter
         Converter&	operator=(Converter const & src);
 
 		/* member functions												*/
+
+		// - to detect the type of the argument passed as parameter
 		bool		argIsChar();
 		bool		argIsInt();
 		bool		argIsFloat();
 		bool		argIsDouble();
 
+		// - to handle argument depending on its type
 		void	 	handleChar();
+		void		handleInt();
+		void		handleFloat();
+		void		handleDouble();
+
+		// - to get the string argument under char, int, float or double format
 		void		argToChar();
-		void	 	printCharValue();
+		void		argToInt();
+		void		argToFloat();
+		void		argToDouble();
+
+		// - to convert char argument to other types
 		void		charToInt();
 		void		charToFloat();
 		void		charToDouble();
 
-		void		handleInt();
-		void		argToInt();
+		// - to convert int argument to other types
 		void		intToChar();
-		void		printIntValue();
 		void		intToFloat();
 		void		intToDouble();
 
-		void		handleFloat();
-		void		argToFloat();
+		// - to convert float argument to other types
 		void		floatToChar();
 		void		floatToInt();
-		void		printFloatValue();
 		void		floatToDouble();
 
-		void		handleDouble();
-		void		argToDouble();
+		// - to convert double argument to other types
 		void		doubleToChar();
 		void		doubleToInt();
 		void		doubleToFloat();
+
+		// - to print the output
+		void	 	printCharValue();
+		void		printIntValue();
+		void		printFloatValue();
 		void		printDoubleValue();
 
 		/* exceptions 													*/

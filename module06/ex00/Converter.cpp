@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Conv.cpp                                           :+:      :+:    :+:   */
+/*   Converter.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:00:20 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/08 18:58:22 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/06 14:35:00 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,12 @@ Converter& Converter::operator=(Converter const & src)
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Functions to detect the type of the literal passed as parameter */
+/* Functions to detect the type of the argument passed as parameter */
 
 bool Converter::argIsChar()
 {
-	if (this->_arg.length() == 1 && isalpha(_arg[0]) > 0)
+	if ((this->_arg.length() == 1)
+	&& 	(std::isalpha(_arg[0]) > 0 || std::ispunct(_arg[0]) > 0))
 		return true;
 	return false;
 }
@@ -99,7 +100,7 @@ bool Converter::argIsFloat()
 	{
 		if (i == 0 && _arg[i] == '-')
 			i ++;
-		else if (i != 0 && i != this->_arg.length() - 1 && _arg[i] == '.')
+		else if (i != 0 && /* i != this->_arg.length() - 1 && */ _arg[i] == '.')
 		{
 			if (dot == true)
 				return false;
@@ -112,6 +113,7 @@ bool Converter::argIsFloat()
 	}
 	if (this->_arg.length() < 4 || dot != true || f != true)
 		return false;
+	std::cout << "TRUE" << std::endl;
 	return true;
 }
 
@@ -139,7 +141,8 @@ bool Converter::argIsDouble()
 	return true;
 }
 
-/* Functions to handle char arguments */
+
+/* Functions to handle argument depending on its type */
 
 void Converter::handleChar()
 {
@@ -153,56 +156,6 @@ void Converter::handleChar()
 
 	return ;
 }
-
-void Converter::argToChar()
-{
-	const char	*temp = this->_arg.c_str();
-
-	this->_char = temp[0];
-
-	return ;
-}
-
-void Converter::printCharValue()
-{
-	std::cout << "char\t:\t'"
-			  << this->_char
-			  << "'"
-			  << std::endl;
-	return ;
-}
-
-void Converter::charToInt()
-{
-	this->_int = static_cast <int> (this->_char);
-
-	std::cout << "int\t:\t" << this->_int << std::endl;
-
-	return ;
-}
-
-void Converter::charToFloat()
-{
-	std::cout << std::fixed;
-	std::cout.precision(1);
-
-	this->_float = static_cast <float> (this->_char);
-
-	std::cout << "float\t:\t" << this->_float << "f" << std::endl;
-
-	return ;
-}
-
-void Converter::charToDouble()
-{
-	this->_double = static_cast <double> (this->_char);
-
-	std::cout << "double\t:\t" << this->_double << std::endl;
-
-	return ;
-}
-
-/* Functions to handle int arguments */
 
 void Converter::handleInt()
 {
@@ -247,87 +200,6 @@ void Converter::handleInt()
 	return ;
 }
 
-void Converter::argToInt()
-{
-	std::istringstream(this->_arg) >> this->_int;
-
-	return ;
-}
-
-void Converter::intToChar()
-{
-	this->_char = static_cast <char> (this->_int);
-
-	std::cout << "char\t:\t";
-
-	if (this->_arg != "-2147483648" && this->_int == std::numeric_limits<int>::min())
-		throw ImpossibleException();
-	else if (this->_arg != "2147483647" && this->_int == std::numeric_limits<int>::max())
-		throw ImpossibleException();
-	else if ((this->_int >=0 && this->_int < 32) || (this->_int > 126 && this->_int <= 256))
-		throw NonDisplayableException();
-	else if ((this->_int < 0 || this->_int > 256))
-		throw ImpossibleException();
-	else
-		std::cout << "'" << this->_char << "'" << std::endl;
-
-	return ;
-}
-
-void Converter::printIntValue()
-{
-	std::cout << "int\t:\t";
-
-	if (this->_arg != "-2147483648" && this->_int == std::numeric_limits<int>::min())
-		throw UnderflowException();
-	else if (this->_arg != "2147483647" && this->_int == std::numeric_limits<int>::max())
-		throw OverflowException();
-	else
-		std::cout << this->_int << std::endl;
-
-	return ;
-}
-
-void Converter::intToFloat()
-{
-	std::cout << std::fixed;
-	std::cout.precision(1);
-
-	this->_float = static_cast <float> (this->_int);
-
-	std::cout << "float\t:\t";
-
-	if (this->_arg != "-2147483648" && this->_int == std::numeric_limits<int>::min())
-		throw ImpossibleException();
-	else if (this->_arg != "2147483647" && this->_int == std::numeric_limits<int>::max())
-		throw ImpossibleException();
-	else
-		std::cout << this->_float << "f" << std::endl;
-
-	return ;
-}
-
-void Converter::intToDouble()
-{
-	std::cout << std::fixed;
-	std::cout.precision(1);
-
-	this->_double = static_cast <double> (this->_int);
-
-	std::cout << "double\t:\t";
-
-	if (this->_arg != "-2147483648" && this->_int == std::numeric_limits<int>::min())
-		throw ImpossibleException();
-	else if (this->_arg != "2147483647" && this->_int == std::numeric_limits<int>::max())
-		throw ImpossibleException();
-	else
-		std::cout << this->_double << std::endl;
-
-	return ;
-}
-
-/* Functions to handle float arguments */
-
 void Converter::handleFloat()
 {
 	this->argToFloat();
@@ -370,76 +242,6 @@ void Converter::handleFloat()
 
 	return ;
 }
-
-void Converter::argToFloat()
-{
-	double  temp = atof(_arg.c_str());
-	this->_float = static_cast <float> (temp);
-
-	return ;
-}
-
-void Converter::floatToChar()
-{
-	this->_char = static_cast <char> (this->_float);
-
-	float   whole = floor(this->_float);
-	float   frac = this->_float - whole;
-
-	std::cout << "char\t:\t";
-
-	if (this->_arg == "nanf")
-		throw ImpossibleException();
-	if (frac != 0)
-		throw ImpossibleException();
-	else if (((this->_float >= 0 && this->_float < 32) || (this->_float > 126 && this->_float < 256)))
-		throw NonDisplayableException();
-	else if ((this->_float < 0 || this->_float >= 256))
-		throw ImpossibleException();
-	else
-		std::cout << "'" << this->_char << "'" << std::endl;
-
-	return ;
-}
-
-void Converter::floatToInt()
-{
-	this->_int = static_cast <int> (this->_float);
-
-	std::cout << "int\t:\t";
-
-	if (this->_arg == "nanf")
-		throw ImpossibleException();
-	else if (this->_int == std::numeric_limits<int>::min() || this->_int == std::numeric_limits<int>::max())
-		throw ImpossibleException();
-	else
-		std::cout << this->_int << std::endl;
-
-	return ;
-}
-
-void Converter::printFloatValue()
-{
-	std::cout << std::fixed;
-	std::cout.precision(1);
-
-	std::cout << "float\t:\t" << this->_float << "f" << std::endl;
-
-	return ;
-}
-
-void Converter::floatToDouble()
-{
-	std::cout << std::fixed;
-	std::cout.precision(1);
-
-	this->_double = static_cast <double> (this->_float);
-	std::cout << "double\t:\t" << this->_double << std::endl;
-
-	return ;
-}
-
-/* Functions to convert double argument to other types */
 
 void Converter::handleDouble()
 {
@@ -484,20 +286,187 @@ void Converter::handleDouble()
 	return ;
 }
 
-void Converter::argToDouble()
+
+/* Functions to get the string argument under char, int, float or double format */
+
+void Converter::argToChar()
 {
-	this->_double = atof(_arg.c_str());
+	const char*	temp = this->_arg.std::string::c_str();
+
+	this->_char = temp[0];
 
 	return ;
 }
+
+void Converter::argToInt()
+{
+	std::istringstream(this->_arg) >> this->_int;
+
+	return ;
+}
+
+void Converter::argToFloat()
+{
+	double	temp = atof(_arg.std::string::c_str());
+
+	this->_float = static_cast <float> (temp);
+
+	return ;
+}
+
+void Converter::argToDouble()
+{
+	this->_double = std::atof(_arg.std::string::c_str());
+
+	return ;
+}
+
+
+/* Functions to convert char argument to other types */
+
+void Converter::charToInt()
+{
+	this->_int = static_cast <int> (this->_char);
+
+	std::cout << "int\t:\t" << this->_int << std::endl;
+
+	return ;
+}
+
+void Converter::charToFloat()
+{
+	this->_float = static_cast <float> (this->_char);
+
+	std::cout << "float\t:\t" << this->_float << "f" << std::endl;
+
+	return ;
+}
+
+void Converter::charToDouble()
+{
+	this->_double = static_cast <double> (this->_char);
+
+	std::cout << "double\t:\t" << this->_double << std::endl;
+
+	return ;
+}
+
+
+/* Functions to convert int argument to other types */
+
+void Converter::intToChar()
+{
+	this->_char = static_cast <char> (this->_int);
+
+	std::cout << "char\t:\t";
+
+	if (this->_arg != "-2147483648" && this->_int == std::numeric_limits<int>::min())
+		throw ImpossibleException();
+	else if (this->_arg != "2147483647" && this->_int == std::numeric_limits<int>::max())
+		throw ImpossibleException();
+	else if ((this->_int >=0 && this->_int < 32) || (this->_int > 126 && this->_int <= 256))
+		throw NonDisplayableException();
+	else if ((this->_int < 0 || this->_int > 256))
+		throw ImpossibleException();
+	else
+		std::cout << "'" << this->_char << "'" << std::endl;
+
+	return ;
+}
+
+void Converter::intToFloat()
+{
+	this->_float = static_cast <float> (this->_int);
+
+	std::cout << "float\t:\t";
+
+	if (this->_arg != "-2147483648" && this->_int == std::numeric_limits<int>::min())
+		throw ImpossibleException();
+	else if (this->_arg != "2147483647" && this->_int == std::numeric_limits<int>::max())
+		throw ImpossibleException();
+	else
+		std::cout << this->_float << "f" << std::endl;
+
+	return ;
+}
+
+void Converter::intToDouble()
+{
+	this->_double = static_cast <double> (this->_int);
+
+	std::cout << "double\t:\t";
+
+	if (this->_arg != "-2147483648" && this->_int == std::numeric_limits<int>::min())
+		throw ImpossibleException();
+	else if (this->_arg != "2147483647" && this->_int == std::numeric_limits<int>::max())
+		throw ImpossibleException();
+	else
+		std::cout << this->_double << std::endl;
+
+	return ;
+}
+
+
+/* Functions to convert float argument to other types */
+
+void Converter::floatToChar()
+{
+	this->_char = static_cast <char> (this->_float);
+
+	float   whole = floor(this->_float);
+	float   frac = this->_float - whole;
+
+	std::cout << "char\t:\t";
+
+	if (this->_arg == "nanf")
+		throw ImpossibleException();
+	if (frac != 0)
+		throw ImpossibleException();
+	else if (((this->_float >= 0 && this->_float < 32) || (this->_float > 126 && this->_float < 256)))
+		throw NonDisplayableException();
+	else if ((this->_float < 0 || this->_float >= 256))
+		throw ImpossibleException();
+	else
+		std::cout << "'" << this->_char << "'" << std::endl;
+
+	return ;
+}
+
+void Converter::floatToInt()
+{
+	this->_int = static_cast <int> (this->_float);
+
+	std::cout << "int\t:\t";
+
+	if (this->_arg == "nanf")
+		throw ImpossibleException();
+	else if (this->_int == std::numeric_limits<int>::min() || this->_int == std::numeric_limits<int>::max())
+		throw ImpossibleException();
+	else
+		std::cout << this->_int << std::endl;
+
+	return ;
+}
+
+void Converter::floatToDouble()
+{
+	this->_double = static_cast <double> (this->_float);
+
+	std::cout << "double\t:\t" << this->_double << std::endl;
+
+	return ;
+}
+
+
+/* Functions to convert double argument to other types */
 
 void Converter::doubleToChar()
 {
 
 	this->_char = static_cast <char> (this->_double);
 
-	double   whole = floor(this->_double);
-	double   frac = this->_double - whole;
+	double	whole = floor(this->_double);
+	double	frac = this->_double - whole;
 
 	std::cout << "char\t:\t";
 
@@ -517,7 +486,6 @@ void Converter::doubleToChar()
 
 void Converter::doubleToInt()
 {
-
 	this->_int = static_cast <int> (this->_double);
 
 	std::cout << "int\t:\t";
@@ -534,9 +502,6 @@ void Converter::doubleToInt()
 
 void Converter::doubleToFloat()
 {
-	std::cout << std::fixed;
-	std::cout.precision(1);
-
 	this->_float = static_cast <float> (this->_double);
 
 	std::cout << "float\t:\t";
@@ -549,11 +514,41 @@ void Converter::doubleToFloat()
 	return ;
 }
 
+
+/* Functions to print the output */
+
+void Converter::printCharValue()
+{
+	std::cout << "char\t:\t'"
+			  << this->_char
+			  << "'"
+			  << std::endl;
+	return ;
+}
+
+void Converter::printIntValue()
+{
+	std::cout << "int\t:\t";
+
+	if (this->_arg != "-2147483648" && this->_int == std::numeric_limits<int>::min())
+		throw UnderflowException();
+	else if (this->_arg != "2147483647" && this->_int == std::numeric_limits<int>::max())
+		throw OverflowException();
+	else
+		std::cout << this->_int << std::endl;
+
+	return ;
+}
+
+void Converter::printFloatValue()
+{
+	std::cout << "float\t:\t" << this->_float << "f" << std::endl;
+
+	return ;
+}
+
 void Converter::printDoubleValue()
 {
-	std::cout << std::fixed;
-	std::cout.precision(1);
-
 	std::cout << "double\t:\t" << this->_double << std::endl;
 
 	return ;
@@ -565,22 +560,22 @@ void Converter::printDoubleValue()
 /*                                                                            */
 /* ************************************************************************** */
 
-const char*			Converter::OverflowException::what() const throw()
+const char*	Converter::OverflowException::what() const throw()
 {
 	return ("overflow");
 }
 
-const char*			Converter::UnderflowException::what() const throw()
+const char*	Converter::UnderflowException::what() const throw()
 {
 	return ("underflow");
 }
 
-const char*			Converter::NonDisplayableException::what() const throw()
+const char*	Converter::NonDisplayableException::what() const throw()
 {
 	return ("non displayable");
 }
 
-const char*			Converter::ImpossibleException::what() const throw()
+const char*	Converter::ImpossibleException::what() const throw()
 {
 	return ("impossible");
 }

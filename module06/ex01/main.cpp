@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 18:32:52 by lle-briq          #+#    #+#             */
-/*   Updated: 2022/08/08 10:28:42 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/06 14:37:47 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,35 @@
 
 int	main(void)
 {
-	Data		*data;
+	Data*		data;
 	uintptr_t	serialized;
-	Data		*deserialized;
+	Data*		deserialized;
 
 	data = new Data();
 	data->x = 6;
 	data->y = 7;
 
-	std::cout << "Data address\t\t[ data ]\t\t\t:\t" << data << std::endl;
-	std::cout << "Data values\t\t[ data->x, data->y]\t\t:\t"
-			  << data->x << ", " << data->y << std::endl;
+	std::cout << GREEN << "[TEST - BEFORE SERIALIZATION]" << END << std::endl;
+	std::cout << "Data address		[ data ]			:	" << data
+			  << std::endl;
+	std::cout << "Data values		[ data->x, data->y]		:	" << data->x << ", " << data->y
+			  << std::endl;
+
 	std::cout << std::endl;
 
+	std::cout << GREEN << "[TEST - SERIALIZATION]" << END << std::endl;
 	serialized = serialize(data);
-	std::cout << "serialize\t\t[ serialize(data) ]\t\t:\t" << serialized << std::endl;
+	std::cout << "serialize		[ serialize(data) ]		:	" << serialized << std::endl;
+
 	std::cout << std::endl;
 
+	std::cout << GREEN << "[TEST - DESERIALIZATION]" << END << std::endl;
 	deserialized = deserialize(serialized);
-	std::cout << "deserialized\t\t[ deserialize(serialized) ]\t:\t" << deserialized << std::endl;
-	std::cout << "Data values\t\t[ data->x, data->y]\t\t:\t"
-			  << data->x << ", " << data->y << std::endl;
+	std::cout << "deserialized		[ deserialize(serialized) ]	:	" << deserialized << std::endl;
+	std::cout << "Data values		[ data->x, data->y]		:	" << data->x << ", " << data->y << std::endl;
 
 	delete data;
+
 	return (0);
 }
 
