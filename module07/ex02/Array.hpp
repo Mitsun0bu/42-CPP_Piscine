@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 10:42:24 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/08 16:05:40 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 11:55:24 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,9 @@ Array<T>::Array(void)
 {
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
 			  << "An empty array has been created !" << std::endl;
+
 	this->_array = new T [0];
+
 	return ;
 }
 
@@ -96,10 +98,14 @@ Array<T>::Array(unsigned int n)
 {
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
 			<< "An array of " << n << " elements has been created !" << std::endl;
+
 	this->_array = new T [n];
+
 	for (unsigned int i = 0; i < n; i++)
 		this->_array[i] = 0;
+
 	this->_size = n;
+
 	return ;
 }
 
@@ -108,10 +114,14 @@ Array<std::string>::Array(unsigned int n)
 {
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
 			<< "An array of " << n << " elements has been created !" << std::endl;
+
 	this->_array = new std::string [n];
+
 	for (unsigned int i = 0; i < n; i++)
 		this->_array[i] = "";
+
 	this->_size = n;
+
 	return ;
 }
 
@@ -120,7 +130,9 @@ Array<T>::Array(const Array& src)
 {
 	std::cout << ORANGE << "[COPY CONSTRUCTOR] : " << END
 			  << "An array has been duplicated !" << std::endl;
+
 	*this = src;
+
 	return ;
 }
 
@@ -137,7 +149,9 @@ Array<T>&		Array<T>::operator=(Array<T> const &src)
 
 	for (int i = 0; i < src.size(); i ++)
 		this->_array[i] = src._array[i];
+
 	this->_size = src.size();
+
 	return (*this);
 }
 

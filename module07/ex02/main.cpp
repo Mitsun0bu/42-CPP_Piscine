@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 10:34:41 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/08 16:06:28 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 11:59:08 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	main()
 {
+	Array<int>	emptyArray;
 	Array<int>	intArray(5);
 	Array<int>	intArrayCpy1(intArray);
 
@@ -23,7 +24,7 @@ int	main()
 	intArray[1] = 67;
 	try
 	{
-		std::cout << "intArray[1] = " << intArray[1] << std::endl;
+		std::cout << "intArray[1] = " << intArray[18] << std::endl;
 	}
 	catch(const std::exception& e)
 	{
