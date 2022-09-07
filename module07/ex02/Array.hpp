@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 10:42:24 by llethuil          #+#    #+#             */
-/*   Updated: 2022/09/07 11:55:24 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/07 14:23:56 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ template <typename T>
 Array<T>::Array(unsigned int n)
 {
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
-			<< "An array of " << n << " elements has been created !" << std::endl;
+			  << "An array of " << n << " elements has been created !" << std::endl;
 
 	this->_array = new T [n];
 
@@ -113,7 +113,7 @@ template <>
 Array<std::string>::Array(unsigned int n)
 {
 	std::cout << BLUE << "[CONSTRUCTOR] : " << END
-			<< "An array of " << n << " elements has been created !" << std::endl;
+			  << "An array of " << n << " elements has been created !" << std::endl;
 
 	this->_array = new std::string [n];
 
