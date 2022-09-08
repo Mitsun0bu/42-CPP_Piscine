@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 16:04:33 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/08 18:25:04 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/08 11:28:30 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 # include <iostream>
 # include <list>
+# include <vector>
 # include <algorithm>
 # include <exception>
 
@@ -56,7 +57,7 @@ class NotFoundException : public std::exception
 };
 
 template <typename T>
-void	easyfind(T batch, int elem)
+void	easyFind(T batch, int elem)
 {
 	if (std::find(batch.begin(), batch.end(), elem) != batch.end())
 		std::cout << elem << " has been found !" << std::endl;

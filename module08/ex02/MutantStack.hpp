@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 16:15:18 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/09 18:35:06 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/08 13:58:16 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ class MutantStack : public std::stack<T>
 		typedef typename container_type::iterator		iterator;
 
 		/* iterator functions									*/
-		iterator				begin(void)
+		iterator		begin(void)
 		{
 			return (this->c.begin());
 		}
-		iterator				end(void)
+		iterator		end(void)
 		{
 			return (this->c.end());
 		}

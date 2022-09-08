@@ -6,7 +6,7 @@
 #    By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/08 11:57:29 by llethuil          #+#    #+#              #
-#    Updated: 2022/08/08 18:25:14 by llethuil         ###   ########lyon.fr    #
+#    Updated: 2022/09/08 11:12:40 by llethuil         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ OBJS_DIR	:=	.objs
 
 SRCS_LST	:=	main.cpp		\
 
-INCS_LST	:=	easyfind.hpp	\
+INCS_LST	:=	easyFind.hpp	\
 
 OBJS_LST	:=	$(SRCS_LST:.cpp=.o)
 

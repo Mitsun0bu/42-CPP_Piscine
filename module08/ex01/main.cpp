@@ -6,7 +6,7 @@
 /*   By: llethuil <llethuil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 18:17:07 by llethuil          #+#    #+#             */
-/*   Updated: 2022/08/10 10:24:47 by llethuil         ###   ########lyon.fr   */
+/*   Updated: 2022/09/08 13:50:41 by llethuil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	checkSpanInit(Span& span);
 void	addNumbers(Span& span);
-void	catchFullSpanException(Span& span);
+void	fullSpanException(Span& span);
 void	testSpan(Span& span);
 void	addSmallRange(Span& span);
 void	addLargeRange(Span& span);
@@ -23,20 +23,22 @@ void	addLargeRange(Span& span);
 
 int	main(void)
 {
+	std::cout << GREEN << "[TEST - SIMPLE INT SPAN]" << END << std::endl;
 	Span	intSpan(5);
 
 	std::cout << std::endl;
 	checkSpanInit(intSpan);
 	addNumbers(intSpan);
-	catchFullSpanException(intSpan);
+	fullSpanException(intSpan);
 	testSpan(intSpan);
 
+	std::cout << GREEN << "[TEST - SINLGE SPAN EXCEPTION]" << END << std::endl;
 	Span	singleSpan(1);
 
 	std::cout << std::endl;
 	testSpan(singleSpan);
 
-
+	std::cout << GREEN << "[TEST - SMALL RANGE]" << END << std::endl;
 	Span	smallRangeSpan(10);
 
 	std::cout << std::endl;
@@ -44,6 +46,7 @@ int	main(void)
 	addSmallRange(smallRangeSpan);
 	testSpan(smallRangeSpan);
 
+	std::cout << GREEN << "[TEST - LARGE RANGE]" << END << std::endl;
 	Span	largeRangeSpan(15000);
 
 	std::cout << std::endl;
@@ -58,7 +61,7 @@ int	main(void)
 
 void	checkSpanInit(Span& span)
 {
-	std::cout << "TEST - SPAN DECLARATION (size = 5)" << std::endl;
+	std::cout << GREEN << "[TEST - SPAN DECLARATION (size = 5)]" << END << std::endl;
 
 	std::cout << span << std::endl;
 
@@ -67,7 +70,7 @@ void	checkSpanInit(Span& span)
 
 void	addNumbers(Span& span)
 {
-	std::cout << "TEST - ADD NUMBER FUNCTION" << std::endl;
+	std::cout << GREEN << "[TEST - ADD NUMBER FUNCTION]" << END << std::endl;
 
 	span.addNumber(6);
 	span.addNumber(3);
@@ -80,9 +83,9 @@ void	addNumbers(Span& span)
 	return ;
 }
 
-void	catchFullSpanException(Span& span)
+void	fullSpanException(Span& span)
 {
-	std::cout << "TEST - FULL SPAN EXCEPTION" << std::endl;
+	std::cout << GREEN << "[TEST - FULL SPAN EXCEPTION]" << END << std::endl;
 
 	try
 	{
@@ -100,7 +103,7 @@ void	catchFullSpanException(Span& span)
 
 void	testSpan(Span& span)
 {
-	std::cout << "TEST - SHORTEST SPAN" << std::endl;
+	std::cout << GREEN << "[TEST - SHORTEST SPAN]" << END << std::endl;
 
 	try
 	{
@@ -113,7 +116,7 @@ void	testSpan(Span& span)
 
 	std::cout << std::endl;
 
-	std::cout << "TEST - LONGEST SPAN" << std::endl;
+	std::cout << GREEN << "[TEST - LONGEST SPAN]" << END << std::endl;
 
 	try
 	{
@@ -131,7 +134,7 @@ void	testSpan(Span& span)
 
 void	addSmallRange(Span& span)
 {
-	std::cout << "TEST - ADD RANGE (small set)" << std::endl;
+	std::cout << GREEN << "[TEST - ADD RANGE (small set)]" << END << std::endl;
 
 	std::vector<int>	testVector(10, 0);
 
@@ -155,13 +158,19 @@ void	addSmallRange(Span& span)
 
 void	addLargeRange(Span& span)
 {
-	std::cout << "TEST - ADD RANGE (large set)" << std::endl;
+	std::cout << GREEN << "[TEST - ADD RANGE (large set)]" << END << std::endl;
 
 	std::vector<int>	testVector(15000, 0);
+	int					i = 0;
 
-	testVector[67] = 67;
-	testVector[42] = 42;
-	testVector[14999] = 9;
+	for(std::vector<int>::iterator	iter = begin(testVector); iter != end(testVector); iter ++)
+	{
+		testVector.at(i) = i;
+		i ++;
+	}
+
+	testVector[67] = -5;
+	testVector[42] = 20000;
 
 	span.addRange(testVector.begin(), testVector.end());
 
