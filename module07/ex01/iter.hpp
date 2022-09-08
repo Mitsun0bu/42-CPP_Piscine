@@ -29,6 +29,11 @@
 template<typename T>
 void    iter(const T* array, int len, void func(const T&))
 {
+	if (!array)
+	{
+		std::cout << "Error ! Invalid array." << std::endl;
+		return ;
+	}
 	for (int i = 0; i < len; i++)
 		func(array[i]);
 }
