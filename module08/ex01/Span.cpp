@@ -112,7 +112,7 @@ int				Span::shortestSpan()
 	unsigned int		i = -1;
 	std::vector<int>	tempVector = this->_intVector;
 
-	if (this->_spanSize == 1)
+	if (this->_spanSize <= 1)
 		throw InvalidSpanException();
 
 	sort(tempVector.begin(), tempVector.end(), std::greater<int>());
@@ -136,7 +136,7 @@ int				Span::longestSpan()
 	std::vector<int>	tempVector = this->_intVector;
 	int					longestSpan = 0;
 
-	if (this->_spanSize == 1)
+	if (this->_spanSize <= 1)
 		throw InvalidSpanException();
 
 	sort(tempVector.begin(), tempVector.end(), std::greater<int>());
