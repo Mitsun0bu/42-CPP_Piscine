@@ -6,22 +6,22 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:33:56 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/17 18:33:58 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/20 09:27:40 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-int main(int argc, char* argv[])
+int main(int ac, char* av[])
 {
-    if (checkMissingInputFileName(argc) == true)
+    if (checkMissingInputFileName(ac) == true)
         return (1);
 
     // OPEN THE DATA BASE FILE
     BitcoinExchange btc("data.csv");
 
     // OPEN THE INPUT FILE 
-    std::ifstream   input_file(argv[1]);
+    std::ifstream   input_file(av[1]);
     if (!input_file)
     {
         std::cerr << "Error: could not open file." << std::endl;

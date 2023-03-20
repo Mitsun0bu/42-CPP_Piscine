@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/17 10:09:50 by llethuil          #+#    #+#              #
-#    Updated: 2023/03/20 08:59:52 by llethuil         ###   ########.fr        #
+#    Created: 2023/03/20 08:58:55 by llethuil          #+#    #+#              #
+#    Updated: 2023/03/20 08:59:55 by llethuil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ END		:=	\033[0m
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:=	btc
+NAME		:=	RPN
 
 CC			:=	c++
 
@@ -37,10 +37,10 @@ RM			:=	rm -f
 
 OBJS_DIR	:=	.objs
 
-SRCS_LST	:=	main.cpp			\
-				BitcoinExchange.cpp	\
+SRCS_LST	:=	main.cpp	\
+				RPN.cpp		\
 
-INCS_LST	:=	BitcoinExchange.hpp	\
+INCS_LST	:=	RPN.hpp		\
 
 OBJS_LST	:=	$(SRCS_LST:.cpp=.o)
 

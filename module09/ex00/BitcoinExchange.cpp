@@ -50,9 +50,9 @@ double BitcoinExchange::getExchangeRate(const std::string& date) const
 /*                                                                            */
 /* ************************************************************************** */
 
-bool checkMissingInputFileName(int argc)
+bool checkMissingInputFileName(int ac)
 {
-    if (argc != 2)
+    if (ac != 2)
     {
         std::cerr << "Error: missing input file name." << std::endl;
         return (true);
