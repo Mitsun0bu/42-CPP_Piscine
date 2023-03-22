@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:18:45 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/21 11:22:56 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/22 13:37:40 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,46 @@
 
 int main(int ac, char** av)
 {
+    PmergeMe pmergeMe;
+
     try
     {
-        PmergeMe pmergeMe(ac, av);
+        pmergeMe.parseArguments(ac, av);
         pmergeMe.process();
         pmergeMe.printResults();
     }
-    catch (const std::runtime_error& e)
+    catch (const MissingArgumentError& e)
     {
-        std::cerr << e.what() << std::endl;
+        std::cerr   << RED << e.what() << END
+                    << std::endl
+                    << BLUE << "[USAGE]\t\t\t\t: ./PmergeMe [positive int] [positive int] [positive int]..." << END
+                    << std::endl
+                    << std::endl;
         return (1);
     }
+    catch (const NonIntError& e)
+    {
+        std::cerr   << RED << e.what() << END
+                    << std::endl
+                    << BLUE << "[USAGE]\t\t\t\t: ./PmergeMe [positive int] [positive int] [positive int]..." << END
+                    << std::endl
+                    << std::endl;
+        return (1);
+    }
+    catch (const NegativeIntError& e)
+    {
+        std::cerr   << RED << e.what() << END
+                    << std::endl
+                    << BLUE << "[USAGE]\t\t\t\t: ./PmergeMe [positive int] [positive int] [positive int]..." << END
+                    << std::endl
+                    << std::endl;
+        return (1);
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << e.what() << END << std::endl;
+        return (1);
+    }
+
     return (0);
 }

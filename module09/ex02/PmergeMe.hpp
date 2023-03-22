@@ -1,17 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PMergeMe.hpp                                       :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:19:11 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/21 18:46:13 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/22 14:52:19 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                            ~~~ INCLUDES ~~~                                */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <algorithm>
 #include <ctime>
@@ -40,6 +46,30 @@
 
 /* ************************************************************************** */
 /*                                                                            */
+/*                        ~~~ EXCEPTIONS DEFINITION ~~~                       */
+/*                                                                            */
+/* ************************************************************************** */
+
+class MissingArgumentError : public std::invalid_argument
+{
+    public:
+        MissingArgumentError() : std::invalid_argument("[ERROR]\t\t\t\t: MISSING ARGUMENT") {}
+};
+
+class NonIntError : public std::invalid_argument
+{
+    public:
+        NonIntError() : std::invalid_argument("[ERROR]\t\t\t\t: NON-INT VALUE IN INPUT LIST") {}
+};
+
+class NegativeIntError : public std::invalid_argument
+{
+    public:
+        NegativeIntError() : std::invalid_argument("[ERROR]\t\t\t\t: NEGATIVE INT IN INPUT LIST") {}
+};
+
+/* ************************************************************************** */
+/*                                                                            */
 /*                            ~~~ CLASS DEFINITION ~~~                        */
 /*                                                                            */
 /* ************************************************************************** */
@@ -48,12 +78,23 @@ class PmergeMe
 {
     public:
 
-                PmergeMe(int ac, char** av);
-        void    process();
-        void    printResults();
+		/* CONSTRUCTOR */
+                            PmergeMe(void);
+		/* COPY CONSTRUCTOR */
+                            PmergeMe(const PmergeMe& src);
+        /* ASSIGNMENT OPERATOR OVERLOAD */
+        PmergeMe&           operator=(const PmergeMe& src);
+        /* DESTRUCTOR */
+                            ~PmergeMe(void);
+        
+        /* PUBLIC METHODS */
+        void                parseArguments(int ac, char** av);
+        void                process();
+        void                printResults();
 
     private:
 
+        /* PRIVATE ATTRIBUTES */
         std::vector<int>    input_vector;
         std::list<int>      input_list;
         std::vector<int>    sorted_vector;
@@ -61,19 +102,18 @@ class PmergeMe
         double              vector_time;
         double              list_time;
 
-        void                parseArguments(int ac, char** av);
-
-        std::vector<int>    mergeInsertSortVector(const std::vector<int>& input);
-        void                recursiveSortAlgorithm(std::vector<int>& input, int left, int right);
+        /* PRIVATE METHODS */
+        
+        /* VECTOR */
+        std::vector<int>    getSortedVector(const std::vector<int>& input);
+        void                recursiveMergeSortAlgorithm(std::vector<int>& input, int left, int right);
         void                insertSortVector(std::vector<int>& input, int left, int right);
         void                mergeSortVector(std::vector<int>& input, int left, int mid, int right);
-
-        std::list<int>      mergeInsertSortList(const std::list<int>& input);
-        void                recursiveSortAlgorithm(std::list<int>& input, std::list<int>::iterator left, std::list<int>::iterator right);
+        
+        /* LIST */
+        std::list<int>      getSortedList(const std::list<int>& input);
+        void                recursiveMergeSortAlgorithm(std::list<int>& input, std::list<int>::iterator left, std::list<int>::iterator right);
         void                insertSortList(std::list<int>::iterator begin, std::list<int>::iterator end);
-
-        template <typename Container>
-        double              getTime(const Container& input);
 };
 
 #endif

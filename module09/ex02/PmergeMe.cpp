@@ -1,54 +1,131 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PMergeMe.cpp                                       :+:      :+:    :+:   */
+/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:19:16 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/21 18:49:39 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/22 14:59:30 by llethuil         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                            ~~~ INCLUDES ~~~                                */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
+/* ************************************************************************** */
+/*                                                                            */
+/*                           ~~~ CONSTRUCTOR ~~~                              */
+/*                                                                            */
+/* ************************************************************************** */
 
-PmergeMe::PmergeMe(int ac, char** av)
+PmergeMe::PmergeMe(void)
 {
-    parseArguments(ac, av);
+    // std::cout   << YELLOW
+    //             << "[CONSTRUCTOR] : PmergeMe created"
+    //             << END
+    //             << std::endl;
 }
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                         ~~~ COPY CONSTRUCTOR ~~~                           */
+/*                                                                            */
+/* ************************************************************************** */
+
+PmergeMe::PmergeMe(PmergeMe const & src)
+{
+    *this = src;
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                   ~~~ ASSIGNMENT OPERATOR OVERLOAD ~~~                     */
+/*                                                                            */
+/* ************************************************************************** */
+
+PmergeMe & PmergeMe::operator=(PmergeMe const & src)
+{
+    if (this != &src)
+    {
+        this->input_vector  = src.input_vector;
+        this->input_list    = src.input_list;
+        this->sorted_vector = src.sorted_vector;
+        this->sorted_list   = src.sorted_list;
+        this->vector_time   = src.vector_time;
+        this->list_time     = src.list_time;
+    }
+    return (*this);
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                           ~~~ DESTRUCTOR ~~~                               */
+/*                                                                            */
+/* ************************************************************************** */
+
+PmergeMe::~PmergeMe(void)
+{
+    // std::cout   << YELLOW
+    //             << "[DESTRUCTOR] : PmergeMe destroyed"
+    //             << END
+    //             << std::endl;
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                         ~~~ PUBLIC METHODS ~~~                             */
+/*                                                                            */
+/* ************************************************************************** */
 
 void PmergeMe::parseArguments(int ac, char** av)
 {
+    int num = 0;
+
+    if (ac < 2)
+        throw (MissingArgumentError());   
+
     for (int i = 1; i < ac; ++i)
     {
         try
         {
-            int num = std::stoi(av[i]);
-            if (num < 1) 
-                throw std::runtime_error("Error");
-            input_vector.push_back(num);
-            input_list.push_back(num);
+            num = std::stoi(av[i]);
         }
         catch (const std::exception& e)
         {
-            throw std::runtime_error("Error");
+            throw (NonIntError());
         }
+        if (num < 0) 
+            throw (NegativeIntError());
+        input_vector.push_back(num);
+        input_list.push_back(num);
     }
 }
 
 void PmergeMe::process()
 {
-    sorted_vector   = mergeInsertSortVector(input_vector);
-    sorted_list     = mergeInsertSortList(input_list);
+    clock_t         start;
+    clock_t         end;
 
-    vector_time     = getTime(input_vector);
-    list_time       = getTime(input_list);
+    start           = clock();
+    sorted_vector   = getSortedVector(input_vector);
+    end             = clock();
+    vector_time     = static_cast<double>(end - start);
+
+    start           = clock();
+    sorted_list     = getSortedList(input_list);
+    end             = clock();
+    list_time       = static_cast<double>(end - start);
 }
 
 void PmergeMe::printResults()
 {
-    std::cout << RED << "[BEFORE SORT]\t\t\t: " << END;    
+    std::cout << YELLOW << "[BEFORE SORT]\t\t\t: " << END;    
     for (std::vector<int>::iterator it = input_vector.begin(); it != input_vector.end(); ++it)
         std::cout << *it << " ";
 
@@ -74,27 +151,34 @@ void PmergeMe::printResults()
     std::cout   << ORANGE << "[STD::LIST PERFORMANCE]\t\t: " << END 
                 << list_time << " us "
                 << "(" << input_list.size() << " elements)"
+                << std::endl
                 << std::endl;
 }
 
-std::vector<int> PmergeMe::mergeInsertSortVector(const std::vector<int>& input)
+/* ************************************************************************** */
+/*                                                                            */
+/*                      ~~~ PRIVATE METHODS : VECTOR ~~~                      */
+/*                                                                            */
+/* ************************************************************************** */
+
+std::vector<int> PmergeMe::getSortedVector(const std::vector<int>& input)
 {
     std::vector<int>    sorted(input);
 
-    recursiveSortAlgorithm(sorted, 0, sorted.size() - 1);
+    recursiveMergeSortAlgorithm(sorted, 0, sorted.size() - 1);
 
     return (sorted);
 }
 
-void PmergeMe::recursiveSortAlgorithm(std::vector<int>& input, int left, int right)
+void PmergeMe::recursiveMergeSortAlgorithm(std::vector<int>& input, int left, int right)
 {
     if (right - left <= THRESHOLD)
         insertSortVector(input, left, right);
     else
     {
         int mid = left + (right - left) / 2;
-        recursiveSortAlgorithm(input, left, mid);
-        recursiveSortAlgorithm(input, mid + 1, right);
+        recursiveMergeSortAlgorithm(input, left, mid);
+        recursiveMergeSortAlgorithm(input, mid + 1, right);
         mergeSortVector(input, left, mid, right);
     }
 }
@@ -104,17 +188,17 @@ void PmergeMe::insertSortVector(std::vector<int>& input, int left, int right)
     // ITERATE FROM SECOND TO LAST ELEMENT
     for (int i_current = left + 1; i_current <= right; ++i_current)
     {
-        int currentValue    = input[i_current];
+        int current_value    = input[i_current];
         int i_previous      = i_current - 1;
 
         // SHIFT ELEMENTS GREATER THAN THE CURRENT ONE TO THE RIGHT
-        while (i_previous >= left && input[i_previous] > currentValue)
+        while (i_previous >= left && input[i_previous] > current_value)
         {
             input[i_previous + 1] = input[i_previous];
             i_previous--;
         }
         // INSERT THE CURRENT ELEMENT IN THE RIGHT PLACE
-        input[i_previous + 1] = currentValue;
+        input[i_previous + 1] = current_value;
     }
 }
 
@@ -153,16 +237,22 @@ void PmergeMe::mergeSortVector(std::vector<int>& input, int left, int mid, int r
         input[i_input++] = rightArray[i_right++];
 }
 
-std::list<int> PmergeMe::mergeInsertSortList(const std::list<int>& input)
+/* ************************************************************************** */
+/*                                                                            */
+/*                       ~~~ PRIVATE METHODS : LIST ~~~                       */
+/*                                                                            */
+/* ************************************************************************** */
+
+std::list<int> PmergeMe::getSortedList(const std::list<int>& input)
 {
     std::list<int> sorted(input);
 
-    recursiveSortAlgorithm(sorted, sorted.begin(), --sorted.end());
+    recursiveMergeSortAlgorithm(sorted, sorted.begin(), --sorted.end());
 
     return (sorted);
 }
 
-void PmergeMe::recursiveSortAlgorithm(std::list<int>& input, std::list<int>::iterator left, std::list<int>::iterator right)
+void PmergeMe::recursiveMergeSortAlgorithm(std::list<int>& input, std::list<int>::iterator left, std::list<int>::iterator right)
 {
     int distance = std::distance(left, right);
     
@@ -175,8 +265,8 @@ void PmergeMe::recursiveSortAlgorithm(std::list<int>& input, std::list<int>::ite
     std::list<int>::iterator mid_next = mid;
     std::advance(mid_next, 1);
 
-    recursiveSortAlgorithm(input, left, mid);
-    recursiveSortAlgorithm(input, mid_next, right);
+    recursiveMergeSortAlgorithm(input, left, mid);
+    recursiveMergeSortAlgorithm(input, mid_next, right);
 
     std::list<int>::iterator right_next = right;
     std::advance(right_next, 1);
@@ -189,35 +279,31 @@ void PmergeMe::recursiveSortAlgorithm(std::list<int>& input, std::list<int>::ite
 
 void PmergeMe::insertSortList(std::list<int>::iterator begin, std::list<int>::iterator end)
 {
-    if (begin == end) return;
+    if (begin == end)
+        return;
 
     std::list<int>::iterator current = begin;
     ++current;
 
+    // ITERATE FROM SECOND TO LAST ELEMENT
     while (current != end)
     {
-        int currentValue = *current;
+        int current_value = *current;
         std::list<int>::iterator previous = current;
         --previous;
 
-        while (previous != begin && *previous > currentValue)
+        // SHIFT ELEMENTS GREATER THAN THE CURRENT ONE TO THE RIGHT
+        while (previous != begin && *previous > current_value)
         {
             std::swap(*previous, *current);
             --previous;
             --current;
         }
 
-        if (previous == begin && *previous > currentValue)
+        // HANDLE CASE WHERE CURRENT VALUE < FIRST ELEMENT OF THE LIST
+        if (previous == begin && *previous > current_value)
             std::swap(*previous, *current);
 
         ++current;
     }
-}
-
-template <typename Container>
-double PmergeMe::getTime(const Container& input)
-{
-    (void) input;
-    // std::chrono::time_point<std::chrono::high_resolution_clock> start, end;
-    return (0);
 }
