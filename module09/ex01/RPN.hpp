@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:28:10 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/22 16:38:25 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:54:23 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,25 @@
 class MissingArgumentError : public std::runtime_error
 {
     public:
-        MissingArgumentError() : std::runtime_error("MISSING ARGUMENT") {}
+        MissingArgumentError() : std::runtime_error("[ERROR] : MISSING ARGUMENT") {}
 };
 
 class InvalidTokenError : public std::runtime_error
 {
     public:
-        InvalidTokenError() : std::runtime_error("INVALID TOKEN") {}
+        InvalidTokenError() : std::runtime_error("[ERROR] : INVALID TOKEN") {}
 };
 
 class IncompleteExpressionError : public std::runtime_error
 {
     public:
-        IncompleteExpressionError() : std::runtime_error("INCOMPLETE EXPRESSION") {}
+        IncompleteExpressionError() : std::runtime_error("[ERROR] : INCOMPLETE EXPRESSION") {}
 };
 
 class DivByZeroError : public std::runtime_error
 {
     public:
-        DivByZeroError() : std::runtime_error("DIVISION BY ZERO") {}
+        DivByZeroError() : std::runtime_error("[ERROR] : DIVISION BY ZERO") {}
 };
 
 /* ************************************************************************** */

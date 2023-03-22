@@ -16,7 +16,6 @@ int main(int ac, char* av[])
     catch (const MissingArgumentError& e)
     {
         std::cerr   << RED
-                    << "[ERROR] : "
                     << e.what()
                     << END
                     << std::endl;
@@ -29,7 +28,6 @@ int main(int ac, char* av[])
     catch (const InvalidTokenError& e)
     {
         std::cerr   << RED
-                    << "[ERROR] : "
                     << e.what()
                     << END
                     << std::endl;
@@ -38,7 +36,6 @@ int main(int ac, char* av[])
     catch (const IncompleteExpressionError& e)
     {
         std::cerr   << RED
-                    << "[ERROR] : "
                     << e.what()
                     << END
                     << std::endl;
@@ -47,7 +44,6 @@ int main(int ac, char* av[])
     catch (const DivByZeroError& e)
     { 
         std::cerr   << RED
-                    << "[ERROR] : "
                     << e.what()
                     << END
                     << std::endl;

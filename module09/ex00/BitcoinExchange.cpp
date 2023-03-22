@@ -6,25 +6,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-BitcoinExchange::BitcoinExchange(const std::string& dataFileName)
+BitcoinExchange::BitcoinExchange(void)
 {
-    std::ifstream   dataFile(dataFileName);
-    std::string     lineString;
-    std::string     date;
-    double          exchangeRate;
-
-    // IGNORE THE HEADER LINE
-    std::getline(dataFile, lineString);
-
-    // ADD THE DATE AND CORRESPONDING EXCHANGE RATE TO THE MAP
-    while (std::getline(dataFile, lineString))
-    {
-        std::istringstream lineStream(lineString);
-        std::getline(lineStream, date, ',');
-        lineStream >> exchangeRate;
-        
-        exchangeRatesMap[date] = exchangeRate;
-    }
+    // std::cout   << YELLOW
+    //             << "[CONSTRUCTOR] : BitcoinExchange created"
+    //             << END
+    //             << std::endl;
 }
 
 /* ************************************************************************** */
@@ -33,115 +20,93 @@ BitcoinExchange::BitcoinExchange(const std::string& dataFileName)
 /*                                                                            */
 /* ************************************************************************** */
 
-double BitcoinExchange::getExchangeRate(const std::string& date) const
+void BitcoinExchange::parseDataBaseFile(const std::string& db_file_name)
 {
-    std::map<std::string, double>::const_iterator it = exchangeRatesMap.upper_bound(date);
+    std::ifstream   db_file(db_file_name);
+    if (!db_file)
+        throw (OpenDataBaseError());
 
-    if (it == exchangeRatesMap.begin())
-        return (-1);
-    --it;
+    std::string     line_string;
+    std::string     date;
+    
+    // IGNORE THE HEADER LINE
+    std::getline(db_file, line_string);
 
-    return (it->second);
-}
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                         ~~~ NON MEMBER FUNCTIONS ~~~                       */
-/*                                                                            */
-/* ************************************************************************** */
-
-bool checkMissingInputFileName(int ac)
-{
-    if (ac != 2)
+    // ADD THE DATE AND CORRESPONDING EXCHANGE RATE TO THE MAP
+    double          exchange_rate;
+    while (std::getline(db_file, line_string))
     {
-        std::cerr << "Error: missing input file name." << std::endl;
-        return (true);
+        std::istringstream line_stream(line_string);
+        std::getline(line_stream, date, ',');
+        line_stream >> exchange_rate;
+        exchange_rates_map[date] = exchange_rate;
     }
-    return (false);
 }
 
-bool parseInputLine(const std::string& lineString, std::string& date, double& valueNumber)
+void BitcoinExchange::process(void)
+{        
+        updateExchangeRate();
+        printResult();
+}
+
+void BitcoinExchange::parseInputLine(const std::string& line_string)
 {
-    std::istringstream lineStream(lineString);
-    std::string valueString;
+    std::istringstream  line_stream(line_string);
 
     // GET THE DATE AND VALUE FROM THE LINE
-    if (std::getline(lineStream, date, '|') && std::getline(lineStream, valueString))
+    if (std::getline(line_stream, date_string, '|') && std::getline(line_stream, value_string))
     {
-        // CHECK IF THE DATE IS VALID
-        if (!isDateValid(date))
-        {
-            std::cout << "Error: invalid date at line \"" << lineString << "\"" << std::endl;
-            return (false);
-        }
-
-        // CHECK IF THE VALUE IS VALID
-        ValueValidationResult validationResult = isValueValid(valueString);
-        if (validationResult != VALID_VALUE)
-        {
-            printValueErrorMessage(validationResult, lineString);
-            return (false);
-        }
-
-        // CONVERT THE VALUE STRING TO A DOUBLE
-        valueNumber = std::stod(valueString);
-
-        return (true);
+        parseDate();
+        parseValue();
     }
-
-    std::cout << "Error: bad input \"" << lineString << "\"" << std::endl;
-
-    return (false);
+    else
+        throw (BadInputError());
 }
 
-bool isDateValid(const std::string& date)
+void BitcoinExchange::parseValue(void)
 {
-    std::tm tm_date = {};
+    if (value_string.empty())
+        throw (MissingValueError());
 
-    const char* result = strptime(date.c_str(), "%Y-%m-%d", &tm_date);
-    if (result == NULL)
-        return (false);
-
-    return (true);
-}
-
-ValueValidationResult isValueValid(const std::string& valueString)
-{
-    if (valueString.empty())
-        return (VALUE_MISSING);
-
-    double value;
     try
     {
-        value = std::stod(valueString);
+        value_number = std::stod(value_string);
     }
     catch (...)
     {
-        return (VALUE_MISSING);
+       throw (MissingValueError());
     }
 
-    if (value < 0)
-        return (VALUE_NEGATIVE);
-    else if (value > 1000)
-        return (VALUE_TOO_LARGE);
-
-    return (VALID_VALUE);
+    if (value_number < 0)
+        throw (NegativeValueError());
+    else if (value_number > 1000)
+        throw (ValueTooLargeError());
 }
 
-void printValueErrorMessage(ValueValidationResult validationResult, const std::string& lineString)
+void BitcoinExchange::parseDate(void)
 {
-    switch (validationResult)
-    {
-        case VALUE_MISSING:
-            std::cout << "Error: value missing at line \"" << lineString << "\"" << std::endl;
-            break;
-        case VALUE_NEGATIVE:
-            std::cout << "Error: negative value at line \"" << lineString << "\"" << std::endl;
-            break;
-        case VALUE_TOO_LARGE:
-            std::cout << "Error: value too large at line \"" << lineString << "\"" << std::endl;
-            break;
-        case VALID_VALUE:
-            break;
-    }
+    std::tm     tm_date = {};
+    const char* result  = strptime(date_string.c_str(), "%Y-%m-%d", &tm_date);
+    
+    if (result == NULL)
+        throw (InvalidDateError());
+}
+
+void BitcoinExchange::updateExchangeRate(void)
+{
+    std::map<std::string, double>::const_iterator it = exchange_rates_map.upper_bound(date_string);
+
+    if (it == exchange_rates_map.begin())
+        throw (DateNotFoundError());
+    --it;
+
+    exchange_rate = it->second;
+}
+
+void BitcoinExchange::printResult()
+{
+    std::cout   << date_string
+                << " => " << value_number
+                << " = " << value_number * exchange_rate
+                << std::endl;
 }

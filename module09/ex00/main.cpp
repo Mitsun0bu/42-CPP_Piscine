@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:33:56 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/20 09:27:40 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/22 18:40:19 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,112 @@
 
 int main(int ac, char* av[])
 {
-    if (checkMissingInputFileName(ac) == true)
-        return (1);
-
     // OPEN THE DATA BASE FILE
-    BitcoinExchange btc("data.csv");
+    BitcoinExchange btc;
 
-    // OPEN THE INPUT FILE 
-    std::ifstream   input_file(av[1]);
-    if (!input_file)
+    try
     {
-        std::cerr << "Error: could not open file." << std::endl;
+        if (ac != 2)
+            throw (MissingInfileError());
+        
+        // OPEN THE INPUT FILE 
+        std::ifstream   input_file(av[1]);
+        if (!input_file)
+            throw (OpenInfileError());
+
+        btc.parseDataBaseFile("data.csv");
+        
+        // READ THE INPUT FILE LINE BY LINE
+        std::string     line;
+        while (std::getline(input_file, line))
+        {
+            try
+            {
+                btc.parseInputLine(line);
+                btc.process();
+            }
+            catch (const DateNotFoundError& e)
+            {
+                std::cerr   << RED
+                            << e.what()
+                            << END
+                            << std::endl;
+                continue;
+            }
+            catch (const InvalidDateError& e)
+            {
+                std::cerr   << RED
+                            << e.what()
+                            << END
+                            << std::endl;
+                continue;
+            }
+            catch (const MissingValueError& e)
+            {
+                std::cerr   << RED
+                            << e.what()
+                            << END
+                            << std::endl;
+                continue;
+            }
+            catch (const NegativeValueError& e)
+            {
+                std::cerr   << RED
+                            << e.what()
+                            << END
+                            << std::endl;
+                continue;
+            }
+            catch (const ValueTooLargeError& e)
+            {
+                std::cerr   << RED
+                            << e.what()
+                            << END
+                            << std::endl;
+                continue;
+            }
+            catch (const BadInputError& e)
+            {
+                std::cerr   << RED
+                            << e.what()
+                            << END
+                            << std::endl;
+                continue;
+            }
+        }
+    }
+    catch (const MissingInfileError& e)
+    {
+        std::cerr   << RED
+                    << e.what()
+                    << END
+                    << std::endl;
+        std::cerr   << BLUE
+                    << "[USAGE] : ./btc [input file name]"
+                    << END
+                    << std::endl;
         return (1);
     }
-
-    // READ THE INPUT FILE LINE BY LINE
-    std::string line;
-    while (std::getline(input_file, line))
+    catch (const OpenInfileError& e)
     {
-        std::string date;
-        double      value;
-
-        // PARSE THE LINE
-        if (parseInputLine(line, date, value))
-        {
-            // GET THE EXCHANGE RATE
-            double exchangeRate = btc.getExchangeRate(date);
-            
-            // PRINT THE RESULT OF THE CONVERSION
-            if (exchangeRate >= 0)
-                std::cout << date << " => " << value << " = " << value * exchangeRate << std::endl;
-            else
-                std::cout << "Error: date not found in database => " << date << std::endl;
-        }
+        std::cerr   << RED
+                    << e.what()
+                    << END
+                    << std::endl;
+        return (1);
+    }
+    catch (const OpenDataBaseError& e)
+    {
+        std::cerr   << RED
+                    << e.what()
+                    << END
+                    << std::endl;
+        return (1);
+    }
+    catch (std::exception & e)
+    {
+        std::cerr << RED << e.what() << END << std::endl;
+        return (1);
     }
 
     return (0);
