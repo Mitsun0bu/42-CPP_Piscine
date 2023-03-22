@@ -11,6 +11,7 @@ TEST_INPUTS=(
   "1 2 3 + + +"
   "1 2 + 3 4"
   "4 2 0 / *"
+  "0"
   "1 2 - 3 4 + *"
   "1 2 3 * /"
   "1 2 3 * + 4 -"
@@ -20,29 +21,10 @@ TEST_INPUTS=(
   "8 9 * 9 - 9 - 9 - 4 - 1 +"
 )
 
-# EXPECTED OUTPUTS ARRAY
-EXPECTED_OUTPUTS=(
-  "invalid token"
-  "invalid token"
-  "missing operands"
-  "missing operands"
-  "missing operands"
-  "missing operands"
-  "division by zero"
-  "-7"
-  "0"
-  "3"
-  "4"
-  "5"
-  "42"
-  "42"
-)
-
 # ITERATE THROUGH TEST INPUT ARRAY AND RUN THE PROGRAM FOR EACH INPUT
 i=0
 for input in "${TEST_INPUTS[@]}"; do
   echo "[RUNNING]: $PROGRAM \"$input\""
-  echo "[EXPECTED OUTPUT]: ${EXPECTED_OUTPUTS[$i]}"
   $PROGRAM "$input"
   echo -e "\n"
   ((i++))

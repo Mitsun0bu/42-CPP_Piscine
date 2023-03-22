@@ -6,7 +6,13 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:48:50 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/20 15:37:13 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:38:28 by llethuil         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                            ~~~ INCLUDES ~~~                                */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +26,10 @@
 
 RPN::RPN(void)
 {
-    // std::cout << YELLOW << "[CONSTRUCTOR] : RPN calculator created" << END << std::endl;
+    // std::cout   << YELLOW
+    //             << "[CONSTRUCTOR] : RPN calculator created"
+    //             << END
+    //             << std::endl;
 }
 
 /* ************************************************************************** */
@@ -31,18 +40,7 @@ RPN::RPN(void)
 
 RPN::RPN(const RPN& src)
 {
-    rpnStack = src.rpnStack;
-}
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                             ~~~ DESTRUCTOR ~~~                             */
-/*                                                                            */
-/* ************************************************************************** */
-
-RPN::~RPN()
-{
-    // std::cout << YELLOW << "[DESTRUCTOR] : RPN calculator destroyed" << END << std::endl;
+    *this = src;
 }
 
 /* ************************************************************************** */
@@ -60,11 +58,25 @@ RPN& RPN::operator=(const RPN& src)
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
+/*                             ~~~ DESTRUCTOR ~~~                             */
 /*                                                                            */
 /* ************************************************************************** */
 
-void RPN::parse(const std::string &expression)
+RPN::~RPN(void)
+{
+    // std::cout   << YELLOW
+    //             << "[DESTRUCTOR] : RPN calculator destroyed"
+    //             << END
+    //             << std::endl;
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                         ~~~ PUBLIC METHODS ~~~                             */
+/*                                                                            */
+/* ************************************************************************** */
+
+void RPN::parseArgument(const std::string &expression)
 {
     std::istringstream  expressionStream(expression);
     std::string         token;
@@ -90,6 +102,7 @@ void RPN::process(const std::string &expression)
 {
     std::istringstream  expressionStream(expression);
     std::string         token;
+
     while (expressionStream >> token)
     {
         if (token == "+" || token == "-" || token == "*" || token == "/")
@@ -99,6 +112,20 @@ void RPN::process(const std::string &expression)
     }
 }
 
+void RPN::printResult() const
+{
+    std::cout   << GREEN
+                << "[RESULT] : "
+                << END
+                << rpnStack.top()
+                << std::endl;
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                         ~~~ PRIVATE METHODS ~~~                            */
+/*                                                                            */
+/* ************************************************************************** */
 
 void RPN::doMath(std::string token)
 {
@@ -106,6 +133,7 @@ void RPN::doMath(std::string token)
 
     int b = rpnStack.top();
     rpnStack.pop();
+
     int a = rpnStack.top();
     rpnStack.pop();
 
@@ -122,49 +150,4 @@ void RPN::doMath(std::string token)
         result = a / b;
     }
     rpnStack.push(result);
-}
-
-int RPN::getResult() const
-{
-    return (rpnStack.top());
-}
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                         ~~~ NON MEMBER FUNCTIONS ~~~                       */
-/*                                                                            */
-/* ************************************************************************** */
-
-int handleExpression(const char* expression)
-{
-    RPN rpnCalculator;
-    
-    try
-    {
-        rpnCalculator.parse(expression);
-        rpnCalculator.process(expression);
-        std::cout << GREEN << "[RESULT] : " << END << rpnCalculator.getResult() << std::endl;
-    }
-    catch (const InvalidTokenError& e)
-    {
-        std::cerr << RED << "[ERROR] : " << e.what() << END << std::endl;
-        return (1);
-    }
-    catch (const IncompleteExpressionError& e)
-    {
-        std::cerr << RED << "[ERROR] : " << e.what() << END << std::endl;
-        return (1);
-    }
-    catch (const DivByZeroError& e)
-    { 
-        std::cerr << RED << "[ERROR] : " << e.what() << END << std::endl;
-        return (1);
-    }
-    catch (const std::runtime_error& e)
-    {
-        std::cerr << RED << "[ERROR] : " << e.what() << END << std::endl;
-        return (1);
-    }
-    
-    return (0);
 }

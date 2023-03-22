@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:28:10 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/20 15:35:02 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:38:25 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                            ~~~ COLOR DEFINES ~~~                           */
+/*                               ~~~ DEFINES ~~~                              */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@
 /*                        ~~~ EXCEPTIONS DEFINITION ~~~                       */
 /*                                                                            */
 /* ************************************************************************** */
+
+class MissingArgumentError : public std::runtime_error
+{
+    public:
+        MissingArgumentError() : std::runtime_error("MISSING ARGUMENT") {}
+};
 
 class InvalidTokenError : public std::runtime_error
 {
@@ -65,20 +71,6 @@ class DivByZeroError : public std::runtime_error
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                           ~~~ ENUM DEFINITION ~~~                          */
-/*                                                                            */
-/* ************************************************************************** */
-
-enum parsingCode
-{
-    VALID_EXPRESSION        = 0,
-    INCOMPLETE_EXPRESSION   = -1,
-    DIV_BY_ZERO             = -2,
-    INVALID_TOKEN           = -3
-};
-
-/* ************************************************************************** */
-/*                                                                            */
 /*                            ~~~ CLASS DEFINITION ~~~                        */
 /*                                                                            */
 /* ************************************************************************** */
@@ -87,29 +79,27 @@ class RPN
 {
     public:
 
-                            RPN();
-                            RPN(const RPN& src);
-                            ~RPN();
-
-        RPN&                operator=(const RPN& src);
+		/* CONSTRUCTOR */
+                        RPN();
+		/* COPY CONSTRUCTOR */
+                        RPN(const RPN& src);
+        /* ASSIGNMENT OPERATOR OVERLOAD */
+        RPN&            operator=(const RPN& src);
+        /* DESTRUCTOR */
+                        ~RPN();
     
-        void                parse(const std::string &expression);
-        void                process(const std::string &expression);
-        int                 getResult() const;
-        
+        /* PUBLIC METHODS */
+        void            parseArgument(const std::string &expression);
+        void            process(const std::string &expression);
+        void            printResult() const;
+
     private:
 
-        std::stack<int>     rpnStack;
-        void                doMath(std::string token);
+        /* PRIVATE ATTRIBUTES */
+        std::stack<int> rpnStack;
+
+        /* PRIVATE METHODS */
+        void            doMath(std::string token);
 };
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                    ~~~ NON MEMBER FUNCTIONS PROTOTYPES ~~~                 */
-/*                                                                            */
-/* ************************************************************************** */
-
-void    printError(int result);
-int     handleExpression(const char* expression);
 
 #endif

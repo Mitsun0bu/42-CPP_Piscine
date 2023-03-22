@@ -19,6 +19,7 @@ TEST_INPUTS=(
     "3 1 4 2 5"             # Random order
     "1 2 3 3 4 5 5 5 5 6"   # Repeated elements, sorted
     "1 5 5 3 6 5 2 3 5 4"   # Repeated elements, unsorted
+    "1 5 5 3 6 5 2 3 5 4000000000000000000000000" # Overflow
     "1 3 5 7 9 2 4 6 8 10"  # Sorted subsequences
     # "$(seq 1 100000 | sort -R | head -n 3000 | tr "\n" " ")"
 )
