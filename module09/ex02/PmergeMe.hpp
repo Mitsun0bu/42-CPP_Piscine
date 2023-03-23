@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:19:11 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/22 14:52:19 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/23 10:01:53 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# define RED "\x1B[31m"
-# define GREEN "\x1B[32m"
-# define YELLOW "\x1B[33m"
-# define ORANGE "\x1B[34m"
-# define PURPLE "\x1B[35m"
-# define BLUE "\x1B[36m"
-# define END "\033[0m"
+#define RED         "\x1B[31m"
+#define GREEN       "\x1B[32m"
+#define YELLOW      "\x1B[33m"
+#define ORANGE      "\x1B[34m"
+#define PURPLE      "\x1B[35m"
+#define BLUE        "\x1B[36m"
+#define END         "\033[0m"
 
-# define THRESHOLD 10
+#define THRESHOLD   10
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -50,22 +50,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-class MissingArgumentError : public std::invalid_argument
+class MissingArgumentError : public std::runtime_error
 {
     public:
-        MissingArgumentError() : std::invalid_argument("[ERROR]\t\t\t\t: MISSING ARGUMENT") {}
+        MissingArgumentError() : std::runtime_error("MISSING ARGUMENT") {}
 };
 
-class NonIntError : public std::invalid_argument
+class NonIntError : public std::runtime_error
 {
     public:
-        NonIntError() : std::invalid_argument("[ERROR]\t\t\t\t: NON-INT VALUE IN INPUT LIST") {}
+        NonIntError() : std::runtime_error("NON-INT VALUE IN INPUT LIST") {}
 };
 
-class NegativeIntError : public std::invalid_argument
+class NegativeIntError : public std::runtime_error
 {
     public:
-        NegativeIntError() : std::invalid_argument("[ERROR]\t\t\t\t: NEGATIVE INT IN INPUT LIST") {}
+        NegativeIntError() : std::runtime_error("NEGATIVE INT IN INPUT LIST") {}
 };
 
 /* ************************************************************************** */
@@ -91,6 +91,8 @@ class PmergeMe
         void                parseArguments(int ac, char** av);
         void                process();
         void                printResults();
+        void                printCaughtError(const std::exception& e);
+        void                printUsage();
 
     private:
 

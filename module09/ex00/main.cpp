@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:33:56 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/22 18:40:19 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/23 09:32:31 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,89 +36,24 @@ int main(int ac, char* av[])
             try
             {
                 btc.parseInputLine(line);
-                btc.process();
+                btc.updateExchangeRate();
+                btc.printResult();
             }
-            catch (const DateNotFoundError& e)
+            catch (const std::exception& e)
             {
-                std::cerr   << RED
-                            << e.what()
-                            << END
-                            << std::endl;
-                continue;
-            }
-            catch (const InvalidDateError& e)
-            {
-                std::cerr   << RED
-                            << e.what()
-                            << END
-                            << std::endl;
-                continue;
-            }
-            catch (const MissingValueError& e)
-            {
-                std::cerr   << RED
-                            << e.what()
-                            << END
-                            << std::endl;
-                continue;
-            }
-            catch (const NegativeValueError& e)
-            {
-                std::cerr   << RED
-                            << e.what()
-                            << END
-                            << std::endl;
-                continue;
-            }
-            catch (const ValueTooLargeError& e)
-            {
-                std::cerr   << RED
-                            << e.what()
-                            << END
-                            << std::endl;
-                continue;
-            }
-            catch (const BadInputError& e)
-            {
-                std::cerr   << RED
-                            << e.what()
-                            << END
-                            << std::endl;
-                continue;
+                btc.printCaughtError(e);
             }
         }
     }
-    catch (const MissingInfileError& e)
+    catch (MissingInfileError &e)
     {
-        std::cerr   << RED
-                    << e.what()
-                    << END
-                    << std::endl;
-        std::cerr   << BLUE
-                    << "[USAGE] : ./btc [input file name]"
-                    << END
-                    << std::endl;
-        return (1);
-    }
-    catch (const OpenInfileError& e)
-    {
-        std::cerr   << RED
-                    << e.what()
-                    << END
-                    << std::endl;
-        return (1);
-    }
-    catch (const OpenDataBaseError& e)
-    {
-        std::cerr   << RED
-                    << e.what()
-                    << END
-                    << std::endl;
+        btc.printCaughtError(e);
+        btc.printUsage();
         return (1);
     }
     catch (std::exception & e)
     {
-        std::cerr << RED << e.what() << END << std::endl;
+        btc.printCaughtError(e);
         return (1);
     }
 

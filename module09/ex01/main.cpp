@@ -15,47 +15,13 @@ int main(int ac, char* av[])
     }
     catch (const MissingArgumentError& e)
     {
-        std::cerr   << RED
-                    << e.what()
-                    << END
-                    << std::endl;
-        std::cerr   << BLUE
-                    << "[USAGE] : ./RPN \"expression\""
-                    << END
-                    << std::endl;
-        return (1);
-    }
-    catch (const InvalidTokenError& e)
-    {
-        std::cerr   << RED
-                    << e.what()
-                    << END
-                    << std::endl;
-        return (1);
-    }
-    catch (const IncompleteExpressionError& e)
-    {
-        std::cerr   << RED
-                    << e.what()
-                    << END
-                    << std::endl;
-        return (1);
-    }
-    catch (const DivByZeroError& e)
-    { 
-        std::cerr   << RED
-                    << e.what()
-                    << END
-                    << std::endl;
+        rpnCalculator.printCaughtError(e);
+        rpnCalculator.printUsage();
         return (1);
     }
     catch (const std::runtime_error& e)
     {
-        std::cerr   << RED
-                    << "[ERROR] : "
-                    << e.what()
-                    << END
-                    << std::endl;
+        rpnCalculator.printCaughtError(e);
         return (1);
     }
     

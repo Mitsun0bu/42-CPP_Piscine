@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:19:16 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/22 14:59:30 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/23 10:01:56 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void PmergeMe::parseArguments(int ac, char** av)
         {
             num = std::stoi(av[i]);
         }
-        catch (const std::exception& e)
+        catch (...)
         {
             throw (NonIntError());
         }
@@ -151,6 +151,24 @@ void PmergeMe::printResults()
     std::cout   << ORANGE << "[STD::LIST PERFORMANCE]\t\t: " << END 
                 << list_time << " us "
                 << "(" << input_list.size() << " elements)"
+                << std::endl
+                << std::endl;
+}
+
+void PmergeMe::printCaughtError(const std::exception& e)
+{
+    std::cout   << RED
+                << "[ERROR]\t\t\t\t: "
+                << e.what()
+                << END
+                << std::endl;
+}
+
+void PmergeMe::printUsage()
+{
+    std::cout   << BLUE
+                << "[USAGE]\t\t\t\t: ./PmergeMe [int] [int] [int] ..."
+                << END
                 << std::endl
                 << std::endl;
 }

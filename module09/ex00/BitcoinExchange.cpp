@@ -1,4 +1,16 @@
-#include "BitcoinExchange.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/23 09:12:41 by llethuil          #+#    #+#             */
+/*   Updated: 2023/03/23 09:45:52 by llethuil         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+# include "BitcoinExchange.hpp"
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -16,7 +28,51 @@ BitcoinExchange::BitcoinExchange(void)
 
 /* ************************************************************************** */
 /*                                                                            */
-/*                          ~~~ MEMBER FUNCTIONS ~~~                          */
+/*                          ~~~ COPY CONSTRUCTOR ~~~                          */
+/*                                                                            */
+/* ************************************************************************** */
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& src)
+{
+    *this = src;
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                    ~~~ ASSIGNMENT OPERATOR OVERLOAD ~~~                    */
+/*                                                                            */
+/* ************************************************************************** */
+
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& src)
+{
+    if (this != &src)
+    {
+        exchange_rates_map  = src.exchange_rates_map;
+        date_string         = src.date_string;
+        value_string        = src.value_string;
+        value_number        = src.value_number;
+        exchange_rate       = src.exchange_rate;
+    }
+    return (*this);
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                             ~~~ DESTRUCTOR ~~~                             */
+/*                                                                            */
+/* ************************************************************************** */
+
+BitcoinExchange::~BitcoinExchange(void)
+{
+    // std::cout   << YELLOW
+    //             << "[DESTRUCTOR] : BitcoinExchange destroyed"
+    //             << END
+    //             << std::endl;
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                         ~~~ PUBLIC METHODS ~~~                             */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +82,14 @@ void BitcoinExchange::parseDataBaseFile(const std::string& db_file_name)
     if (!db_file)
         throw (OpenDataBaseError());
 
-    std::string     line_string;
-    std::string     date;
+    std::string line_string;
+    std::string date;
     
     // IGNORE THE HEADER LINE
     std::getline(db_file, line_string);
 
     // ADD THE DATE AND CORRESPONDING EXCHANGE RATE TO THE MAP
-    double          exchange_rate;
+    double  exchange_rate;
     while (std::getline(db_file, line_string))
     {
         std::istringstream line_stream(line_string);
@@ -41,12 +97,6 @@ void BitcoinExchange::parseDataBaseFile(const std::string& db_file_name)
         line_stream >> exchange_rate;
         exchange_rates_map[date] = exchange_rate;
     }
-}
-
-void BitcoinExchange::process(void)
-{        
-        updateExchangeRate();
-        printResult();
 }
 
 void BitcoinExchange::parseInputLine(const std::string& line_string)
@@ -62,6 +112,48 @@ void BitcoinExchange::parseInputLine(const std::string& line_string)
     else
         throw (BadInputError());
 }
+
+void BitcoinExchange::updateExchangeRate(void)
+{
+    std::map<std::string, double>::const_iterator it = exchange_rates_map.upper_bound(date_string);
+
+    if (it == exchange_rates_map.begin())
+        throw (DateNotFoundError());
+    --it;
+
+    exchange_rate = it->second;
+}
+
+void BitcoinExchange::printResult()
+{
+    std::cout   << date_string
+                << " => " << value_number
+                << " = " << value_number * exchange_rate
+                << std::endl;
+}
+
+void BitcoinExchange::printCaughtError(const std::exception& e)
+{
+    std::cout   << RED
+                << "[ERROR] : "
+                << e.what()
+                << END
+                << std::endl;
+}
+
+void BitcoinExchange::printUsage(void)
+{
+    std::cerr   << BLUE
+                << "[USAGE] : ./btc [input file name]"
+                << END
+                << std::endl;
+}
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                         ~~~ PRIVATE METHODS ~~~                            */
+/*                                                                            */
+/* ************************************************************************** */
 
 void BitcoinExchange::parseValue(void)
 {
@@ -90,23 +182,4 @@ void BitcoinExchange::parseDate(void)
     
     if (result == NULL)
         throw (InvalidDateError());
-}
-
-void BitcoinExchange::updateExchangeRate(void)
-{
-    std::map<std::string, double>::const_iterator it = exchange_rates_map.upper_bound(date_string);
-
-    if (it == exchange_rates_map.begin())
-        throw (DateNotFoundError());
-    --it;
-
-    exchange_rate = it->second;
-}
-
-void BitcoinExchange::printResult()
-{
-    std::cout   << date_string
-                << " => " << value_number
-                << " = " << value_number * exchange_rate
-                << std::endl;
 }

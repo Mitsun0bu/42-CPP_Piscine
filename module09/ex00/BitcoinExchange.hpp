@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:09:30 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/22 18:47:00 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/23 09:46:10 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# define RED "\x1B[31m"
-# define GREEN "\x1B[32m"
-# define YELLOW "\x1B[33m"
-# define ORANGE "\x1B[34m"
-# define PURPLE "\x1B[35m"
-# define BLUE "\x1B[36m"
-# define END "\033[0m"
+#define RED     "\x1B[31m"
+#define GREEN   "\x1B[32m"
+#define YELLOW  "\x1B[33m"
+#define ORANGE  "\x1B[34m"
+#define PURPLE  "\x1B[35m"
+#define BLUE    "\x1B[36m"
+#define END     "\033[0m"
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -49,55 +49,55 @@
 class MissingInfileError : public std::runtime_error
 {
     public:
-        MissingInfileError() : std::runtime_error("[ERROR] : MISSING INPUT FILE NAME") {}
+        MissingInfileError() : std::runtime_error("MISSING INPUT FILE NAME") {}
 };
 
 class OpenInfileError : public std::runtime_error
 {
     public:
-        OpenInfileError() : std::runtime_error("[ERROR] : COULD NOT OPEN INPUT FILE") {}
+        OpenInfileError() : std::runtime_error("COULD NOT OPEN INPUT FILE") {}
 };
 
 class OpenDataBaseError : public std::runtime_error
 {
     public:
-        OpenDataBaseError() : std::runtime_error("[ERROR] : COULD NOT OPEN DATA BASE") {}
+        OpenDataBaseError() : std::runtime_error("COULD NOT OPEN DATA BASE") {}
 };
 
 class DateNotFoundError : public std::runtime_error
 {
     public:
-        DateNotFoundError() : std::runtime_error("[ERROR] : DATE NOT FOUND IN DATA BASE") {}
+        DateNotFoundError() : std::runtime_error("DATE NOT FOUND IN DATA BASE") {}
 };
 
 class InvalidDateError : public std::runtime_error
 {
     public:
-        InvalidDateError() : std::runtime_error("[ERROR] : INVALID INPUT DATE") {}
+        InvalidDateError() : std::runtime_error("INVALID INPUT DATE") {}
 };
 
 class MissingValueError : public std::runtime_error
 {
     public:
-        MissingValueError() : std::runtime_error("[ERROR] : MISSING INPUT VALUE") {}
+        MissingValueError() : std::runtime_error("MISSING INPUT VALUE") {}
 };
 
 class NegativeValueError : public std::runtime_error
 {
     public:
-        NegativeValueError() : std::runtime_error("[ERROR] : NEGATIVE INPUT VALUE") {}
+        NegativeValueError() : std::runtime_error("NEGATIVE INPUT VALUE") {}
 };
 
 class ValueTooLargeError : public std::runtime_error
 {
     public:
-        ValueTooLargeError() : std::runtime_error("[ERROR] : VALUE TOO LARGE") {}
+        ValueTooLargeError() : std::runtime_error("VALUE TOO LARGE") {}
 };
 
 class BadInputError : public std::runtime_error
 {
     public:
-        BadInputError() : std::runtime_error("[ERROR] : BAD INPUT") {}
+        BadInputError() : std::runtime_error("BAD INPUT") {}
 };
 
 /* ************************************************************************** */
@@ -109,23 +109,35 @@ class BadInputError : public std::runtime_error
 class BitcoinExchange
 {
     public:
-
+		/* CONSTRUCTOR */
                                         BitcoinExchange(void);
+		/* COPY CONSTRUCTOR */
+                                        BitcoinExchange(const BitcoinExchange& src);
+        /* ASSIGNATION OPERATOR OVERLOAD */
+        BitcoinExchange&                operator=(const BitcoinExchange& src);    
+        /* DESTRUCTOR */
+                                        ~BitcoinExchange(void);
+        
+        /* PUBLIC METHODS */
         void                            parseDataBaseFile(const std::string& data_file_name);
-        void                            process(void);
         void                            parseInputLine(const std::string& line_string);
+        void                            updateExchangeRate(void);
+        void                            printResult(void);
+        void                            printCaughtError(const std::exception& e);
+        void                            printUsage(void);
 
     private:
 
+        /* PRIVATE ATTRIBUTES */
         std::map<std::string, double>   exchange_rates_map;
         std::string                     date_string;
         std::string                     value_string;
         double                          value_number;
         double                          exchange_rate;
-        void                            parseValue(void);
+
+        /* PRIVATE METHODS */
         void                            parseDate(void);
-        void                            updateExchangeRate(void);
-        void                            printResult(void);
+        void                            parseValue(void);
 };
 
 #endif

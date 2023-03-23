@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:28:10 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/22 16:54:23 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/23 09:44:46 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# define RED "\x1B[31m"
-# define GREEN "\x1B[32m"
-# define YELLOW "\x1B[33m"
-# define ORANGE "\x1B[34m"
-# define PURPLE "\x1B[35m"
-# define BLUE "\x1B[36m"
-# define END "\033[0m"
+#define RED     "\x1B[31m"
+#define GREEN   "\x1B[32m"
+#define YELLOW  "\x1B[33m"
+#define ORANGE  "\x1B[34m"
+#define PURPLE  "\x1B[35m"
+#define BLUE    "\x1B[36m"
+#define END     "\033[0m"
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -48,25 +48,25 @@
 class MissingArgumentError : public std::runtime_error
 {
     public:
-        MissingArgumentError() : std::runtime_error("[ERROR] : MISSING ARGUMENT") {}
+        MissingArgumentError() : std::runtime_error("MISSING ARGUMENT") {}
 };
 
 class InvalidTokenError : public std::runtime_error
 {
     public:
-        InvalidTokenError() : std::runtime_error("[ERROR] : INVALID TOKEN") {}
+        InvalidTokenError() : std::runtime_error("INVALID TOKEN") {}
 };
 
 class IncompleteExpressionError : public std::runtime_error
 {
     public:
-        IncompleteExpressionError() : std::runtime_error("[ERROR] : INCOMPLETE EXPRESSION") {}
+        IncompleteExpressionError() : std::runtime_error("INCOMPLETE EXPRESSION") {}
 };
 
 class DivByZeroError : public std::runtime_error
 {
     public:
-        DivByZeroError() : std::runtime_error("[ERROR] : DIVISION BY ZERO") {}
+        DivByZeroError() : std::runtime_error("DIVISION BY ZERO") {}
 };
 
 /* ************************************************************************** */
@@ -92,6 +92,8 @@ class RPN
         void            parseArgument(const std::string &expression);
         void            process(const std::string &expression);
         void            printResult() const;
+        void            printCaughtError(const std::runtime_error& e) const;
+        void            printUsage() const;
 
     private:
 

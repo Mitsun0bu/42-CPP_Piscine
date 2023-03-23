@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:48:50 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/22 16:38:28 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/23 09:42:30 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RPN.hpp"
+# include "RPN.hpp"
 
 /* ************************************************************************** */
 /*                                                                            */
@@ -118,6 +118,23 @@ void RPN::printResult() const
                 << "[RESULT] : "
                 << END
                 << rpnStack.top()
+                << std::endl;
+}
+
+void RPN::printCaughtError(const std::runtime_error& e) const
+{
+    std::cerr   << RED
+                << "[ERROR] : "
+                << e.what()
+                << END
+                << std::endl;
+}
+
+void RPN::printUsage() const
+{
+    std::cerr   << BLUE
+                << "[USAGE] : ./RPN \"expression\""
+                << END
                 << std::endl;
 }
 
