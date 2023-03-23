@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:09:30 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/23 09:46:10 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/23 12:55:40 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ class ValueTooLargeError : public std::runtime_error
 class BadInputError : public std::runtime_error
 {
     public:
-        BadInputError() : std::runtime_error("BAD INPUT") {}
+        BadInputError() : std::runtime_error("BAD INPUT, MISSING DATE OR VALUE") {}
 };
 
 /* ************************************************************************** */

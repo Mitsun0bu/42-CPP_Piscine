@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 09:12:41 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/23 09:45:52 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/23 12:52:24 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,11 +175,33 @@ void BitcoinExchange::parseValue(void)
         throw (ValueTooLargeError());
 }
 
+bool isLeapYear(int year)
+{
+    if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
+        return (true);
+    return (false);
+}
+
+int daysInMonth(int year, int month)
+{
+    int days_per_month[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    if (month == 2 && isLeapYear(year) == true)
+        return (29);       
+    return (days_per_month[month - 1]);
+}
+
 void BitcoinExchange::parseDate(void)
 {
-    std::tm     tm_date = {};
-    const char* result  = strptime(date_string.c_str(), "%Y-%m-%d", &tm_date);
+    std::tm tm_date     = {};
     
+    const char *result  = strptime(date_string.c_str(), "%Y-%m-%d", &tm_date);
     if (result == NULL)
+        throw (InvalidDateError());
+
+    int year    = tm_date.tm_year + 1900;
+    int month   = tm_date.tm_mon + 1;
+    int day     = tm_date.tm_mday;
+
+    if (month < 1 || month > 12 || day < 1 || day > daysInMonth(year, month))
         throw (InvalidDateError());
 }
