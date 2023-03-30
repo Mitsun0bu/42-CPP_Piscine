@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 09:12:41 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/30 17:16:22 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/30 17:35:05 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,11 @@ void BitcoinExchange::updateExchangeRate(void)
     std::map<std::string, double>::const_iterator it = exchange_rates_map.upper_bound(date_string);
 
     if (it == exchange_rates_map.begin())
+    {
+        exchange_rate = 0;
+        return ;
+    }
+    if (it == exchange_rates_map.end())
         throw (DateNotFoundError());
     --it;
 

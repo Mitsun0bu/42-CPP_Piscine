@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:09:30 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/30 17:24:44 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/30 17:37:38 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ class BadInfileHeaderPositionError : public std::runtime_error
 class DateNotFoundError : public std::runtime_error
 {
     public:
-        DateNotFoundError() : std::runtime_error("DATE NOT FOUND IN DATA BASE") {}
+        DateNotFoundError() : std::runtime_error("DATE NOT FOUND IN DATA BASE. I AM A CONVERTER, NOT A FORTUNE-TELLER") {}
 };
 
 class InvalidDateError : public std::runtime_error
