@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 18:09:30 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/23 12:55:40 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/30 17:24:44 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ class MissingInfileError : public std::runtime_error
         MissingInfileError() : std::runtime_error("MISSING INPUT FILE NAME") {}
 };
 
+class EmptyInfileError : public std::runtime_error
+{
+    public:
+        EmptyInfileError() : std::runtime_error("INPUT FILE IS EMPTY OR IS A DIRECTORY") {}
+};
+
 class OpenInfileError : public std::runtime_error
 {
     public:
@@ -62,6 +68,12 @@ class OpenDataBaseError : public std::runtime_error
 {
     public:
         OpenDataBaseError() : std::runtime_error("COULD NOT OPEN DATA BASE") {}
+};
+
+class BadInfileHeaderPositionError : public std::runtime_error
+{
+    public:
+        BadInfileHeaderPositionError() : std::runtime_error("INFILE HEADER NOT AT THE TOP OF INFILE") {}
 };
 
 class DateNotFoundError : public std::runtime_error
@@ -125,6 +137,10 @@ class BitcoinExchange
         void                            printResult(void);
         void                            printCaughtError(const std::exception& e);
         void                            printUsage(void);
+
+        /* GETTERS */
+        std::string                     getDateString(void) const;
+        std::string                     getValueString(void) const;
 
     private:
 

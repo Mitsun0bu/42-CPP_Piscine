@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 09:12:41 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/23 12:52:24 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/03/30 17:16:22 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ void BitcoinExchange::parseInputLine(const std::string& line_string)
     {
         parseDate();
         parseValue();
+        if (date_string == "date" && value_string == "value")
+            return ;
     }
     else
         throw (BadInputError());
@@ -151,6 +153,22 @@ void BitcoinExchange::printUsage(void)
 
 /* ************************************************************************** */
 /*                                                                            */
+/*                             ~~~ GETTERS ~~~                                */
+/*                                                                            */
+/* ************************************************************************** */
+
+std::string BitcoinExchange::getDateString(void) const
+{
+    return (date_string);
+}
+
+std::string BitcoinExchange::getValueString(void) const
+{
+    return (value_string);
+}
+
+/* ************************************************************************** */
+/*                                                                            */
 /*                         ~~~ PRIVATE METHODS ~~~                            */
 /*                                                                            */
 /* ************************************************************************** */
@@ -159,6 +177,11 @@ void BitcoinExchange::parseValue(void)
 {
     if (value_string.empty())
         throw (MissingValueError());
+    
+    value_string.erase(0, value_string.find_first_not_of("\t\n\v\f\r "));
+    value_string.erase(value_string.find_last_not_of("\t\n\v\f\r ") + 1);
+    if (value_string == "value")
+        return;
 
     try
     {
@@ -193,7 +216,12 @@ int daysInMonth(int year, int month)
 void BitcoinExchange::parseDate(void)
 {
     std::tm tm_date     = {};
-    
+
+    date_string.erase(0, date_string.find_first_not_of("\t\n\v\f\r "));
+    date_string.erase(date_string.find_last_not_of("\t\n\v\f\r ") + 1);
+    if (date_string == "date")
+        return;
+
     const char *result  = strptime(date_string.c_str(), "%Y-%m-%d", &tm_date);
     if (result == NULL)
         throw (InvalidDateError());

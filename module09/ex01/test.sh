@@ -19,6 +19,8 @@ TEST_INPUTS=(
   "9 3 / 2 +"
   "7 7 * 7 -"
   "8 9 * 9 - 9 - 9 - 4 - 1 +"
+  "9 8 * 4 * 4 / 2 + 9 - 8 - 8 - 1 - 6 -"
+  "1 2 * 2 / 2 + 5 * 6 - 1 3 * - 4 5 * * 8 /"
 )
 
 # ITERATE THROUGH TEST INPUT ARRAY AND RUN THE PROGRAM FOR EACH INPUT
