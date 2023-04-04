@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 11:19:16 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/29 12:55:46 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/04/04 11:34:48 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,16 +92,13 @@ void PmergeMe::parseArguments(int ac, char** av)
 
     for (int i = 1; i < ac; ++i)
     {
-        try
-        {
-            num = std::stoi(av[i]);
-        }
-        catch (...)
-        {
+        if (std::isdigit(av[i][0]) == false)
             throw (NonIntError());
-        }
+        
+        num = std::stoi(av[i]);
         if (num < 0) 
             throw (NegativeIntError());
+            
         input_vector.push_back(num);
         input_list.push_back(num);
     }
