@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 09:12:41 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/30 17:35:05 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/04/04 12:19:11 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,7 @@ void BitcoinExchange::parseValue(void)
 
     try
     {
-        value_number = std::stod(value_string);
+        value_number = std::atof(value_string.c_str());
     }
     catch (...)
     {
