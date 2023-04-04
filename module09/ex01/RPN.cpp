@@ -6,7 +6,7 @@
 /*   By: llethuil <lucas.lethuillier@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 09:48:50 by llethuil          #+#    #+#             */
-/*   Updated: 2023/03/23 09:42:30 by llethuil         ###   ########.fr       */
+/*   Updated: 2023/04/04 11:58:43 by llethuil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,10 @@ void RPN::process(const std::string &expression)
         if (token == "+" || token == "-" || token == "*" || token == "/")
                 doMath(token);
         else
-            rpnStack.push(std::stoi(token));
+        {
+            const char* tok = token.c_str();
+            rpnStack.push(std::atoi(tok));
+        }
     }
 }
 
